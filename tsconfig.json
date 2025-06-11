@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "outDir": "./build/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "es5",
+    "allowJs": true,
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    // Для абсолютного импорта
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+
+    // изолирует файлы с типами (не учавствуют в компиляции) в импорте надо ставить 'import type'
+    "isolatedModules": true
+  },
+  "include": ["./src/**/*.ts"],
+  "exclude": ["node_modules"]
+}
