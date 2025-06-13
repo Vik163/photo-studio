@@ -20,6 +20,7 @@ export const buildWebpackConfig = (options: BuildOptions): Configuration => {
       filename: "[name].[contenthash].main.js",
       publicPath: "/",
       asyncChunks: true,
+      assetModuleFilename: "assets/[name][ext]", // устанавливает папку assets в build
     },
     plugins: buildWebpackPlugins(options),
     module: {

@@ -16,6 +16,7 @@
     "@babel/preset-typescript": "^7.27.1",
     "@types/node": "^22.15.30",
     "@types/webpack": "^5.28.5",
+    "@types/webpack-bundle-analyzer": "^4.7.0",
     "@types/webpack-dev-server": "^4.7.2",
     "babel-loader": "^10.0.0",
     "css-loader": "^7.1.2",
@@ -34,6 +35,7 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
     "webpack": "^5.99.9",
+    "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2"
   }

@@ -1,0 +1,23 @@
+.nav-primary,
+.nav-menu {
+  background-color: #faf7e9;
+  position: fixed;
+  top: 96px;
+  right: 0;
+  width: 50vw;
+  height: 100vh;
+  border-left: 1px solid #000;
+  border-bottom: 1px solid #000;
+  z-index: 999999999;
+  display: none;
+}
+
+.menu-item {
+  font-family: "GT Alpina";
+  font-size: 70px;
+  line-height: 72px;
+  list-style: none;
+  letter-spacing: -0.008em;
+  -webkit-font-smoothing: antialiased;
+  margin-top: 15px;
+}

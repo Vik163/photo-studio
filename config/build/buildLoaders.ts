@@ -32,6 +32,7 @@ export const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
     type: "asset/resource",
   };
 
+  // помогает загружать локальные картинки
   const htmlLoader = {
     test: /\.html$/i,
     loader: "html-loader",
@@ -54,5 +55,5 @@ export const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
     },
   };
 
-  return [fileLoader, styleLoader, babelLoader];
+  return [fileLoader, htmlLoader, styleLoader, babelLoader];
 };

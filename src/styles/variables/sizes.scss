@@ -1,0 +1,44 @@
+:root {
+  /* - height ----- */
+  --height-header: 90px;
+  --height-header-note: 127px;
+  --height-header-pad: 115px;
+  --height-header-mobile: 56px;
+
+  --height-cnv-mobile: 352px;
+
+  --height-slider_item: 275px;
+  --height-slider_item-note: 240px;
+  --height-slider_item-pad: 225px;
+  --height-slider_item-mobile: 210px;
+
+  --height-icon: 20px;
+
+  --height-btn-card: 40px;
+  --height-btn-card-note: 35px;
+  --height-btn-card-pad: 30px;
+  --height-btn-card-mobile: 25px;
+
+  --height-bread-crumbs: 80px;
+  --height-bread-crumbs-note: 80px;
+  --height-bread-crumbs-pad: 66px;
+  --height-bread-crumbs-mobile: 51px;
+
+  /* - width ----- */
+  --width-block-desktop: 1200px;
+  --width-block-note: 1024px;
+  --width-block-pad: 768px;
+  --width-block-mobile: 94%;
+  --width-block-mobile-min: 90%;
+
+  /* - padding ----- */
+  --slider_padding: 30px;
+  --slider_padding-note: 25px;
+  --slider_padding-pad: 20px;
+
+  /* - gap ----- */
+  --marquee-gap: 50px;
+  --marquee-gap-note: 40px;
+
+  --padding-mobile-nav: 25px;
+}

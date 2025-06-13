@@ -3,6 +3,7 @@ import type { BuildOptions } from "../types/config";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 export const buildWebpackPlugins = (
   options: BuildOptions
@@ -34,6 +35,15 @@ export const buildWebpackPlugins = (
       },
     }),
   ];
+
+  if (isDev) {
+    plugins.push(
+      new BundleAnalyzerPlugin({
+        // не открывается постоянно
+        openAnalyzer: false, // запуск по ссылке в терминале
+      })
+    ); // Анализирует размер бандла
+  }
 
   if (isProd)
     plugins.push(
