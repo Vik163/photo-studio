@@ -1,25 +1,39 @@
 .home-studio {
   width: 100%;
-  background-image: url("https://theunwash.com/wp-content/uploads/2025/04/Cled-In-The-Loop-Ring-20230510030522_3024x-e1745183142568.webp");
-  background-size: cover;
+  background-image: url("../../assets/images/home-2.jpg");
+  background-repeat: no-repeat;
+  background-size: 50%;
   text-align: center;
   height: 700px;
   color: #fff;
   display: flex;
   align-items: center;
-  background-position: center;
+  background-position: right;
 }
 
 .home-studio__container {
-  width: 40%;
-  margin-left: 45%;
+  width: 42%;
+  margin-left: 3%;
 }
 
 .home-studio__title {
-  font: var(--font-pfair-90);
+  font-family: var(--font-orb);
   letter-spacing: -2px;
-  line-height: 90px;
+  line-height: 80px;
+  font-size: 65px;
+  font-weight: normal;
   -webkit-font-smoothing: antialiased;
+  color: black;
+}
+
+.home-studio__title-name {
+  color: #1e0803;
+  text-shadow: #1a0700 1px 1px 2px;
+
+  &::before,
+  &::after {
+    content: "\22C5";
+  }
 }
 
 .home-studio__link {
