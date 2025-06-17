@@ -1,19 +1,22 @@
 .home-studio {
   width: 100%;
-  background-image: url("../../assets/images/home-2.jpg");
-  background-repeat: no-repeat;
-  background-size: 50%;
   text-align: center;
   height: 700px;
-  color: #fff;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  background-position: right;
 }
 
 .home-studio__container {
   width: 42%;
   margin-left: 3%;
+  color: var(--color-font-dark);
+}
+
+.home-studio__image {
+  width: 50%;
+  height: 100%;
+  background: url("../../assets/images/home-2.jpg") no-repeat center/cover;
 }
 
 .home-studio__title {
@@ -23,43 +26,62 @@
   font-size: 65px;
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
-  color: black;
 }
 
 .home-studio__title-name {
-  color: #1e0803;
-  text-shadow: #1a0700 1px 1px 2px;
+  color: var(--color-font-accent-dark);
+  text-shadow: var(--color-font-accent-dark) 1px 1px 1px;
+  position: relative;
 
   &::before,
   &::after {
-    content: "\22C5";
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 15px;
+    left: -70px;
+    background: url(../../assets/images/ornament.png) no-repeat center/100%;
+    width: 60px;
+    height: 50px;
+  }
+
+  &::after {
+    transform: scale(-1, 1);
+    left: auto;
+    right: -70px;
   }
 }
 
-.home-studio__link {
+.home-studio__subtitle {
+  font: var(--font-catrin-44-norm);
+  letter-spacing: -2px;
+  line-height: 80px;
+  margin-top: 50px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.home-studio__btn {
   border-radius: 25px;
-  background-color: var(--color-black);
-  text-transform: uppercase;
-  color: var(--color-white);
-  font: var(--font-int-14-bold);
+  font: var(--font-catrin-22-bold);
+  background-color: transparent;
+  color: var(--color-font-dark);
   letter-spacing: 1px;
-  width: 145px;
-  height: 51px;
-  line-height: 51px;
+  padding: 15px 25px;
+  width: fit-content;
   transition: 0.3s ease;
   display: block;
   margin: 50px auto 0;
+  border: 2px solid var(--color-black);
 
   &::after {
     content: "";
-    background-image: url(https://theunwash.com/wp-content/uploads/2022/07/white_arrow.svg);
+    background: url(../../assets/icons/arrow.svg) no-repeat;
     width: 23px;
     height: 15px;
     background-size: contain;
-    background-repeat: no-repeat;
     display: inline-block;
     position: relative;
-    top: 3px;
+    top: 2px;
     margin-left: 14px;
   }
 

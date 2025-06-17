@@ -1,6 +1,6 @@
 :root {
   --font-orb: "Oranienbaum";
-  --font-int: "Oranienbaum";
+  --font-catrin: "Catrinity";
   --font-cursive-gr-vb: "Great Vibes";
 
   --font-10: 10px;
@@ -18,83 +18,73 @@
   --font-26: 26px;
   --font-28: 28px;
   --font-30: 30px;
-  --font-90: 90px;
+  --font-44: 44px;
 
   --font-weight-norm: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
   --font-weight-black: 900;
 
-  --font-pfair-90-black: var(--font-weight-black) var(--font-90)
-    var(--font-pfair);
-  --font-pfair-30-black: var(--font-weight-black) var(--font-30)
-    var(--font-pfair);
-  --font-pfair-22-black: var(--font-weight-black) var(--font-22)
-    var(--font-pfair);
-  --font-pfair-20-black: var(--font-weight-black) var(--font-20)
-    var(--font-pfair);
-  --font-pfair-18-black: var(--font-weight-black) var(--font-18)
-    var(--font-pfair);
-  --font-pfair-16-black: var(--font-weight-black) var(--font-16)
-    var(--font-pfair);
-  --font-pfair-12-black: var(--font-weight-black) var(--font-12)
-    var(--font-pfair);
+  --font-orb-30-norm: var(--font-weight-norm) var(--font-30) var(--font-orb);
+  --font-orb-28-norm: var(--font-weight-norm) var(--font-28) var(--font-orb);
 
-  --font-pfair-90-bold: var(--font-weight-bold) var(--font-90) var(--font-pfair);
-  --font-pfair-30-bold: var(--font-weight-bold) var(--font-30) var(--font-pfair);
-  --font-pfair-26-bold: var(--font-weight-bold) var(--font-26) var(--font-pfair);
-  --font-pfair-22-bold: var(--font-weight-bold) var(--font-22) var(--font-pfair);
-  --font-pfair-20-bold: var(--font-weight-bold) var(--font-20) var(--font-pfair);
-  --font-pfair-18-bold: var(--font-weight-bold) var(--font-18) var(--font-pfair);
-  --font-pfair-16-bold: var(--font-weight-bold) var(--font-16) var(--font-pfair);
-  --font-pfair-15-bold: var(--font-weight-bold) var(--font-15) var(--font-pfair);
-  --font-pfair-14-bold: var(--font-weight-bold) var(--font-14) var(--font-pfair);
-  --font-pfair-13-bold: var(--font-weight-bold) var(--font-13) var(--font-pfair);
-  --font-pfair-12-bold: var(--font-weight-bold) var(--font-12) var(--font-pfair);
-  --font-pfair-11-bold: var(--font-weight-bold) var(--font-11) var(--font-pfair);
-  --font-pfair-10-bold: var(--font-weight-bold) var(--font-10) var(--font-pfair);
+  --font-orb-90-bold: var(--font-weight-bold) var(--font-90) var(--font-orb);
+  --font-orb-30-bold: var(--font-weight-bold) var(--font-30) var(--font-orb);
+  --font-orb-28-bold: var(--font-weight-bold) var(--font-28) var(--font-orb);
+  --font-orb-26-bold: var(--font-weight-bold) var(--font-26) var(--font-orb);
+  --font-orb-22-bold: var(--font-weight-bold) var(--font-22) var(--font-orb);
+  --font-orb-20-bold: var(--font-weight-bold) var(--font-20) var(--font-orb);
+  --font-orb-18-bold: var(--font-weight-bold) var(--font-18) var(--font-orb);
+  --font-orb-16-bold: var(--font-weight-bold) var(--font-16) var(--font-orb);
+  --font-orb-15-bold: var(--font-weight-bold) var(--font-15) var(--font-orb);
+  --font-orb-14-bold: var(--font-weight-bold) var(--font-14) var(--font-orb);
+  --font-orb-13-bold: var(--font-weight-bold) var(--font-13) var(--font-orb);
+  --font-orb-12-bold: var(--font-weight-bold) var(--font-12) var(--font-orb);
+  --font-orb-11-bold: var(--font-weight-bold) var(--font-11) var(--font-orb);
+  --font-orb-10-bold: var(--font-weight-bold) var(--font-10) var(--font-orb);
 
-  --font-pfair-90: var(--font-90) var(--font-pfair);
-  --font-pfair-30: var(--font-30) var(--font-pfair);
-  --font-pfair-28: var(--font-28) var(--font-pfair);
-  --font-pfair-24: var(--font-24) var(--font-pfair);
-  --font-pfair-22: var(--font-22) var(--font-pfair);
-  --font-pfair-20: var(--font-20) var(--font-pfair);
-  --font-pfair-18: var(--font-18) var(--font-pfair);
-  --font-pfair-16: var(--font-16) var(--font-pfair);
-  --font-pfair-15: var(--font-15) var(--font-pfair);
-  --font-pfair-11: var(--font-11) var(--font-pfair);
-  --font-pfair-10: var(--font-10) var(--font-pfair);
+  --font-catrin-44-norm: var(--font-weight-norm) var(--font-44)
+    var(--font-catrin);
+  --font-catrin-13-norm: var(--font-weight-norm) var(--font-13)
+    var(--font-catrin);
+  --font-catrin-12-norm: var(--font-weight-norm) var(--font-12)
+    var(--font-catrin);
+  --font-catrin-11-norm: var(--font-weight-norm) var(--font-11)
+    var(--font-catrin);
 
-  --font-int-14-norm: var(--font-weight-norm) var(--font-14) var(--font-int);
-  --font-int-13-norm: var(--font-weight-norm) var(--font-13) var(--font-int);
-  --font-int-12-norm: var(--font-weight-norm) var(--font-12) var(--font-int);
-  --font-int-11-norm: var(--font-weight-norm) var(--font-11) var(--font-int);
+  --font-catrin-11-medium: var(--font-weight-medium) var(--font-11)
+    var(--font-catrin);
+  --font-catrin-12-medium: var(--font-weight-medium) var(--font-12)
+    var(--font-catrin);
+  --font-catrin-13-medium: var(--font-weight-medium) var(--font-13)
+    var(--font-catrin);
+  --font-catrin-14-medium: var(--font-weight-medium) var(--font-14)
+    var(--font-catrin);
+  --font-catrin-15-medium: var(--font-weight-medium) var(--font-15)
+    var(--font-catrin);
+  --font-catrin-16-medium: var(--font-weight-medium) var(--font-16)
+    var(--font-catrin);
+  --font-catrin-22-medium: var(--font-weight-medium) var(--font-22)
+    var(--font-catrin);
 
-  --font-int-11-medium: var(--font-weight-medium) var(--font-11) var(--font-int);
-  --font-int-12-medium: var(--font-weight-medium) var(--font-12) var(--font-int);
-  --font-int-13-medium: var(--font-weight-medium) var(--font-13) var(--font-int);
-  --font-int-14-medium: var(--font-weight-medium) var(--font-14) var(--font-int);
-  --font-int-15-medium: var(--font-weight-medium) var(--font-15) var(--font-int);
-  --font-int-16-medium: var(--font-weight-medium) var(--font-16) var(--font-int);
-  --font-int-18-medium: var(--font-weight-medium) var(--font-18) var(--font-int);
-
-  --font-int-10-bold: var(--font-weight-bold) var(--font-10) var(--font-int);
-  --font-int-11-bold: var(--font-weight-bold) var(--font-11) var(--font-int);
-  --font-int-12-bold: var(--font-weight-bold) var(--font-12) var(--font-int);
-  --font-int-13-bold: var(--font-weight-bold) var(--font-13) var(--font-int);
-  --font-int-15-bold: var(--font-weight-bold) var(--font-15) var(--font-int);
-  --font-int-14-bold: var(--font-weight-bold) var(--font-14) var(--font-int);
-  --font-int-16-bold: var(--font-weight-bold) var(--font-16) var(--font-int);
-  --font-int-18-bold: var(--font-weight-bold) var(--font-18) var(--font-int);
-  --font-int-20-bold: var(--font-weight-bold) var(--font-20) var(--font-int);
-  --font-int-22-bold: var(--font-weight-bold) var(--font-22) var(--font-int);
-  --font-int-28: var(--font-28) var(--font-int);
-  --font-int-22: var(--font-22) var(--font-int);
-  --font-int-18: var(--font-18) var(--font-int);
-  --font-int-16: var(--font-16) var(--font-int);
-  --font-int-15: var(--font-15) var(--font-int);
-  --font-int-14: var(--font-14) var(--font-int);
-  --font-int-12: var(--font-12) var(--font-int);
-  --font-int-10: var(--font-10) var(--font-int);
+  --font-catrin-10-bold: var(--font-weight-bold) var(--font-10)
+    var(--font-catrin);
+  --font-catrin-11-bold: var(--font-weight-bold) var(--font-11)
+    var(--font-catrin);
+  --font-catrin-12-bold: var(--font-weight-bold) var(--font-12)
+    var(--font-catrin);
+  --font-catrin-13-bold: var(--font-weight-bold) var(--font-13)
+    var(--font-catrin);
+  --font-catrin-15-bold: var(--font-weight-bold) var(--font-15)
+    var(--font-catrin);
+  --font-catrin-14-bold: var(--font-weight-bold) var(--font-14)
+    var(--font-catrin);
+  --font-catrin-16-bold: var(--font-weight-bold) var(--font-16)
+    var(--font-catrin);
+  --font-catrin-18-bold: var(--font-weight-bold) var(--font-18)
+    var(--font-catrin);
+  --font-catrin-20-bold: var(--font-weight-bold) var(--font-20)
+    var(--font-catrin);
+  --font-catrin-22-bold: var(--font-weight-bold) var(--font-22)
+    var(--font-catrin);
 }

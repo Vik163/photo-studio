@@ -1,6 +1,9 @@
 :root {
   --bg-color: #faf7e9;
   --color-black: #000000;
+  --color-font-dark: #000000;
+  --color-font-accent-dark: #1e0803;
+  --color-font-light: #ffffff;
   --color-cyan-bluish-gray: #abb8c3;
   --color-white: #ffffff;
   --color-pale-pink: #f78da7;
@@ -12,6 +15,7 @@
   --color-pale-cyan-blue: #8ed1fc;
   --color-vivid-cyan-blue: #0693e3;
   --color-vivid-purple: #9b51e0;
+
   --gradient-vivid-cyan-blue-to-vivid-purple: linear-gradient(
     135deg,
     rgba(6, 147, 227, 1) 0%,
