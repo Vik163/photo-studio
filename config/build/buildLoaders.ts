@@ -38,11 +38,6 @@ export const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
     loader: "html-loader",
   };
 
-  const tsLoader = {
-    test: /\.ts$/,
-    loader: "ts-loader",
-  };
-
   const babelLoader = {
     test: /\.ts$/,
     exclude: /node_modules/,
@@ -60,5 +55,5 @@ export const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
     },
   };
 
-  return [fileLoader, htmlLoader, styleLoader, tsLoader];
+  return [fileLoader, htmlLoader, styleLoader, babelLoader];
 };
