@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack  --env mode=production --config webpack.config.ts",
+    "build": "webpack  --env mode=production --config webpack.config.ts  && copy .nojekyll build",
     "dev": "webpack serve --env mode=development",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "touch ./build/.nojekyll && gh-pages -d build -t true"
   },
   "author": "",
   "license": "ISC",
