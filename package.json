@@ -7,7 +7,7 @@
     "build": "webpack  --env mode=production --config webpack.config.ts  && copy .nojekyll build",
     "dev": "webpack serve --env mode=development",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build -t true"
+    "deploy": "gh-pages -d build"
   },
   "author": "",
   "license": "ISC",
