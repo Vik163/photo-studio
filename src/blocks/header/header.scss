@@ -1,3 +1,5 @@
+@use "../../styles/variables/times.scss";
+
 .header {
   position: relative;
   background-color: var(--bg-color);
@@ -26,4 +28,88 @@
   margin: 0 auto;
   position: relative;
   transition: 0.6s ease;
+}
+
+.header__btn {
+  transition: all times.$time-quarter;
+  z-index: 111;
+  width: 40px;
+  background: transparent;
+  height: 40px;
+  cursor: pointer;
+  position: relative;
+
+  .header__btn-icon {
+    transition: all times.$time-quarter;
+    position: absolute;
+    width: 35px;
+    height: 2px;
+    right: 0;
+    top: 20px;
+    background-color: black;
+
+    &:before {
+      width: 40px;
+      height: 2px;
+      left: -5px;
+      background: black;
+      position: absolute;
+      content: "";
+    }
+
+    &:after {
+      width: 30px;
+      height: 2px;
+      left: 5px;
+      background: black;
+      position: absolute;
+      content: "";
+    }
+
+    &:before {
+      top: -10px;
+    }
+
+    &:after {
+      top: 10px;
+    }
+  }
+
+  &:hover {
+    .header__btn-icon {
+      &:before {
+        transition: times.$time-quarter;
+        top: -11px;
+      }
+      &:after {
+        top: 11px;
+      }
+    }
+  }
+
+  &.active {
+    .header__btn-icon {
+      transform: rotate(180deg);
+      background-color: transparent;
+      right: 0;
+
+      &:before,
+      &:after {
+        top: 0;
+      }
+
+      &:before {
+        width: 30px;
+        left: 0;
+        transform: rotate(45deg);
+      }
+
+      &:after {
+        width: 30px;
+        left: 0;
+
+        transform: rotate(-45deg);
+      }
+    }
+  }
 }

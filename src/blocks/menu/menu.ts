@@ -5,6 +5,6 @@ export const setMenu = () => {
 
   btn.addEventListener("click", function () {
     $toggle("active", btn);
-    $toggle("open", $id("menu"));
+    $toggle("open", $class("menu"));
   });
 };

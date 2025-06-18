@@ -10,19 +10,7 @@ export const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
     use: [
       // MiniCssExtractPlugin.loader создаёт css файл в build, а style-loader нет,
       isDev ? "style-loader" : MiniCssExtractPlugin.loader,
-      {
-        loader: "css-loader",
-        options: {
-          // применять модули
-          modules: {
-            // Применять модули только для .module.
-            auto: (resPath: string) => Boolean(resPath.includes(".module.")),
-            localIdentName: isDev
-              ? "[path][name]__[local]--[hash:base64:5]"
-              : "[hash:base64:8]",
-          },
-        },
-      },
+      "css-loader",
       "sass-loader",
     ],
   };

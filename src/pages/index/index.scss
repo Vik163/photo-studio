@@ -1,18 +1,18 @@
-@import url(../../styles/variables/colors.scss);
-@import url(../../styles/variables/sizes.scss);
-@import url(../../styles/variables/fonts.scss);
-@import url(../../styles/variables/z-index.scss);
-@import url(../../styles/reset.scss);
-@import url(../../assets/fonts/fonts.scss);
+@use "../../blocks/header/header.scss";
+@use "../../styles/variables/colors.scss";
+@use "../../styles/variables/sizes.scss";
+@use "../../styles/variables/fonts-styles.scss";
+@use "../../styles/variables/z-index.scss";
+@use "../../styles/reset.scss";
+@use "../../assets/fonts/fonts.scss";
 
-@import url(../../styles/app.scss);
+@use "../../styles/app.scss";
 
-@import url(../../blocks/header/header.scss);
-@import url(../../blocks/logo/logo.scss);
-@import url(../../blocks/navbar/navbar.scss);
-@import url(../../blocks/menu/menu.scss);
+@use "../../blocks/logo/logo.scss";
+@use "../../blocks/navbar/navbar.scss";
+@use "../../blocks/menu/menu.scss";
 
-@import url(../../styles/main.scss);
+@use "../../styles/main.scss";
 
-@import url(../../blocks/home-studio/home-studio.scss);
-@import url(../../blocks/marquee/marquee.scss);
+@use "../../blocks/home-studio/home-studio.scss";
+@use "../../blocks/marquee/marquee.scss";
