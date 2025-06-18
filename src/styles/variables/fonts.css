@@ -1,0 +1,83 @@
+:root {
+  --font-orb: "Oranienbaum";
+  --font-catrin: "Catrinity";
+  --font-cursive-gr-vb: "Great Vibes";
+  --font-10: 10px;
+  --font-11: 11px;
+  --font-12: 12px;
+  --font-13: 13px;
+  --font-14: 14px;
+  --font-15: 15px;
+  --font-16: 16px;
+  --font-17: 17px;
+  --font-18: 18px;
+  --font-20: 20px;
+  --font-22: 22px;
+  --font-24: 24px;
+  --font-26: 26px;
+  --font-28: 28px;
+  --font-30: 30px;
+  --font-44: 44px;
+  --font-weight-norm: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+  --font-orb-30-norm: var(--font-weight-norm) var(--font-30) var(--font-orb);
+  --font-orb-28-norm: var(--font-weight-norm) var(--font-28) var(--font-orb);
+  --font-orb-90-bold: var(--font-weight-bold) var(--font-90) var(--font-orb);
+  --font-orb-30-bold: var(--font-weight-bold) var(--font-30) var(--font-orb);
+  --font-orb-28-bold: var(--font-weight-bold) var(--font-28) var(--font-orb);
+  --font-orb-26-bold: var(--font-weight-bold) var(--font-26) var(--font-orb);
+  --font-orb-22-bold: var(--font-weight-bold) var(--font-22) var(--font-orb);
+  --font-orb-20-bold: var(--font-weight-bold) var(--font-20) var(--font-orb);
+  --font-orb-18-bold: var(--font-weight-bold) var(--font-18) var(--font-orb);
+  --font-orb-16-bold: var(--font-weight-bold) var(--font-16) var(--font-orb);
+  --font-orb-15-bold: var(--font-weight-bold) var(--font-15) var(--font-orb);
+  --font-orb-14-bold: var(--font-weight-bold) var(--font-14) var(--font-orb);
+  --font-orb-13-bold: var(--font-weight-bold) var(--font-13) var(--font-orb);
+  --font-orb-12-bold: var(--font-weight-bold) var(--font-12) var(--font-orb);
+  --font-orb-11-bold: var(--font-weight-bold) var(--font-11) var(--font-orb);
+  --font-orb-10-bold: var(--font-weight-bold) var(--font-10) var(--font-orb);
+  --font-catrin-44-norm: var(--font-weight-norm) var(--font-44)
+    var(--font-catrin);
+  --font-catrin-13-norm: var(--font-weight-norm) var(--font-13)
+    var(--font-catrin);
+  --font-catrin-12-norm: var(--font-weight-norm) var(--font-12)
+    var(--font-catrin);
+  --font-catrin-11-norm: var(--font-weight-norm) var(--font-11)
+    var(--font-catrin);
+  --font-catrin-11-medium: var(--font-weight-medium) var(--font-11)
+    var(--font-catrin);
+  --font-catrin-12-medium: var(--font-weight-medium) var(--font-12)
+    var(--font-catrin);
+  --font-catrin-13-medium: var(--font-weight-medium) var(--font-13)
+    var(--font-catrin);
+  --font-catrin-14-medium: var(--font-weight-medium) var(--font-14)
+    var(--font-catrin);
+  --font-catrin-15-medium: var(--font-weight-medium) var(--font-15)
+    var(--font-catrin);
+  --font-catrin-16-medium: var(--font-weight-medium) var(--font-16)
+    var(--font-catrin);
+  --font-catrin-22-medium: var(--font-weight-medium) var(--font-22)
+    var(--font-catrin);
+  --font-catrin-10-bold: var(--font-weight-bold) var(--font-10)
+    var(--font-catrin);
+  --font-catrin-11-bold: var(--font-weight-bold) var(--font-11)
+    var(--font-catrin);
+  --font-catrin-12-bold: var(--font-weight-bold) var(--font-12)
+    var(--font-catrin);
+  --font-catrin-13-bold: var(--font-weight-bold) var(--font-13)
+    var(--font-catrin);
+  --font-catrin-15-bold: var(--font-weight-bold) var(--font-15)
+    var(--font-catrin);
+  --font-catrin-14-bold: var(--font-weight-bold) var(--font-14)
+    var(--font-catrin);
+  --font-catrin-16-bold: var(--font-weight-bold) var(--font-16)
+    var(--font-catrin);
+  --font-catrin-18-bold: var(--font-weight-bold) var(--font-18)
+    var(--font-catrin);
+  --font-catrin-20-bold: var(--font-weight-bold) var(--font-20)
+    var(--font-catrin);
+  --font-catrin-22-bold: var(--font-weight-bold) var(--font-22)
+    var(--font-catrin);
+}/*# sourceMappingURL=fonts.css.map */

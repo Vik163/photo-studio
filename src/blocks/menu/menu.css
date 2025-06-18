@@ -1,0 +1,117 @@
+.header__btn {
+  transition: all 0.25s;
+  z-index: 111;
+  width: 40px;
+  background: transparent;
+  height: 40px;
+  cursor: pointer;
+  position: relative;
+}
+.header__btn .header__btn-icon {
+  transition: all 0.25s;
+  position: absolute;
+  width: 35px;
+  height: 2px;
+  right: 0;
+  top: 20px;
+  background-color: black;
+}
+.header__btn .header__btn-icon:before {
+  width: 40px;
+  height: 2px;
+  left: -5px;
+  background: black;
+  position: absolute;
+  content: "";
+}
+.header__btn .header__btn-icon:after {
+  width: 30px;
+  height: 2px;
+  left: 5px;
+  background: black;
+  position: absolute;
+  content: "";
+}
+.header__btn .header__btn-icon:before {
+  top: -10px;
+}
+.header__btn .header__btn-icon:after {
+  top: 10px;
+}
+.header__btn:hover .header__btn-icon:before {
+  transition: 0.25s;
+  top: -11px;
+}
+.header__btn:hover .header__btn-icon:after {
+  top: 11px;
+}
+.header__btn.active .header__btn-icon {
+  transform: rotate(180deg);
+  background-color: transparent;
+  right: 0;
+}
+.header__btn.active .header__btn-icon:before, .header__btn.active .header__btn-icon:after {
+  top: 0;
+}
+.header__btn.active .header__btn-icon:before {
+  width: 30px;
+  left: 0;
+  transform: rotate(45deg);
+}
+.header__btn.active .header__btn-icon:after {
+  width: 30px;
+  left: 0;
+  transform: rotate(-45deg);
+}
+
+#menu {
+  z-index: 111;
+  transition: all 0.5s;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: var(--height-header);
+  font-size: 18px;
+  font-family: sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
+  width: 100%;
+  height: 0;
+  border-bottom: 1px solid transparent;
+  overflow: hidden;
+}
+#menu ul {
+  list-style: none;
+  padding: 0;
+  letter-spacing: 0.4em;
+}
+#menu li:first-child {
+  margin-top: 0;
+}
+#menu li {
+  transition: all 0.2s;
+  margin-top: 20px;
+  padding: 5px 0;
+  color: white;
+}
+#menu a {
+  padding: 8px;
+  transition: all 0.25s;
+  cursor: pointer;
+}
+#menu a:hover {
+  letter-spacing: 0.5em;
+  text-decoration: underline;
+}
+#menu.open {
+  height: 270px;
+  width: 100%;
+  background: #f3581b;
+  border-bottom: 1px solid black;
+}
+
+.space {
+  letter-spacing: 0;
+}/*# sourceMappingURL=menu.css.map */
