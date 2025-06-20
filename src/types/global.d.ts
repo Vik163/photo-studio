@@ -17,4 +17,6 @@ declare module "*.html" {
   export default value;
 }
 
+declare module "fontmin-webpack";
+
 declare const __IS_DEV__: boolean;

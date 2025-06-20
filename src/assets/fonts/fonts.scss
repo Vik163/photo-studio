@@ -2,5 +2,11 @@
   font-family: "Catrinity";
   font-style: normal;
   font-display: swap;
-  src: "./Catrinity.otf";
+  /* 
+  ~ В scss импорт через относительные пути приводит к ошибке
+  ~ используется абсолютный путь. Тильда впереди обозначает корневую папку
+  */
+  src: 
+  // url("~/src/assets/fonts/Catrinity.ttf") format("truetype"),
+    url("~/src/assets/fonts/Catrinity.woff2") format("woff2");
 }

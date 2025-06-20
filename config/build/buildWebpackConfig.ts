@@ -6,7 +6,7 @@ import { buildWebpackPlugins } from "./buildPlugins";
 import { buildDevServer } from "./buildDevServer";
 import { buildResolve } from "./buildResolve";
 import { buildLoaders } from "./buildLoaders";
-import { buildOpimization } from "./buildOptimization";
+import { buildOpimizationImages } from "./optimization/buildOptimizationImages";
 
 export const buildWebpackConfig = (options: BuildOptions): Configuration => {
   const { paths, mode, isDev } = options;
@@ -17,10 +17,10 @@ export const buildWebpackConfig = (options: BuildOptions): Configuration => {
     output: {
       path: paths.build,
       clean: true,
-      filename: "[name].[contenthash].main.js",
+      filename: "[name].[contenthash].js",
       publicPath: "/",
       asyncChunks: true,
-      assetModuleFilename: "assets/[name][ext]", // устанавливает папку assets в build
+      assetModuleFilename: "assets/[name].[contenthash:8][ext]", // устанавливает папку assets в build
     },
     plugins: buildWebpackPlugins(options),
     module: {
@@ -29,6 +29,6 @@ export const buildWebpackConfig = (options: BuildOptions): Configuration => {
     resolve: buildResolve(options),
     devtool: isDev ? "eval-cheap-module-source-map" : undefined,
     devServer: isDev ? buildDevServer(options) : undefined,
-    optimization: buildOpimization(),
+    optimization: buildOpimizationImages(),
   };
 };

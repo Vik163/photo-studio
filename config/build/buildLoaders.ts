@@ -15,8 +15,13 @@ export const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
     ],
   };
 
-  const fileLoader = {
-    test: /\.(png|svg|jpg|jpeg|gif|webp|ttf|woff2)$/i,
+  const imgLoader = {
+    test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
+    type: "asset/resource",
+  };
+
+  const fontsLoader = {
+    test: /\.(woff|woff2|eot|ttf|otf)$/i,
     type: "asset/resource",
   };
 
@@ -43,5 +48,5 @@ export const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
     },
   };
 
-  return [fileLoader, htmlLoader, styleLoader, babelLoader];
+  return [imgLoader, fontsLoader, htmlLoader, styleLoader, babelLoader];
 };

@@ -1,7 +1,7 @@
 export {};
 
 declare global {
-   interface Document {
-      documentMode?: any;
-   }
+  interface Document {
+    documentMode?: any;
+  }
 }
