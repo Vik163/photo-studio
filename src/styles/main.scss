@@ -2,12 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   position: relative;
-}
-
-.main__home-studio {
-  margin-top: var(--height-header);
+  padding-top: var(--height-header);
 }
 
 .main__slider {

@@ -10,3 +10,16 @@
   // url("~/src/assets/fonts/Catrinity.ttf") format("truetype"),
     url("~/src/assets/fonts/Catrinity.woff2") format("woff2");
 }
+
+@font-face {
+  font-family: "Oranienbaum";
+  font-style: normal;
+  font-display: swap;
+  /* 
+  ~ В scss импорт через относительные пути приводит к ошибке
+  ~ используется абсолютный путь. Тильда впереди обозначает корневую папку
+  */
+  src: 
+  // url("~/src/assets/fonts/Oranienbaum-Regular.ttf") format("truetype"),
+    url("~/src/assets/fonts/Oranienbaum-Regular.woff2") format("woff2");
+}

@@ -19,6 +19,7 @@
   --font-28: 28px;
   --font-30: 30px;
   --font-44: 44px;
+  --font-64: 64px;
 
   --font-weight-norm: 400;
   --font-weight-medium: 500;
@@ -43,6 +44,8 @@
   --font-orb-11-bold: var(--font-weight-bold) var(--font-11) var(--font-orb);
   --font-orb-10-bold: var(--font-weight-bold) var(--font-10) var(--font-orb);
 
+  --font-catrin-64-norm: var(--font-weight-norm) var(--font-64)
+    var(--font-catrin);
   --font-catrin-44-norm: var(--font-weight-norm) var(--font-44)
     var(--font-catrin);
   --font-catrin-13-norm: var(--font-weight-norm) var(--font-13)

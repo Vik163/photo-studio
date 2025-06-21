@@ -4,12 +4,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto+Flex:ital,wght@0,100..900;1,100..900&family=Oranienbaum&display=swap"
-      rel="stylesheet"
-    />
     <title>Фотостудия</title>
   </head>
   <body class="app">
@@ -43,16 +37,16 @@
     </header>
 
     <main class="main">
-      <section class="home-studio main__home-studio">
-        <div class="home-studio__container">
-          <h1 class="home-studio__title">
+      <section class="home">
+        <div class="home__container">
+          <h1 class="home__title">
             Онлайн фотостудия <br />
-            <span class="home-studio__title-name">&nbsp;Светлана&nbsp;</span>
+            <span class="home__title-name">&nbsp;Светлана&nbsp;</span>
           </h1>
-          <p class="home-studio__subtitle">Превращаем идеи в фотографии</p>
-          <a class="home-studio__btn" href="#">Подробнее</a>
+          <p class="home__subtitle">Превращаем идеи в фотографии</p>
+          <a class="home__btn" href="#services">Подробнее</a>
         </div>
-        <div class="home-studio__image"></div>
+        <div class="home__image"></div>
       </section>
       <div class="marquee">
         <ul class="marquee__content">
@@ -75,6 +69,22 @@
           <li class="marquee__content-item">Ритуальные таблички</li>
         </ul>
       </div>
+      <div class="dark-block"></div>
+      <section id="services" class="services">
+        <h2 class="services__title">Наши услуги</h2>
+        <ul class="services__list"></ul>
+      </section>
     </main>
+
+    <template id="service">
+      <li class="service">
+        <img class="service__img" src="#" alt="#" />
+        <div class="service__info">
+          <h3 class="service__info-title"></h3>
+          <p class="service__info-description"></p>
+          <button class="service__info-btn">Подробнее</button>
+        </div>
+      </li>
+    </template>
   </body>
 </html>
