@@ -1,13 +1,13 @@
 :root {
   /* - height ----- */
-  --height-header: 90px;
+  --height-header: 105px;
   --height-header-note: 127px;
   --height-header-pad: 115px;
   --height-header-mobile: 56px;
 
   --height-cnv-mobile: 352px;
 
-  --height-home: 700px;
+  --height-home: 730px;
   --height-slider_item-note: 240px;
   --height-slider_item-pad: 225px;
   --height-slider_item-mobile: 210px;
@@ -41,4 +41,11 @@
   --marquee-gap-note: 40px;
 
   --padding-mobile-nav: 25px;
+  --padding-service-info: 70px;
+  --padding-block: 70px;
+
+  --border-width-s: 1px;
+  --border-width-m: 2px;
+
+  --radius-btn: 15px;
 }

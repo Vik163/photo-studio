@@ -14,7 +14,7 @@
   overflow: hidden;
 
   &.open {
-    height: var(--height-home);
+    height: calc(100vh - var(--height-header));
     width: 50%;
     background: var(--color-overlay);
     left: 50%;

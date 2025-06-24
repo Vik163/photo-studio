@@ -1,1 +1,25 @@
-export const setHeader = () => {};
+import { type ObserveCallback, observer } from "@/utils/lib/observer";
+import { $add, $class, $remove } from "@/utils/lib/getElement";
+import { setMenu } from "@/blocks/menu/menu";
+
+const headerBlock = $class("header");
+const mainObserver = $class("main__observer");
+
+window.onscroll = function () {
+  var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+  if (scrolled === 0) {
+    $remove("header_active", headerBlock);
+  }
+};
+
+const handleHeader: ObserveCallback = (entry) => {
+  if (!entry.isIntersecting) {
+    $add("header_active", headerBlock);
+  }
+};
+
+export const setHeader = () => {
+  if (mainObserver) observer(mainObserver, handleHeader);
+
+  setMenu();
+};

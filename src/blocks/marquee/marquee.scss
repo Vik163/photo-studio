@@ -6,8 +6,8 @@
   gap: var(--marquee-gap);
   background: transparent;
   padding: 20px 0;
-  border-top: 1px solid var(--color-black);
-  border-bottom: 1px solid var(--color-black);
+  border-top: var(--border-width-s) solid var(--color-black);
+  border-bottom: var(--border-width-s) solid var(--color-black);
   width: 100%;
 }
 

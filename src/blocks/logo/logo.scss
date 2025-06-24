@@ -1,8 +1,6 @@
 .logo {
-  font: var(--font-orb-28-bold);
-  padding-top: 40px;
   color: var(--color-black);
-  background: url(../../assets/icons/logo.png) no-repeat;
-  background-size: 70%;
-  background-position: top center;
+  width: 200px;
+  height: 70px;
+  background: url(../../assets/icons/logo.png) no-repeat center/100%;
 }

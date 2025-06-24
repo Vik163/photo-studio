@@ -26,8 +26,8 @@
   --font-weight-bold: 700;
   --font-weight-black: 900;
 
+  --font-orb-44-norm: var(--font-weight-norm) var(--font-44) var(--font-orb);
   --font-orb-30-norm: var(--font-weight-norm) var(--font-30) var(--font-orb);
-  --font-orb-28-norm: var(--font-weight-norm) var(--font-28) var(--font-orb);
 
   --font-orb-90-bold: var(--font-weight-bold) var(--font-90) var(--font-orb);
   --font-orb-30-bold: var(--font-weight-bold) var(--font-30) var(--font-orb);
@@ -44,8 +44,6 @@
   --font-orb-11-bold: var(--font-weight-bold) var(--font-11) var(--font-orb);
   --font-orb-10-bold: var(--font-weight-bold) var(--font-10) var(--font-orb);
 
-  --font-catrin-64-norm: var(--font-weight-norm) var(--font-64)
-    var(--font-catrin);
   --font-catrin-44-norm: var(--font-weight-norm) var(--font-44)
     var(--font-catrin);
   --font-catrin-13-norm: var(--font-weight-norm) var(--font-13)

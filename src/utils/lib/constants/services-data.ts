@@ -5,21 +5,21 @@ import home3 from "@/assets/images/home-3.jpg";
 
 export const servicesData: Services[] = [
   {
-    title: "Title1",
+    title: "Фото на документы",
     imgB: home1,
     imgS: home1,
     pathName: "pathname",
     description: "description1",
   },
   {
-    title: "Title2",
+    title: "Фотомонтаж Фотодизайн",
     imgB: home2,
     imgS: home2,
     pathName: "pathname",
     description: "description2",
   },
   {
-    title: "Title3",
+    title: "Реставрация старых фотографий",
     imgB: home3,
     imgS: home3,
     pathName: "pathname",

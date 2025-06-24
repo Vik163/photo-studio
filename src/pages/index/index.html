@@ -8,11 +8,9 @@
   </head>
   <body class="app">
     <header class="header">
-      <div class="header__container">
-        <a href="#" class="header__logo logo">Онлайн фотостудия </a>
-        <div class="header__btn">
-          <div class="header__btn-icon"></div>
-        </div>
+      <a href="#" class="header__logo logo"></a>
+      <div class="header__btn">
+        <div class="header__btn-icon"></div>
       </div>
 
       <nav class="menu">
@@ -37,18 +35,19 @@
     </header>
 
     <main class="main">
+      <div class="main__observer"></div>
       <section class="home">
-        <div class="home__container">
+        <div class="home__container animation-right">
           <h1 class="home__title">
             Онлайн фотостудия <br />
             <span class="home__title-name">&nbsp;Светлана&nbsp;</span>
           </h1>
           <p class="home__subtitle">Превращаем идеи в фотографии</p>
-          <a class="home__btn" href="#services">Подробнее</a>
+          <a class="home__btn" href="#marquee">Подробнее</a>
         </div>
         <div class="home__image"></div>
       </section>
-      <div class="marquee">
+      <div id="marquee" class="marquee main__marquee">
         <ul class="marquee__content">
           <li class="marquee__content-item">Реставрация старых фотографий</li>
           <li class="marquee__content-item">Фотомонтаж</li>
@@ -69,8 +68,7 @@
           <li class="marquee__content-item">Ритуальные таблички</li>
         </ul>
       </div>
-      <div class="dark-block"></div>
-      <section id="services" class="services">
+      <section class="services">
         <h2 class="services__title">Наши услуги</h2>
         <ul class="services__list"></ul>
       </section>
