@@ -1,9 +1,12 @@
+import { animationScrolling } from "@/utils/lib/animationScrolling";
 import { servicesData } from "@/utils/lib/constants/services-data";
-import { $add, $class, $id } from "@/utils/lib/getElement";
+import { $class, $id } from "@/utils/lib/getElement";
+import { ObserveCallback, observer } from "@/utils/lib/observer";
 import type { Services } from "@/utils/types/services-types";
 
-export const setServices = () => {
-  const servicesList = $class("services__list");
+const servicesList = $class("services__list");
+
+export const handleServices = () => {
   const template = ($id("service") as HTMLTemplateElement)?.content;
 
   if (template && servicesData) {
@@ -13,14 +16,18 @@ export const setServices = () => {
         ?.cloneNode(true)! as HTMLLIElement;
 
       const img = $class("service__img", serviceItem) as HTMLImageElement;
-      $add("animation-up", img);
       img.src = item.imgB;
       img.alt = item.title;
 
+      //* - анимация ---------------------------
+      animationScrolling(img, "up");
+
       const info = $class("service__info", serviceItem);
       if (index === 0 || index % 2 === 0) {
-        $add("animation-left", info);
-      } else $add("animation-right", info);
+        animationScrolling(info, "left");
+      } else animationScrolling(info, "right");
+      //* ------------------------------------------
+
       const title = $class("service__info-title", serviceItem);
       title.textContent = item.title;
 
@@ -30,4 +37,17 @@ export const setServices = () => {
       servicesList.append(serviceItem);
     });
   }
+};
+
+const setCards: ObserveCallback = (entry, isLoaded) => {
+  if (entry.isIntersecting) {
+    if (!isLoaded) {
+      handleServices();
+    }
+  }
+};
+
+export const setServices = () => {
+  // ленивая загрузка
+  observer(servicesList, setCards);
 };
