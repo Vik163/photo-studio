@@ -4,10 +4,13 @@ import "../../assets/images/home-2.jpg";
 import { setServices } from "@/blocks/services/scripts/services";
 import { setHeader } from "@/blocks/header/scripts/header";
 import { animationScrolling } from "@/utils/lib/animationScrolling";
+import { setContacts } from "@/blocks/contacts/contacts";
 
 setHeader();
 
 setServices();
+
+setContacts();
 
 // === анимация при скролле  ================================
 window.onload = function () {

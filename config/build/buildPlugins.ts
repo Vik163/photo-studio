@@ -4,6 +4,7 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+import dotenv from "dotenv";
 
 export const buildWebpackPlugins = (
   options: BuildOptions
@@ -11,8 +12,13 @@ export const buildWebpackPlugins = (
   const { paths, isDev } = options;
   const isProd = !isDev;
 
+  //& Нужен для .env
+  dotenv.config();
+
   const plugins = [
+    //* Определяет глобальные переменные
     new webpack.DefinePlugin({
+      "process.env": JSON.stringify(process.env), //& Нужен для .env
       __IS_DEV__: JSON.stringify(isDev),
     }),
 

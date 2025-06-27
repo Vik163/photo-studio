@@ -41,9 +41,13 @@ export const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
         presets: ["@babel/preset-env"],
         // заменяют ts-loader и ускоряет сборку
         plugins: [
-          "@babel/plugin-transform-typescript",
+          [
+            "@babel/plugin-transform-typescript", // плагин, который позволяет анализировать и преобразовывать код TypeScript в JavaScript
+          ],
+          //~ Плагин, для исключения дублирования вспомогательного кода (уменьшает размер) .
+          //~ Для async/await дополнительно установить в production @babel/runtime (npm install --save @babel/runtime)
           "@babel/plugin-transform-runtime",
-        ],
+        ].filter(Boolean),
       },
     },
   };

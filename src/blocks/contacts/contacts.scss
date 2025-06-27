@@ -1,0 +1,140 @@
+.contacts {
+  width: 100%;
+  padding-bottom: var(--padding-block);
+}
+
+.contacts__title {
+  margin: 90px var(--padding-block);
+  font-family: var(--font-orb);
+  font-size: 64px;
+  font-weight: normal;
+}
+
+.contacts__container {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  border-top: var(--border-width-s) solid var(--color-black);
+  border-bottom: var(--border-width-s) solid var(--color-black);
+}
+
+.contacts__info {
+  width: 50%;
+  height: 100%;
+  padding: 70px 70px 70px var(--padding-block);
+  color: var(--color-text-light);
+}
+.contacts__info::before {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 80px;
+  background-color: var(--color-red);
+  right: 50px;
+  bottom: 40px;
+  z-index: -1;
+}
+
+.contacts__info-title {
+  font: var(--font-mul-22);
+  margin-bottom: 35px;
+}
+
+.contacts__text-container {
+  margin-bottom: 20px;
+  padding-left: 40px;
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+  background-position: 3px 3px;
+  z-index: 1000;
+}
+.contacts__text-container > span {
+  font: var(--font-int-16);
+}
+
+.contacts__text-container_type_phone {
+  background-image: url(../../assets/icons/icon-phone.svg);
+}
+.contacts__text-container_type_email {
+  background-image: url(../../assets/icons/icon-email.svg);
+}
+.contacts__text-container_type_address {
+  background-image: url(../../assets/icons/icon-address.svg);
+  margin-bottom: 0;
+}
+.contacts__schedule {
+  width: 385px;
+  margin-top: 10px;
+  font: var(--font-int-14);
+  line-height: 24px;
+  margin-bottom: 20px;
+  margin-left: 40px;
+}
+
+.contacts__map {
+  overflow: hidden;
+  width: 50%;
+  height: 100%;
+  border-left: 1px solid var(--color-black);
+}
+
+.ymaps3x0--controls {
+  padding: 20px !important;
+  z-index: var(--index-20) !important;
+}
+
+//* смещение маркера на центр координат
+.ymaps3x0--marker {
+  top: -61px;
+  left: -24px;
+}
+
+.ymaps3--default-marker__stroke {
+  display: none;
+}
+
+//* смещение иконки в центр круга
+.ymaps3--default-marker__icon {
+  position: absolute;
+  top: 10px;
+  left: 11px;
+}
+
+.ymaps3x0--control__background {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border-radius: none !important;
+}
+
+.ymaps3--zoom-control {
+  display: flex;
+  gap: 15px;
+  background-color: transparent;
+}
+
+.ymaps3x0--button {
+  box-shadow: 0 0 2px 1px var(--color-map-border) !important;
+  width: 35px !important;
+  height: 35px !important;
+  border-radius: 5px !important;
+  font: var(--font-catrin-44-norm);
+  line-height: 30px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-map-border);
+
+  &:nth-of-type(1):after {
+    content: "\002B";
+    position: absolute;
+    top: 7px;
+  }
+
+  &:nth-of-type(2):after {
+    content: "\2012";
+    position: absolute;
+    top: 3px;
+  }
+}

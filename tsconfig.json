@@ -12,8 +12,14 @@
     "moduleResolution": "node",
     // Для абсолютного импорта
     "baseUrl": ".",
+    "typeRoots": [
+      "./types",
+      "./node_modules/@types",
+      "./node_modules/@yandex/ymaps3-types"
+    ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "ymaps3": ["./node_modules/@yandex/ymaps3-types"]
     },
 
     // изолирует файлы с типами (не учавствуют в компиляции) в импорте надо ставить 'import type'

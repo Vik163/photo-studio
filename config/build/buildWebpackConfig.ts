@@ -13,7 +13,7 @@ export const buildWebpackConfig = (options: BuildOptions): Configuration => {
 
   return {
     mode,
-    entry: paths.entryIndex,
+    entry: [paths.entryIndex],
     output: {
       path: paths.build,
       clean: true,
@@ -30,5 +30,21 @@ export const buildWebpackConfig = (options: BuildOptions): Configuration => {
     devtool: isDev ? "eval-cheap-module-source-map" : undefined,
     devServer: isDev ? buildDevServer(options) : undefined,
     optimization: buildOpimizationImages(),
+    externals: {
+      "@yandex/ymaps3-types": [
+        `promise new Promise((resolve) => {
+            if (typeof ymaps3 !== 'undefined') {
+              return ymaps3.ready.then(() => resolve(ymaps3));
+            }
+
+            const script = document.createElement('script');
+            script.src = "https://api-maps.yandex.ru/v3/?apikey=${process.env.YA_MAP_KEY}&lang=ru_RU";
+            script.onload = () => {
+              ymaps3.ready.then(() => resolve(ymaps3));
+            };
+            document.head.appendChild(script);
+          })`,
+      ],
+    },
   };
 };
