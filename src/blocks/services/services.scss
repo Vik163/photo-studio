@@ -1,9 +1,10 @@
 .services {
   width: 100%;
+  background-color: var(--bg-color);
 }
 
 .services__title {
-  margin: 90px var(--padding-block);
+  padding: 90px var(--padding-block);
   font-family: var(--font-orb);
   font-size: 64px;
   font-weight: normal;
@@ -45,7 +46,7 @@
 }
 
 .service__info-btn {
-  font: var(--font-catrin-22-bold);
+  font: var(--font-catrin-22-norm);
   line-height: 22px;
   background-color: transparent;
   color: var(--color-font-dark);

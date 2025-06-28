@@ -1,3 +1,5 @@
+@use "./variables/times.scss";
+
 html {
   scroll-behavior: smooth;
 }
@@ -10,4 +12,11 @@ html {
   flex-direction: column;
   align-items: center;
   position: relative;
+}
+
+.no-scroll {
+  overflow-y: scroll; /* Разрешает видимость полосы прокрутки */
+  position: fixed; /* Запрещает прокрутку страницы */
+  width: 100%; /* Фиксирует ширину страницы */
+  top: calc(-1 * var(--scroll-position)); /* Запоминает место прокрутки */
 }
