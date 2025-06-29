@@ -1,19 +1,28 @@
 import { animationScrolling } from "@/utils/lib/animationScrolling";
-import { servicesData } from "@/utils/lib/constants/services-data";
+import { servicesData } from "@/utils/constants/services-data";
 import { $class, $id } from "@/utils/lib/getElement";
 import { ObserveCallback, observer } from "@/utils/lib/observer";
 import type { Services } from "@/utils/types/services-types";
+import { addAnimation } from "./addAnimation";
+import { SERVICE_HEIGHT } from "@/utils/constants/service-height";
 
 const servicesList = $class("services__list");
+
+//& ------ установка css-переменной (высота service) --------
+const root = document.documentElement;
+root.style.setProperty("--height-service", `${SERVICE_HEIGHT}px`);
+//& --------------------------------------------------------
 
 export const handleServices = () => {
   const template = ($id("service") as HTMLTemplateElement)?.content;
 
   if (template && servicesData) {
-    servicesData.forEach((item: Services, index) => {
+    servicesData.forEach((item: Services, index: number) => {
       const serviceItem = template
         .querySelector(".service")
         ?.cloneNode(true)! as HTMLLIElement;
+
+      addAnimation(serviceItem, index);
 
       const img = $class("service__img", serviceItem) as HTMLImageElement;
       img.src = item.imgB;
@@ -25,7 +34,9 @@ export const handleServices = () => {
       const info = $class("service__info", serviceItem);
       if (index === 0 || index % 2 === 0) {
         animationScrolling(info, "left");
-      } else animationScrolling(info, "right");
+      } else {
+        animationScrolling(info, "right");
+      }
       //* ------------------------------------------
 
       const title = $class("service__info-title", serviceItem);
