@@ -1,17 +1,17 @@
-import { SERVICE_HEIGHT } from "@/utils/constants/service-height";
+import {
+  HEADER_HEIGHT,
+  SERVICE_HEIGHT,
+} from "@/utils/constants/service-height";
 import { $add, $class, $remove } from "@/utils/lib/getElement";
 import { observer } from "@/utils/lib/observer";
 
-const list = $class("services__list");
-
 const setClasses = (
   intersection: IntersectionObserverEntry,
-  isLoaded: boolean,
   el: HTMLElement,
   index: number
 ) => {
   const container = $class("service__container", el);
-  const paddingTop = 490;
+  const paddingTop = SERVICE_HEIGHT - HEADER_HEIGHT - 5;
   const zIndex = 20;
   if (intersection.isIntersecting) {
     $remove("service_inactive", container);
@@ -20,7 +20,6 @@ const setClasses = (
       $add("service_inactive", container);
       container.style.top = `-${paddingTop - index * 5}px`;
       container.style.zIndex = `${zIndex - index}`;
-      // list.style.paddingTop = `${SERVICE_HEIGHT}px`;
     }
   }
 };
@@ -34,7 +33,7 @@ export const addAnimation = (el: HTMLElement, index: number) => {
   };
   observer(
     el,
-    (intersection, isLoaded) => setClasses(intersection, isLoaded, el, index),
+    (intersection, isLoaded) => setClasses(intersection, el, index),
     options
   );
 };
