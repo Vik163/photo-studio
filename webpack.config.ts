@@ -10,6 +10,7 @@ export default (env: BuildEnv) => {
     build: path.resolve(__dirname, "build"),
     htmlIndex: path.resolve(__dirname, "./src/pages/index/index.html"),
     src: path.resolve(__dirname, "src"),
+    favicon: path.resolve(__dirname, "./src/assets/icons/camera.svg"),
   };
 
   const port = env?.port || 3000;

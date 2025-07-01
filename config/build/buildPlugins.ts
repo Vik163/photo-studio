@@ -25,6 +25,7 @@ export const buildWebpackPlugins = (
     new HtmlWebpackPlugin({
       template: paths.htmlIndex,
       filename: "index.html",
+      favicon: paths.favicon,
     }),
 
     new webpack.ProgressPlugin(),

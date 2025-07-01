@@ -6,29 +6,47 @@ import {
   $toggle,
 } from "@/utils/lib/getElement";
 
-export const setMenu = () => {
-  const btn = $class("header__btn");
+const app = $class("app");
+const header = $class("header");
+const btn = $class("header__btn", header);
+const menu = $class("menu");
+const menuItems = $class("menu__items", menu);
+const rootStyle = document.documentElement.style;
 
-  btn.addEventListener("click", function () {
-    //* --- создает css-переменную с положением скролла ---
-    document.documentElement.style.setProperty(
-      "--scroll-position",
-      `${scrollY}px`
-    );
-    const app = $class("app");
-    $toggle("active", btn);
-    $toggle("open", $class("menu"));
-    $toggle("open", $class("menu__items"));
+//* --- создает css-переменную с положением скролла и отменяет прокрутку ---
+function openMenu() {
+  rootStyle.setProperty("--scroll-position", `${scrollY}px`);
 
-    //* --- отменяет прокрутку ---
-    if ($contains("no-scroll", app)) {
-      const scrollY =
-        document.documentElement.style.getPropertyValue("--scroll-position");
-      document.documentElement.style.removeProperty("--scroll-position");
-      window.scrollTo(0, parseInt(scrollY || "0"));
-      $remove("no-scroll", app);
-    } else {
-      $add("no-scroll", app);
-    }
+  $add("no-scroll", app);
+}
+
+//* --- удаляет css-переменную и востанавливает положение скролла ---
+function closeMenu() {
+  $remove("no-scroll", app);
+
+  const scrollPosition = rootStyle.getPropertyValue("--scroll-position");
+
+  rootStyle.removeProperty("--scroll-position");
+
+  window.scroll({
+    top: parseInt(scrollPosition || "0"),
+    behavior: "instant",
   });
+}
+
+function clickMenu() {
+  $toggle("active", btn);
+  $toggle("open", menu);
+  $toggle("open", menuItems);
+  $toggle("header_active-menu", header);
+
+  if ($contains("no-scroll", app)) {
+    closeMenu();
+  } else {
+    openMenu();
+  }
+}
+
+export const setMenu = () => {
+  btn.addEventListener("click", clickMenu);
 };

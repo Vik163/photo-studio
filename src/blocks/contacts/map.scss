@@ -1,0 +1,58 @@
+.ymaps3x0--controls {
+  padding: 20px !important;
+  z-index: var(--index-20) !important;
+}
+
+//* смещение маркера на центр координат
+.ymaps3x0--marker {
+  top: -61px;
+  left: -24px;
+}
+
+.ymaps3--default-marker__stroke {
+  display: none;
+}
+
+//* смещение иконки в центр круга
+.ymaps3--default-marker__icon {
+  position: absolute;
+  top: 10px;
+  left: 11px;
+}
+
+.ymaps3x0--control__background {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border-radius: none !important;
+}
+
+.ymaps3--zoom-control {
+  display: flex;
+  gap: 15px;
+  background-color: transparent;
+}
+
+.ymaps3x0--button {
+  box-shadow: 0 0 2px 1px var(--color-border-light) !important;
+  width: 35px !important;
+  height: 35px !important;
+  border-radius: 5px !important;
+  font: var(--font-catrin-44-norm);
+  line-height: 30px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-map-btn);
+
+  &:nth-of-type(1):after {
+    content: "\002B";
+    position: absolute;
+    top: 7px;
+  }
+
+  &:nth-of-type(2):after {
+    content: "\2012";
+    position: absolute;
+    top: 3px;
+  }
+}

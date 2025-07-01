@@ -5,6 +5,9 @@ import { setServices } from "@/blocks/services/scripts/services";
 import { setHeader } from "@/blocks/header/scripts/header";
 import { animationScrolling } from "@/utils/lib/animationScrolling";
 import { setContacts } from "@/blocks/contacts/contacts";
+import { setCSSVariales } from "@/utils/lib/setCSSVariales";
+
+setCSSVariales();
 
 setHeader();
 
@@ -12,7 +15,7 @@ setServices();
 
 setContacts();
 
-// === анимация при скролле  ================================
+//* === анимация блоков при скролле  ================================
 window.onload = function () {
   const elementsOnRight = document.querySelectorAll(".animation-right");
   // const elementsOnLeft = document.querySelectorAll(".animation-left");

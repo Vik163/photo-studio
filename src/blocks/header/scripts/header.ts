@@ -6,7 +6,13 @@ const headerBlock = $class("header");
 const mainObserver = $class("main__observer");
 
 window.onscroll = function () {
-  var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+  //* --- проверка положения скролла  -----
+  const scrollPosition =
+    document.documentElement.style.getPropertyValue("--scroll-position");
+
+  const scrolled =
+    scrollPosition || window.pageYOffset || document.documentElement.scrollTop;
+
   if (scrolled === 0) {
     $remove("header_active", headerBlock);
   }

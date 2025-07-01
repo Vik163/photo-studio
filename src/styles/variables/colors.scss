@@ -1,11 +1,14 @@
 :root {
   --bg-color: #faf7e9;
-  --bg-color-accent: #f3f3f1;
-  --bg-color-accent-1: #f8f8ec;
+
   --color-black: #000000;
   --color-font-dark: #000000;
   --color-font-accent-dark: #280f00e6;
   --color-font-light: #ffffff;
+  --color-overlay: #280f00ec;
+  --color-border-light: #a3a8a8;
+  --color-map-btn: #8f9090;
+
   --color-cyan-bluish-gray: #abb8c3;
   --color-white: #ffffff;
   --color-pale-pink: #f78da7;
@@ -17,9 +20,6 @@
   --color-pale-cyan-blue: #8ed1fc;
   --color-vivid-cyan-blue: #0693e3;
   --color-vivid-purple: #9b51e0;
-  --color-overlay: #280f00ec;
-  --color-border-light: #a3a8a8;
-  --color-map-border: #4c4d4d;
 
   --gradient-vivid-cyan-blue-to-vivid-purple: linear-gradient(
     135deg,

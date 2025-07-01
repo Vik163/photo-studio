@@ -33,6 +33,7 @@
 .service_inactive {
   width: 100%;
   position: fixed;
+  box-shadow: 1px 0 3px 1px var(--color-overlay);
 }
 
 .service__img {
