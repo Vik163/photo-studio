@@ -21,10 +21,8 @@
 }
 
 .marquee__content-item {
-  font-family: var(--font-orb);
+  font: var(--font-orb-44-norm);
   color: var(--color-font-dark);
-  font-size: 46px;
-  font-weight: 400;
   position: relative;
 
   &::after {

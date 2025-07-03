@@ -1,3 +1,5 @@
+$marg-bottom-text: 20px;
+
 .contacts {
   width: 100%;
   padding-bottom: var(--padding-block);
@@ -5,9 +7,7 @@
 
 .contacts__title {
   margin: 90px var(--padding-block);
-  font-family: var(--font-orb);
-  font-size: 64px;
-  font-weight: normal;
+  font: var(--font-orb-64-norm);
 }
 
 .contacts__container {
@@ -30,37 +30,65 @@
 .contacts__info-title {
   font: var(--font-catrin-36-norm);
   margin-bottom: 35px;
+  font-weight: 900;
 }
 
 .contacts__text-container {
-  margin-bottom: 20px;
+  margin-bottom: $marg-bottom-text;
   margin-left: 30px;
-  padding-left: 40px;
+  padding-left: 50px;
   background-repeat: no-repeat;
-  background-size: 18px 18px;
-  background-position: 3px 3px;
-}
-.contacts__text-container > span {
-  font: var(--font-int-16);
+  background-size: 25px 25px;
+  font: var(--font-catrin-22-bold);
 }
 
 .contacts__text-container_type_phone {
-  background-image: url(../../assets/icons/icon-phone.svg);
-}
-.contacts__text-container_type_email {
-  background-image: url(../../assets/icons/icon-email.svg);
+  background-image: url(../../assets/icons/Phone.png);
 }
 .contacts__text-container_type_address {
-  background-image: url(../../assets/icons/icon-address.svg);
-  margin-bottom: 0;
+  background-image: url(../../assets/icons/location.png);
+  margin-bottom: 30px;
 }
+
+.contacts__social-container {
+  font: var(--font-catrin-22-bold);
+}
+
+.contacts__social {
+  margin-left: 30px;
+  padding-left: 50px;
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  font: var(--font-catrin-22-bold);
+}
+
+.contacts__social_type_email {
+  background-image: url(../../assets/icons/mail.png);
+}
+.contacts__social_type_telegram {
+  background-image: url(../../assets/icons/telegram.png);
+  padding-left: 25px;
+  margin-left: 50px;
+}
+.contacts__social_type_whatsapp {
+  background-image: url(../../assets/icons/whatsapp.png);
+  margin-left: 50px;
+}
+
+.contacts__schedule-container {
+  margin-left: 30px;
+  padding-left: 50px;
+  background-image: url(../../assets/icons/systemtime.png);
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  margin-bottom: $marg-bottom-text;
+}
+
 .contacts__schedule {
   width: 385px;
   margin-top: 10px;
-  font: var(--font-int-14);
-  line-height: 24px;
-  margin-bottom: 20px;
-  margin-left: 40px;
+  font: var(--font-catrin-22-norm);
+  line-height: 28px;
 }
 
 .contacts__map {
