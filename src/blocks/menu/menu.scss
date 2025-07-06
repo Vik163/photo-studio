@@ -13,7 +13,7 @@
   height: 0;
   overflow: hidden;
 
-  &.open {
+  &.menu_open {
     height: calc(100vh - var(--height-header));
     width: 50%;
     background: var(--color-overlay);
@@ -31,7 +31,7 @@
   padding: 0;
   opacity: 0;
 
-  &.open {
+  &.menu__items_open {
     gap: 30px;
     padding: 50px;
     opacity: 1;

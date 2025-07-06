@@ -34,11 +34,26 @@ function closeMenu() {
   });
 }
 
+function addClasses() {
+  $add("menu_open", menu);
+  $add("menu__items_open", menuItems);
+  $add("header__btn_active", btn);
+}
+
+function removeClasses() {
+  $remove("menu_open", menu);
+  $remove("menu__items_open", menuItems);
+  $remove("header__btn_active", btn);
+}
+
 function clickMenu() {
-  $toggle("active", btn);
-  $toggle("open", menu);
-  $toggle("open", menuItems);
   $toggle("header_active-menu", header);
+
+  if ($contains("menu_open", menu)) {
+    removeClasses();
+  } else {
+    addClasses();
+  }
 
   if ($contains("no-scroll", app)) {
     closeMenu();
@@ -50,3 +65,9 @@ function clickMenu() {
 export const setMenu = () => {
   btn.addEventListener("click", clickMenu);
 };
+
+document.addEventListener("keydown", function (event: KeyboardEvent) {
+  if ($contains("menu_open", menu) && event.code === "Escape") {
+    removeClasses();
+  }
+});
