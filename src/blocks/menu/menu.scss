@@ -46,10 +46,9 @@
 .menu__link {
   transition: all times.$time-quarter;
   cursor: pointer;
-  letter-spacing: 3px;
   display: inline-block;
 
   &:hover {
-    letter-spacing: 6px;
+    letter-spacing: 3px;
   }
 }

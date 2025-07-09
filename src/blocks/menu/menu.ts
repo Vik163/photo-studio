@@ -17,12 +17,14 @@ function addClasses() {
   $add("menu_open", menu);
   $add("menu__items_open", menuItems);
   $add("header__btn_active", btn);
+  $add("header_active-menu", header);
 }
 
 function removeClasses() {
   $remove("menu_open", menu);
   $remove("menu__items_open", menuItems);
   $remove("header__btn_active", btn);
+  $remove("header_active-menu", header);
 }
 
 //* --- создает css-переменную с положением скролла и отменяет прокрутку ---

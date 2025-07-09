@@ -1,0 +1,24 @@
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
+  background-color: var(--color-cyan-gray);
+}
+
+.footer__politic {
+  font: var(--font-catrin-12-norm);
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: var(--color-luminous-vivid-dark-red);
+}
+
+.footer__date {
+  font: var(--font-catrin-12-norm);
+  font-size: 22px;
+  text-align: center;
+  padding: 15px 0;
+  width: 60%;
+  border-top: 1px solid #000;
+}

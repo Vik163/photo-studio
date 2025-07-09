@@ -6,6 +6,7 @@ import { setHeader } from "@/blocks/header/scripts/header";
 import { animationScrolling } from "@/utils/lib/animationScrolling";
 import { setContacts } from "@/blocks/contacts/contacts";
 import { setCSSVariales } from "@/utils/lib/setCSSVariales";
+import { setFooter } from "@/blocks/footer/footer";
 
 setCSSVariales();
 
@@ -14,6 +15,8 @@ setHeader();
 setServices();
 
 setContacts();
+
+setFooter();
 
 //* === анимация блоков при скролле  ================================
 window.onload = function () {
