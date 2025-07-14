@@ -16,20 +16,22 @@
       <nav class="menu">
         <ul class="menu__items">
           <li class="menu__item">
-            <a id="photo-na-dokumenty" class="menu__link">Фото на документы</a>
+            <a name="photo-na-dokumenty" class="menu__item-link"
+              >Фото на документы</a
+            >
           </li>
           <li class="menu__item">
-            <a id="photo-montazh-dizain" class="menu__link"
+            <a name="photo-montazh-dizain" class="menu__item-link"
               >Фотомонтаж Фотодизайн</a
             >
           </li>
           <li class="menu__item">
-            <a id="photo-restavraciya" class="menu__link"
+            <a name="photo-restavraciya" class="menu__item-link"
               >Реставрация фотографий</a
             >
           </li>
           <li class="menu__item">
-            <a class="menu__link">Контакты</a>
+            <a name="contacts" class="menu__item-link">Контакты</a>
           </li>
         </ul>
       </nav>
@@ -71,7 +73,38 @@
       </div>
       <section class="services">
         <h2 class="services__title">Наши услуги</h2>
-        <ul class="services__list"></ul>
+        <ul class="services__list">
+          <li id="photo-na-dokumenty" class="service">
+            <div class="service__container">
+              <img class="service__img" src="#" alt="#" />
+              <div class="service__info">
+                <h3 class="service__info-title">Фото на документы</h3>
+                <p class="service__info-description">description1</p>
+                <button class="service__info-btn">Подробнее</button>
+              </div>
+            </div>
+          </li>
+          <li id="photo-montazh-dizain" class="service">
+            <div class="service__container">
+              <img class="service__img" src="#" alt="#" />
+              <div class="service__info">
+                <h3 class="service__info-title">Фотомонтаж Фотодизайн</h3>
+                <p class="service__info-description">description2</p>
+                <button class="service__info-btn">Подробнее</button>
+              </div>
+            </div>
+          </li>
+          <li id="photo-restavraciya" class="service">
+            <div class="service__container">
+              <img class="service__img" src="#" alt="#" />
+              <div class="service__info">
+                <h3 class="service__info-title">Реставрация фотографий</h3>
+                <p class="service__info-description">description3</p>
+                <button class="service__info-btn">Подробнее</button>
+              </div>
+            </div>
+          </li>
+        </ul>
       </section>
       <section id="contacts" class="contacts main__contacts">
         <h1 class="contacts__title">Контакты</h1>
@@ -123,18 +156,5 @@
       </a>
       <div class="footer__date"></div>
     </footer>
-
-    <template id="service">
-      <li class="service">
-        <div class="service__container">
-          <img class="service__img" src="#" alt="#" />
-          <div class="service__info">
-            <h3 class="service__info-title"></h3>
-            <p class="service__info-description"></p>
-            <button class="service__info-btn">Подробнее</button>
-          </div>
-        </div>
-      </li>
-    </template>
   </body>
 </html>

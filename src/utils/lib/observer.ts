@@ -8,11 +8,14 @@ export type ObserveCallback = (
  * Ленивая загрузка
  * @param el - Наблюдаемый элемент
  * @param callback - аргументы: IntersectionObserverEntry, isLoaded: уже загруженный или нет, и ...args
+ * @param options - необязательный - настройки наблюдателя
+ * @param stop - необязательный - отключает наблюдатель
  */
 export const observer = (
   el: Element,
   callback: ObserveCallback,
-  options?: IntersectionObserverInit
+  options?: IntersectionObserverInit,
+  stop?: boolean
 ) => {
   const observer = new IntersectionObserver(
     (entries: IntersectionObserverEntry[]) => {
@@ -28,5 +31,7 @@ export const observer = (
     options
   );
 
-  observer.observe(el);
+  if (stop) {
+    observer.unobserve(el);
+  } else observer.observe(el);
 };

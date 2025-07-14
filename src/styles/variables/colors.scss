@@ -1,5 +1,5 @@
 :root {
-  --bg-color: #faf7e9;
+  --bg-color: rgb(254, 247, 230);
 
   --color-black: #000000;
   --color-font-dark: #000000;
@@ -9,9 +9,6 @@
   --color-border-light: #a3a8a8;
   --color-map-btn: #8f9090;
   --color-luminous-vivid-dark-red: #980000;
-
-  --color-cyan-gray: #f6efde;
-  --color-light-beige: #fcf5e3;
 
   --color-pale-pink: #f78da7;
   --color-vivid-red: #cf2e2e;
@@ -74,7 +71,7 @@
   );
   --gradient-pale-ocean: linear-gradient(
     90deg,
-    hsl(48, 96%, 91%) 0%,
+    hsl(41, 91%, 91%) 0%,
     #f6efde 100%
   );
   --gradient-pale-ocean-reverse: linear-gradient(

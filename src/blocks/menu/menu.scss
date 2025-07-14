@@ -40,13 +40,13 @@
 
 .menu__item {
   transition: all times.$time-quarter;
-  color: white;
 }
 
-.menu__link {
+.menu__item-link {
   transition: all times.$time-quarter;
   cursor: pointer;
   display: inline-block;
+  color: white;
 
   &:hover {
     letter-spacing: 3px;

@@ -1,45 +1,26 @@
-import {
-  $add,
-  $class,
-  $contains,
-  $remove,
-  $toggle,
-} from "@/utils/lib/getElement";
+import { HEADER_HEIGHT } from "@/utils/constants/styles";
+import { $class, $contains, $id, $toggle } from "@/utils/lib/getElement";
+import { addClasses, removeClasses } from "./handleMenuClasses";
 
-const app = $class("app");
 const header = $class("header");
 const btn = $class("header__btn", header);
 const menu = $class("menu");
 const menuItems = $class("menu__items", menu);
+const menuItemsLinks = menuItems.querySelectorAll(".menu__item-link");
 const rootStyle = document.documentElement.style;
-
-function addClasses() {
-  $add("menu_open", menu);
-  $add("menu__items_open", menuItems);
-  $add("header__btn_active", btn);
-  $add("header_active-menu", header);
-}
-
-function removeClasses() {
-  $remove("menu_open", menu);
-  $remove("menu__items_open", menuItems);
-  $remove("header__btn_active", btn);
-  $remove("header_active-menu", header);
-}
 
 //* --- создает css-переменную с положением скролла и отменяет прокрутку ---
 function openMenu() {
   rootStyle.setProperty("--scroll-position", `${scrollY}px`);
 
-  $add("no-scroll", app);
   addClasses();
 }
 
 //* --- удаляет css-переменную и востанавливает положение скролла ---
 function closeMenu() {
-  $remove("no-scroll", app);
   removeClasses();
 
+  //* востанавливает положение скролла
   const scrollPosition = rootStyle.getPropertyValue("--scroll-position");
 
   rootStyle.removeProperty("--scroll-position");
@@ -60,12 +41,32 @@ function clickMenu() {
   }
 }
 
+function scrollToBlock(event: Event) {
+  event.preventDefault();
+  const nameEl = (event.target as HTMLAnchorElement).name;
+  closeMenu();
+
+  const topPos =
+    $id(nameEl).getBoundingClientRect().top -
+    HEADER_HEIGHT +
+    window.pageYOffset;
+
+  window.scrollTo({
+    top: topPos,
+    behavior: "smooth",
+  });
+}
+
 export const setMenu = () => {
   btn.addEventListener("click", clickMenu);
-};
 
-document.addEventListener("keydown", function (event: KeyboardEvent) {
-  if ($contains("menu_open", menu) && event.code === "Escape") {
-    closeMenu();
-  }
-});
+  document.addEventListener("keydown", function (event: KeyboardEvent) {
+    if ($contains("menu_open", menu) && event.code === "Escape") {
+      closeMenu();
+    }
+  });
+
+  menuItemsLinks.forEach((link) => {
+    link.addEventListener("click", (e) => scrollToBlock(e));
+  });
+};
