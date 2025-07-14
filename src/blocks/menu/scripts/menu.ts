@@ -57,7 +57,7 @@ function scrollToBlock(event: Event) {
   });
 }
 
-export const setMenu = () => {
+export const setMenuListeners = () => {
   btn.addEventListener("click", clickMenu);
 
   document.addEventListener("keydown", function (event: KeyboardEvent) {

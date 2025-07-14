@@ -24,7 +24,7 @@
 .menu__items {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   gap: 0;
   transition: all times.$time-half;
   height: 100%;
@@ -33,7 +33,7 @@
 
   &.menu__items_open {
     gap: 30px;
-    padding: 50px;
+    padding: 100px 50px 70px;
     opacity: 1;
   }
 }
@@ -49,6 +49,16 @@
   color: white;
 
   &:hover {
-    letter-spacing: 3px;
+    letter-spacing: 2px;
+  }
+}
+
+.menu__politic {
+  transition: all times.$time-quarter;
+  font: var(--font-catrin-22-norm);
+  color: rgb(253, 253, 253);
+
+  &:hover {
+    letter-spacing: 1px;
   }
 }
