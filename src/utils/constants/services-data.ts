@@ -1,5 +1,5 @@
 import type { Services } from "@/utils/types/services-types";
-import home1 from "@/assets/images/home-1.jpg";
+import home1 from "@/assets/images/dfg.jpg";
 import home2 from "@/assets/images/home-2.jpg";
 import home3 from "@/assets/images/home-3.jpg";
 
