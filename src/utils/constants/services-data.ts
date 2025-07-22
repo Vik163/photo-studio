@@ -1,7 +1,7 @@
 import type { Services } from "@/utils/types/services-types";
-import home1 from "@/assets/images/dfg.jpg";
+import home1 from "@/assets/images/dfg2.jpg";
 import home2 from "@/assets/images/dizain.png";
-import home3 from "@/assets/images/home-3.jpg";
+import home3 from "@/assets/images/restoration2.jpg";
 
 export const servicesData: Services[] = [
   {
