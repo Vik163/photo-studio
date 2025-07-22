@@ -3,5 +3,4 @@ export interface Services {
   imgS: string;
   imgB: string;
   pathName: string;
-  description: string;
 }

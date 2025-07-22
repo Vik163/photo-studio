@@ -9,20 +9,17 @@ export const servicesData: Services[] = [
     imgB: home1,
     imgS: home1,
     pathName: "photo-na-dokumenty",
-    description: "description1",
   },
   {
     title: "Фотомонтаж Фотодизайн",
     imgB: home2,
     imgS: home2,
     pathName: "photo-montazh-dizain",
-    description: "description2",
   },
   {
     title: "Реставрация фотографий",
     imgB: home3,
     imgS: home3,
     pathName: "photo-restavraciya",
-    description: "description3",
   },
 ];

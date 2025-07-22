@@ -54,6 +54,26 @@
   letter-spacing: -2px;
 }
 
+.service__info-subtitle {
+  font: var(--font-catrin-22-norm);
+  margin: 10px;
+}
+
+.service__info-features {
+  margin: 20px 30px;
+}
+
+.service__info-features-item {
+  font: var(--font-catrin-22-norm);
+  font-size: 20px;
+
+  padding-left: 10px;
+  list-style-type: "\2713";
+  &::marker {
+    color: var(--color-luminous-vivid-orange);
+  }
+}
+
 .service__info-btn {
   font: var(--font-catrin-22-norm);
   line-height: 22px;

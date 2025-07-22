@@ -59,35 +59,6 @@
   -webkit-font-smoothing: antialiased;
 }
 
-.home__btn {
-  font: var(--font-catrin-22-norm);
-  background-color: transparent;
-  color: var(--color-font-dark);
-  letter-spacing: 1px;
-  padding: 10px 50px;
-  width: fit-content;
-  transition: 0.3s ease;
-  display: block;
-  margin: 50px auto 0;
-  border: var(--border-width-m) solid var(--color-black);
-  border-radius: var(--radius-btn);
-  display: flex;
-  align-items: center;
-  gap: 14px;
-
-  &::after {
-    content: "";
-    background: url(../../assets/icons/arrow.svg) no-repeat;
-    width: 23px;
-    height: 20px;
-    background-size: contain;
-  }
-
-  &:hover {
-    transform: translateY(-5px);
-  }
-}
-
 .on-right {
   animation: 1s ease 0s 1 onRight forwards;
 }
