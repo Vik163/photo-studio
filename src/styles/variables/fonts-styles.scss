@@ -10,15 +10,9 @@
   --font-14: 14px;
   --font-15: 15px;
   --font-16: 16px;
-  --font-17: 17px;
   --font-18: 18px;
-  --font-20: 20px;
   --font-22: 22px;
-  --font-24: 24px;
-  --font-26: 26px;
-  --font-28: 28px;
   --font-30: 30px;
-  --font-36: 36px;
   --font-44: 44px;
   --font-64: 64px;
 
@@ -33,9 +27,11 @@
 
   --font-catrin-44-norm: var(--font-weight-norm) var(--font-44)
     var(--font-catrin);
-  --font-catrin-36-norm: var(--font-weight-norm) var(--font-36)
-    var(--font-catrin);
   --font-catrin-22-norm: var(--font-weight-norm) var(--font-22)
+    var(--font-catrin);
+  --font-catrin-18-norm: var(--font-weight-norm) var(--font-18)
+    var(--font-catrin);
+  --font-catrin-16-norm: var(--font-weight-norm) var(--font-16)
     var(--font-catrin);
 
   --font-catrin-12-norm: var(--font-weight-norm) var(--font-12)

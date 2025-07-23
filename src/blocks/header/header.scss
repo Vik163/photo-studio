@@ -92,18 +92,12 @@
       &:before,
       &:after {
         top: 0;
-      }
-
-      &:before {
         width: 30px;
         left: 0;
         transform: rotate(45deg);
       }
 
       &:after {
-        width: 30px;
-        left: 0;
-
         transform: rotate(-45deg);
       }
     }
