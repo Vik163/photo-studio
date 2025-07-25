@@ -7,7 +7,8 @@ import { animationScrolling } from "@/utils/lib/animationScrolling";
 import { setContacts } from "@/blocks/contacts/contacts";
 import { setCSSVariales } from "@/utils/lib/setCSSVariales";
 import { setFooter } from "@/blocks/footer/footer";
-import { setSocial } from "@/blocks/social/social";
+import { closeSocial, setSocial } from "@/blocks/social/social";
+import { closeMenu } from "@/blocks/menu/scripts/menu";
 
 setCSSVariales();
 
@@ -39,3 +40,10 @@ window.onload = function () {
   //   animationScrolling(el, "up");
   // });
 };
+
+document.addEventListener("keydown", function (event: KeyboardEvent) {
+  if (event.code === "Escape") {
+    closeMenu();
+    closeSocial();
+  }
+});

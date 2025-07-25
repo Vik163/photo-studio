@@ -221,24 +221,36 @@
         </div>
       </section>
       <div class="social">
-        <div class="social__close"></div>
-        <form class="social__form">
-          <label class="social__label" for="message">Задайте ваш вопрос:</label>
-          <textarea
-            id="message"
-            name="message"
-            class="social__text"
-            rows="3"
-            cols="33"
-          ></textarea>
-        </form>
         <div class="social__icons">
           <img
-            id="telegramm"
+            id="telegram"
             class="social__img"
             src="../../assets/icons/telegram.png"
-            alt="Телеграмм"
+            alt="Телеграм"
           />
+          <img
+            id="whatsapp"
+            class="social__img"
+            src="../../assets/icons/whatsapp.png"
+            alt="Ватсап"
+          />
+        </div>
+        <div class="social__container">
+          <div class="social__close"></div>
+          <form class="social__form">
+            <label class="social__label" for="message"
+              >Задайте ваш вопрос:</label
+            >
+            <textarea
+              id="message"
+              name="message"
+              class="social__text"
+              rows="3"
+              cols="33"
+            ></textarea>
+            <button class="social__btn">Отправить</button>
+          </form>
+          <img class="social__container-img" src="#" alt="" />
         </div>
       </div>
     </main>

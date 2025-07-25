@@ -17,18 +17,20 @@ function openMenu() {
 }
 
 //* --- удаляет css-переменную и востанавливает положение скролла ---
-function closeMenu() {
-  removeClasses();
+export function closeMenu() {
+  if ($contains("menu_open", menu)) {
+    removeClasses();
 
-  //* востанавливает положение скролла
-  const scrollPosition = rootStyle.getPropertyValue("--scroll-position");
+    //* востанавливает положение скролла
+    const scrollPosition = rootStyle.getPropertyValue("--scroll-position");
 
-  rootStyle.removeProperty("--scroll-position");
+    rootStyle.removeProperty("--scroll-position");
 
-  window.scroll({
-    top: parseInt(scrollPosition || "0"),
-    behavior: "instant",
-  });
+    window.scroll({
+      top: parseInt(scrollPosition || "0"),
+      behavior: "instant",
+    });
+  }
 }
 
 function clickMenu() {
@@ -60,11 +62,11 @@ function scrollToBlock(event: Event) {
 export const setMenuListeners = () => {
   btn.addEventListener("click", clickMenu);
 
-  document.addEventListener("keydown", function (event: KeyboardEvent) {
-    if ($contains("menu_open", menu) && event.code === "Escape") {
-      closeMenu();
-    }
-  });
+  // document.addEventListener("keydown", function (event: KeyboardEvent) {
+  //   if ($contains("menu_open", menu) && event.code === "Escape") {
+  //     closeMenu();
+  //   }
+  // });
 
   menuItemsLinks.forEach((link) => {
     link.addEventListener("click", (e) => scrollToBlock(e));
