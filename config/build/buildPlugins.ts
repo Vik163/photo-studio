@@ -9,7 +9,7 @@ import dotenv from "dotenv";
 export const buildWebpackPlugins = (
   options: BuildOptions
 ): webpack.WebpackPluginInstance[] => {
-  const { paths, isDev } = options;
+  const { paths, isDev, api } = options;
   const isProd = !isDev;
 
   //& Нужен для .env
@@ -20,6 +20,7 @@ export const buildWebpackPlugins = (
     new webpack.DefinePlugin({
       "process.env": JSON.stringify(process.env), //& Нужен для .env
       __IS_DEV__: JSON.stringify(isDev),
+      __API__: JSON.stringify(api),
     }),
 
     new HtmlWebpackPlugin({

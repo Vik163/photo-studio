@@ -34,6 +34,25 @@
   }
 }
 
+.header__btns {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.header__mail {
+  width: 40px;
+  height: 27px;
+  transition: all times.$time-quarter;
+  margin-top: 3px;
+  cursor: pointer;
+
+  &:hover {
+    transition: all times.$time-quarter;
+    transform: scale(1.1);
+  }
+}
+
 .header__btn {
   transition: all times.$time-quarter;
   z-index: 111;

@@ -1,0 +1,40 @@
+.mail__checkbox {
+  display: flex;
+  gap: 8px;
+  margin: 8px;
+}
+
+.mail__checkbox-label {
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--color-black);
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.mail__checkbox-label_active {
+  background: url(../../assets/icons/checkmark.svg) 50% 50% no-repeat;
+  transition: all 0.2s;
+  opacity: 1;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.mail__checkbox-link {
+  display: inline-block;
+  font: var(--font-catrin-16-norm);
+  color: var(--color-vivid-red);
+  height: 100%;
+  padding-left: 5px;
+}
+
+// @media (max-width: 750px) {
+//   .form__text-link {
+//     display: inline-block;
+//     font: var(--font-int-11-norm);
+//     color: var(--color-red);
+//     height: 100%;
+//     padding-left: 5px;
+//   }
+// }

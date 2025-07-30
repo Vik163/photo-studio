@@ -29,7 +29,7 @@ export const buildWebpackConfig = (options: BuildOptions): Configuration => {
     resolve: buildResolve(options),
     devtool: isDev ? "eval-cheap-module-source-map" : undefined,
     devServer: isDev ? buildDevServer(options) : undefined,
-    optimization: buildOpimizationImages(),
+    // optimization: buildOpimizationImages(),
     externals: {
       "@yandex/ymaps3-types": [
         `promise new Promise((resolve) => {

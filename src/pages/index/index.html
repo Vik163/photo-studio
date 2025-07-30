@@ -9,8 +9,15 @@
   <body class="app">
     <header class="header">
       <a href="#" class="header__logo logo"></a>
-      <div class="header__btn">
-        <div class="header__btn-icon"></div>
+      <div class="header__btns">
+        <img
+          class="header__mail"
+          src="../../assets/icons/mail.png"
+          alt="Написать сообщение"
+        />
+        <div class="header__btn">
+          <div class="header__btn-icon"></div>
+        </div>
       </div>
 
       <nav class="menu">
@@ -220,38 +227,54 @@
           <div id="map" class="contacts__map"></div>
         </div>
       </section>
-      <div class="social">
-        <div class="social__icons">
-          <img
-            id="telegram"
-            class="social__img"
-            src="../../assets/icons/telegram.png"
-            alt="Телеграм"
+      <div class="mail">
+        <h2 class="mail__title">Отправить сообщение</h2>
+        <div class="mail__btn-close"></div>
+        <form class="mail__form">
+          <label class="mail__label" name="name" for="name">Ваше имя</label>
+          <input
+            class="mail__form-item"
+            name="name"
+            type="text"
+            required
+            minlength="2"
           />
-          <img
-            id="whatsapp"
-            class="social__img"
-            src="../../assets/icons/whatsapp.png"
-            alt="Ватсап"
+          <label class="mail__label" name="phone" for="phone"
+            >Номер телефона</label
+          >
+          <input
+            id="mail-phone"
+            class="mail__form-item"
+            name="phone"
+            type="text"
+            placeholder="+7 (999) 999-99-99"
+            required
           />
-        </div>
-        <div class="social__container">
-          <div class="social__close"></div>
-          <form class="social__form">
-            <label class="social__label" for="message"
-              >Задайте ваш вопрос:</label
+          <label class="mail__label" for="message">Задайте ваш вопрос:</label>
+          <textarea
+            id="mail-message"
+            name="message"
+            placeholder="Напишите ваш вопрос и как с вами связаться."
+            class="mail__form-item mail__text"
+            rows="5"
+            cols="33"
+            required
+          ></textarea>
+          <div class="mail__checkbox">
+            <div class="mail__checkbox-label"></div>
+            <span
+              ><a id="politic" class="mail__checkbox-link" href="#"
+                >Нажимая на кнопку, вы даете согласие на обработку персональных
+                данных<br />
+                и соглашаетесь с нашей политикой конфиденциальности</a
+              ></span
             >
-            <textarea
-              id="message"
-              name="message"
-              class="social__text"
-              rows="3"
-              cols="33"
-            ></textarea>
-            <button class="social__btn">Отправить</button>
-          </form>
-          <img class="social__container-img" src="#" alt="" />
-        </div>
+          </div>
+          <button type="submit" class="mail__btn-submit" disabled>
+            Отправить
+          </button>
+        </form>
+        <img class="mail__img" src="#" alt="" />
       </div>
     </main>
     <footer class="footer">

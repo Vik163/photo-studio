@@ -47,6 +47,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.27.6",
-    "@yandex/ymaps3-default-ui-theme": "^0.0.19"
+    "@yandex/ymaps3-default-ui-theme": "^0.0.19",
+    "axios": "^1.11.0"
   }
 }
