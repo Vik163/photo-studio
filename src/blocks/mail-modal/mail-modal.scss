@@ -1,4 +1,4 @@
-$padding-block: 12px;
+$padding-block: 20px;
 $padding-goriz-inp: 12px;
 $padding-vert-inp: 5px;
 
@@ -12,9 +12,9 @@ $padding-vert-inp: 5px;
   border: 2px solid var(--color-luminous-vivid-orange);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: $padding-block;
   transition: 0.3s;
-  padding: 20px;
+  padding: $padding-block;
   border-radius: 15px;
 
   .mail__btn-close {
@@ -28,7 +28,7 @@ $padding-vert-inp: 5px;
 
     &:before,
     &:after {
-      width: 20px;
+      width: $padding-block;
       height: 2px;
       top: 6px;
       left: -3px;
@@ -49,7 +49,7 @@ $padding-vert-inp: 5px;
 
   .mail__img {
     position: absolute;
-    right: 20px;
+    right: $padding-block;
     bottom: 25px;
     width: 34px;
     height: 23px;

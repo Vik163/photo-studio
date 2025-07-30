@@ -8,7 +8,7 @@ const container = $class("mail");
 const iconHeader = $class("header__mail");
 const closeIcon = $class("mail__btn-close", container);
 const form = $class("mail__form", container) as HTMLFormElement;
-const label = $class("mail__label", container);
+const title = $class("mail__title", container);
 const iconContainer = $class("mail__img", container) as HTMLImageElement;
 
 function openMailModal() {
@@ -17,20 +17,24 @@ function openMailModal() {
 
   if ($contains("mail_active", container)) {
     closeIcon.addEventListener("click", closeMailModal);
-    form.addEventListener("submit", sendMessage);
+    form.addEventListener("submit", sendData);
     handleCheckbox();
     handleInputPhone("mail-phone");
   }
 }
 
-async function sendMessage(e: Event) {
+async function sendData(e: Event) {
   e.preventDefault();
 
-  const textContainer = $id("mail-message") as HTMLTextAreaElement;
-  const value = textContainer.value;
+  const formData = new FormData(form);
+  const name = formData.get("name");
+  const phone = formData.get("phone");
+  const message = formData.get("message");
+  const data = { name, phone, message };
+
   if (form.checkValidity()) {
-    const answer = (await $api.post("/message", { message: value })).data;
-    if (answer === "saved") label.textContent = "Сообщение отправлено!";
+    const answer = (await $api.post("/message", data)).data;
+    if (answer === "saved") title.textContent = "Сообщение отправлено!";
   }
 }
 
@@ -38,7 +42,7 @@ export function closeMailModal() {
   if ($contains("mail_active", container)) {
     $remove("mail_active", container);
     closeIcon.removeEventListener("click", closeMailModal);
-    form.removeEventListener("submit", sendMessage);
+    form.removeEventListener("submit", sendData);
   }
 }
 
