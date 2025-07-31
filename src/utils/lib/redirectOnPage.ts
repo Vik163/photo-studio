@@ -12,7 +12,7 @@ export const redirectOnPage = (page: PageNames, path: PathNames) => {
   const pathDev = path ? `/${page}/${path}` : `/${page}`;
   const address = __IS_DEV__
     ? pathDev
-    : `https://academy-heat-hommet.vercel.app/${page}/${path}`;
+    : `https://photo-studio-vg2s.vercel.app//${page}/${path}`;
 
   window.location.href = address;
 };
