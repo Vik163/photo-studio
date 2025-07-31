@@ -52,5 +52,5 @@ export const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
     },
   };
 
-  return [imgLoader, fontsLoader, htmlLoader, styleLoader, babelLoader];
+  return [htmlLoader, imgLoader, fontsLoader, styleLoader, babelLoader];
 };

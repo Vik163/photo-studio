@@ -1,9 +1,11 @@
 type BuildMode = "production" | "development";
 
 export interface BuildPaths {
-  entryIndex: string;
+  entryMain: string;
+  entryOrders: string;
   src: string;
-  htmlIndex: string;
+  main: string;
+  orders: string;
   build: string;
   favicon: string;
 }

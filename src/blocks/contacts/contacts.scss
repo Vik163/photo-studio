@@ -1,11 +1,12 @@
 $marg-bottom-text: 20px;
+$padding-block: 100px;
 
 .contacts {
   width: 100%;
 }
 
 .contacts__title {
-  margin: 90px var(--padding-block);
+  margin: 90px $padding-block;
   font: var(--font-orb-64-norm);
 }
 
@@ -22,7 +23,7 @@ $marg-bottom-text: 20px;
 .contacts__info {
   width: 50%;
   height: 100%;
-  padding: 70px 70px 70px var(--padding-block);
+  padding: 70px 70px 70px $padding-block;
   color: var(--color-text-light);
 }
 

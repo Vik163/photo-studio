@@ -70,6 +70,9 @@
     right: 0;
     top: 20px;
     background-color: black;
+    box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.525),
+      inset -1px -1px 1px 0px rgba(0, 0, 0, 0.4),
+      inset 1px 1px 1px 0px rgba(255, 255, 255, 0.277);
 
     &:before {
       width: 40px;
@@ -78,6 +81,9 @@
       background: black;
       position: absolute;
       content: "";
+      box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.525),
+        inset -1px -1px 1px 0px rgba(0, 0, 0, 0.4),
+        inset 1px 1px 1px 0px rgba(255, 255, 255, 0.277);
     }
 
     &:after {
@@ -87,6 +93,9 @@
       background: black;
       position: absolute;
       content: "";
+      box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.525),
+        inset -1px -1px 1px 0px rgba(0, 0, 0, 0.4),
+        inset 1px 1px 1px 0px rgba(255, 255, 255, 0.277);
     }
 
     &:before {
@@ -107,6 +116,7 @@
       transform: rotate(180deg);
       background-color: transparent;
       right: 0;
+      box-shadow: none;
 
       &:before,
       &:after {

@@ -1,9 +1,12 @@
+$padding-service-info: 90px;
+$padding-block: 100px;
+
 .services {
   width: 100%;
 }
 
 .services__title {
-  padding: 90px var(--padding-block);
+  padding: 90px $padding-block;
   font: var(--font-orb-64-norm);
 }
 .services__list {
@@ -43,7 +46,7 @@
 .service__info {
   width: 50%;
   height: 100%;
-  padding: var(--padding-service-info);
+  padding: $padding-service-info;
   position: relative;
   border: var(--border-width-s) solid var(--color-black);
   background-color: var(--bg-color);
@@ -85,8 +88,8 @@
   transition: 0.3s ease;
   display: block;
   position: absolute;
-  left: var(--padding-service-info);
-  bottom: var(--padding-service-info);
+  left: $padding-service-info;
+  bottom: $padding-service-info;
   border: var(--border-width-m) solid var(--color-black);
   border-radius: var(--radius-btn);
   display: flex;

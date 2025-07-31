@@ -1,9 +1,12 @@
+$marquee-gap: 70px;
+$marquee-gap-note: 40px;
+
 .marquee {
   position: relative;
   display: flex;
   overflow: hidden;
   user-select: none;
-  gap: var(--marquee-gap);
+  gap: $marquee-gap;
   padding: 20px 0;
   border-top: var(--border-width-s) solid var(--color-black);
   border-bottom: var(--border-width-s) solid var(--color-black);
@@ -14,7 +17,7 @@
   flex-shrink: 0;
   display: flex;
   justify-content: space-around;
-  gap: var(--marquee-gap);
+  gap: $marquee-gap;
   min-width: 100%;
   animation: scroll 50s linear infinite;
 }
@@ -36,18 +39,18 @@
     transform: translateX(0);
   }
   to {
-    transform: translateX(calc(-100% - var(--marquee-gap)));
+    transform: translateX(calc(-100% - $marquee-gap));
   }
 }
 
 @media (max-width: 1100px) {
   .marquee {
-    gap: var(--marquee-gap-note);
+    gap: $marquee-gap-note;
     padding: 5px 0;
   }
 
   .marquee__content {
-    gap: var(--marquee-gap-note);
+    gap: $marquee-gap-note;
   }
 
   .marquee__content-item {

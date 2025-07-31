@@ -1,0 +1,25 @@
+@use "../../styles/reset.scss";
+@use "../../styles/variables/colors.scss";
+@use "../../styles/variables/sizes.scss";
+@use "../../styles/variables/fonts-styles.scss";
+@use "../../styles/variables/z-index.scss";
+@use "../../assets/fonts/fonts.scss";
+
+@use "../../styles/app.scss";
+
+@use "../../blocks/header/header.scss";
+@use "../../blocks/logo/logo.scss";
+@use "../../blocks/navbar/navbar.scss";
+@use "../../blocks/menu/menu.scss";
+
+@use "../../styles/main.scss";
+
+@use "../../blocks/services/services.scss";
+
+@use "../../blocks/contacts/contacts.scss";
+@use "../../blocks/contacts/map.scss";
+
+@use "../../blocks/mail-modal/mail-modal.scss";
+@use "../../blocks/checkbox/checkbox.scss";
+
+@use "../../blocks/footer/footer.scss";

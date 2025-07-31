@@ -13,13 +13,13 @@ export const buildWebpackConfig = (options: BuildOptions): Configuration => {
 
   return {
     mode,
-    entry: [paths.entryIndex],
+    entry: { main: paths.entryMain, orders: paths.entryOrders },
     output: {
       path: paths.build,
       clean: true,
       filename: "[name].[contenthash].js",
       publicPath: "/",
-      asyncChunks: true,
+      // asyncChunks: true,
       assetModuleFilename: "assets/[name].[contenthash:8][ext]", // устанавливает папку assets в build
     },
     plugins: buildWebpackPlugins(options),

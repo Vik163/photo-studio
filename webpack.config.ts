@@ -6,9 +6,11 @@ import path from "path";
 
 export default (env: BuildEnv) => {
   const buildPaths: BuildPaths = {
-    entryIndex: path.resolve(__dirname, "./src/pages/index/index.ts"),
+    entryMain: path.resolve(__dirname, "./src/pages/main/index.ts"),
+    entryOrders: path.resolve(__dirname, "./src/pages/orders/orders.ts"),
     build: path.resolve(__dirname, "build"),
-    htmlIndex: path.resolve(__dirname, "./src/pages/index/index.html"),
+    main: path.resolve(__dirname, "./src/pages/main/index.html"),
+    orders: path.resolve(__dirname, "./src/pages/orders/orders.html"),
     src: path.resolve(__dirname, "src"),
     favicon: path.resolve(__dirname, "./src/assets/icons/camera.svg"),
   };

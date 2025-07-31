@@ -24,9 +24,17 @@ export const buildWebpackPlugins = (
     }),
 
     new HtmlWebpackPlugin({
-      template: paths.htmlIndex,
-      filename: "index.html",
+      template: paths.main,
       favicon: paths.favicon,
+      inject: true,
+      chunks: ["main"],
+    }),
+    new HtmlWebpackPlugin({
+      template: paths.orders,
+      filename: "orders.html",
+      favicon: paths.favicon,
+      inject: true,
+      chunks: ["orders"],
     }),
 
     new webpack.ProgressPlugin(),
@@ -44,14 +52,14 @@ export const buildWebpackPlugins = (
     }),
   ];
 
-  if (isDev) {
-    plugins.push(
-      new BundleAnalyzerPlugin({
-        // не открывается постоянно
-        openAnalyzer: false, // запуск по ссылке в терминале
-      })
-    ); // Анализирует размер бандла
-  }
+  // if (isDev) {
+  //   plugins.push(
+  //     new BundleAnalyzerPlugin({
+  //       // не открывается постоянно
+  //       openAnalyzer: false, // запуск по ссылке в терминале
+  //     })
+  //   ); // Анализирует размер бандла
+  // }
 
   if (isProd) {
     plugins.push(

@@ -14,7 +14,7 @@ export const servicesData: Services[] = [
     title: "Фотомонтаж Фотодизайн",
     imgB: home2,
     imgS: home2,
-    pathName: "photo-montazh-dizain",
+    pathName: "photo-dizain",
   },
   {
     title: "Реставрация фотографий",
