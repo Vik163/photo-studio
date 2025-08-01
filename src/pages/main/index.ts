@@ -1,7 +1,7 @@
 import "./index.scss";
 import "../../assets/icons/logo.png";
 import "../../assets/images/home-2.jpg";
-import { setServices } from "@/blocks/services/scripts/services";
+import { setServices } from "@/blocks/main/services/scripts/services";
 import { setHeader } from "@/blocks/header/scripts/header";
 import { setContacts } from "@/blocks/contacts/contacts";
 import { setCSSVariales } from "@/utils/lib/setCSSVariales";

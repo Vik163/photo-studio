@@ -14,16 +14,15 @@
 
 @use "../../styles/main.scss";
 
-@use "../../blocks/home/home.scss";
+@use "../../blocks/main/home/home.scss";
 
-@use "../../blocks/marquee/marquee.scss";
+@use "../../blocks/main/marquee/marquee.scss";
 
-@use "../../blocks/services/services.scss";
+@use "../../blocks/main/services/services.scss";
 
 @use "../../blocks/contacts/contacts.scss";
 @use "../../blocks/contacts/map.scss";
 
 @use "../../blocks/mail-modal/mail-modal.scss";
-@use "../../blocks/checkbox/checkbox.scss";
 
 @use "../../blocks/footer/footer.scss";

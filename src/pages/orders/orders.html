@@ -8,7 +8,7 @@
   </head>
   <body class="app">
     <header class="header">
-      <a href="#" class="header__logo logo"></a>
+      <a href="/" class="header__logo logo"></a>
       <div class="header__btns">
         <img
           class="header__mail"
@@ -53,67 +53,104 @@
       </nav>
     </header>
 
-    <main class="main">
+    <main class="main orders">
       <div class="main__observer"></div>
-      <section class="services">
-        <h2 class="services__title">Наши услуги</h2>
-        <ul class="services__list">
-          <li id="photo-na-dokumenty" class="service">
-            <div class="service__container">
-              <img class="service__img" src="#" alt="#" />
-              <div class="service__info">
-                <h3 class="service__info-title">Фото на документы</h3>
-                <p class="service__info-subtitle">
-                  Фотографии на документы — быстро, качественно и по доступным
-                  ценам!
-                </p>
-                <ul class="service__info-features">
-                  <li class="service__info-features-item">Ретушь</li>
-                  <li class="service__info-features-item">Цветокоррекция</li>
-                  <li class="service__info-features-item">Замена одежды</li>
-                  <li class="service__info-features-item">Подстановка формы</li>
-                </ul>
-                <button id="photo-na-dokumenty" class="service__info-btn">
-                  Подробнее
-                </button>
-              </div>
-            </div>
-          </li>
-          <li id="photo-dizain" class="service">
-            <div class="service__container">
-              <img class="service__img" src="#" alt="#" />
-              <div class="service__info">
-                <h3 class="service__info-title">Фотодизайн</h3>
-                <p class="service__info-subtitle">
-                  Преобразите свои идеи в яркие визуальные образы!
-                </p>
-                <ul class="service__info-features">
-                  <li class="service__info-features-item">
-                    Разработка и создание фотокомпозиций с индивидуальным
-                    дизайном
-                  </li>
-                  <li class="service__info-features-item">
-                    Создание коллажей из фотографий
-                  </li>
-                  <li class="service__info-features-item">
-                    Оформление фотоальбомов и фотокниг
-                  </li>
-                  <li class="service__info-features-item">
-                    Разработка баннеров, плакатов и постеров
-                  </li>
-                  <li class="service__info-features-item">
-                    Разработка логотипов и фирменных стилей
-                  </li>
-                  <li class="service__info-features-item">
-                    Создание презентаций
-                  </li>
-                </ul>
-                <button id="photo-dizain" class="service__info-btn">
-                  Подробнее
-                </button>
-              </div>
-            </div>
-            <!-- 1. Разработка дизайн-концепции для фотопроекта с учётом целей и задач клиента.
+
+      <h1 class="orders__title">Наши услуги</h1>
+      <section id="photo-na-dokumenty" class="docs">
+        <h2 class="docs__title">Фото на документы</h2>
+
+        <div class="docs__photos-container">
+          <div class="docs__photos">
+            <img
+              class="docs__photos-img"
+              src="../../assets/images/portrait.png"
+              alt="Портрет"
+            />
+            <img
+              class="docs__photos-arrow"
+              src="../../assets/icons/arrow_orange.png"
+              alt="Портрет"
+            />
+            <img
+              class="docs__photos-img"
+              src="../../assets/images/portrait_2.png"
+              alt="Портрет"
+            />
+            <img
+              class="docs__photos-arrow"
+              src="../../assets/icons/arrow_orange.png"
+              alt="Портрет"
+            />
+            <img
+              class="docs__photos-img"
+              src="../../assets/images/portrait_3.png"
+              alt="Портрет"
+            />
+            <img
+              class="docs__photos-arrow"
+              src="../../assets/icons/arrow_orange.png"
+              alt="Портрет"
+            />
+            <img
+              class="docs__photos-img"
+              src="../../assets/images/portrait_4.png"
+              alt="Портрет"
+            />
+          </div>
+
+          <ul class="docs__works">
+            <li class="docs__work">Получаем фото <br />и затем:</li>
+            <li class="docs__work">
+              Замена фона <br />Цветокоррекция <br />Ретушь
+              <span class="docs__work-accent">*</span>
+            </li>
+            <li class="docs__work">
+              Замена одежды <span class="docs__work-accent">*</span>
+            </li>
+            <li class="docs__work">
+              Подстановка формы <span class="docs__work-accent">*</span>
+            </li>
+          </ul>
+          <p class="docs__works-caption">
+            <span class="docs__work-accent">*</span> - работы выполняются по
+            требованию
+          </p>
+          <a class="docs__back-link" href="/">На главную страницу </a>
+        </div>
+      </section>
+      <section id="photo-dizain" class="dizain">
+        <!-- <div class="service__container">
+          <img class="docs__photos-img" src="#" alt="#" />
+          <div class="service__info">
+            <h3 class="service__info-title">Фотодизайн</h3>
+            <p class="service__info-subtitle">
+              Преобразите свои идеи в яркие визуальные образы!
+            </p>
+            <ul class="service__info-features">
+              <li class="docs__work">
+                Разработка и создание фотокомпозиций с индивидуальным дизайном
+              </li>
+              <li class="docs__work">
+                Создание коллажей из фотографий
+              </li>
+              <li class="docs__work">
+                Оформление фотоальбомов и фотокниг
+              </li>
+              <li class="docs__work">
+                Разработка баннеров, плакатов и постеров
+              </li>
+              <li class="docs__work">
+                Разработка логотипов и фирменных стилей
+              </li>
+              <li class="docs__work">Создание презентаций</li>
+            </ul>
+            <button id="photo-dizain" class="service__info-btn">
+              Подробнее
+            </button>
+          </div>
+        </div> -->
+        <!-- 1. Разработка дизайн-концепции для фотопроекта с учётом целей и задач клиента.
 2. Создание коллажей из фотографий с применением различных стилей и техник.
 3. Ретушь и цветокоррекция фотографий для достижения профессионального качества.
 4. Разработка и создание фотокомпозиций с использованием графических элементов и текста.
@@ -123,41 +160,39 @@
 8. Создание иллюстраций и графических элементов для статей и блогов с использованием фотографий.
 9. Разработка логотипов и фирменных стилей с применением фотографий.
 10. Создание презентаций с использованием высококачественных фотографий для бизнес-целей. -->
-          </li>
-          <li id="photo-restavraciya" class="service">
-            <div class="service__container">
-              <img class="service__img" src="#" alt="#" />
-              <div class="service__info">
-                <h3 class="service__info-title">Реставрация фотографий</h3>
-                <p class="service__info-subtitle">
-                  Реставрируем старые фотографии, возвращая им первозданный вид
-                  и яркость
-                </p>
-                <ul class="service__info-features">
-                  <li class="service__info-features-item">
-                    Удаление пятен и загрязнений с фотографий
-                  </li>
-                  <li class="service__info-features-item">
-                    Устранение разрывов, порезов и сгибов
-                  </li>
-                  <li class="service__info-features-item">
-                    Улучшение цветопередачи и яркости
-                  </li>
-                  <li class="service__info-features-item">
-                    Чистка и удаление фона с фотографий для улучшения их
-                    визуального качества
-                  </li>
-                  <li class="service__info-features-item">
-                    Оцифровка старых фотографий с последующим их восстановлением
-                  </li>
-                </ul>
-                <button id="photo-restavraciya" class="service__info-btn">
-                  Подробнее
-                </button>
-              </div>
-            </div>
-          </li>
-        </ul>
+      </section>
+      <section id="photo-restavraciya" class="restav">
+        <!-- <div class="service__container">
+          <img class="docs__photos-img" src="#" alt="#" />
+          <div class="service__info">
+            <h3 class="service__info-title">Реставрация фотографий</h3>
+            <p class="service__info-subtitle">
+              Реставрируем старые фотографии, возвращая им первозданный вид и
+              яркость
+            </p>
+            <ul class="service__info-features">
+              <li class="docs__work">
+                Удаление пятен и загрязнений с фотографий
+              </li>
+              <li class="docs__work">
+                Устранение разрывов, порезов и сгибов
+              </li>
+              <li class="docs__work">
+                Улучшение цветопередачи и яркости
+              </li>
+              <li class="docs__work">
+                Чистка и удаление фона с фотографий для улучшения их визуального
+                качества
+              </li>
+              <li class="docs__work">
+                Оцифровка старых фотографий с последующим их восстановлением
+              </li>
+            </ul>
+            <button id="photo-restavraciya" class="service__info-btn">
+              Подробнее
+            </button>
+          </div>
+        </div> -->
       </section>
       <section id="contacts" class="contacts main__contacts">
         <h1 class="contacts__title">Контакты</h1>

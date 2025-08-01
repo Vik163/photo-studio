@@ -8,7 +8,7 @@ import { setMailModal } from "@/blocks/mail-modal/scripts/mail-modal";
 import { closeByEsc } from "@/utils/lib/closeByEsc";
 import { setDirectionAnimation } from "@/utils/lib/setDirectionAnimation";
 import { changeUrl } from "@/utils/lib/changeUrl";
-import { setServices } from "@/blocks/services/scripts/services";
+import { setServices } from "@/blocks/main/services/scripts/services";
 import { $id } from "@/utils/lib/getElement";
 import { HEADER_HEIGHT } from "@/utils/constants/styles";
 
@@ -32,8 +32,6 @@ setCSSVariales();
 
 setHeader();
 
-setServices();
-
 setContacts();
 
 setMailModal();
@@ -43,5 +41,4 @@ setFooter();
 closeByEsc();
 
 //* === анимация блоков при скролле  ================================
-window.onload = setDirectionAnimation;
 window.onload = getServiceById;

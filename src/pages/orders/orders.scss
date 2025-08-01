@@ -13,13 +13,15 @@
 @use "../../blocks/menu/menu.scss";
 
 @use "../../styles/main.scss";
+@use "../../blocks/orders/orders.scss";
 
-@use "../../blocks/services/services.scss";
+@use "../../blocks/orders/docs/docs.scss";
+@use "../../blocks/orders/dizain/dizain.scss";
+@use "../../blocks/orders/restav/restav.scss";
 
 @use "../../blocks/contacts/contacts.scss";
 @use "../../blocks/contacts/map.scss";
 
 @use "../../blocks/mail-modal/mail-modal.scss";
-@use "../../blocks/checkbox/checkbox.scss";
 
 @use "../../blocks/footer/footer.scss";
