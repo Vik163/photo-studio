@@ -1,10 +1,12 @@
-@use "./checkbox.scss";
+@use "../checkbox/checkbox.scss";
+@use "../upload-img/upload-img.scss";
 
 $padding-block: 20px;
 $padding-goriz-inp: 12px;
 $padding-vert-inp: 5px;
 
-.mail {
+.modal {
+  width: 588px;
   position: fixed;
   right: 30px;
   top: calc(var(--height-header) + 30px);
@@ -19,7 +21,7 @@ $padding-vert-inp: 5px;
   padding: $padding-block;
   border-radius: 15px;
 
-  .mail__btn-close {
+  .modal__btn-close {
     display: none;
     position: absolute;
     width: 16px;
@@ -49,7 +51,7 @@ $padding-vert-inp: 5px;
     }
   }
 
-  .mail__img {
+  .modal__img {
     position: absolute;
     right: $padding-block;
     bottom: 25px;
@@ -58,22 +60,22 @@ $padding-vert-inp: 5px;
   }
 }
 
-.mail__title {
+.modal__title {
   font: var(--font-catrin-22-norm);
   letter-spacing: 1px;
 }
 
-.mail__form {
+.modal__form {
   display: flex;
   flex-direction: column;
   font: var(--font-catrin-16-norm);
 
-  .mail__label {
+  .modal__label {
     font: var(--font-catrin-18-norm);
     margin-top: 10px;
   }
 
-  .mail__form-item {
+  .modal__form-item {
     border: 1px solid var(--color-luminous-vivid-orange);
     border-radius: 8px;
     padding: $padding-vert-inp $padding-goriz-inp;
@@ -83,7 +85,7 @@ $padding-vert-inp: 5px;
     }
   }
 
-  .mail__btn-submit {
+  .modal__btn-submit {
     background-color: rgb(248, 248, 248);
     border: 1px solid var(--color-luminous-vivid-orange);
     font: var(--font-catrin-18-norm);
@@ -99,12 +101,12 @@ $padding-vert-inp: 5px;
   }
 }
 
-.mail_active {
+.modal_active {
   visibility: visible;
   transform: translateX(0);
   transition: 0.3s;
 
-  .mail__btn-close {
+  .modal__btn-close {
     display: block;
   }
 }

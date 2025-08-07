@@ -15,7 +15,7 @@
           src="../../assets/icons/mail.png"
           alt="Написать сообщение"
         />
-        <div class="header__btn">
+        <div id="mail" class="header__btn">
           <div class="header__btn-icon"></div>
         </div>
       </div>
@@ -132,9 +132,10 @@
                 фотография не примется, либо увеличится стоимость работ.
               </p>
             </div>
+            <button id="docs" class="docs__btn btn-load">
+              Загрузить фотографии
+            </button>
           </div>
-          <div class="docs__work-line"></div>
-
           <div class="docs__work">
             <img
               class="docs__img"
@@ -291,54 +292,76 @@
           <div id="map" class="contacts__map"></div>
         </div>
       </section>
-      <section class="mail">
-        <h2 class="mail__title">Отправить сообщение</h2>
-        <div class="mail__btn-close"></div>
-        <form class="mail__form">
-          <label class="mail__label" name="name" for="name">Ваше имя</label>
+      <section class="modal">
+        <h2 class="modal__title">Отправить сообщение</h2>
+        <div class="modal__btn-close"></div>
+        <form class="modal__form">
+          <label class="modal__label" name="name" for="name">Ваше имя</label>
           <input
-            class="mail__form-item"
+            class="modal__form-item"
             name="name"
             type="text"
             required
             minlength="2"
           />
-          <label class="mail__label" name="phone" for="phone"
+          <label class="modal__label" name="phone" for="phone"
             >Номер телефона</label
           >
           <input
-            id="mail-phone"
-            class="mail__form-item"
+            id="modal-phone"
+            class="modal__form-item"
             name="phone"
             type="text"
             placeholder="+7 (999) 999-99-99"
             required
           />
-          <label class="mail__label" for="message">Задайте ваш вопрос:</label>
+          <div class="upload">
+            <span class="upload__title">Загрузить фотографии:</span>
+            <div class="upload__container">
+              <label class="upload__label">
+                <input
+                  type="file"
+                  id="fileUpload"
+                  multiple
+                  name="file"
+                  accept="image/*"
+                />
+                <span class="upload__btn" id="dragDropArea"
+                  >Выберите файлы <br />
+                  или <br />перетащите их сюда</span
+                >
+              </label>
+              <span class="upload__text">Максимум 10мб</span>
+              <div class="upload__images"></div>
+            </div>
+          </div>
+          <label id="text-label" class="modal__label" for="message"
+            >Задайте ваш вопрос:</label
+          >
           <textarea
-            id="mail-message"
+            id="modal-message"
             name="message"
             placeholder="Напишите ваш вопрос и как с вами связаться."
-            class="mail__form-item mail__text"
+            class="modal__form-item modal__text"
             rows="5"
             cols="33"
             required
           ></textarea>
-          <div class="mail__checkbox">
-            <div class="mail__checkbox-label"></div>
+          <div class="modal__checkbox">
+            <div class="modal__checkbox-label"></div>
             <span
-              ><a id="politic" class="mail__checkbox-link" href="#"
+              ><a id="politic" class="modal__checkbox-link" href="#"
                 >Нажимая на кнопку, вы даете согласие на обработку персональных
                 данных<br />
                 и соглашаетесь с нашей политикой конфиденциальности</a
               ></span
             >
           </div>
-          <button type="submit" class="mail__btn-submit" disabled>
+          <button type="submit" class="modal__btn-submit" disabled>
             Отправить
           </button>
         </form>
-        <img class="mail__img" src="#" alt="" />
+        <img class="modal__img" src="#" alt="" />
       </section>
     </main>
 
@@ -348,5 +371,13 @@
       </a>
       <div class="footer__date"></div>
     </footer>
+
+    <!--* ====== Tempalates =============== -->
+    <template id="upload-img">
+      <div class="upload-img">
+        <img class="upload-img__img" src="#" alt="" />
+        <button id="#" type="button" class="upload-img__btn"></button>
+      </div>
+    </template>
   </body>
 </html>

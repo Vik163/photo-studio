@@ -1,10 +1,10 @@
-.mail__checkbox {
+.modal__checkbox {
   display: flex;
   gap: 8px;
   margin: 8px;
 }
 
-.mail__checkbox-label {
+.modal__checkbox-label {
   width: 16px;
   height: 16px;
   border: 1px solid var(--color-black);
@@ -12,7 +12,7 @@
   cursor: pointer;
 }
 
-.mail__checkbox-label_active {
+.modal__checkbox-label_active {
   background: url(../../assets/icons/checkmark.svg) 50% 50% no-repeat;
   transition: all 0.2s;
   opacity: 1;
@@ -21,7 +21,7 @@
   transform: scale(1);
 }
 
-.mail__checkbox-link {
+.modal__checkbox-link {
   display: inline-block;
   font: var(--font-catrin-16-norm);
   color: var(--color-vivid-red);

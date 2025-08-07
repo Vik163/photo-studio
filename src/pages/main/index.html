@@ -15,7 +15,7 @@
           src="../../assets/icons/mail.png"
           alt="Написать сообщение"
         />
-        <div class="header__btn">
+        <div id="mail" class="header__btn">
           <div class="header__btn-icon"></div>
         </div>
       </div>
@@ -232,54 +232,56 @@
           <div id="map" class="contacts__map"></div>
         </div>
       </section>
-      <section class="mail">
-        <h2 class="mail__title">Отправить сообщение</h2>
-        <div class="mail__btn-close"></div>
-        <form class="mail__form">
-          <label class="mail__label" name="name" for="name">Ваше имя</label>
+      <section class="modal">
+        <h2 class="modal__title">Отправить сообщение</h2>
+        <div class="modal__btn-close"></div>
+        <form class="modal__form">
+          <label class="modal__label" name="name" for="name">Ваше имя</label>
           <input
-            class="mail__form-item"
+            class="modal__form-item"
             name="name"
             type="text"
             required
             minlength="2"
           />
-          <label class="mail__label" name="phone" for="phone"
+          <label class="modal__label" name="phone" for="phone"
             >Номер телефона</label
           >
           <input
-            id="mail-phone"
-            class="mail__form-item"
+            id="modal-phone"
+            class="modal__form-item"
             name="phone"
             type="text"
             placeholder="+7 (999) 999-99-99"
             required
           />
-          <label class="mail__label" for="message">Задайте ваш вопрос:</label>
+          <label id="text-label" class="modal__label" for="message"
+            >Задайте ваш вопрос:</label
+          >
           <textarea
-            id="mail-message"
+            id="modal-message"
             name="message"
             placeholder="Напишите ваш вопрос и как с вами связаться."
-            class="mail__form-item mail__text"
+            class="modal__form-item modal__text"
             rows="5"
             cols="33"
             required
           ></textarea>
-          <div class="mail__checkbox">
-            <div class="mail__checkbox-label"></div>
+          <div class="modal__checkbox">
+            <div class="modal__checkbox-label"></div>
             <span
-              ><a id="politic" class="mail__checkbox-link" href="#"
+              ><a id="politic" class="modal__checkbox-link" href="#"
                 >Нажимая на кнопку, вы даете согласие на обработку персональных
                 данных<br />
                 и соглашаетесь с нашей политикой конфиденциальности</a
               ></span
             >
           </div>
-          <button type="submit" class="mail__btn-submit" disabled>
+          <button type="submit" class="modal__btn-submit" disabled>
             Отправить
           </button>
         </form>
-        <img class="mail__img" src="#" alt="" />
+        <img class="modal__img" src="#" alt="" />
       </section>
     </main>
 

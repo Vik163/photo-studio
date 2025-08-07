@@ -1,11 +1,11 @@
 import { closeMenu } from "@/blocks/menu/scripts/menu";
-import { closeMailModal } from "@/blocks/mail-modal/scripts/mail-modal";
+import { closeModal } from "@/blocks/modal/scripts/modal";
 
 export const closeByEsc = () => {
   document.addEventListener("keydown", function (event: KeyboardEvent) {
     if (event.code === "Escape") {
       closeMenu();
-      closeMailModal();
+      closeModal();
     }
   });
 };

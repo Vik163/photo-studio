@@ -6,7 +6,7 @@ import { setHeader } from "@/blocks/header/scripts/header";
 import { setContacts } from "@/blocks/contacts/contacts";
 import { setCSSVariales } from "@/utils/lib/setCSSVariales";
 import { setFooter } from "@/blocks/footer/footer";
-import { setMailModal } from "@/blocks/mail-modal/scripts/mail-modal";
+import { setModal } from "@/blocks/modal/scripts/modal";
 import { closeByEsc } from "@/utils/lib/closeByEsc";
 import { setDirectionAnimation } from "@/utils/lib/setDirectionAnimation";
 
@@ -30,7 +30,7 @@ setServices();
 
 setContacts();
 
-setMailModal();
+setModal("mail");
 
 setFooter();
 

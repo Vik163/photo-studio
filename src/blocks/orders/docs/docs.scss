@@ -7,20 +7,16 @@ $padding-block: 90px;
 .docs__title {
   font: var(--font-catrin-30-norm);
   margin-left: 60px;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 
 .docs__work {
   display: flex;
   justify-content: space-between;
+  border-top: var(--border-width-m) dotted var(--color-black);
+  padding: 40px 0;
   width: 100%;
-}
-
-.docs__work-line {
-  display: block;
-  width: 80%;
-  border-bottom: var(--border-width-m) dotted var(--color-black);
-  margin: 50px auto;
+  position: relative;
 }
 
 .docs__img {
@@ -32,7 +28,6 @@ $padding-block: 90px;
 }
 
 .docs__info {
-  // border: 1px solid var(--color-luminous-vivid-orange);
   width: 75%;
 }
 
@@ -90,4 +85,18 @@ $padding-block: 90px;
   background: url(../../assets/icons/arrow.svg) no-repeat;
   background-position: center right;
   background-size: 18px 14px;
+}
+
+.docs__btn {
+  position: absolute;
+  font: var(--font-catrin-18-norm);
+  background-color: transparent;
+  border-radius: var(--radius-btn);
+  bottom: 40px;
+  left: 0;
+  width: 202px;
+  height: 40px;
+  border: 1px solid var(--color-luminous-vivid-orange);
+  box-shadow: 1px 1px 2px 0 var(--color-map-btn);
+  cursor: pointer;
 }
