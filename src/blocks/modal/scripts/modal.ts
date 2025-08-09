@@ -4,7 +4,19 @@ import { $api } from "@/utils/api/axiosApi";
 import { handleCheckbox } from "./handleCheckbox";
 import { handleInputPhone } from "@/utils/lib/phoneValidator/handleInputPhone";
 import { handleContentModal } from "./handleContentModal";
-import { handleImageUpload } from "../../upload-img/scripts/handleImageUpload";
+import {
+  getImgFiles,
+  handleImageUpload,
+  resetImageUpload,
+} from "../../upload-img/scripts/handleImageUpload";
+import {
+  closeOverlayAndLoader,
+  openOverlayAndLoader,
+} from "@/utils/ui/overlay/overlay";
+import { ORDER_STATE } from "@/utils/constants/storage";
+import { sendData } from "./fetchData";
+
+// (123) 123-12-31
 
 const container = $class("modal");
 const iconHeader = $class("header__mail");
@@ -16,6 +28,11 @@ const iconContainer = $class("modal__img", container) as HTMLImageElement;
 
 let typeModal: "mail" | "load" = "mail";
 
+function resetForm() {
+  form.reset();
+  resetImageUpload();
+}
+
 function openModal() {
   $add("modal_active", container);
   $add(typeModal, container);
@@ -23,38 +40,31 @@ function openModal() {
 
   if ($contains("modal_active", container)) {
     closeIcon.addEventListener("click", closeModal);
-    form.addEventListener("submit", sendData);
+    form.addEventListener("submit", (e) => sendData(e, typeModal));
     handleCheckbox();
     handleInputPhone("modal-phone");
     handleContentModal(typeModal);
     if (typeModal === "load") {
+      $add("service-label_active", $class("service-label", form));
       handleImageUpload();
       title.textContent = "Создать заказ!";
       textLabel.textContent = "Комментарии к заказу:";
     } else {
+      $remove("service-label_active", $class("service-label", form));
+
       title.textContent = "Отправить сообщение!";
       textLabel.textContent = "Задайте ваш вопрос:";
     }
   }
 }
 
-async function sendData(e: Event) {
-  e.preventDefault();
-
-  const formData = new FormData(form);
-  const name = formData.get("name");
-  const phone = formData.get("phone");
-  const message = formData.get("message");
-  const data = { name, phone, message };
-
-  if (form.checkValidity()) {
-    const answer = (await $api.post("/message", data)).data;
-    if (answer === "saved") {
-      if (typeModal === "load") {
-        title.textContent = "Заказ создан!";
-      } else title.textContent = "Сообщение отправлено!";
-    }
-  }
+export function closeModalAfterResult(text: string) {
+  resetForm();
+  title.textContent = text;
+  closeOverlayAndLoader();
+  setTimeout(() => {
+    closeModal();
+  }, 1000);
 }
 
 export function closeModal() {
@@ -64,7 +74,7 @@ export function closeModal() {
     $remove("load", container);
     $remove("upload_active", $class("upload", form));
     closeIcon.removeEventListener("click", closeModal);
-    form.removeEventListener("submit", sendData);
+    form.removeEventListener("submit", (e) => sendData(e, typeModal));
   }
 }
 

@@ -6,7 +6,10 @@ $padding-goriz-inp: 12px;
 $padding-vert-inp: 5px;
 
 .modal {
-  width: 588px;
+  padding: 50px 2px $padding-block $padding-block;
+  max-height: 740px;
+  width: 598px;
+
   position: fixed;
   right: 30px;
   top: calc(var(--height-header) + 30px);
@@ -14,21 +17,29 @@ $padding-vert-inp: 5px;
   transform: translateX(600px);
   background-color: rgb(248, 248, 248);
   border: 2px solid var(--color-luminous-vivid-orange);
+  transition: 0.3s;
+  border-radius: 15px;
+}
+
+.modal__container {
+  padding-right: 18px;
+  max-height: 670px;
   display: flex;
   flex-direction: column;
   gap: $padding-block;
-  transition: 0.3s;
-  padding: $padding-block;
-  border-radius: 15px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(176, 175, 175) transparent;
 
   .modal__btn-close {
     display: none;
     position: absolute;
     width: 16px;
     height: 16px;
-    right: $padding-block;
-    top: $padding-block;
+    right: 15px;
+    top: 15px;
     cursor: pointer;
+    background-color: rgb(248, 248, 248);
 
     &:before,
     &:after {
@@ -50,19 +61,14 @@ $padding-vert-inp: 5px;
       transform: rotate(-45deg);
     }
   }
-
-  .modal__img {
-    position: absolute;
-    right: $padding-block;
-    bottom: 25px;
-    width: 34px;
-    height: 23px;
-  }
 }
 
 .modal__title {
   font: var(--font-catrin-22-norm);
   letter-spacing: 1px;
+  position: absolute;
+  top: 15px;
+  left: $padding-block;
 }
 
 .modal__form {
@@ -85,6 +91,23 @@ $padding-vert-inp: 5px;
     }
   }
 
+  .service-label {
+    display: none;
+
+    input {
+      display: none;
+      width: 100%;
+    }
+  }
+
+  .service-label_active {
+    display: block;
+
+    input {
+      display: block;
+    }
+  }
+
   .modal__btn-submit {
     background-color: rgb(248, 248, 248);
     border: 1px solid var(--color-luminous-vivid-orange);
@@ -93,11 +116,19 @@ $padding-vert-inp: 5px;
     width: 90%;
     padding: 2px 0;
     cursor: pointer;
+    position: relative;
 
     &:disabled {
       border: 1px solid var(--color-map-btn);
       cursor: default;
     }
+  }
+  .modal__img {
+    position: absolute;
+    right: -50px;
+    bottom: 3px;
+    width: 34px;
+    height: 23px;
   }
 }
 

@@ -19,7 +19,9 @@ export default (env: BuildEnv) => {
   const mode = env?.mode || "development";
   const isDev = mode === "development";
   const api =
-    mode === "development" ? "http://127.0.0.1:8000" : "http://127.0.0.1:8000";
+    mode === "development"
+      ? "https://photostudio.ru/api"
+      : "https://photostudio.ru/api";
 
   const options = {
     paths: buildPaths,

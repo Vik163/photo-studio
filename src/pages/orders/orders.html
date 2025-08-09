@@ -293,75 +293,88 @@
         </div>
       </section>
       <section class="modal">
-        <h2 class="modal__title">Отправить сообщение</h2>
-        <div class="modal__btn-close"></div>
-        <form class="modal__form">
-          <label class="modal__label" name="name" for="name">Ваше имя</label>
-          <input
-            class="modal__form-item"
-            name="name"
-            type="text"
-            required
-            minlength="2"
-          />
-          <label class="modal__label" name="phone" for="phone"
-            >Номер телефона</label
-          >
-          <input
-            id="modal-phone"
-            class="modal__form-item"
-            name="phone"
-            type="text"
-            placeholder="+7 (999) 999-99-99"
-            required
-          />
-          <div class="upload">
-            <span class="upload__title">Загрузить фотографии:</span>
-            <div class="upload__container">
-              <label class="upload__label">
-                <input
-                  type="file"
-                  id="fileUpload"
-                  multiple
-                  name="file"
-                  accept="image/*"
-                />
-                <span class="upload__btn" id="dragDropArea"
-                  >Выберите файлы <br />
-                  или <br />перетащите их сюда</span
-                >
-              </label>
-              <span class="upload__text">Максимум 10мб</span>
-              <div class="upload__images"></div>
-            </div>
-          </div>
-          <label id="text-label" class="modal__label" for="message"
-            >Задайте ваш вопрос:</label
-          >
-          <textarea
-            id="modal-message"
-            name="message"
-            placeholder="Напишите ваш вопрос и как с вами связаться."
-            class="modal__form-item modal__text"
-            rows="5"
-            cols="33"
-            required
-          ></textarea>
-          <div class="modal__checkbox">
-            <div class="modal__checkbox-label"></div>
-            <span
-              ><a id="politic" class="modal__checkbox-link" href="#"
-                >Нажимая на кнопку, вы даете согласие на обработку персональных
-                данных<br />
-                и соглашаетесь с нашей политикой конфиденциальности</a
-              ></span
+        <div class="modal__container">
+          <h2 class="modal__title">Отправить сообщение</h2>
+          <div class="modal__btn-close"></div>
+          <form class="modal__form">
+            <label class="modal__label" name="name" for="name">Ваше имя</label>
+            <input
+              class="modal__form-item"
+              name="name"
+              type="text"
+              required
+              minlength="2"
+            />
+            <label class="modal__label" name="phone" for="phone"
+              >Номер телефона</label
             >
-          </div>
-          <button type="submit" class="modal__btn-submit" disabled>
-            Отправить
-          </button>
-        </form>
-        <img class="modal__img" src="#" alt="" />
+            <input
+              id="modal-phone"
+              class="modal__form-item"
+              name="phone"
+              type="text"
+              placeholder="+7 (999) 999-99-99"
+              required
+            />
+            <label
+              class="modal__label service-label"
+              name="service"
+              for="service"
+              >Вид услуг (напишите в произвольной форме)
+              <input
+                class="modal__form-item"
+                name="service"
+                type="text"
+                required
+                minlength="2"
+            /></label>
+            <div class="upload">
+              <span class="upload__title">Загрузить фотографии:</span>
+              <div class="upload__container">
+                <label class="upload__label">
+                  <input
+                    type="file"
+                    id="fileUpload"
+                    multiple
+                    name="file"
+                    accept="image/*"
+                  />
+                  <span class="upload__btn" id="dragDropArea"
+                    >Выберите файлы <br />
+                    или <br />перетащите их сюда</span
+                  >
+                </label>
+                <span class="upload__text">Максимум 10мб</span>
+                <div class="upload__images"></div>
+              </div>
+            </div>
+            <label id="text-label" class="modal__label" for="message"
+              >Задайте ваш вопрос:</label
+            >
+            <textarea
+              id="modal-message"
+              name="message"
+              placeholder="Напишите ваш вопрос и как с вами связаться."
+              class="modal__form-item modal__text"
+              rows="4"
+              cols="33"
+            ></textarea>
+            <div class="modal__checkbox">
+              <div class="modal__checkbox-label"></div>
+              <span
+                ><a id="politic" class="modal__checkbox-link" href="#"
+                  >Нажимая на кнопку, вы даете согласие на обработку
+                  персональных данных<br />
+                  и соглашаетесь с нашей политикой конфиденциальности</a
+                ></span
+              >
+            </div>
+            <button type="submit" class="modal__btn-submit" disabled>
+              Отправить
+              <img class="modal__img" src="#" alt="" />
+            </button>
+          </form>
+        </div>
       </section>
     </main>
 
@@ -371,6 +384,10 @@
       </a>
       <div class="footer__date"></div>
     </footer>
+
+    <div class="overlay">
+      <span class="loader"></span>
+    </div>
 
     <!--* ====== Tempalates =============== -->
     <template id="upload-img">

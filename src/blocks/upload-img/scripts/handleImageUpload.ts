@@ -6,26 +6,25 @@ const images = $class("upload__images", loadBlock)!;
 const dragDropArea = $id("dragDropArea")!;
 
 let files: File[] = [];
+let cachFiles: File[] = [];
+let arrImg: NodeListOf<HTMLImageElement> | null = null;
 
-function deleteImage(e: Event) {
-  console.log("e:", e.currentTarget);
+export function resetImageUpload() {
+  document.querySelectorAll(".upload-img").forEach((img) => {
+    img.remove();
+  });
+
+  cachFiles = [];
+  arrImg = null;
 }
 
-function setId() {
-  let id = 0;
-  let minId = 0;
-  const arrImg = document.querySelectorAll("images__container");
-  if (arrImg.length > 0) {
-    arrImg.forEach((img) => {
-      const imgId = +img.id;
-      if (imgId > minId) minId = imgId;
-    });
-
-    id = minId + 1;
-  } else id = 1;
-
-  console.log("e:", id);
-  return id;
+function deleteImage(e: Event) {
+  const target = e.target as HTMLElement;
+  document.querySelectorAll(".upload-img").forEach((img) => {
+    if (img.id === target.id) {
+      img.remove();
+    }
+  });
 }
 
 function setElements(res: string) {
@@ -39,10 +38,15 @@ function setElements(res: string) {
     const image = $class("upload-img__img", imgTemplate) as HTMLImageElement;
     image.src = res;
 
-    const btn = $class("card-product__btn", imgTemplate);
-    // btn.id = setId().toString();
-
     images?.append(imgTemplate);
+
+    arrImg = document.querySelectorAll(".upload-img");
+    arrImg.forEach((img, index) => {
+      const id = index.toString();
+      const btn = $class("upload-img__btn", img as HTMLElement);
+      img.id = id;
+      btn.id = id;
+    });
   }
 }
 
@@ -71,6 +75,7 @@ function handleImages() {
     reader.readAsDataURL(file);
   }
 
+  cachFiles = files;
   files = [];
 }
 
@@ -79,6 +84,10 @@ function collectFilesFilter(container: FileList) {
     (file) => typeof file !== "number"
   );
   arrFiles.forEach((file) => files?.push(file));
+}
+
+export function getImgFiles() {
+  return cachFiles;
 }
 
 /**
@@ -103,4 +112,6 @@ export const handleImageUpload = () => {
     collectFilesFilter(e.dataTransfer?.files!);
     handleImages();
   });
+
+  images.addEventListener("click", deleteImage);
 };

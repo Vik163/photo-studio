@@ -1,6 +1,7 @@
 import { HEADER_HEIGHT } from "@/utils/constants/styles";
 import { $class, $contains, $id, $toggle } from "@/utils/lib/getElement";
 import { addClasses, removeClasses } from "./handleMenuClasses";
+import { $api } from "@/utils/api/axiosApi";
 
 const header = $class("header");
 const btn = $class("header__btn", header);
@@ -33,9 +34,11 @@ export function closeMenu() {
   }
 }
 
-function clickMenu() {
+async function clickMenu() {
   $toggle("header_active-menu", header);
 
+  const token = await $api.get("/users/cookie/+7 (123) 123-12-31");
+  console.log("$api:", token);
   if ($contains("menu_open", menu)) {
     closeMenu();
   } else {
