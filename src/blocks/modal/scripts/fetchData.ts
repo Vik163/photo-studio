@@ -45,7 +45,7 @@ async function fetchData(text: string) {
 export async function sendData(e: Event, typeModal: "mail" | "load") {
   e.preventDefault();
 
-  openOverlayAndLoader("loader");
+  // openOverlayAndLoader("loader");
   formData = new FormData(form);
 
   const name = formData.get("name")!;
@@ -54,29 +54,29 @@ export async function sendData(e: Event, typeModal: "mail" | "load") {
   const message = formData.get("message")!;
   uploadBaketStr();
 
-  if (form.checkValidity()) {
-    if (typeModal === "load") {
-      const files = getImgFiles();
+  // if (form.checkValidity()) {
+  //   if (typeModal === "load") {
+  //     const files = getImgFiles();
 
-      for (let file of files) {
-        formData.append("images", file);
-        // uploadBaketJbj(file);
-      }
-      const images = formData.getAll("images");
+  //     for (let file of files) {
+  //       formData.append("images", file);
+  //       // uploadBaketJbj(file);
+  //     }
+  //     const images = formData.getAll("images");
 
-      data = { name, phone, message, images, service };
+  //     data = { name, phone, message, images, service };
 
-      // let upload = await s3.Upload(
-      //   [
-      //     { path: "./file1.jpg", save_name: true }, // относительный путь до файла с сохранением имени
-      //     { path: "/Users/powerodt/dev/sites/folder/file2.css" }, // прямой путь до файла с изменением имени на uuid-v4
-      //   ],
-      //   "/folder_on_server/"
-      // );
-      // fetchData("Заказ создан!");
-    } else {
-      data = { name, phone, message, service: "Сообщение" };
-      // fetchData("Сообщение отправлено!");
-    }
-  }
+  //     // let upload = await s3.Upload(
+  //     //   [
+  //     //     { path: "./file1.jpg", save_name: true }, // относительный путь до файла с сохранением имени
+  //     //     { path: "/Users/powerodt/dev/sites/folder/file2.css" }, // прямой путь до файла с изменением имени на uuid-v4
+  //     //   ],
+  //     //   "/folder_on_server/"
+  //     // );
+  //     // fetchData("Заказ создан!");
+  //   } else {
+  //     data = { name, phone, message, service: "Сообщение" };
+  //     // fetchData("Сообщение отправлено!");
+  //   }
+  // }
 }
