@@ -46,6 +46,7 @@
     "webpack-dev-server": "^5.2.2"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.864.0",
     "@babel/runtime": "^7.27.6",
     "@yandex/ymaps3-default-ui-theme": "^0.0.19",
     "axios": "^1.11.0"

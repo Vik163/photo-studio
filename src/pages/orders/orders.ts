@@ -20,7 +20,6 @@ function getServiceById() {
   const locationPath = location.pathname;
 
   const pathname = locationPath.split("/").slice(-1)[0];
-  console.log("pathname:", pathname);
 
   window.scrollTo({
     top: $id(pathname).offsetTop - HEADER_HEIGHT,

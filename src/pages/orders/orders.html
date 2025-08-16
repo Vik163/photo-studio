@@ -296,13 +296,36 @@
         <div class="modal__container">
           <h2 class="modal__title">Отправить сообщение</h2>
           <div class="modal__btn-close"></div>
-          <form class="modal__form">
+          <form
+            action="https://storage.yandexcloud.net/photo-studio"
+            method="post"
+            enctype="multipart/form-data"
+            class="asd-form"
+          >
+            Ключ в хранилище:
+            <input type="input" name="key" value="prefix/${filename}" /><br />
+            <input
+              id="asd"
+              type="hidden"
+              name="X-Amz-Credential"
+              value="YCAJEjfHJvApoXse7L6lBpejg/20190722/ru-central1/s3/aws4_request"
+            />
+            Файл для загрузки:
+            <input type="file" name="file" /> <br />
+            <!-- Поля после “file” игнорируются -->
+            <input type="submit" name="submit" value="Загрузить" />
+          </form>
+          <form
+            class="modal__form"
+            action="https://storage.yandexcloud.net/photo-studio"
+            method="post"
+            enctype="multipart/form-data"
+          >
             <label class="modal__label" name="name" for="name">Ваше имя</label>
             <input
               class="modal__form-item"
               name="name"
               type="text"
-              required
               minlength="2"
             />
             <label class="modal__label" name="phone" for="phone"
@@ -314,7 +337,6 @@
               name="phone"
               type="text"
               placeholder="+7 (999) 999-99-99"
-              required
             />
             <label
               class="modal__label service-label"
@@ -325,7 +347,6 @@
                 class="modal__form-item"
                 name="service"
                 type="text"
-                required
                 minlength="2"
             /></label>
             <div class="upload">

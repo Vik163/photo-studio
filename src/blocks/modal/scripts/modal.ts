@@ -28,11 +28,6 @@ const iconContainer = $class("modal__img", container) as HTMLImageElement;
 
 let typeModal: "mail" | "load" = "mail";
 
-function resetForm() {
-  form.reset();
-  resetImageUpload();
-}
-
 function openModal() {
   $add("modal_active", container);
   $add(typeModal, container);
@@ -59,7 +54,6 @@ function openModal() {
 }
 
 export function closeModalAfterResult(text: string) {
-  resetForm();
   title.textContent = text;
   closeOverlayAndLoader();
   setTimeout(() => {

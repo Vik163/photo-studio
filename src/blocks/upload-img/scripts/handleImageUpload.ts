@@ -15,6 +15,7 @@ export function resetImageUpload() {
   });
 
   cachFiles = [];
+  console.log("Files:", files);
   arrImg = null;
 }
 
