@@ -38,7 +38,7 @@ export async function uploadBaketStr() {
   const bucketName = `${process.env.YA_NAME_CLOUD}-${Date.now()}`;
 
   const s3Client = new S3Client({
-    region: "ru-central1-d",
+    region: "ru-central1",
     credentials: {
       accessKeyId: process.env.YA_CLOUD_ID,
       secretAccessKey: process.env.YA_CLOUD_KEY,
@@ -51,7 +51,7 @@ export async function uploadBaketStr() {
       Bucket: bucketName,
     })
   );
-  console.log(`The bucket ${bucketName} was created.\n\n`);
+  // console.log(`The bucket ${bucketName} was created.\n\n`);
   // Загрузить объекты в бакет
   // Из строки
   console.log("Creating a object from string.");

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack  --env mode=production --config webpack.config.ts",
-    "dev": "webpack serve --env mode=development"
+    "dev": "webpack serve --env mode=development",
+    "deploy": "npm run build && scp -r ./build/* vik@77.222.60.220:/home/vik/photo-studio"
   },
   "author": "",
   "license": "ISC",

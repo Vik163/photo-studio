@@ -1,3 +1,4 @@
+import { ORDER_PATH } from "../constants/storage";
 import type { PageNames, PathNames } from "../types/routes";
 
 /**
@@ -6,13 +7,14 @@ import type { PageNames, PathNames } from "../types/routes";
  */
 export const redirectOnPage = (page: PageNames, path: PathNames) => {
   path
-    ? localStorage.setItem("service", path)
-    : localStorage.removeItem("service");
+    ? localStorage.setItem(ORDER_PATH, path)
+    : localStorage.removeItem(ORDER_PATH);
 
   const pathDev = path ? `/${page}/${path}` : `/${page}`;
   const address = __IS_DEV__
     ? pathDev
-    : `https://photo-studio-vg2s.vercel.app/${page}/${path}`;
+    : `https://photosalon.online/${page}.html`;
 
+  history.pushState({ page }, document.title, window.location.pathname);
   window.location.href = address;
 };

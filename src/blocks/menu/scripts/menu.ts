@@ -1,7 +1,7 @@
-import { HEADER_HEIGHT } from "@/utils/constants/styles";
-import { $class, $contains, $id, $toggle } from "@/utils/lib/getElement";
+import { $class, $contains, $toggle } from "@/utils/lib/getElement";
 import { addClasses, removeClasses } from "./handleMenuClasses";
 import { $api } from "@/utils/api/axiosApi";
+import { scrollToBlock } from "./scrollToBlock";
 
 const header = $class("header");
 const btn = $class("header__btn", header);
@@ -37,8 +37,8 @@ export function closeMenu() {
 async function clickMenu() {
   $toggle("header_active-menu", header);
 
-  const token = await $api.get("/users/cookie/+7 (123) 123-12-31");
-  console.log("$api:", token);
+  // const token = await $api.get("/users/cookie/+7 (123) 123-12-31");
+  // console.log("$api:", token);
   if ($contains("menu_open", menu)) {
     closeMenu();
   } else {
@@ -46,30 +46,8 @@ async function clickMenu() {
   }
 }
 
-function scrollToBlock(event: Event) {
-  event.preventDefault();
-  const nameEl = (event.target as HTMLAnchorElement).name;
-  closeMenu();
-
-  const topPos =
-    $id(nameEl).getBoundingClientRect().top -
-    HEADER_HEIGHT +
-    window.pageYOffset;
-
-  window.scrollTo({
-    top: topPos,
-    behavior: "smooth",
-  });
-}
-
 export const setMenuListeners = () => {
   btn.addEventListener("click", clickMenu);
-
-  // document.addEventListener("keydown", function (event: KeyboardEvent) {
-  //   if ($contains("menu_open", menu) && event.code === "Escape") {
-  //     closeMenu();
-  //   }
-  // });
 
   menuItemsLinks.forEach((link) => {
     link.addEventListener("click", (e) => scrollToBlock(e));

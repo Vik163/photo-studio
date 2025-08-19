@@ -9,10 +9,13 @@ import { setFooter } from "@/blocks/footer/footer";
 import { setModal } from "@/blocks/modal/scripts/modal";
 import { closeByEsc } from "@/utils/lib/closeByEsc";
 import { setDirectionAnimation } from "@/utils/lib/setDirectionAnimation";
+import { ORDER_PATH } from "@/utils/constants/storage";
 
-//! для разрабтки ===========================
-if (__IS_DEV__ && location.pathname !== "/") {
+if (location.pathname !== "/") {
   const locationPath = location.pathname;
+
+  history.pushState(null, locationPath, locationPath);
+
   if (locationPath === "/index.html") {
     window.history.pushState(null, "", "/");
   } else if (locationPath === "/errors") {

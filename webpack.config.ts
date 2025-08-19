@@ -21,7 +21,7 @@ export default (env: BuildEnv) => {
   const api =
     mode === "development"
       ? "https://photostudio.ru/api"
-      : "https://photostudio.ru/api";
+      : "https://photosalon.online/api";
 
   const options = {
     paths: buildPaths,

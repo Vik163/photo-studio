@@ -11,9 +11,14 @@ import { changeUrl } from "@/utils/lib/changeUrl";
 import { setServices } from "@/blocks/main/services/scripts/services";
 import { $id } from "@/utils/lib/getElement";
 import { HEADER_HEIGHT } from "@/utils/constants/styles";
+import { ORDER_PATH } from "@/utils/constants/storage";
 
-if (__IS_DEV__) {
-  changeUrl("orders");
+changeUrl("orders");
+
+if (!("state" in window.history) || window.history.state === null) {
+  const path = window.location.pathname;
+
+  window.history.replaceState({ page: path }, "", path);
 }
 
 function getServiceById() {
@@ -38,6 +43,15 @@ setModal("load");
 setFooter();
 
 closeByEsc();
+
+window.addEventListener("popstate", (e) => {
+  const state = e.state;
+
+  if (!state) {
+    history.go(-2);
+    localStorage.removeItem(ORDER_PATH);
+  }
+});
 
 //* === анимация блоков при скролле  ================================
 window.onload = getServiceById;
