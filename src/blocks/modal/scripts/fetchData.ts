@@ -7,7 +7,7 @@ import { ORDER_STATE } from "@/utils/constants/storage";
 import { $class } from "@/utils/lib/getElement";
 import { openOverlayAndLoader } from "@/utils/ui/overlay/overlay";
 import { closeModalAfterResult } from "./modal";
-import { uploadBaketStr } from "@/utils/lib/handleYaBaket";
+import { uploadBaketJbj, uploadBaketStr } from "@/utils/lib/handleYaBaket";
 
 interface OrderData {
   name: FormDataEntryValue;
@@ -52,31 +52,31 @@ export async function sendData(e: Event, typeModal: "mail" | "load") {
   const service = formData.get("service")!;
   const phone = (formData.get("phone") as string).replace(/\s+/g, "");
   const message = formData.get("message")!;
-  uploadBaketStr();
+  // uploadBaketStr();
 
-  // if (form.checkValidity()) {
-  //   if (typeModal === "load") {
-  //     const files = getImgFiles();
+  if (form.checkValidity()) {
+    if (typeModal === "load") {
+      const files = getImgFiles();
 
-  //     for (let file of files) {
-  //       formData.append("images", file);
-  //       // uploadBaketJbj(file);
-  //     }
-  //     const images = formData.getAll("images");
+      for (let file of files) {
+        formData.append("images", file);
+        uploadBaketJbj(file);
+      }
+      const images = formData.getAll("images");
 
-  //     data = { name, phone, message, images, service };
+      data = { name, phone, message, images, service };
 
-  //     // let upload = await s3.Upload(
-  //     //   [
-  //     //     { path: "./file1.jpg", save_name: true }, // относительный путь до файла с сохранением имени
-  //     //     { path: "/Users/powerodt/dev/sites/folder/file2.css" }, // прямой путь до файла с изменением имени на uuid-v4
-  //     //   ],
-  //     //   "/folder_on_server/"
-  //     // );
-  //     // fetchData("Заказ создан!");
-  //   } else {
-  //     data = { name, phone, message, service: "Сообщение" };
-  //     // fetchData("Сообщение отправлено!");
-  //   }
-  // }
+      // let upload = await s3.Upload(
+      //   [
+      //     { path: "./file1.jpg", save_name: true }, // относительный путь до файла с сохранением имени
+      //     { path: "/Users/powerodt/dev/sites/folder/file2.css" }, // прямой путь до файла с изменением имени на uuid-v4
+      //   ],
+      //   "/folder_on_server/"
+      // );
+      // fetchData("Заказ создан!");
+    } else {
+      data = { name, phone, message, service: "Сообщение" };
+      // fetchData("Сообщение отправлено!");
+    }
+  }
 }

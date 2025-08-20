@@ -25,6 +25,6 @@
     // изолирует файлы с типами (не учавствуют в компиляции) в импорте надо ставить 'import type'
     "isolatedModules": true
   },
-  "include": ["./src/**/*.ts"],
+  "include": ["./src/**/*.ts", "src/utils/lib/handleYaBaket.ts"],
   "exclude": ["node_modules"]
 }

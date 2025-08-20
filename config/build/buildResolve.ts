@@ -10,5 +10,6 @@ export const buildResolve = (options: BuildOptions): webpack.ResolveOptions => {
     alias: {
       "@": paths.src,
     },
+    fallback: { path: require.resolve("path-browserify") },
   };
 };

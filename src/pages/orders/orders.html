@@ -296,24 +296,50 @@
         <div class="modal__container">
           <h2 class="modal__title">Отправить сообщение</h2>
           <div class="modal__btn-close"></div>
-          <!-- <form
+          <form
             action="https://storage.yandexcloud.net/photo-studio"
             method="post"
             enctype="multipart/form-data"
             class="asd-form"
           >
             Ключ в хранилище:
-            <input type="input" name="key" value="prefix/${filename}" /><br />
+            <input type="input" name="key" value="349859384593849" /><br />
+            <!-- Свойства запроса -->
             <input
               id="asd"
               type="hidden"
               name="X-Amz-Credential"
-              value="YCAJEjfHJvApoXse7L6lBpejg/20190722/ru-central1/s3/aws4_request"
+              value="YCAJEjfHJvApoXse7L6lBpejg/20180719T000000Z/ru-central1/s3/aws4_request"
             />
+            <!-- <input type="hidden" name="acl" value="predefined-acl-name" /> -->
+            <!-- <input
+              type="hidden"
+              name="X-Amz-Algorithm"
+              value="AWS4-HMAC-SHA256"
+            /> -->
+            <input type="hidden" name="X-Amz-Date" value="20180719T000000Z" />
+            <!-- <input
+              type="hidden"
+              name="success_action_redirect"
+              value="some-URL"
+            /> -->
+            <!-- <input
+              type="hidden"
+              name="policy"
+              value="base64-encoded-policy-document"
+            /> -->
+            <!-- <input
+              type="hidden"
+              name="X-Amz-Signature"
+              value="signature-string"
+            /> -->
+            <!-- Прочие необходимые поля -->
             Файл для загрузки:
             <input type="file" name="file" /> <br />
+            <!-- Поля после “file” игнорируются -->
             <input type="submit" name="submit" value="Загрузить" />
-          </form> -->
+          </form>
+
           <form
             class="modal__form"
             action="https://storage.yandexcloud.net/photo-studio"

@@ -6,89 +6,64 @@ import {
   DeleteBucketCommand,
   paginateListObjectsV2,
   GetObjectCommand,
+  ListObjectsCommand,
   ListObjectsV2Command,
 } from "@aws-sdk/client-s3";
+var path = require("path");
 
-// const bucketName = `photo-studio-${Date.now()}`;
+const bucketName = process.env.YA_NAME_CLOUD;
+const s3Client = new S3Client({
+  region: "ru-central1",
+  endpoint: "https://s3.yandexcloud.net",
+  credentials: {
+    accessKeyId: process.env.YA_CLOUD_ID,
+    secretAccessKey: process.env.YA_CLOUD_KEY,
+  },
+});
 
-// const s3Client = new S3Client({
-//   region: "ru-central1-d",
-//   credentials: {
-//     accessKeyId: process.env.YA_CLOUD_ID,
-//     secretAccessKey: process.env.YA_CLOUD_KEY,
-//   },
-// });
+export async function uploadBaketJbj(file: File) {
+  let reader = new FileReader();
+  reader.readAsDataURL(file);
 
-// export async function handleYaBaket() {
-//   // Создание s3 клиента для взаимодействия с aws.
-//   // Данные для авторизации берутся из вашего окружения, но вы можете указать их явно. Например:
-//   // `new S3Client({ region: 'ru-central1', credentials: {...} })`
+  reader.onload = async function () {
+    const result = reader.result;
+    if (typeof result === "string")
+      await s3Client.send(
+        new PutObjectCommand({
+          Bucket: bucketName,
+          Key: file.name,
+          Body: result,
+        })
+      );
+  };
+  console.log("file:", file);
 
-//   // Создать новый бакет
-//   console.log(`Creating the bucket ${bucketName}.`);
-//   await s3Client.send(
-//     new CreateBucketCommand({
-//       Bucket: bucketName,
-//     })
-//   );
-//   console.log(`The bucket ${bucketName} was created.\n\n`);
-// }
-
-export async function uploadBaketStr() {
-  const bucketName = `${process.env.YA_NAME_CLOUD}-${Date.now()}`;
-
-  const s3Client = new S3Client({
-    region: "ru-central1",
-    credentials: {
-      accessKeyId: process.env.YA_CLOUD_ID,
-      secretAccessKey: process.env.YA_CLOUD_KEY,
-    },
-  });
-
-  console.log(`Creating the bucket ${bucketName}.`);
-  await s3Client.send(
-    new CreateBucketCommand({
-      Bucket: bucketName,
-    })
-  );
-  // console.log(`The bucket ${bucketName} was created.\n\n`);
-  // Загрузить объекты в бакет
-  // Из строки
-  console.log("Creating a object from string.");
-  await s3Client.send(
-    new PutObjectCommand({
-      Bucket: bucketName,
-      Key: "bucket-text",
-      Body: "Hello bucket!",
-    })
-  );
-  console.log("The object from string was created.\n");
+  console.log("Creating the first object from local file.");
 }
 
-// export async function uploadBaketJbj(file: File) {
-//   let reader = new FileReader();
-//   reader.readAsDataURL(file);
+export async function uploadBaketStr() {
+  // // console.log(`The bucket ${bucketName} was created.\n\n`);
+  // // Загрузить объекты в бакет
+  // // Из строки
+  console.log("Creating a object from string.");
+  // await s3Client.send(
+  //   new PutObjectCommand({
+  //     Bucket: process.env.YA_NAME_CLOUD,
+  //     Key: "bucket-text",
+  //     Body: "Hello bucket!",
+  //   })
+  // );
 
-//   reader.onload = async function () {
-//     const result = reader.result!;
-//     console.log("result:", result);
-//     if (typeof result === "string")
-//       await s3Client.send(
-//         new PutObjectCommand({
-//           Bucket: bucketName,
-//           Key: file.name,
-//           Body: result,
-//         })
-//       );
-//   };
-//   console.log("file:", file);
-//   const newFile = JSON.stringify(file);
-//   console.log("newFile:", newFile);
+  // await s3Client.send(
+  //   new PutObjectCommand({
+  //     Bucket: process.env.YA_NAME_CLOUD,
+  //     Key: "my-package.json",
+  //     Body: path.resolve(__dirname, "./src/assets/images/home-1.jpg"),
+  //   })
+  // );
 
-//   // Из файлов
-
-//   console.log("Creating the first object from local file.");
-// }
+  console.log("The object from string was created.\n");
+}
 // // console.log(
 // //   "The first object was created.\nCreating the second object from local file."
 // // );
