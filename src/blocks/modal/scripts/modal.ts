@@ -15,6 +15,7 @@ import {
 } from "@/utils/ui/overlay/overlay";
 import { ORDER_STATE } from "@/utils/constants/storage";
 import { sendData } from "./fetchData";
+import { getBaketListObj } from "@/utils/lib/handleYaBaket";
 
 // (123) 123-12-31
 
@@ -39,6 +40,9 @@ function openModal() {
     handleCheckbox();
     handleInputPhone("modal-phone");
     handleContentModal(typeModal);
+
+    getBaketListObj();
+
     if (typeModal === "load") {
       $add("service-label_active", $class("service-label", form));
       handleImageUpload();

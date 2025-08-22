@@ -7,7 +7,8 @@ import { ORDER_STATE } from "@/utils/constants/storage";
 import { $class } from "@/utils/lib/getElement";
 import { openOverlayAndLoader } from "@/utils/ui/overlay/overlay";
 import { closeModalAfterResult } from "./modal";
-import { uploadBaketJbj, uploadBaketStr } from "@/utils/lib/handleYaBaket";
+import { uploadBaketJbj } from "@/utils/lib/handleYaBaket";
+import { readerFiles } from "@/utils/lib/readerFiles";
 
 interface OrderData {
   name: FormDataEntryValue;
@@ -16,6 +17,8 @@ interface OrderData {
   images?: FormDataEntryValue[];
   service: FormDataEntryValue;
 }
+
+// let reader = new FileReader();
 
 const form = $class("modal__form") as HTMLFormElement;
 let data: OrderData | null = null;
@@ -52,27 +55,29 @@ export async function sendData(e: Event, typeModal: "mail" | "load") {
   const service = formData.get("service")!;
   const phone = (formData.get("phone") as string).replace(/\s+/g, "");
   const message = formData.get("message")!;
-  // uploadBaketStr();
 
   if (form.checkValidity()) {
     if (typeModal === "load") {
       const files = getImgFiles();
+      let images = [];
 
       for (let file of files) {
         formData.append("images", file);
-        uploadBaketJbj(file);
+
+        const fileName = `${phone}-${file.name}`;
+
+        const result = await readerFiles(file);
+
+        if (result) {
+          uploadBaketJbj(fileName, result);
+
+          images.push(fileName);
+        }
       }
-      const images = formData.getAll("images");
 
       data = { name, phone, message, images, service };
+      console.log("data:", data);
 
-      // let upload = await s3.Upload(
-      //   [
-      //     { path: "./file1.jpg", save_name: true }, // относительный путь до файла с сохранением имени
-      //     { path: "/Users/powerodt/dev/sites/folder/file2.css" }, // прямой путь до файла с изменением имени на uuid-v4
-      //   ],
-      //   "/folder_on_server/"
-      // );
       // fetchData("Заказ создан!");
     } else {
       data = { name, phone, message, service: "Сообщение" };
