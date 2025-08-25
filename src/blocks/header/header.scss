@@ -42,10 +42,14 @@
 
 .header__mail {
   width: 40px;
-  height: 27px;
+  height: 32px;
   transition: all times.$time-quarter;
-  margin-top: 3px;
   cursor: pointer;
+
+  &:nth-of-type(2) {
+    margin-top: 3px;
+    height: 27px;
+  }
 
   &:hover {
     transition: all times.$time-quarter;

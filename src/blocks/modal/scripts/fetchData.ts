@@ -2,6 +2,7 @@ import {
   getImgFiles,
   resetImageUpload,
 } from "@/blocks/upload-img/scripts/handleImageUpload";
+import { v4 as uuidv4 } from "uuid";
 import { $api } from "@/utils/api/axiosApi";
 import { ORDER_STATE } from "@/utils/constants/storage";
 import { $class } from "@/utils/lib/getElement";
@@ -11,6 +12,7 @@ import { uploadBaketJbj } from "@/utils/lib/handleYaBaket";
 import { readerFiles } from "@/utils/lib/readerFiles";
 
 interface OrderData {
+  orderId: string;
   name: FormDataEntryValue;
   phone: FormDataEntryValue;
   message?: FormDataEntryValue;
@@ -29,7 +31,6 @@ function resetForm() {
 
   formData.forEach((value, key, parent) => {
     formData.delete(key);
-    console.log(value, key, parent);
   });
   resetImageUpload();
 }
@@ -53,18 +54,17 @@ export async function sendData(e: Event, typeModal: "mail" | "load") {
 
   const name = formData.get("name")!;
   const service = formData.get("service")!;
-  const phone = (formData.get("phone") as string).replace(/\s+/g, "");
+  const phone = (formData.get("phone") as string).replace(/\D/g, "").slice(1); //только цифры без 7;
   const message = formData.get("message")!;
 
   if (form.checkValidity()) {
+    const orderId = uuidv4();
     if (typeModal === "load") {
       const files = getImgFiles();
       let images = [];
 
       for (let file of files) {
-        formData.append("images", file);
-
-        const fileName = `${phone}-${file.name}`;
+        const fileName = `${orderId}/${file.name}`;
 
         const result = await readerFiles(file);
 
@@ -75,13 +75,12 @@ export async function sendData(e: Event, typeModal: "mail" | "load") {
         }
       }
 
-      data = { name, phone, message, images, service };
-      console.log("data:", data);
+      data = { orderId, name, phone, message, images, service };
 
-      // fetchData("Заказ создан!");
+      fetchData("Заказ создан!");
     } else {
-      data = { name, phone, message, service: "Сообщение" };
-      // fetchData("Сообщение отправлено!");
+      data = { orderId, name, phone, message, service: "Сообщение" };
+      fetchData("Сообщение отправлено!");
     }
   }
 }

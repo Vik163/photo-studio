@@ -4,12 +4,12 @@
  * @param parent - родитель, если есть
  */
 export const $class = (
-   className: string,
-   parent?: HTMLElement,
+  className: string,
+  parent?: HTMLElement
 ): HTMLElement => {
-   return parent
-      ? parent.querySelector(`.${className}`)!
-      : document.querySelector(`.${className}`)!;
+  return parent
+    ? parent.querySelector(`.${className}`)!
+    : document.querySelector(`.${className}`)!;
 };
 
 /**
@@ -17,7 +17,7 @@ export const $class = (
  * @param id - id
  */
 export const $id = (id: string) => {
-   return document.getElementById(id)!;
+  return document.getElementById(id)!;
 };
 
 /**
@@ -26,7 +26,7 @@ export const $id = (id: string) => {
  * @param parent - родитель, если есть
  */
 export const $add = (className: string, parent: HTMLElement) => {
-   parent.classList.add(className);
+  parent.classList.add(className);
 };
 
 /**
@@ -35,7 +35,7 @@ export const $add = (className: string, parent: HTMLElement) => {
  * @param parent - родитель, если есть
  */
 export const $remove = (className: string, parent: HTMLElement) => {
-   parent.classList.remove(className);
+  parent.classList.remove(className);
 };
 
 /**
@@ -44,7 +44,7 @@ export const $remove = (className: string, parent: HTMLElement) => {
  * @param parent - родитель, если есть
  */
 export const $toggle = (className: string, parent: HTMLElement) => {
-   parent.classList.toggle(className);
+  parent.classList.toggle(className);
 };
 
 /**
@@ -53,5 +53,5 @@ export const $toggle = (className: string, parent: HTMLElement) => {
  * @param parent - родитель, если есть
  */
 export const $contains = (className: string, parent: HTMLElement) => {
-   return parent.classList.contains(className);
+  return parent.classList.contains(className);
 };

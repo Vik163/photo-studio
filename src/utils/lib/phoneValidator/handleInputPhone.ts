@@ -5,7 +5,7 @@ import { phoneValidator } from "./phoneValidator";
  *  маска набора номера телефона (+7 (999) 999-99-99)
  * @param id - id инпута телелефона
  */
-export function handleInputPhone(id: string) {
+export function setListenersInputPhone(id: string) {
   const inp = document.getElementById(id)! as HTMLInputElement;
 
   inp.addEventListener("input", function () {

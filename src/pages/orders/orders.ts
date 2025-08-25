@@ -4,7 +4,7 @@ import { setHeader } from "@/blocks/header/scripts/header";
 import { setContacts } from "@/blocks/contacts/contacts";
 import { setCSSVariales } from "@/utils/lib/setCSSVariales";
 import { setFooter } from "@/blocks/footer/footer";
-import { setModal } from "@/blocks/modal/scripts/modal";
+import { setListenersModal } from "@/blocks/modal/scripts/modal";
 import { closeByEsc } from "@/utils/lib/closeByEsc";
 import { setDirectionAnimation } from "@/utils/lib/setDirectionAnimation";
 import { changeUrl } from "@/utils/lib/changeUrl";
@@ -38,7 +38,7 @@ setHeader();
 
 setContacts();
 
-setModal("load");
+setListenersModal();
 
 setFooter();
 
