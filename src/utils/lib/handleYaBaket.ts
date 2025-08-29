@@ -1,13 +1,9 @@
 import {
   S3Client,
   PutObjectCommand,
-  CreateBucketCommand,
   DeleteObjectCommand,
-  DeleteBucketCommand,
-  paginateListObjectsV2,
   GetObjectCommand,
   ListObjectsCommand,
-  ListObjectsV2Command,
 } from "@aws-sdk/client-s3";
 
 const bucketName = process.env.YA_NAME_CLOUD;
@@ -48,27 +44,22 @@ export async function getBaketListObj() {
   console.log(`${contentsList}\n`);
 }
 
-// // Удалить несколько объектов
-// export async function delBaketStrObj() {
-//   console.log("Deleting objects.");
-//   await s3Client.send(
-//     new DeleteObjectCommand({ Bucket: bucketName, Key: "my-package.json" })
-//   );
-//   // await s3Client.send(
-//   //   new DeleteObjectCommand({ Bucket: bucketName, Key: "my-package-lock.json" })
-//   // );
-//   console.log("The objects were deleted.\n");
-// }
+// Удалить объект
+export async function delBaketObj(key: string) {
+  const res = await s3Client.send(
+    new DeleteObjectCommand({ Bucket: bucketName, Key: key })
+  );
+  return res.$metadata.httpStatusCode;
+}
 
-// export async function getBaketObj() {
-//   // Получить объект
-//   console.log('Getting your "bucket-text" object');
-//   const { Body } = await s3Client.send(
-//     new GetObjectCommand({
-//       Bucket: bucketName,
-//       Key: "bucket-text",
-//     })
-//   );
-//   console.log('Your "bucket-text" content:');
-//   console.log(await Body?.transformToString(), "\n");
-// }
+// Получить объект
+export async function getBaketObj(key: string) {
+  const { Body } = await s3Client.send(
+    new GetObjectCommand({
+      Bucket: bucketName,
+      Key: key,
+    })
+  );
+
+  return await Body?.transformToString();
+}

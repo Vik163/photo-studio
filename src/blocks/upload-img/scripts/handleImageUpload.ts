@@ -1,4 +1,5 @@
 import { $add, $class, $id, $remove } from "@/utils/lib/getElement";
+import { deleteImageDataFromCloud } from "../../modals/modal/scripts/handleImageDataFromCloud";
 
 const loadBlock = $class("upload")!;
 const fileInput = $id("fileUpload")! as HTMLInputElement;
@@ -23,14 +24,24 @@ export function resetImageUpload() {
 function deleteImage(e: Event) {
   const target = e.target as HTMLElement;
   document.querySelectorAll(".upload-img").forEach((img) => {
-    if (img.id === target.id) {
+    const id = img.id;
+    if (id === target.id) {
       img.remove();
+
+      if (id.length > 3) {
+        deleteImageDataFromCloud(id);
+      }
     }
   });
 }
 
-//* установка файлов в блоке
-function setElements(res: string) {
+/**
+ *  установка файлов img в блоке
+ *
+ * keyFile - ключ файла в облаке (используется только для облака)
+ * навешивает ключ на id кнопки
+ */
+export function setElements(src: string, keyFile?: string) {
   const template = ($id("upload-img") as HTMLTemplateElement).content;
 
   const imgTemplate = template
@@ -39,17 +50,25 @@ function setElements(res: string) {
 
   if (imgTemplate) {
     const image = $class("upload-img__img", imgTemplate) as HTMLImageElement;
-    image.src = res;
+    image.src = src;
+    if (keyFile) {
+      imgTemplate.id = keyFile;
+    }
 
     images?.append(imgTemplate);
 
-    arrImg = document.querySelectorAll(".upload-img");
-    arrImg.forEach((img, index) => {
-      const id = index.toString();
-      const btn = $class("upload-img__btn", img as HTMLElement);
-      img.id = id;
-      btn.id = id;
-    });
+    if (!keyFile) {
+      arrImg = document.querySelectorAll(".upload-img");
+      arrImg.forEach((img, index) => {
+        const id = index.toString();
+        const btn = $class("upload-img__btn", img as HTMLElement);
+        img.id = id;
+        btn.id = id;
+      });
+    } else {
+      const btn = $class("upload-img__btn", $id(keyFile) as HTMLElement);
+      btn.id = keyFile;
+    }
   }
 }
 

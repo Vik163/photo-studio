@@ -1,4 +1,7 @@
 @use "../../styles/variables/times.scss";
+@use "../basket/basket.scss";
+
+$widthIcon: 40px;
 
 .header {
   position: absolute;
@@ -37,11 +40,12 @@
 .header__btns {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: $widthIcon;
+  position: relative;
 }
 
 .header__mail {
-  width: 40px;
+  width: $widthIcon;
   height: 32px;
   transition: all times.$time-quarter;
   cursor: pointer;
@@ -60,9 +64,9 @@
 .header__btn {
   transition: all times.$time-quarter;
   z-index: 111;
-  width: 40px;
+  width: $widthIcon;
   background: transparent;
-  height: 40px;
+  height: $widthIcon;
   cursor: pointer;
   position: relative;
 
@@ -79,7 +83,7 @@
       inset 1px 1px 1px 0px rgba(255, 255, 255, 0.277);
 
     &:before {
-      width: 40px;
+      width: $widthIcon;
       height: 2px;
       left: -5px;
       background: black;

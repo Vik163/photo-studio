@@ -23,7 +23,8 @@
 @use "../../blocks/contacts/contacts.scss";
 @use "../../blocks/contacts/map.scss";
 
-@use "../../blocks/modal/modal.scss";
+@use "../../blocks/modals/modal/modal.scss";
+@use "../../blocks/modals/modal-info/modal-info.scss";
 @use "../../utils/ui/overlay/overlay.scss";
 
 @use "../../blocks/footer/footer.scss";

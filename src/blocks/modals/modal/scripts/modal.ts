@@ -1,45 +1,28 @@
 import { $add, $class, $contains, $id, $remove } from "@/utils/lib/getElement";
-
-import { $api } from "@/utils/api/axiosApi";
 import { setListenerCheckbox } from "./handleCheckbox";
 import { setListenersInputPhone } from "@/utils/lib/phoneValidator/handleInputPhone";
 import { handleContentModal } from "./handleContentModal";
-import {
-  getImgFiles,
-  setListenersImageUpload,
-} from "../../upload-img/scripts/handleImageUpload";
-import {
-  closeOverlayAndLoader,
-  openOverlayAndLoader,
-} from "@/utils/ui/overlay/overlay";
-import { ORDER_STATE } from "@/utils/constants/storage";
-import { sendData } from "./fetchData";
-import { getBaketListObj } from "@/utils/lib/handleYaBaket";
-
-// (123) 123-12-31
+import { setListenersImageUpload } from "@/blocks/upload-img/scripts/handleImageUpload";
+import { closeOverlayAndLoader } from "@/utils/ui/overlay/overlay";
+import { sendEditModalData, sendModalData } from "./sendModalData";
+import type { TypeModal } from "@/utils/types/modal";
 
 const container = $class("modal");
 const iconMail = $id("header-mail");
 const iconOrder = $id("header-order");
 const closeIcon = $class("modal__btn-close", container);
 const form = $class("modal__form", container) as HTMLFormElement;
-const title = $class("modal__title", container);
 
-let typeModal: "mail" | "load" = "mail";
+let typeModal: TypeModal = "mail";
 
 function openModal() {
   $add("modal_active", container);
   $add(typeModal, container);
-
-  handleContentModal(typeModal);
 }
 
-export function closeModalAfterResult(text: string) {
-  title.textContent = text;
+export function closeModalAfterResult() {
   closeOverlayAndLoader();
-  setTimeout(() => {
-    closeModal();
-  }, 1000);
+  closeModal();
 }
 
 export function closeModal() {
@@ -50,22 +33,35 @@ export function closeModal() {
   }
 }
 
-function setModalByType(type: "mail" | "load") {
+/**
+ * Открывает modalForm c нужным контентом по типу
+ * @param type TypeModal = "mail" | "order" | "edit"
+ */
+export function setModalFormByType(type: TypeModal) {
   typeModal = type;
   if ($contains("modal_active", container)) {
     closeModal();
-  } else openModal();
+  } else {
+    openModal();
+    handleContentModal(typeModal);
+  }
 }
 
 export const setListenersModal = () => {
   setListenersImageUpload();
   setListenerCheckbox();
-  setListenersInputPhone("modal-phone");
+  setListenersInputPhone("phone-input");
 
-  form.addEventListener("submit", (e) => sendData(e, typeModal));
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    if (typeModal === "edit") {
+      sendEditModalData();
+    } else sendModalData(typeModal);
+  });
   closeIcon.addEventListener("click", closeModal);
 
-  iconOrder.addEventListener("click", () => setModalByType("load"));
+  iconOrder.addEventListener("click", () => setModalFormByType("order"));
 
-  iconMail.addEventListener("click", () => setModalByType("mail"));
+  iconMail.addEventListener("click", () => setModalFormByType("mail"));
 };

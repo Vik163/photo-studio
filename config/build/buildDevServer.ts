@@ -22,12 +22,6 @@ export const buildDevServer = (options: BuildOptions) => {
     server: {
       type: "https",
       options: {
-        ca: fs.readFileSync(
-          path.resolve(
-            __dirname,
-            "../../../../Users/User/AppData/Local/mkcert/rootCA.pem"
-          )
-        ),
         key: fs.readFileSync(
           path.resolve(__dirname, "../../../security/photostudio.ru+3-key.pem")
         ),

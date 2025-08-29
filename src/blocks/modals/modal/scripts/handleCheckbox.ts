@@ -6,12 +6,16 @@ const btnSubmit = $class("modal__btn-submit") as HTMLButtonElement;
 function handleCheckbox(e: Event) {
   e.preventDefault();
   if ($contains("modal__checkbox-label_active", checker)) {
-    $remove("modal__checkbox-label_active", checker);
-    btnSubmit.disabled = true;
+    disableCheckbox();
   } else {
     $add("modal__checkbox-label_active", checker);
     btnSubmit.disabled = false;
   }
+}
+
+export function disableCheckbox() {
+  $remove("modal__checkbox-label_active", checker);
+  btnSubmit.disabled = true;
 }
 
 export function setListenerCheckbox() {

@@ -4,7 +4,7 @@ import { setHeader } from "@/blocks/header/scripts/header";
 import { setContacts } from "@/blocks/contacts/contacts";
 import { setCSSVariales } from "@/utils/lib/setCSSVariales";
 import { setFooter } from "@/blocks/footer/footer";
-import { setListenersModal } from "@/blocks/modal/scripts/modal";
+import { setListenersModal } from "@/blocks/modals/modal/scripts/modal";
 import { closeByEsc } from "@/utils/lib/closeByEsc";
 import { setDirectionAnimation } from "@/utils/lib/setDirectionAnimation";
 import { changeUrl } from "@/utils/lib/changeUrl";
@@ -12,6 +12,7 @@ import { setServices } from "@/blocks/main/services/scripts/services";
 import { $id } from "@/utils/lib/getElement";
 import { HEADER_HEIGHT } from "@/utils/constants/styles";
 import { ORDER_PATH } from "@/utils/constants/storage";
+import { setListenersModalInfo } from "@/blocks/modals/modal-info/scripts/modal-confirm";
 
 changeUrl("orders");
 
@@ -39,6 +40,7 @@ setHeader();
 setContacts();
 
 setListenersModal();
+setListenersModalInfo();
 
 setFooter();
 

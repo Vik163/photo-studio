@@ -1,7 +1,7 @@
 import { $class, $contains, $toggle } from "@/utils/lib/getElement";
 import { addClasses, removeClasses } from "./handleMenuClasses";
-import { $api } from "@/utils/api/axiosApi";
 import { scrollToBlock } from "./scrollToBlock";
+import { getBaketListObj } from "@/utils/lib/handleYaBaket";
 
 const header = $class("header");
 const btn = $class("header__btn", header);
@@ -13,6 +13,7 @@ const rootStyle = document.documentElement.style;
 //* --- создает css-переменную с положением скролла и отменяет прокрутку ---
 function openMenu() {
   rootStyle.setProperty("--scroll-position", `${scrollY}px`);
+  getBaketListObj();
 
   addClasses();
 }

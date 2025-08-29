@@ -1,6 +1,11 @@
 import { type ObserveCallback, observer } from "@/utils/lib/observer";
 import { $add, $class, $remove } from "@/utils/lib/getElement";
 import { setMenuListeners } from "@/blocks/menu/scripts/menu";
+import { fetchBasket } from "@/utils/services/fetchBasket";
+import {
+  setBasketData,
+  setBasketListeners,
+} from "@/blocks/basket/scripts/basket";
 
 const headerBlock = $class("header");
 const mainObserver = $class("main__observer");
@@ -24,8 +29,14 @@ const handleHeader: ObserveCallback = (entry) => {
   }
 };
 
-export const setHeader = () => {
+export const setHeader = async () => {
   if (mainObserver) observer(mainObserver, handleHeader);
 
+  const order = await fetchBasket();
+  if (typeof order === "string") {
+    console.log("Ошибка запроса корзины", order);
+  } else setBasketData(order);
+
+  setBasketListeners();
   setMenuListeners();
 };

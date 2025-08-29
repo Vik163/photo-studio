@@ -1,4 +1,4 @@
-import { Services } from "../types/services-types";
+import { Services } from "../types/works-data";
 import { toggleAnimationClass } from "./animationScrolling";
 import { observer } from "./observer";
 

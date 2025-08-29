@@ -1,0 +1,142 @@
+@use "../../styles/variables/times.scss";
+
+.basket {
+  position: absolute;
+  top: -19px;
+  left: 31px;
+  font: var(--font-catrin-18-bold);
+  color: var(--color-luminous-vivid-dark-red);
+  width: 25px;
+  height: 25px;
+  padding: 6px;
+  display: none;
+  border-radius: 50%;
+  border: 1px solid var(--color-luminous-vivid-dark-red);
+  background-color: var(--bg-modal-color);
+  line-height: 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: all times.$time-half;
+  z-index: var(--index-35);
+
+  &:hover {
+    transform: scale(1.1);
+    transition: all times.$time-half;
+  }
+
+  &.active {
+    display: inline;
+  }
+}
+
+.basket__orders {
+  position: absolute;
+  top: 0;
+  width: 500px;
+  left: -455px;
+  padding: 5px;
+  transform: translateY(-700px);
+  visibility: hidden;
+  transition: all times.$time-half;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background-color: transparent;
+  font: var(--font-catrin-18-norm);
+  color: var(--color-luminous-vivid-dark-red);
+  z-index: var(--index-25);
+
+  &:hover,
+  &.active,
+  &.active-hover {
+    transition: all times.$time-half;
+    transform: translateY(0);
+    visibility: visible;
+  }
+}
+
+.basket-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid var(--color-luminous-vivid-dark-red);
+  border-radius: 10px;
+  background-color: var(--bg-modal-color);
+  padding: 5px 10px;
+}
+
+.basket-item__img {
+  width: 45px;
+
+  &.inactive {
+    opacity: 0.6;
+  }
+}
+
+.basket-item__name {
+  width: 200px;
+}
+
+.basket-item__status {
+  border: 1px solid var(--color-luminous-vivid-dark-red);
+  border-radius: 6px;
+  padding: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  color: #4f0101;
+
+  &.lightBlue {
+    background-color: #b8f3fc;
+  }
+  &.lightGreen {
+    background-color: #edffb6;
+  }
+  &.lightRed {
+    background-color: #fde7df;
+  }
+  &.orange {
+    background-color: #e2f5fd;
+  }
+  &.middleRed {
+    background-color: #fbb3ac;
+  }
+  &.lightGray {
+    background-color: #eeeeee;
+  }
+  &.lightYellow {
+    background-color: #fae172;
+  }
+}
+
+.basket-item__basket {
+  opacity: 0.4;
+  background: url(../../assets/icons/basket.png) no-repeat;
+  background-position: center;
+  background-size: 20px;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+
+  &.active {
+    opacity: 1;
+    cursor: pointer;
+    pointer-events: all;
+  }
+}
+.basket-item__edit {
+  opacity: 0.4;
+  background: url(../../assets/icons/edit.png) no-repeat;
+  background-position: center;
+  background-size: 20px;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+
+  &.active {
+    opacity: 1;
+    cursor: pointer;
+    pointer-events: all;
+  }
+}
