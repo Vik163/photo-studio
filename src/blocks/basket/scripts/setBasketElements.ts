@@ -1,4 +1,4 @@
-import { $add, $class, $id } from "@/utils/lib/getElement";
+import { $add, $class, $id, $remove } from "@/utils/lib/getElement";
 import type { Basket } from "@/utils/types/fetch-data";
 import noImg from "@/assets/images/no-img.png";
 
@@ -40,6 +40,11 @@ export function setBasketElements(basketBlock: HTMLElement, data: Basket[]) {
       const name = $class("basket-item__name", basketTemplate);
       name.textContent = order.service;
 
+      const download = $class("basket-item__download", basketTemplate);
+
+      const date = $class("basket-item__date", basketTemplate);
+      date.textContent = order.createdAt;
+
       const status = $class("basket-item__status", basketTemplate);
       status.textContent = order.status;
 
@@ -53,36 +58,42 @@ export function setBasketElements(basketBlock: HTMLElement, data: Basket[]) {
         $add("active", btnEdit);
         $add("active", btnBasket);
         $add("inactive", image);
-        $add("lightYellow", status);
+        $add("inactive", download);
+        $add("violet", status);
       }
       if (order.status === "В работе") {
-        $add("orange", status);
+        $add("blue", status);
         $add("inactive", image);
+        $add("inactive", download);
       }
       if (order.status === "Выполнен") {
-        $add("lightBlue", status);
+        $add("greenCyan", status);
+        $add("inactive", download);
       }
       if (order.status === "Завершён") {
         $add("active", btnBasket);
-        $add("lightGreen", status);
+        $add("green", status);
+        $remove("inactive", download);
       }
       if (order.status === "Отложен") {
         $add("active", btnBasket);
         $add("active", btnEdit);
-        $add("lightRed", status);
+        $add("orange", status);
         $add("inactive", image);
+        $add("inactive", download);
       }
       if (order.status === "Отменён") {
         $add("active", btnBasket);
         $add("active", btnEdit);
-        $add("middleRed", status);
+        $add("red", status);
         $add("inactive", image);
+        $add("inactive", download);
       }
       if (order.status === "Создан") {
         $add("active", btnBasket);
         $add("active", btnEdit);
-        $add("lightGray", status);
         $add("inactive", image);
+        $add("inactive", download);
       }
 
       basketBlock?.append(basketTemplate);

@@ -4,7 +4,7 @@ export interface Basket {
   message?: string;
   images: string[];
   completedImages?: string;
-  createAt: string;
+  createdAt: string;
   status:
     | "Создан"
     | "Отложен"

@@ -10,7 +10,24 @@
     <header class="header">
       <a href="/" class="header__logo logo"></a>
       <div class="header__btns">
-        <div class="basket__orders"></div>
+        <div class="basket__orders">
+          <div class="basket__info-container">
+            <span class="basket__info-text">Готовая фотография</span>
+            <span class="basket__info-text"
+              >Наименование <br />
+              услуги</span
+            >
+            <span class="basket__info-text"
+              >Дата <br />
+              создания</span
+            >
+            <span class="basket__info-text">Статус выполнения</span>
+            <span class="basket__info-text"
+              >Изменить <br />
+              Удалить</span
+            >
+          </div>
+        </div>
         <span class="basket">0</span>
         <img
           id="header-order"
@@ -411,11 +428,21 @@
     </template>
     <template id="basket-item">
       <div class="basket-item">
-        <img class="basket-item__img" src="#" alt="фотография" />
+        <div class="basket-item__img-container">
+          <img class="basket-item__img" src="#" alt="фотография" />
+          <img
+            class="basket-item__download"
+            src="../../assets/icons/download.svg"
+            alt="скачать"
+          />
+        </div>
         <span class="basket-item__name"></span>
-        <span class="basket-item__status"></span>
-        <button id="#" type="button" class="basket-item__edit"></button>
-        <button id="#" type="button" class="basket-item__basket"></button>
+        <span class="basket-item__date"></span>
+        <div class="basket-item__icons">
+          <span class="basket-item__status"></span>
+          <button id="#" type="button" class="basket-item__edit"></button>
+          <button id="#" type="button" class="basket-item__basket"></button>
+        </div>
       </div>
     </template>
   </body>

@@ -1,4 +1,5 @@
 import { openModalInfoConfirm } from "@/blocks/modals/modal-info/scripts/modal-confirm";
+import { closeModal } from "@/blocks/modals/modal/scripts/modal";
 import { fetchDeleteOrder } from "@/utils/services/fetchDeleteOrder";
 import type { Basket } from "@/utils/types/fetch-data";
 
@@ -10,6 +11,9 @@ import type { Basket } from "@/utils/types/fetch-data";
  */
 export const deleteOrder = (orderData: Basket[], id: string) => {
   const order = orderData.find((order) => order.orderId === id);
+
+  // закрываю модалку если открытая
+  closeModal();
 
   if (order) openModalInfoConfirm("delete", order, fetchDeleteOrder);
 };

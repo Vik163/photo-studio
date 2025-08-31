@@ -22,7 +22,6 @@ function setContentEdit() {
   $add("active", serviceLabel);
   $add("small", iconContainer);
   handleImageUpload("open");
-  console.log("nameInput:", nameInput);
   nameInput.removeAttribute("required");
   phoneInput.removeAttribute("required");
   iconContainer.src = edit;

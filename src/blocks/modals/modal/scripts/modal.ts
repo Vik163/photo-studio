@@ -2,10 +2,15 @@ import { $add, $class, $contains, $id, $remove } from "@/utils/lib/getElement";
 import { setListenerCheckbox } from "./handleCheckbox";
 import { setListenersInputPhone } from "@/utils/lib/phoneValidator/handleInputPhone";
 import { handleContentModal } from "./handleContentModal";
-import { setListenersImageUpload } from "@/blocks/upload-img/scripts/handleImageUpload";
+import {
+  deleteImageUpload,
+  setListenersImageUpload,
+} from "@/blocks/upload-img/scripts/handleImageUpload";
 import { closeOverlayAndLoader } from "@/utils/ui/overlay/overlay";
-import { sendEditModalData, sendModalData } from "./sendModalData";
+import { sendModalData } from "./sendModalData";
 import type { TypeModal } from "@/utils/types/modal";
+import { sendEditModalData } from "./sendEditModalData";
+import { clearCacheEditForm } from "./handleImagesFromCloud";
 
 const container = $class("modal");
 const iconMail = $id("header-mail");
@@ -30,6 +35,9 @@ export function closeModal() {
     $remove("modal_active", container);
     $remove("mail", container);
     $remove("load", container);
+
+    deleteImageUpload();
+    clearCacheEditForm();
   }
 }
 
