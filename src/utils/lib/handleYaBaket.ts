@@ -10,13 +10,14 @@ const bucketName = process.env.YA_NAME_CLOUD;
 const s3Client = new S3Client({
   region: "ru-central1",
   endpoint: "https://s3.yandexcloud.net",
+  requestChecksumCalculation: "WHEN_REQUIRED",
   credentials: {
     accessKeyId: process.env.YA_CLOUD_ID,
     secretAccessKey: process.env.YA_CLOUD_KEY,
   },
 });
 
-export async function uploadBaketJbj(fileName: string, result: string) {
+export async function uploadBaketJbj(fileName: string, result: File) {
   const res = await s3Client.send(
     new PutObjectCommand({
       Bucket: bucketName,
@@ -61,5 +62,6 @@ export async function getBaketObj(key: string) {
     })
   );
 
-  return await Body?.transformToString();
+  const src = await Body?.transformToString()!;
+  return src;
 }

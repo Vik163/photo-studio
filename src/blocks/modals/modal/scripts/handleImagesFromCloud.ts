@@ -15,6 +15,7 @@ export async function setElementsFromCloud(images: string[]) {
 
   for await (const keyFile of images) {
     const src = await getBaketObj(keyFile);
+
     if (src) setElements(src, keyFile);
   }
 }
@@ -41,7 +42,8 @@ export async function uploadImagesInCloud(file: File, orderId: string) {
   const result = await transformFilesInString(file);
 
   if (result) {
-    uploadBaketJbj(fileName, result);
+    uploadBaketJbj(fileName, file);
+    // uploadBaketJbj(fileName, result);
   }
 
   return fileName;

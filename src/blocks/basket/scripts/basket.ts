@@ -45,8 +45,10 @@ export const setBasketListeners = () => {
     if ($contains("active", basketOrders)) {
       $remove("active", basketOrders);
       $remove("active-hover", basketOrders);
+      $remove("active-close", orderNum);
     } else {
       $add("active", basketOrders);
+      $add("active-close", orderNum);
     }
   });
 

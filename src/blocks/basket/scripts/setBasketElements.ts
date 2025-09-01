@@ -1,6 +1,7 @@
 import { $add, $class, $id, $remove } from "@/utils/lib/getElement";
 import type { Basket } from "@/utils/types/fetch-data";
 import noImg from "@/assets/images/no-img.png";
+import { getBaketObj } from "@/utils/lib/handleYaBaket";
 
 /**
  * Создает корзину из template
@@ -21,11 +22,14 @@ export function removeBasketElements() {
  * @param basketBlock - элемент куда вставляется
  * @param data - корзина
  */
-export function setBasketElements(basketBlock: HTMLElement, data: Basket[]) {
+export async function setBasketElements(
+  basketBlock: HTMLElement,
+  data: Basket[]
+) {
   removeBasketElements();
 
   const template = ($id("basket-item") as HTMLTemplateElement).content;
-  data.forEach((order) => {
+  data.forEach(async (order) => {
     const basketTemplate = template
       .querySelector(".basket-item")
       ?.cloneNode(true) as HTMLElement;
@@ -35,8 +39,20 @@ export function setBasketElements(basketBlock: HTMLElement, data: Basket[]) {
         "basket-item__img",
         basketTemplate
       ) as HTMLImageElement;
-      image.src = order.completedImages ? order.completedImages : noImg;
+      const imageModal = $class(
+        "basket-item__img-modal",
+        basketTemplate
+      ) as HTMLImageElement;
+      const src = await getBaketObj(order.images[0]);
+      image.src = src;
+      imageModal.src = src;
+      // image.src = order.completedImages ? order.completedImages : noImg;
 
+      const link = $class(
+        "basket-item__download-link",
+        basketTemplate
+      ) as HTMLAnchorElement;
+      link.href = src;
       const name = $class("basket-item__name", basketTemplate);
       name.textContent = order.service;
 

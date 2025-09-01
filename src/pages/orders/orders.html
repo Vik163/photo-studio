@@ -428,13 +428,21 @@
     </template>
     <template id="basket-item">
       <div class="basket-item">
-        <div class="basket-item__img-container">
-          <img class="basket-item__img" src="#" alt="фотография" />
-          <img
-            class="basket-item__download"
-            src="../../assets/icons/download.svg"
-            alt="скачать"
-          />
+        <div class="basket-item__container">
+          <div class="basket-item__img-container">
+            <img class="basket-item__img" src="#" alt="фотография" />
+            <img class="basket-item__img-modal" src="#" alt="фотография" />
+          </div>
+          <a
+            href="#"
+            class="basket-item__download-link"
+            download="Изображение.jpg"
+          >
+            <img
+              class="basket-item__download"
+              src="../../assets/icons/download.svg"
+              alt="скачать"
+          /></a>
         </div>
         <span class="basket-item__name"></span>
         <span class="basket-item__date"></span>
