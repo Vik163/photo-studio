@@ -41,7 +41,7 @@ function deleteImageByOne(e: Event) {
  * keyFile - ключ файла в облаке (используется только для облака)
  * навешивает ключ на id кнопки
  */
-export function setElements(src: string, keyFile: string) {
+export function setImageElements(src: string, keyFile: string) {
   const template = ($id("upload-img") as HTMLTemplateElement).content;
 
   const imgTemplate = template
@@ -75,7 +75,7 @@ function handleImages() {
     const reader = new FileReader();
     reader.onload = (e) => {
       const res = e.target?.result;
-      if (res && typeof res === "string") setElements(res, file.name);
+      if (res && typeof res === "string") setImageElements(res, file.name);
     };
     reader.onerror = (err) => {
       console.error("Ошибка чтения файлов:", err);

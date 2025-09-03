@@ -1,7 +1,7 @@
 import { delBaketObj, uploadBaketJbj } from "@/utils/lib/handleYaBaket";
 import { transformFilesInString } from "@/utils/lib/readerFiles";
 import { getBaketObj } from "@/utils/lib/handleYaBaket";
-import { setElements } from "../../../upload-img/scripts/handleImageUpload";
+import { setImageElements } from "../../../upload-img/scripts/handleImageUpload";
 
 let arrImgCloud: string[] = [];
 let newArrImgCloud: string[] = [];
@@ -16,7 +16,7 @@ export async function setElementsFromCloud(images: string[]) {
   for await (const keyFile of images) {
     const src = await getBaketObj(keyFile);
 
-    if (src) setElements(src, keyFile);
+    if (src) setImageElements(src, keyFile);
   }
 }
 
@@ -42,8 +42,7 @@ export async function uploadImagesInCloud(file: File, orderId: string) {
   const result = await transformFilesInString(file);
 
   if (result) {
-    uploadBaketJbj(fileName, file);
-    // uploadBaketJbj(fileName, result);
+    uploadBaketJbj(fileName, result);
   }
 
   return fileName;

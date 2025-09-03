@@ -1,4 +1,4 @@
-import { $add, $class, $contains, $id, $remove } from "@/utils/lib/getElement";
+import { $add, $class, $contains, $remove } from "@/utils/lib/getElement";
 import type { Basket } from "@/utils/types/fetch-data";
 import { setBasketElements } from "./setBasketElements";
 import { deleteOrder } from "./deleteOrder";
@@ -10,6 +10,7 @@ let orderData: Basket[] = [];
 
 export function closeBasket() {
   $remove("active", basketOrders);
+  $remove("active-close", orderNum);
 }
 
 /**
@@ -41,6 +42,7 @@ export const setBasketListeners = () => {
   orderNum.addEventListener("mouseleave", function () {
     $remove("active-hover", basketOrders);
   });
+
   orderNum.addEventListener("click", function () {
     if ($contains("active", basketOrders)) {
       $remove("active", basketOrders);

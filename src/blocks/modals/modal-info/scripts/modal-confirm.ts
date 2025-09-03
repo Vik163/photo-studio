@@ -6,7 +6,6 @@ import {
   closeOverlayAndLoader,
   openOverlayAndLoader,
 } from "@/utils/ui/overlay/overlay";
-import { setModalFormByType } from "../../modal/scripts/modal";
 import { deleteData } from "./deleteDataConfirm";
 import { setOrderDataInModalForm } from "@/blocks/basket/scripts/editOrder";
 

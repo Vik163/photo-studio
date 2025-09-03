@@ -131,8 +131,9 @@
     transition: all times.$time-half;
   }
 
+  // hover работает если у потомков есть класс "active"
   .basket-item__img-container {
-    &:hover {
+    &:hover:has([class*="active"]) {
       .basket-item__img-modal {
         width: 500px;
         padding: 100px;
@@ -145,26 +146,30 @@
 
   .basket-item__img {
     width: 45px;
-    cursor: pointer;
+    opacity: 0.6;
+    cursor: default;
 
-    &.inactive {
-      opacity: 0.6;
-      cursor: default;
+    &.active {
+      opacity: 1;
+      cursor: pointer;
     }
   }
 
   .basket-item__download-link {
     height: 22px;
+    opacity: 0.4;
+    cursor: default;
+    pointer-events: none;
+
+    &.active {
+      opacity: 1;
+      cursor: pointer;
+      pointer-events: all;
+    }
   }
 
   .basket-item__download {
     width: 22px;
-    cursor: pointer;
-
-    &.inactive {
-      opacity: 0.4;
-      cursor: default;
-    }
   }
 }
 

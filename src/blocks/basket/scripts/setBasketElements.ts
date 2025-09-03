@@ -1,7 +1,6 @@
 import { $add, $class, $id, $remove } from "@/utils/lib/getElement";
 import type { Basket } from "@/utils/types/fetch-data";
 import noImg from "@/assets/images/no-img.png";
-import { getBaketObj } from "@/utils/lib/handleYaBaket";
 
 /**
  * Создает корзину из template
@@ -19,6 +18,7 @@ export function removeBasketElements() {
 /**
  * Создает корзину из template
  * Добавляет классы в зависимости от статуса заказа
+ * Добавляет ссылку для скачивания (order.completedImages - src готового фото)
  * @param basketBlock - элемент куда вставляется
  * @param data - корзина
  */
@@ -26,6 +26,7 @@ export async function setBasketElements(
   basketBlock: HTMLElement,
   data: Basket[]
 ) {
+  // удаление существующих элементов при открытии
   removeBasketElements();
 
   const template = ($id("basket-item") as HTMLTemplateElement).content;
@@ -35,28 +36,28 @@ export async function setBasketElements(
       ?.cloneNode(true) as HTMLElement;
 
     if (basketTemplate) {
+      // маленькое фото или no-img
       const image = $class(
         "basket-item__img",
         basketTemplate
       ) as HTMLImageElement;
+      // модалка с готовым фото (статус: выполнен и завершён)
       const imageModal = $class(
         "basket-item__img-modal",
         basketTemplate
       ) as HTMLImageElement;
-      const src = await getBaketObj(order.images[0]);
-      image.src = src;
-      imageModal.src = src;
-      // image.src = order.completedImages ? order.completedImages : noImg;
+      imageModal.src = order.completedImages!;
+      image.src = order.completedImages ? order.completedImages : noImg;
 
+      // ссылка для скачивания готового фото (статус - завершён)
       const link = $class(
         "basket-item__download-link",
         basketTemplate
       ) as HTMLAnchorElement;
-      link.href = src;
+      link.href = order.completedImages!;
+
       const name = $class("basket-item__name", basketTemplate);
       name.textContent = order.service;
-
-      const download = $class("basket-item__download", basketTemplate);
 
       const date = $class("basket-item__date", basketTemplate);
       date.textContent = order.createdAt;
@@ -73,43 +74,34 @@ export async function setBasketElements(
       if (order.status === "Принят") {
         $add("active", btnEdit);
         $add("active", btnBasket);
-        $add("inactive", image);
-        $add("inactive", download);
         $add("violet", status);
       }
       if (order.status === "В работе") {
         $add("blue", status);
-        $add("inactive", image);
-        $add("inactive", download);
       }
       if (order.status === "Выполнен") {
         $add("greenCyan", status);
-        $add("inactive", download);
+        $add("active", image);
       }
       if (order.status === "Завершён") {
         $add("active", btnBasket);
         $add("green", status);
-        $remove("inactive", download);
+        $add("active", link);
+        $add("active", image);
       }
       if (order.status === "Отложен") {
         $add("active", btnBasket);
         $add("active", btnEdit);
         $add("orange", status);
-        $add("inactive", image);
-        $add("inactive", download);
       }
       if (order.status === "Отменён") {
         $add("active", btnBasket);
         $add("active", btnEdit);
         $add("red", status);
-        $add("inactive", image);
-        $add("inactive", download);
       }
       if (order.status === "Создан") {
         $add("active", btnBasket);
         $add("active", btnEdit);
-        $add("inactive", image);
-        $add("inactive", download);
       }
 
       basketBlock?.append(basketTemplate);

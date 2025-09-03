@@ -10,6 +10,25 @@
     <header class="header">
       <a href="#" class="header__logo logo"></a>
       <div class="header__btns">
+        <div class="basket__orders">
+          <div class="basket__info-container">
+            <span class="basket__info-text">Готовая фотография</span>
+            <span class="basket__info-text"
+              >Наименование <br />
+              услуги</span
+            >
+            <span class="basket__info-text"
+              >Дата <br />
+              создания</span
+            >
+            <span class="basket__info-text">Статус выполнения</span>
+            <span class="basket__info-text"
+              >Изменить <br />
+              Удалить</span
+            >
+          </div>
+        </div>
+        <span class="basket">0</span>
         <img
           id="header-order"
           class="header__mail"
@@ -244,29 +263,31 @@
           <h2 class="modal__title">Отправить сообщение</h2>
           <button type="button" class="modal__btn-close"></button>
           <form class="modal__form">
-            <label class="modal__label" name="name" for="name">Ваше имя</label>
-            <input
-              class="modal__form-item"
-              name="name"
-              type="text"
-              minlength="2"
-            />
-            <label class="modal__label" name="phone" for="phone"
-              >Номер телефона</label
-            >
-            <input
-              id="modal-phone"
-              class="modal__form-item"
-              name="phone"
-              type="text"
-              placeholder="+7 (999) 999-99-99"
-            />
+            <label class="modal__label name-label" name="name" for="name"
+              >Ваше имя
+              <input
+                id="name-input"
+                class="modal__form-item"
+                name="name"
+                type="text"
+                minlength="2"
+            /></label>
+            <label class="modal__label phone-label" name="phone" for="phone"
+              >Номер телефона
+              <input
+                id="phone-input"
+                class="modal__form-item"
+                name="phone"
+                type="text"
+                placeholder="+7 (999) 999-99-99"
+            /></label>
             <label
               class="modal__label service-label"
               name="service"
               for="service"
               >Вид услуг (напишите в произвольной форме)
               <input
+                id="service-input"
                 class="modal__form-item"
                 name="service"
                 type="text"
@@ -320,6 +341,17 @@
           </form>
         </div>
       </section>
+      <section class="modal-info">
+        <div class="modal-info__container">
+          <h2 class="modal-info__title">Подтвердить действие</h2>
+          <p class="modal-info__text"></p>
+          <img class="modal-info__img" src="#" alt="Знак успешной загрузки" />
+          <button type="button" class="modal-info__close"></button>
+          <button type="button" class="modal-info__btn-submit">
+            Отправить
+          </button>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
@@ -338,6 +370,33 @@
       <div class="upload-img">
         <img class="upload-img__img" src="#" alt="" />
         <button id="#" type="button" class="upload-img__btn"></button>
+      </div>
+    </template>
+    <template id="basket-item">
+      <div class="basket-item">
+        <div class="basket-item__container">
+          <div class="basket-item__img-container">
+            <img class="basket-item__img" src="#" alt="фотография" />
+            <img class="basket-item__img-modal" src="#" alt="фотография" />
+          </div>
+          <a
+            href="#"
+            class="basket-item__download-link"
+            download="Изображение.jpg"
+          >
+            <img
+              class="basket-item__download"
+              src="../../assets/icons/download.svg"
+              alt="скачать"
+          /></a>
+        </div>
+        <span class="basket-item__name"></span>
+        <span class="basket-item__date"></span>
+        <div class="basket-item__icons">
+          <span class="basket-item__status"></span>
+          <button id="#" type="button" class="basket-item__edit"></button>
+          <button id="#" type="button" class="basket-item__basket"></button>
+        </div>
       </div>
     </template>
   </body>

@@ -17,7 +17,7 @@ const s3Client = new S3Client({
   },
 });
 
-export async function uploadBaketJbj(fileName: string, result: File) {
+export async function uploadBaketJbj(fileName: string, result: string) {
   const res = await s3Client.send(
     new PutObjectCommand({
       Bucket: bucketName,
@@ -62,6 +62,5 @@ export async function getBaketObj(key: string) {
     })
   );
 
-  const src = await Body?.transformToString()!;
-  return src;
+  return await Body?.transformToString()!;
 }
