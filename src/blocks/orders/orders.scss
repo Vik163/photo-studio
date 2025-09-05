@@ -1,14 +1,14 @@
 $padding-block: 100px;
 
-.orders {
-  width: 1280px;
-  align-items: flex-start;
-}
-
 .orders__title {
+  width: 100vw;
   margin: 90px 0;
   font: var(--font-orb-64-norm);
-  padding-bottom: 10px;
+  padding: 0 $padding-block;
+}
+
+.orders__container {
+  width: 1280px;
 }
 
 .orders__item {
@@ -21,7 +21,6 @@ $padding-block: 100px;
   letter-spacing: -2px;
   padding-bottom: 5px;
   margin-bottom: 20px;
-  margin-left: 20px;
 }
 
 .orders__item-container {

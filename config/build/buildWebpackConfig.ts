@@ -13,7 +13,12 @@ export const buildWebpackConfig = (options: BuildOptions): Configuration => {
 
   return {
     mode,
-    entry: { main: paths.entryMain, orders: paths.entryOrders },
+    entry: {
+      main: paths.entryMain,
+      orders: paths.entryOrders,
+      politic: paths.entryPolitic,
+      admin: paths.entryAdmin,
+    },
     output: {
       path: paths.build,
       clean: true,

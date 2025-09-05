@@ -9,7 +9,7 @@ $padding-block: 90px;
 .docs__work {
   display: inline-block;
   justify-content: space-between;
-  border-top: var(--border-width-m) dotted var(--color-black);
+  border-top: var(--border-width-m) dotted var(--color-luminous-vivid-orange);
   padding: 40px 0;
   width: 100%;
   position: relative;
@@ -27,30 +27,38 @@ $padding-block: 90px;
 
 .docs__info-title {
   font: var(--font-catrin-30-norm);
+  margin-bottom: 20px;
+
+  span {
+    margin: 0 27px;
+    color: var(--color-luminous-vivid-orange);
+  }
 }
 
 .docs__info-subtitle {
   font: var(--font-catrin-26-norm);
-  margin: 20px 30px;
+  margin: 0 30px 20px;
 }
 
 .docs__list {
   margin-left: 15px;
 }
 
-.docs__list-item {
+.docs__p {
   font: var(--font-catrin-22-norm);
   margin-bottom: 15px;
 
   span {
     font-weight: var(--font-weight-bold);
     margin-left: 10px;
+    letter-spacing: 0.5px;
   }
 }
 
 .docs__caption {
   margin-top: 40px;
-  font: var(--font-catrin-22-norm);
+  font: var(--font-catrin-22-bold);
+  letter-spacing: 0.5px;
 
   span {
     color: var(--color-luminous-vivid-orange);

@@ -10,9 +10,9 @@ const textLabel = $id("text-label") as HTMLLabelElement;
 const iconContainer = $class("modal__img", container) as HTMLImageElement;
 const form = $class("modal__form", container) as HTMLFormElement;
 const nameLabel = $class("name-label", form);
-const nameInput = $id("name-input") as HTMLInputElement;
+const nameInput = $id("name") as HTMLInputElement;
 const phoneLabel = $class("phone-label", form);
-const phoneInput = $id("phone-input") as HTMLInputElement;
+const phoneInput = $id("phone") as HTMLInputElement;
 const serviceLabel = $class("service-label", form);
 const title = $class("modal__title", container);
 

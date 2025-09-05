@@ -66,9 +66,9 @@ const closeModalInfoByEvent = async (e: Event) => {
 
 /**
  *
- * @param type
- * @param order
- * @param callback
+ * @param type "delete" | "edit"
+ * @param order Basket
+ * @param callback (id: string) => Promise<Basket[] | string>
  */
 export const openModalInfoConfirm = (
   type: "delete" | "edit",

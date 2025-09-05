@@ -36,6 +36,20 @@ export const buildWebpackPlugins = (
       inject: true,
       chunks: ["orders"],
     }),
+    new HtmlWebpackPlugin({
+      template: paths.politic,
+      favicon: paths.favicon,
+      inject: true,
+      filename: "politic.html",
+      chunks: ["politic"],
+    }),
+    new HtmlWebpackPlugin({
+      template: paths.admin,
+      favicon: paths.favicon,
+      inject: true,
+      filename: "admin.html",
+      chunks: ["admin"],
+    }),
 
     new webpack.ProgressPlugin(),
 

@@ -23,8 +23,14 @@ $padding-block: 100px;
 .contacts__info {
   width: 50%;
   height: 100%;
-  padding: 70px 70px 70px $padding-block;
   color: var(--color-text-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contacts__info-container {
+  width: fit-content;
 }
 
 .contacts__info-title {

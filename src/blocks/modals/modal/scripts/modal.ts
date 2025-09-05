@@ -58,7 +58,7 @@ export function setModalFormByType(type: TypeModal) {
 export const setListenersModal = () => {
   setListenersImageUpload();
   setListenerCheckbox();
-  setListenersInputPhone("phone-input");
+  setListenersInputPhone("phone");
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();

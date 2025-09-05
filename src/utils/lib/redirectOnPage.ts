@@ -5,7 +5,7 @@ import type { PageNames, PathNames } from "../types/routes";
  * Направляет на указанную в параметре страницу
  * @param page - роут страницы
  */
-export const redirectOnPage = (page: PageNames, path: PathNames) => {
+export const redirectOnPage = (page: PageNames, path?: PathNames) => {
   path
     ? localStorage.setItem(ORDER_PATH, path)
     : localStorage.removeItem(ORDER_PATH);

@@ -17,7 +17,7 @@ let formData: FormData;
  * Собирает данные из формы и загруженные фото
  * создает id заказа
  * фото отправляет в облако, а данные на сервер
- * @param typeModal - сообщение или заказ
+ * @param typeModal - message | order | edit
  */
 export async function sendModalData(typeModal: TypeModal) {
   let images: string[] = [];
