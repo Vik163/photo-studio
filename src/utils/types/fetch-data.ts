@@ -4,7 +4,7 @@ export interface Basket {
   message?: string;
   images: string[];
   completedImages?: string; // src сформированный fileReader (хранится только в БД)
-  createdAt: string;
+  created: string;
   status:
     | "Создан" // редактирование, удаление, no-image, нет скачивания
     | "Отложен" // редактирование, удаление, no-image, нет скачивания
@@ -29,4 +29,17 @@ export interface OrderEditData {
   message?: FormDataEntryValue;
   images?: string[];
   service: FormDataEntryValue;
+}
+
+export interface MessagesData {
+  orderId: string;
+  name: FormDataEntryValue;
+  phone: FormDataEntryValue;
+  message: FormDataEntryValue;
+}
+
+export interface Messages {
+  orderId: string;
+  message: string;
+  created: string;
 }

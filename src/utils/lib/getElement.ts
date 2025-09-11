@@ -16,8 +16,10 @@ export const $class = (
  * Получить элемент по id
  * @param id - id
  */
-export const $id = (id: string) => {
-  return document.getElementById(id)!;
+export const $id = (id: string, parent?: HTMLElement) => {
+  return (
+    parent ? parent.querySelector(`#${id}`)! : document.getElementById(id)!
+  ) as HTMLElement;
 };
 
 /**

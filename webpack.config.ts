@@ -26,6 +26,10 @@ export default (env: BuildEnv) => {
     mode === "development"
       ? "https://photostudio.ru/api"
       : "https://photosalon.online/api";
+  const apiAdmin =
+    mode === "development"
+      ? "https://photostudio.ru/api/admin"
+      : "https://photosalon.online/api/admin";
 
   const options = {
     paths: buildPaths,
@@ -33,6 +37,7 @@ export default (env: BuildEnv) => {
     mode,
     isDev,
     api,
+    apiAdmin,
   };
 
   const config = buildWebpackConfig(options);

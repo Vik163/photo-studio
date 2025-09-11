@@ -3,6 +3,7 @@ import type { Basket } from "@/utils/types/fetch-data";
 import { setBasketElements } from "./setBasketElements";
 import { deleteOrder } from "./deleteOrder";
 import { editBasket } from "./editOrder";
+import { fetchBasket } from "@/utils/services/fetchBasket";
 
 const basketOrders = $class("basket__orders");
 const orderNum = $class("basket");
@@ -35,7 +36,7 @@ export const setBasketData = (data: Basket[]) => {
  * Слушатели на иконку корзины (click, mouseover, mouseleave)
  * Общий слушатель на корзину (удалить, редактировать)
  */
-export const setBasketListeners = () => {
+const setBasketListeners = () => {
   orderNum.addEventListener("mouseover", function () {
     $add("active-hover", basketOrders);
   });
@@ -63,4 +64,13 @@ export const setBasketListeners = () => {
       } else deleteOrder(orderData, el.id);
     }
   });
+};
+
+export const setBasket = async () => {
+  setBasketListeners();
+
+  const order = await fetchBasket();
+  if (typeof order === "string") {
+    console.log("Ошибка запроса корзины", order);
+  } else setBasketData(order);
 };

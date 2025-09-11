@@ -6,7 +6,7 @@ import type { Basket } from "../types/fetch-data";
  */
 export async function fetchBasket(): Promise<Basket[] | string> {
   try {
-    const basket: Basket[] = (await $api.get("/order/basket")).data;
+    const basket: Basket[] = (await $api.get("/orders/basket")).data;
 
     return basket;
   } catch (err) {

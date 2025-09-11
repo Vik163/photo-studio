@@ -1,9 +1,9 @@
 @use "../../styles/variables/times.scss";
 
-.basket {
+.messages {
   position: absolute;
   top: -17px;
-  left: 31px;
+  left: 113px;
   font: var(--font-catrin-18-bold);
   color: var(--color-luminous-vivid-dark-red);
   width: 25px;
@@ -45,11 +45,11 @@
   }
 }
 
-.basket__orders {
+.messages-list {
   position: absolute;
   top: -17px;
   width: 700px;
-  left: -655px;
+  left: -573px;
   padding: 10px;
   transform: translateY(-700px);
   visibility: hidden;
@@ -62,7 +62,7 @@
   background-color: var(--bg-modal-color);
   font: var(--font-catrin-18-norm);
   color: var(--color-dark-gray-blue);
-  z-index: var(--index-25);
+  z-index: var(--index-35);
 
   &:hover,
   &.active,
@@ -73,34 +73,7 @@
   }
 }
 
-.basket__info-container {
-  display: flex;
-  justify-content: space-between;
-  font: var(--font-catrin-15-norm);
-  line-height: 15px;
-  width: 100%;
-  padding-left: 10px;
-  padding-right: 15px;
-
-  span {
-    text-align: center;
-
-    &:nth-of-type(1) {
-      width: 70px;
-    }
-    &:nth-of-type(2) {
-      width: 230px;
-    }
-    &:nth-of-type(3) {
-      width: 100px;
-    }
-    &:nth-of-type(4) {
-      width: 100px;
-    }
-  }
-}
-
-.basket-item {
+.messages-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -111,12 +84,12 @@
   background-color: transparent;
 }
 
-.basket-item__container {
+.messages-item__container {
   display: flex;
   align-items: center;
   gap: 6px;
 
-  .basket-item__img-modal {
+  .messages-item__img-modal {
     visibility: hidden;
     opacity: 0;
     position: absolute;
@@ -132,9 +105,9 @@
   }
 
   // hover работает если у потомков есть класс "active"
-  .basket-item__img-container {
+  .messages-item__img-container {
     &:hover:has([class*="active"]) {
-      .basket-item__img-modal {
+      .messages-item__img-modal {
         width: 500px;
         padding: 100px;
         opacity: 1;
@@ -144,7 +117,7 @@
     }
   }
 
-  .basket-item__img {
+  .messages-item__img {
     width: 45px;
     opacity: 0.6;
     cursor: default;
@@ -155,7 +128,7 @@
     }
   }
 
-  .basket-item__download-link {
+  .messages-item__download-link {
     height: 22px;
     opacity: 0.4;
     cursor: default;
@@ -168,22 +141,22 @@
     }
   }
 
-  .basket-item__download {
+  .messages-item__download {
     width: 22px;
   }
 }
 
-.basket-item__name {
+.messages-item__name {
   width: 200px;
 }
 
-.basket-item__icons {
+.messages-item__icons {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-.basket-item__status {
+.messages-item__status {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -210,7 +183,7 @@
   }
 }
 
-.basket-item__basket {
+.messages-item__basket {
   opacity: 0.4;
   background: url(../../assets/icons/basket.png) no-repeat;
   background-position: center;
@@ -225,7 +198,7 @@
     pointer-events: all;
   }
 }
-.basket-item__edit {
+.messages-item__edit {
   opacity: 0.4;
   background: url(../../assets/icons/edit.png) no-repeat;
   background-position: center;

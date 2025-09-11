@@ -1,11 +1,12 @@
 import { $class } from "@/utils/lib/getElement";
-import type { Basket } from "@/utils/types/fetch-data";
+import type { Basket, Messages } from "@/utils/types/fetch-data";
 import { disableCheckbox } from "./handleCheckbox";
 import { openModalInfo } from "../../modal-info/scripts/modal-info";
 import { setBasketData } from "@/blocks/basket/scripts/basket";
 import { closeModalAfterResult } from "./modal";
 import { clearCacheEditForm } from "./handleImagesFromCloud";
 import { deleteImageUpload } from "@/blocks/upload-img/scripts/handleImageUpload";
+import { setMessagesData } from "@/blocks/messages/scripts/setMessages";
 
 const form = $class("modal__form") as HTMLFormElement;
 
@@ -36,6 +37,24 @@ export function handleResponse(
     openModalInfo("reject", res);
   } else {
     setBasketData(res);
+
+    closeModalAfterResult();
+    openModalInfo("success", textModalInfo);
+  }
+
+  resetForm(formData);
+  clearCacheEditForm();
+}
+
+export function handleResponseMessages(
+  res: Messages[] | string,
+  textModalInfo: string,
+  formData: FormData
+) {
+  if (typeof res === "string") {
+    openModalInfo("reject", res);
+  } else {
+    setMessagesData(res);
 
     closeModalAfterResult();
     openModalInfo("success", textModalInfo);

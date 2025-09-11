@@ -11,6 +11,8 @@ import { $id } from "@/utils/lib/getElement";
 import { HEADER_HEIGHT } from "@/utils/constants/styles";
 import { ORDER_PATH } from "@/utils/constants/storage";
 import { setListenersModalInfo } from "@/blocks/modals/modal-info/scripts/modal-confirm";
+import { setBasket } from "@/blocks/basket/scripts/basket";
+import { setMessages } from "@/blocks/messages/scripts/setMessages";
 
 changeUrl("orders");
 
@@ -35,6 +37,9 @@ function getServiceById() {
 setCSSVariales();
 
 setHeader();
+
+setBasket();
+setMessages();
 
 setContacts();
 

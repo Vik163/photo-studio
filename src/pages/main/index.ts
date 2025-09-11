@@ -11,6 +11,8 @@ import { closeByEsc } from "@/utils/lib/closeByEsc";
 import { setDirectionAnimation } from "@/utils/lib/setDirectionAnimation";
 import { ORDER_PATH } from "@/utils/constants/storage";
 import { setListenersModalInfo } from "@/blocks/modals/modal-info/scripts/modal-confirm";
+import { setBasket } from "@/blocks/basket/scripts/basket";
+import { setMessages } from "@/blocks/messages/scripts/setMessages";
 
 if (location.pathname !== "/") {
   const locationPath = location.pathname;
@@ -29,6 +31,9 @@ if (location.pathname !== "/") {
 setCSSVariales();
 
 setHeader();
+
+setBasket();
+setMessages();
 
 setServices();
 

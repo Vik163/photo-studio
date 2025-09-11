@@ -5,7 +5,7 @@ export const fetchDeleteOrder = async (
   id: string
 ): Promise<Basket[] | string> => {
   try {
-    const basket: Basket[] = (await $api.delete(`/order/${id}`)).data;
+    const basket: Basket[] = (await $api.delete(`/orders/${id}`)).data;
 
     return basket;
   } catch (err) {

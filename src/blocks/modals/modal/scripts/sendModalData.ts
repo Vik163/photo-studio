@@ -8,7 +8,8 @@ import {
 } from "@/utils/ui/overlay/overlay";
 import type { TypeModal } from "@/utils/types/modal";
 import { uploadImagesInCloud } from "./handleImagesFromCloud";
-import { handleResponse } from "./handleResponse";
+import { handleResponse, handleResponseMessages } from "./handleResponse";
+import { fetchCreateMessage } from "@/utils/services/fetchCreateMessage";
 
 const form = $class("modal__form") as HTMLFormElement;
 let formData: FormData;
@@ -47,11 +48,11 @@ export async function sendModalData(typeModal: TypeModal) {
         closeOverlayAndLoader();
       }
     } else {
-      const data = { orderId, name, phone, message, service: "Сообщение" };
-      const response = await fetchCreateOrder(data);
+      const data = { orderId, name, phone, message };
+      const response = await fetchCreateMessage(data);
 
       if (response) {
-        handleResponse(response, "Сообщение отправлено!", formData);
+        handleResponseMessages(response, "Сообщение отправлено!", formData);
         closeOverlayAndLoader();
       }
     }

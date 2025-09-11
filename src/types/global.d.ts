@@ -21,6 +21,7 @@ declare module "fontmin-webpack";
 
 declare const __IS_DEV__: boolean;
 declare const __API__: string;
+declare const __API_ADMIN__: string;
 
 declare namespace NodeJS {
   interface ProcessEnv {

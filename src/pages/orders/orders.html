@@ -35,6 +35,8 @@
           src="../../assets/icons/photo.png"
           alt="Создать заказ"
         />
+        <ul class="messages-list"></ul>
+        <span class="messages">0</span>
         <img
           id="header-mail"
           class="header__mail"
@@ -496,6 +498,16 @@
           <button id="#" type="button" class="basket-item__basket"></button>
         </div>
       </div>
+    </template>
+    <template id="messages-item">
+      <li class="messages-item">
+        <span class="messages-item__text"></span>
+        <span class="messages-item__date"></span>
+        <div class="messages-item__icons">
+          <button id="#" type="button" class="messages-item__edit"></button>
+          <button id="#" type="button" class="messages-item__basket"></button>
+        </div>
+      </li>
     </template>
   </body>
 </html>

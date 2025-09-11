@@ -19,10 +19,28 @@
     </section>
     <section class="admin">
       <h1 class="admin__title">Текущие заказы и сообщения</h1>
+      <ul class="admin__orders"></ul>
+      <p class="admin__error"></p>
     </section>
 
     <div class="overlay">
       <span class="loader"></span>
     </div>
+
+    <template id="user-orders">
+      <li class="user-orders">
+        <span class="user-orders__id"></span>
+        <div class="user-orders__container"></div>
+      </li>
+    </template>
+    <template id="user-order">
+      <div class="user-order">
+        <span class="user-order__service"></span>
+        <span class="user-order__date"></span>
+        <span class="user-order__status"></span>
+
+        <button id="#" type="button" class="user-order__btn"></button>
+      </div>
+    </template>
   </body>
 </html>

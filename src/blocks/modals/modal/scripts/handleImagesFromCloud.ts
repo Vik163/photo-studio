@@ -54,12 +54,14 @@ export async function uploadImagesInCloud(file: File, orderId: string) {
  * @param newArrImg - массив без удаленных файлов
  */
 export async function deleteImagesInCloud() {
-  const filterImages = arrImgCloud.filter((e) =>
-    newArrImgCloud.indexOf(e) > -1 ? false : true
-  );
+  if (newArrImgCloud.length > 0) {
+    const filterImages = arrImgCloud.filter((e) =>
+      newArrImgCloud.indexOf(e) > -1 ? false : true
+    );
 
-  for await (const img of filterImages) {
-    await delBaketObj(img);
+    for await (const img of filterImages) {
+      await delBaketObj(img);
+    }
   }
 }
 

@@ -60,7 +60,7 @@ export async function setBasketElements(
       name.textContent = order.service;
 
       const date = $class("basket-item__date", basketTemplate);
-      date.textContent = order.createdAt;
+      date.textContent = order.created;
 
       const status = $class("basket-item__status", basketTemplate);
       status.textContent = order.status;

@@ -5,7 +5,7 @@ export async function fetchUpdateOrder(
   data: OrderEditData
 ): Promise<Basket[] | string> {
   try {
-    const basket = (await $api.put("/order", data)).data;
+    const basket = (await $api.put("/orders", data)).data;
 
     return basket;
   } catch (err) {

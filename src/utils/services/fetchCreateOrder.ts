@@ -5,7 +5,7 @@ export async function fetchCreateOrder(
   data: OrderData
 ): Promise<Basket[] | string> {
   try {
-    const basket = (await $api.post("/order", data)).data;
+    const basket = (await $api.post("/orders", data)).data;
 
     return basket;
   } catch (err) {

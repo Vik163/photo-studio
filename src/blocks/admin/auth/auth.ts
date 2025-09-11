@@ -6,6 +6,7 @@ import {
   closeOverlayAndLoader,
   openOverlayAndLoader,
 } from "@/utils/ui/overlay/overlay";
+import { setAdminBlock } from "../admin-block/scripts/adminBlock";
 
 const admin = $class("admin");
 const auth = $class("auth");
@@ -20,6 +21,7 @@ export function setAuthOrAdmin(res?: { message: string }) {
     $add("active", admin);
     $remove("active", auth);
     $remove("active", text);
+    setAdminBlock();
   } else {
     $remove("active", admin);
     $add("active", auth);
