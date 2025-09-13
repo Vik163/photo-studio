@@ -9,8 +9,9 @@ import {
 import { closeOverlayAndLoader } from "@/utils/ui/overlay/overlay";
 import { sendModalData } from "./sendModalData";
 import type { TypeModal } from "@/utils/types/modal";
-import { sendEditModalData } from "./sendEditModalData";
+import { sendEditOrderData } from "./sendEditOrderData";
 import { clearCacheEditForm } from "./handleImagesFromCloud";
+import { sendEditMailData } from "./sendEditMailData";
 
 const container = $class("modal");
 const iconMail = $id("header-mail");
@@ -43,7 +44,7 @@ export function closeModal() {
 
 /**
  * Открывает modalForm c нужным контентом по типу
- * @param type TypeModal = "mail" | "order" | "edit"
+ * @param type TypeModal = "mail" | "mailEdit" | "order" | "orderEdit""
  */
 export function setModalFormByType(type: TypeModal) {
   typeModal = type;
@@ -63,8 +64,12 @@ export const setListenersModal = () => {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    if (typeModal === "edit") {
-      sendEditModalData();
+    if (typeModal === "orderEdit") {
+      sendEditOrderData();
+    } else if (typeModal === "order") {
+      sendModalData(typeModal);
+    } else if (typeModal === "mailEdit") {
+      sendEditMailData();
     } else sendModalData(typeModal);
   });
   closeIcon.addEventListener("click", closeModal);

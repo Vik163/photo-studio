@@ -16,7 +16,7 @@ const phoneInput = $id("phone") as HTMLInputElement;
 const serviceLabel = $class("service-label", form);
 const title = $class("modal__title", container);
 
-function setContentEdit() {
+function setContentOrderEdit() {
   $add("inactive", nameLabel);
   $add("inactive", phoneLabel);
   $add("active", serviceLabel);
@@ -29,7 +29,7 @@ function setContentEdit() {
   textLabel.textContent = "Комментарии к заказу:";
 }
 
-function setContentMessage() {
+function setContentMail() {
   $remove("inactive", nameLabel);
   $remove("inactive", phoneLabel);
   $remove("active", serviceLabel);
@@ -39,6 +39,19 @@ function setContentMessage() {
   handleImageUpload("close");
   iconContainer.src = mail;
   title.textContent = "Отправить сообщение!";
+  textLabel.textContent = "Задайте ваш вопрос:";
+}
+
+function setContentMailEdit() {
+  $add("inactive", nameLabel);
+  $add("inactive", phoneLabel);
+  $remove("active", serviceLabel);
+  $remove("small", iconContainer);
+  nameInput.removeAttribute("required");
+  phoneInput.removeAttribute("required");
+  handleImageUpload("close");
+  iconContainer.src = mail;
+  title.textContent = "Редактировать сообщение!";
   textLabel.textContent = "Задайте ваш вопрос:";
 }
 
@@ -64,7 +77,11 @@ export const handleContentModal = (type: TypeModal) => {
     if (type === "order") {
       setContentOrder();
     } else if (type === "mail") {
-      setContentMessage();
-    } else setContentEdit();
+      setContentMail();
+    } else if (type === "orderEdit") {
+      setContentOrderEdit();
+    } else {
+      setContentMailEdit();
+    }
   }
 };

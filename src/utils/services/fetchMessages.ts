@@ -1,10 +1,10 @@
 import { $api } from "../api/axiosApi";
-import type { Messages } from "../types/fetch-data";
+import type { Message } from "../types/fetch-data";
 
 /**
  ** Первоначальный запрос корзины вызывается в header.ts
  */
-export async function fetchMessages(): Promise<Messages[] | string> {
+export async function fetchMessages(): Promise<Message[] | string> {
   try {
     const messages = (await $api.get("/messages")).data;
 

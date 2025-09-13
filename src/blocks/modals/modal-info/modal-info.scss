@@ -31,6 +31,7 @@
 
 .modal-info__title {
   font: var(--font-catrin-30-bold);
+  text-align: center;
 }
 
 .modal-info__close {
@@ -48,6 +49,8 @@
   display: none;
   font: var(--font-catrin-24-norm);
   text-align: center;
+  max-height: 120px;
+  overflow-y: hidden;
 
   &.active {
     display: inline;

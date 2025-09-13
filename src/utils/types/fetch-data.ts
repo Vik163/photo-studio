@@ -1,7 +1,7 @@
 export interface Basket {
   orderId: string;
   service: string;
-  message?: string;
+  mail?: string;
   images: string[];
   completedImages?: string; // src сформированный fileReader (хранится только в БД)
   created: string;
@@ -19,14 +19,14 @@ export interface OrderData {
   orderId: string;
   name: FormDataEntryValue;
   phone: FormDataEntryValue;
-  message?: FormDataEntryValue;
+  mail?: FormDataEntryValue;
   images?: string[];
   service: FormDataEntryValue;
 }
 
 export interface OrderEditData {
   orderId: string;
-  message?: FormDataEntryValue;
+  mail?: FormDataEntryValue;
   images?: string[];
   service: FormDataEntryValue;
 }
@@ -35,11 +35,16 @@ export interface MessagesData {
   orderId: string;
   name: FormDataEntryValue;
   phone: FormDataEntryValue;
-  message: FormDataEntryValue;
+  mail: FormDataEntryValue;
 }
 
-export interface Messages {
+export interface Message {
   orderId: string;
-  message: string;
+  mail: string;
   created: string;
+}
+
+export interface MessageEditData {
+  orderId: string;
+  mail: FormDataEntryValue;
 }

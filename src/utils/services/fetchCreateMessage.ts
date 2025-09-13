@@ -1,9 +1,9 @@
 import { $api } from "@/utils/api/axiosApi";
-import type { Messages, MessagesData } from "../types/fetch-data";
+import type { Message, MessagesData } from "../types/fetch-data";
 
 export async function fetchCreateMessage(
   data: MessagesData
-): Promise<Messages[] | string> {
+): Promise<Message[] | string> {
   try {
     const messages = (await $api.post("/messages", data)).data;
 

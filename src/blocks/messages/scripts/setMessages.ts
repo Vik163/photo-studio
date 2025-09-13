@@ -1,5 +1,5 @@
 import { $add, $class, $contains, $remove } from "@/utils/lib/getElement";
-import type { Messages } from "@/utils/types/fetch-data";
+import type { Message } from "@/utils/types/fetch-data";
 import { deleteMessage } from "./deleteMessage";
 import { editMessage } from "./editMessage";
 import { setMessagesElements } from "./setMessagesElements";
@@ -7,7 +7,7 @@ import { fetchMessages } from "@/utils/services/fetchMessages";
 
 const list = $class("messages-list");
 const messagesNum = $class("messages");
-let orderData: Messages[] = [];
+let messagesData: Message[] = [];
 
 export function closeMessagesList() {
   $remove("active", list);
@@ -18,7 +18,7 @@ export function closeMessagesList() {
  * Отображает корзину в header если не пустая
  * @param data - корзина
  */
-export const setMessagesData = (data: Messages[]) => {
+export const setMessagesData = (data: Message[]) => {
   const messagesNum = $class("messages");
   closeMessagesList();
 
@@ -26,7 +26,7 @@ export const setMessagesData = (data: Messages[]) => {
     console.log("data:", data);
 
     $add("active", messagesNum);
-    orderData = data;
+    messagesData = data;
     messagesNum.textContent = data.length.toString();
 
     if (data) setMessagesElements(list, data);
@@ -59,10 +59,10 @@ const setMessagesListeners = () => {
   list.addEventListener("click", function (e: Event) {
     const el = e.target as HTMLElement;
 
-    if (el.tagName === "BUTTON" && orderData.length > 0) {
+    if (el.tagName === "BUTTON" && messagesData.length > 0) {
       if ($contains("messages-item__edit", el)) {
-        editMessage();
-      } else deleteMessage();
+        editMessage(messagesData, el.id);
+      } else deleteMessage(messagesData, el.id);
     }
   });
 };

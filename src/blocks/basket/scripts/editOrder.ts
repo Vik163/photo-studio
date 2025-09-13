@@ -3,7 +3,7 @@ import {
   closeModal,
   setModalFormByType,
 } from "@/blocks/modals/modal/scripts/modal";
-import { setValuesModalForm } from "@/blocks/modals/modal/scripts/setValuesModal";
+import { setValuesOrderModalForm } from "@/blocks/modals/modal/scripts/setValuesModal";
 import type { Basket } from "@/utils/types/fetch-data";
 
 let order: Basket;
@@ -15,13 +15,13 @@ let order: Basket;
  */
 export function editBasket(orderData: Basket[], id: string) {
   order = orderData.find((order) => order.orderId === id)!;
-  openModalInfoConfirm("edit", order);
+  openModalInfoConfirm("orderEdit", order.service);
 
   // закрываю модалку если открытая
   closeModal();
 }
 
 export function setOrderDataInModalForm() {
-  setModalFormByType("edit");
-  setValuesModalForm(order);
+  setModalFormByType("orderEdit");
+  setValuesOrderModalForm(order);
 }

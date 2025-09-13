@@ -10,7 +10,7 @@ import {
   uploadImagesInCloud,
 } from "./handleImagesFromCloud";
 import { fetchUpdateOrder } from "@/utils/services/fetchUpdateOrder";
-import { handleResponse } from "./handleResponse";
+import { handleResponseOrder } from "./handleResponse";
 
 const form = $class("modal__form") as HTMLFormElement;
 let formData: FormData;
@@ -33,14 +33,14 @@ function getKeysFilesFromId(orderId: string, images: string[]) {
 /**
  * Отправка данных формы редактирования
  */
-export async function sendEditModalData() {
+export async function sendEditOrderData() {
   let images: string[] = [];
 
   openOverlayAndLoader("loader");
   formData = new FormData(form);
 
   const service = formData.get("service")!;
-  const message = formData.get("message")!;
+  const mail = formData.get("message")!;
 
   // удаление ненужных файлов из облака
   await deleteImagesInCloud();
@@ -57,11 +57,11 @@ export async function sendEditModalData() {
   }
 
   images = getKeysFilesFromId(orderId, images);
-  const data = { orderId, message, images, service };
+  const data = { orderId, mail, images, service };
 
   const response = await fetchUpdateOrder(data);
   if (response) {
-    handleResponse(response, "Заказ успешно изменён!", formData);
+    handleResponseOrder(response, "Заказ успешно изменён!", formData);
     closeOverlayAndLoader();
   }
 }

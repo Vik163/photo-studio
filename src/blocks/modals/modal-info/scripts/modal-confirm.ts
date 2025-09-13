@@ -1,13 +1,17 @@
 import { $add, $class, $remove } from "@/utils/lib/getElement";
-import type { Basket } from "@/utils/types/fetch-data";
-import { closeModalInfo, openModalInfo } from "./modal-info";
-import { closeBasket, setBasketData } from "@/blocks/basket/scripts/basket";
-import {
-  closeOverlayAndLoader,
-  openOverlayAndLoader,
-} from "@/utils/ui/overlay/overlay";
-import { deleteData } from "./deleteDataConfirm";
+import { closeModalInfo } from "./modal-info";
+import { closeBasket } from "@/blocks/basket/scripts/basket";
+import { openOverlayAndLoader } from "@/utils/ui/overlay/overlay";
 import { setOrderDataInModalForm } from "@/blocks/basket/scripts/editOrder";
+import { deleteOrderData } from "@/blocks/basket/scripts/deleteOrder";
+import type { TypeActionsModal } from "@/utils/types/modal";
+import { deleteMessageData } from "@/blocks/messages/scripts/deleteMessage";
+import { closeMessagesList } from "@/blocks/messages/scripts/setMessages";
+import { setMailDataInModalForm } from "@/blocks/messages/scripts/editMessage";
+import {
+  handleResponseDeleteMessage,
+  handleResponseDeleteOrder,
+} from "../../modal/scripts/handleResponse";
 
 const modal = $class("modal-info");
 const container = $class("modal-info__container", modal);
@@ -17,24 +21,7 @@ const image = $class("modal-info__img", modal) as HTMLImageElement;
 const closeBtn = $class("modal-info__close", modal);
 const btn = $class("modal-info__btn-submit", modal);
 
-let callbackConfirm: (id: string) => Promise<Basket[] | string>;
-let newOrder: Basket;
-let typeModal: "delete" | "edit";
-
-/**
- * Открывает modalInfo после запроса с нужным контентом и обновляет корзину
- * @param data string | Basket[]
- */
-function handleResponseDeleteData(data: string | Basket[]) {
-  if (typeof data === "string") {
-    openModalInfo("reject", data);
-    closeOverlayAndLoader();
-  } else {
-    openModalInfo("success", "Заказ успешно удалён!");
-    setBasketData(data);
-    closeOverlayAndLoader();
-  }
-}
+let typeModal: TypeActionsModal;
 
 /**
  * Действия после подтверждения:
@@ -42,15 +29,24 @@ function handleResponseDeleteData(data: string | Basket[]) {
  * - если редактирование, то: открывается форма
  */
 async function confirmActionModal() {
-  if (typeModal === "delete") {
+  if (typeModal === "orderDelete") {
     openOverlayAndLoader("loader");
 
-    const data = await deleteData(newOrder, callbackConfirm);
-    if (data) handleResponseDeleteData(data);
-  } else {
+    const data = await deleteOrderData();
+    if (data) handleResponseDeleteOrder(data);
+  } else if (typeModal === "orderEdit") {
     closeModalInfo();
     closeBasket();
     setOrderDataInModalForm();
+  } else if (typeModal === "mailDelete") {
+    openOverlayAndLoader("loader");
+
+    const data = await deleteMessageData();
+    if (data) handleResponseDeleteMessage(data);
+  } else {
+    closeModalInfo();
+    closeMessagesList();
+    setMailDataInModalForm();
   }
 }
 
@@ -70,27 +66,21 @@ const closeModalInfoByEvent = async (e: Event) => {
  * @param order Basket
  * @param callback (id: string) => Promise<Basket[] | string>
  */
-export const openModalInfoConfirm = (
-  type: "delete" | "edit",
-  order: Basket,
-  callback?: (id: string) => Promise<Basket[] | string>
-) => {
+export const openModalInfoConfirm = (type: TypeActionsModal, name: string) => {
   $add("active", modal);
   $add("active", btn);
   $add("active", text);
   title.textContent = "Подвердить действие";
   typeModal = type;
-  if (callback) callbackConfirm = callback;
-  newOrder = order;
   $remove("active", image);
 
-  if (type === "delete") {
+  if (type === "orderDelete" || type === "mailDelete") {
     btn.textContent = "Удалить";
-    text.textContent = `Вы действительно хотите удалить "${order.service}"`;
+    text.textContent = `Вы действительно хотите удалить "${name}"`;
   }
-  if (type === "edit") {
+  if (type === "orderEdit" || type === "mailEdit") {
     btn.textContent = "Редактировать";
-    text.textContent = `Вы действительно хотите изменить "${order.service}"`;
+    text.textContent = `Вы действительно хотите изменить "${name}"`;
   }
 };
 

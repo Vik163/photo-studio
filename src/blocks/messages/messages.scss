@@ -1,77 +1,15 @@
 @use "../../styles/variables/times.scss";
 
+// основные настройки находятся в header ===
 .messages {
-  position: absolute;
-  top: -17px;
   left: 113px;
-  font: var(--font-catrin-18-bold);
-  color: var(--color-luminous-vivid-dark-red);
-  width: 25px;
-  height: 25px;
-  padding: 6px;
-  display: none;
-  background-image: none;
-
-  border-radius: 50%;
-  border: 1px solid var(--color-luminous-vivid-dark-red);
-  background-color: var(--bg-modal-color);
-  line-height: 14px;
-  text-align: center;
-  cursor: pointer;
-  transition: all times.$time-half;
-  z-index: var(--index-35);
-
-  &:hover {
-    transform: scale(1.1);
-    transition: all times.$time-half;
-  }
-
-  &.active {
-    display: inline;
-  }
-
-  &.active-close::after {
-    content: "";
-    position: absolute;
-    top: 1px;
-    left: 1px;
-    width: 21px;
-    height: 21px;
-    border-radius: 50%;
-    background-color: var(--bg-modal-color);
-    background-image: url(../../assets/icons/close.svg);
-    background-size: 80%;
-    background-position: center;
-  }
 }
 
 .messages-list {
-  position: absolute;
-  top: -17px;
-  width: 700px;
   left: -573px;
-  padding: 10px;
-  transform: translateY(-700px);
-  visibility: hidden;
-  transition: all times.$time-half;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  border: 2px solid var(--color-luminous-vivid-dark-red);
-  border-radius: 10px;
-  background-color: var(--bg-modal-color);
-  font: var(--font-catrin-18-norm);
-  color: var(--color-dark-gray-blue);
   z-index: var(--index-35);
-
-  &:hover,
-  &.active,
-  &.active-hover {
-    transition: all times.$time-half;
-    transform: translateY(0);
-    visibility: visible;
-  }
 }
+// =========================================
 
 .messages-item {
   display: flex;
@@ -84,70 +22,11 @@
   background-color: transparent;
 }
 
-.messages-item__container {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-
-  .messages-item__img-modal {
-    visibility: hidden;
-    opacity: 0;
-    position: absolute;
-    top: 100px;
-    left: 50px;
-    width: 0;
-    background-color: var(--bg-modal-color);
-    border: 2px solid var(--color-luminous-vivid-dark-red);
-    border-radius: 15px;
-    padding: 0;
-    z-index: var(--index-25);
-    transition: all times.$time-half;
-  }
-
-  // hover работает если у потомков есть класс "active"
-  .messages-item__img-container {
-    &:hover:has([class*="active"]) {
-      .messages-item__img-modal {
-        width: 500px;
-        padding: 100px;
-        opacity: 1;
-        visibility: visible;
-        transition: all times.$time-half;
-      }
-    }
-  }
-
-  .messages-item__img {
-    width: 45px;
-    opacity: 0.6;
-    cursor: default;
-
-    &.active {
-      opacity: 1;
-      cursor: pointer;
-    }
-  }
-
-  .messages-item__download-link {
-    height: 22px;
-    opacity: 0.4;
-    cursor: default;
-    pointer-events: none;
-
-    &.active {
-      opacity: 1;
-      cursor: pointer;
-      pointer-events: all;
-    }
-  }
-
-  .messages-item__download {
-    width: 22px;
-  }
+.messages-item__text {
+  width: 450px;
 }
-
-.messages-item__name {
-  width: 200px;
+.messages-item__date {
+  width: 50px;
 }
 
 .messages-item__icons {
@@ -156,60 +35,19 @@
   gap: 20px;
 }
 
-.messages-item__status {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100px;
-  background-color: transparent;
-
-  &.violet {
-    color: var(--color-violet);
-  }
-  &.green {
-    color: var(--color-vivid-green);
-  }
-  &.orange {
-    color: var(--color-luminous-vivid-orange);
-  }
-  &.blue {
-    color: var(--color-vivid-cyan-blue);
-  }
-  &.red {
-    color: var(--color-luminous-vivid-dark-red);
-  }
-  &.greenCyan {
-    color: var(--color-vivid-green-cyan);
-  }
-}
-
 .messages-item__basket {
-  opacity: 0.4;
   background: url(../../assets/icons/basket.png) no-repeat;
   background-position: center;
   background-size: 20px;
   width: 20px;
   height: 20px;
-  pointer-events: none;
-
-  &.active {
-    opacity: 1;
-    cursor: pointer;
-    pointer-events: all;
-  }
+  cursor: pointer;
 }
 .messages-item__edit {
-  opacity: 0.4;
   background: url(../../assets/icons/edit.png) no-repeat;
   background-position: center;
   background-size: 20px;
   width: 20px;
   height: 20px;
-  pointer-events: none;
-
-  &.active {
-    opacity: 1;
-    cursor: pointer;
-    pointer-events: all;
-  }
+  cursor: pointer;
 }

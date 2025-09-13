@@ -13,7 +13,7 @@ export const closeModalInfo = () => {
 };
 
 export const openModalInfo = (
-  type: "reject" | "success" | "info",
+  type: "fatal" | "success" | "info",
   info: string
 ) => {
   $add("active", modal);
@@ -23,7 +23,7 @@ export const openModalInfo = (
   title.textContent = info;
   if (type !== "info") {
     $add("active", image);
-    image.src = type === "reject" ? rejectIcon : successIcon;
+    image.src = type === "fatal" ? rejectIcon : successIcon;
   } else {
     $remove("active", image);
   }

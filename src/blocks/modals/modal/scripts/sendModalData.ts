@@ -8,7 +8,7 @@ import {
 } from "@/utils/ui/overlay/overlay";
 import type { TypeModal } from "@/utils/types/modal";
 import { uploadImagesInCloud } from "./handleImagesFromCloud";
-import { handleResponse, handleResponseMessages } from "./handleResponse";
+import { handleResponseOrder, handleResponseMessages } from "./handleResponse";
 import { fetchCreateMessage } from "@/utils/services/fetchCreateMessage";
 
 const form = $class("modal__form") as HTMLFormElement;
@@ -18,7 +18,7 @@ let formData: FormData;
  * Собирает данные из формы и загруженные фото
  * создает id заказа
  * фото отправляет в облако, а данные на сервер
- * @param typeModal - message | order | edit
+ * @param typeModal - "orderEdit" | "mailEdit" | "mail" | "order"
  */
 export async function sendModalData(typeModal: TypeModal) {
   let images: string[] = [];
@@ -28,7 +28,7 @@ export async function sendModalData(typeModal: TypeModal) {
   const name = formData.get("name")!;
   const service = formData.get("service")!;
   const phone = (formData.get("phone") as string).replace(/\D/g, "").slice(1); //только цифры без 7;
-  const message = formData.get("message")!;
+  const mail = formData.get("message")!;
 
   if (form.checkValidity()) {
     const orderId = uuidv4();
@@ -40,15 +40,15 @@ export async function sendModalData(typeModal: TypeModal) {
         images.push(img);
       }
 
-      const data = { orderId, name, phone, message, images, service };
+      const data = { orderId, name, phone, mail, images, service };
 
       const response = await fetchCreateOrder(data);
       if (response) {
-        handleResponse(response, "Заказ успешно создан!", formData);
+        handleResponseOrder(response, "Заказ успешно создан!", formData);
         closeOverlayAndLoader();
       }
-    } else {
-      const data = { orderId, name, phone, message };
+    } else if (typeModal === "mail") {
+      const data = { orderId, name, phone, mail };
       const response = await fetchCreateMessage(data);
 
       if (response) {
