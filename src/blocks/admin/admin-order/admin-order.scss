@@ -1,0 +1,43 @@
+.order {
+  width: 1024px;
+  margin: 50px auto;
+  border: 1px solid red;
+  display: none;
+  font: var(--font-catrin-18-norm);
+
+  &.active {
+    display: block;
+  }
+}
+.order__title {
+}
+.order__type {
+}
+.order__item {
+}
+.order__name {
+}
+.order__phone {
+}
+.order__service {
+}
+.order__text {
+}
+.order__status {
+}
+.order__date {
+}
+.order__images {
+}
+
+.order__btn-back {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  height: 40px;
+  padding: 8px 20px;
+  border: 1px solid var(--color-luminous-vivid-amber);
+  border-radius: 8px;
+  color: var(--color-font-light);
+  background-color: transparent;
+}

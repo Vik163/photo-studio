@@ -9,7 +9,7 @@ import {
   getImageDataFromCloud,
   uploadImagesInCloud,
 } from "./handleImagesFromCloud";
-import { fetchUpdateOrder } from "@/utils/services/fetchUpdateOrder";
+import { fetchUpdateOrder } from "@/utils/services/orders/fetchUpdateOrder";
 import { handleResponseOrder } from "./handleResponse";
 
 const form = $class("modal__form") as HTMLFormElement;

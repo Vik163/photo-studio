@@ -1,7 +1,7 @@
 import { openModalInfoConfirm } from "@/blocks/modals/modal-info/scripts/modal-confirm";
 import { closeModal } from "@/blocks/modals/modal/scripts/modal";
 import { delBaketObj } from "@/utils/lib/handleYaBaket";
-import { fetchDeleteOrder } from "@/utils/services/fetchDeleteOrder";
+import { fetchDeleteOrder } from "@/utils/services/orders/fetchDeleteOrder";
 import type { Basket } from "@/utils/types/fetch-data";
 
 let order: Basket;

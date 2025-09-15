@@ -1,5 +1,6 @@
-import { $api } from "../api/axiosApi";
-import type { Basket } from "../types/fetch-data";
+import { $api } from "@/utils/api/axiosApi";
+import { Messages } from "@/utils/constants/messages";
+import type { Basket } from "@/utils/types/fetch-data";
 
 /**
  ** Первоначальный запрос корзины вызывается в header.ts
@@ -10,6 +11,6 @@ export async function fetchBasket(): Promise<Basket[] | string> {
 
     return basket;
   } catch (err) {
-    return "Не удалось получить данные по вашим заказам.";
+    return Messages.GET_ORDER_ERROR;
   }
 }

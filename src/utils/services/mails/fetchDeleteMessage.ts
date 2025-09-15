@@ -1,5 +1,6 @@
-import { $api } from "../api/axiosApi";
-import type { Message } from "../types/fetch-data";
+import { Messages } from "@/utils/constants/messages";
+import { $api } from "../../api/axiosApi";
+import type { Message } from "../../types/fetch-data";
 
 export const fetchDeleteMessage = async (
   id: string
@@ -9,6 +10,6 @@ export const fetchDeleteMessage = async (
 
     return messages;
   } catch (err) {
-    return "Не удалось удалить сообщение.";
+    return Messages.DELETE_MAIL_ERROR;
   }
 };

@@ -1,5 +1,5 @@
 import { $class } from "@/utils/lib/getElement";
-import { fetchUpdateMail } from "@/utils/services/fetchUpdateMail";
+import { fetchUpdateMail } from "@/utils/services/mails/fetchUpdateMail";
 import {
   closeOverlayAndLoader,
   openOverlayAndLoader,

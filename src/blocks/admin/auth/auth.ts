@@ -1,7 +1,7 @@
 import { CONTROL_TOKEN } from "@/utils/constants/cookies";
 import { getCookie } from "@/utils/lib/getCookie";
 import { $add, $class, $remove } from "@/utils/lib/getElement";
-import { fetchAuth } from "@/utils/services/fetchAuth";
+import { fetchAuth } from "@/utils/services/admin/fetchAuth";
 import {
   closeOverlayAndLoader,
   openOverlayAndLoader,

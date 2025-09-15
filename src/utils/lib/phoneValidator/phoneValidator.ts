@@ -34,3 +34,10 @@ export const checkValidate = (value: string) => {
 
   return error;
 };
+
+export function setSymbolPhone(phone: string) {
+  return `(${phone.slice(0, 3)}) ${phone.slice(3, 6)}-${phone.slice(
+    6,
+    8
+  )}-${phone.slice(8)}`;
+}

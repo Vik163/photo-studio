@@ -1,5 +1,6 @@
 import { $api } from "@/utils/api/axiosApi";
-import type { Message, MessagesData } from "../types/fetch-data";
+import type { Message, MessagesData } from "../../types/fetch-data";
+import { Messages } from "@/utils/constants/messages";
 
 export async function fetchCreateMessage(
   data: MessagesData
@@ -9,6 +10,6 @@ export async function fetchCreateMessage(
 
     return messages;
   } catch (err) {
-    return "Сообщение не получилось создать.";
+    return Messages.CREATE_MAIL_ERROR;
   }
 }

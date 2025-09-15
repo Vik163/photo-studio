@@ -1,7 +1,7 @@
 import { getImgFiles } from "@/blocks/upload-img/scripts/handleImageUpload";
 import { $class } from "@/utils/lib/getElement";
 import { v4 as uuidv4 } from "uuid";
-import { fetchCreateOrder } from "@/utils/services/fetchCreateOrder";
+import { fetchCreateOrder } from "@/utils/services/orders/fetchCreateOrder";
 import {
   closeOverlayAndLoader,
   openOverlayAndLoader,
@@ -9,7 +9,7 @@ import {
 import type { TypeModal } from "@/utils/types/modal";
 import { uploadImagesInCloud } from "./handleImagesFromCloud";
 import { handleResponseOrder, handleResponseMessages } from "./handleResponse";
-import { fetchCreateMessage } from "@/utils/services/fetchCreateMessage";
+import { fetchCreateMessage } from "@/utils/services/mails/fetchCreateMessage";
 
 const form = $class("modal__form") as HTMLFormElement;
 let formData: FormData;

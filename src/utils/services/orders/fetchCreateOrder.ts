@@ -1,5 +1,6 @@
 import { $api } from "@/utils/api/axiosApi";
-import type { Basket, OrderData } from "../types/fetch-data";
+import { Messages } from "@/utils/constants/messages";
+import type { Basket, OrderData } from "@/utils/types/fetch-data";
 
 export async function fetchCreateOrder(
   data: OrderData
@@ -9,6 +10,6 @@ export async function fetchCreateOrder(
 
     return basket;
   } catch (err) {
-    return "Заказ не получилось создать.";
+    return Messages.CREATE_ORDER_ERROR;
   }
 }

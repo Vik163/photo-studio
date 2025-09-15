@@ -1,5 +1,6 @@
 import { $api } from "@/utils/api/axiosApi";
-import type { Message, MessageEditData } from "../types/fetch-data";
+import { Messages } from "@/utils/constants/messages";
+import type { Message, MessageEditData } from "@/utils/types/fetch-data";
 
 export async function fetchUpdateMail(
   data: MessageEditData
@@ -9,6 +10,6 @@ export async function fetchUpdateMail(
 
     return messages;
   } catch (err) {
-    return "Сообщение не получилось изменить.";
+    return Messages.UPDATE_MAIL_ERROR;
   }
 }

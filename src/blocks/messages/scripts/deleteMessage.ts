@@ -1,6 +1,6 @@
 import { openModalInfoConfirm } from "@/blocks/modals/modal-info/scripts/modal-confirm";
 import { closeModal } from "@/blocks/modals/modal/scripts/modal";
-import { fetchDeleteMessage } from "@/utils/services/fetchDeleteMessage";
+import { fetchDeleteMessage } from "@/utils/services/mails/fetchDeleteMessage";
 import type { Message } from "@/utils/types/fetch-data";
 
 let message: Message;

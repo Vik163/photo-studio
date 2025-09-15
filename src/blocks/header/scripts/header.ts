@@ -1,8 +1,6 @@
 import { type ObserveCallback, observer } from "@/utils/lib/observer";
 import { $add, $class, $remove } from "@/utils/lib/getElement";
 import { setMenuListeners } from "@/blocks/menu/scripts/menu";
-import { fetchBasket } from "@/utils/services/fetchBasket";
-import { setBasketData } from "@/blocks/basket/scripts/basket";
 
 const headerBlock = $class("header");
 const mainObserver = $class("main__observer");

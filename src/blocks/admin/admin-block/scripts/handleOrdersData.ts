@@ -1,13 +1,11 @@
-import type {
-  Order,
-  OrdersUser,
-  StatusOrder,
-} from "@/utils/types/fetch-admin-data";
+import type { AdminOrders } from "@/utils/types/fetch-admin-data";
 import { $add, $class, $id, $remove } from "@/utils/lib/getElement";
 import noImg from "@/assets/images/no-img.png";
 import { ORDER_LIMIT } from "@/utils/constants/limitDays";
+import { StatusOrder } from "@/utils/types/fetch-data";
+import { setSymbolPhone } from "@/utils/lib/phoneValidator/phoneValidator";
 
-const ordersList = $class("admin__orders");
+const ordersList = $class("admin__list-orders");
 
 function handleDateElement(leftDays: number, el: HTMLElement) {
   if (leftDays <= ORDER_LIMIT / 3) {
@@ -43,57 +41,58 @@ function handleStatusElement(status: StatusOrder, el: HTMLElement) {
 }
 
 /**
- * Создаёт из двух темплейтов лист заказов (userId и его заказы)
+ * Создаёт из двух темплейтов лист заказов (deviceId и его заказы)
  * @param data
  */
-export const handleOrdersData = (data: OrdersUser[]) => {
-  const templateId = ($id("user-orders") as HTMLTemplateElement).content;
-  const templateOrders = ($id("user-order") as HTMLTemplateElement).content;
+export const handleOrdersData = (data: AdminOrders[]) => {
+  console.log("data:", data);
+  const templateId = ($id("device-orders") as HTMLTemplateElement).content;
+  const templateOrders = ($id("device-order") as HTMLTemplateElement).content;
 
-  data.forEach(async (user, index: number) => {
+  data.forEach(async (device, index: number) => {
     // родительский темплейт
-    const userIdTemplate = templateId
-      .querySelector(".user-orders")
+    const deviceIdTemplate = templateId
+      .querySelector(".device-orders")
       ?.cloneNode(true) as HTMLElement;
 
-    if (userIdTemplate) {
+    if (deviceIdTemplate) {
       // Добавляю id для поиска этого элемента для встраивания другого темплейта
       const id = `id-${index.toString()}`;
-      const container = $class("user-orders__container", userIdTemplate);
+      const container = $class("device-orders__container", deviceIdTemplate);
       container.id = id;
 
       // графа id
-      const userId = $class("user-orders__id", userIdTemplate);
-      userId.textContent = user.userId;
+      const deviceId = $class("device-orders__id", deviceIdTemplate);
+      deviceId.textContent = device.deviceId;
       // вставляю родительский темплейт
-      ordersList.append(userIdTemplate);
+      ordersList.append(deviceIdTemplate);
       // нахожу контейнет для дочернего темплейта
-      const userOrders = $id(`${id}`, ordersList);
+      const deviceOrders = $id(`${id}`, ordersList);
 
-      user.ordersUser.forEach((order) => {
+      device.ordersUser.forEach((order) => {
         // дочерний темплейт
-        const userOrdersTemplate = templateOrders
-          .querySelector(".user-order")
+        const deviceOrdersTemplate = templateOrders
+          .querySelector(".device-order")
           ?.cloneNode(true) as HTMLAnchorElement;
 
-        const service = $class("user-order__service", userOrdersTemplate);
-        service.textContent = order.service;
+        const service = $class("device-order__service", deviceOrdersTemplate);
+        service.textContent = order.service!;
 
-        const date = $class("user-order__date", userOrdersTemplate);
+        const date = $class("device-order__date", deviceOrdersTemplate);
         date.textContent = order.created;
-        handleDateElement(order.leftDays, date);
+        handleDateElement(order.leftDays!, date);
 
-        const status = $class("user-order__status", userOrdersTemplate);
-        status.textContent = order.status;
-        handleStatusElement(order.status, status);
+        const status = $class("device-order__status", deviceOrdersTemplate);
+        status.textContent = order.status!;
+        handleStatusElement(order.status!, status);
 
         const btn = $class(
-          "user-order__btn",
-          userOrdersTemplate
+          "device-order__btn",
+          deviceOrdersTemplate
         ) as HTMLButtonElement;
-        btn.id = `${user.userId}/${order.orderId}`;
+        btn.id = `order/${device.deviceId}/${order.orderId}`;
 
-        userOrders?.append(userOrdersTemplate);
+        deviceOrders?.append(deviceOrdersTemplate);
       });
     }
   });
@@ -106,7 +105,7 @@ export const handleOrdersData = (data: OrdersUser[]) => {
  * @param data - корзина
  */
 export function removeBasketElements() {
-  const elements = document.querySelectorAll(".user-orders");
+  const elements = document.querySelectorAll(".device-orders");
   if (elements.length > 0)
     elements.forEach((el) => {
       el.remove();

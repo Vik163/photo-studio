@@ -1,5 +1,6 @@
 import { $api } from "@/utils/api/axiosApi";
-import type { Basket, OrderEditData } from "../types/fetch-data";
+import { Messages } from "@/utils/constants/messages";
+import type { Basket, OrderEditData } from "@/utils/types/fetch-data";
 
 export async function fetchUpdateOrder(
   data: OrderEditData
@@ -9,6 +10,6 @@ export async function fetchUpdateOrder(
 
     return basket;
   } catch (err) {
-    return "Заказ не получилось изменить.";
+    return Messages.UPDATE_ORDER_ERROR;
   }
 }

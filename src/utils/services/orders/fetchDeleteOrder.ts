@@ -1,5 +1,6 @@
-import { $api } from "../api/axiosApi";
-import type { Basket } from "../types/fetch-data";
+import { $api } from "@/utils/api/axiosApi";
+import { Messages } from "@/utils/constants/messages";
+import type { Basket } from "@/utils/types/fetch-data";
 
 export const fetchDeleteOrder = async (
   id: string
@@ -9,6 +10,6 @@ export const fetchDeleteOrder = async (
 
     return basket;
   } catch (err) {
-    return "Не удалось удалить заказ.";
+    return Messages.DELETE_ORDER_ERROR;
   }
 };

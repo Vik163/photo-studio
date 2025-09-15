@@ -3,7 +3,7 @@ import type { Message } from "@/utils/types/fetch-data";
 import { deleteMessage } from "./deleteMessage";
 import { editMessage } from "./editMessage";
 import { setMessagesElements } from "./setMessagesElements";
-import { fetchMessages } from "@/utils/services/fetchMessages";
+import { fetchMessages } from "@/utils/services/mails/fetchMessages";
 
 const list = $class("messages-list");
 const messagesNum = $class("messages");

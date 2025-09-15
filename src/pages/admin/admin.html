@@ -18,28 +18,53 @@
       <span class="auth__info"></span>
     </section>
     <section class="admin">
-      <h1 class="admin__title">Текущие заказы и сообщения</h1>
-      <ul class="admin__orders"></ul>
-      <p class="admin__error"></p>
+      <h2>Текущие сообщения</h2>
+      <ul class="admin__list admin__list-messages"></ul>
+      <p class="admin__error admin__error-messages"></p>
+
+      <h2>Текущие заказы</h2>
+      <ul class="admin__list admin__list-orders"></ul>
+      <p class="admin__error admin__error-orders"></p>
+    </section>
+
+    <section class="order">
+      <h2 class="order__title">Текущие данные заказа</h2>
+      <span class="order__type"></span>
+      <p class="order__item">Имя<span class="order__name"></span></p>
+      <p class="order__item">Телефон<span class="order__phone"></span></p>
+      <p class="order__item">
+        Название услуги<span class="order__service"></span>
+      </p>
+      <p class="order__item">
+        Комментарий или сообщение<span class="order__text"></span>
+      </p>
+      <p class="order__item">
+        Статус заказа<span class="order__status"></span>
+      </p>
+      <p class="order__item">Дата создания<span class="order__date"></span></p>
+      <p class="order__item">
+        Загруженные изображения<div class="order__images"></div>
+      </p>
+      <button type="button"  class="order__btn-back">Вернуться на страницу заказов</button>
     </section>
 
     <div class="overlay">
       <span class="loader"></span>
     </div>
 
-    <template id="user-orders">
-      <li class="user-orders">
-        <span class="user-orders__id"></span>
-        <div class="user-orders__container"></div>
+    <template id="device-orders">
+      <li class="device-orders">
+        <span class="device-orders__id"></span>
+        <div class="device-orders__container"></div>
       </li>
     </template>
-    <template id="user-order">
-      <div class="user-order">
-        <span class="user-order__service"></span>
-        <span class="user-order__date"></span>
-        <span class="user-order__status"></span>
+    <template id="device-order">
+      <div class="device-order">
+        <span class="device-order__service"></span>
+        <span class="device-order__date"></span>
+        <span class="device-order__status"></span>
 
-        <button id="#" type="button" class="user-order__btn"></button>
+        <button id="#" type="button" class="device-order__btn"></button>
       </div>
     </template>
   </body>

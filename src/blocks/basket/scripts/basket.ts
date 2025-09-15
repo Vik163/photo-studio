@@ -3,7 +3,7 @@ import type { Basket } from "@/utils/types/fetch-data";
 import { setBasketElements } from "./setBasketElements";
 import { deleteOrder } from "./deleteOrder";
 import { editBasket } from "./editOrder";
-import { fetchBasket } from "@/utils/services/fetchBasket";
+import { fetchBasket } from "@/utils/services/orders/fetchBasket";
 
 const basketOrders = $class("basket__orders");
 const orderNum = $class("basket");
