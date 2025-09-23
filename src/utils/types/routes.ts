@@ -1,4 +1,4 @@
-export type PageNames = "orders" | "errors" | "politic";
+export type PageNames = "orders" | "errors" | "politic" | "";
 
 export type PathNames =
   | "photo-na-dokumenty"

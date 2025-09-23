@@ -6,6 +6,7 @@
     <title>Admin</title>
   </head>
   <body class="main-admin">
+    <button type="button" class="main-admin__btn">Перейти на сайт</button>
     <section class="auth">
       <form class="auth__form">
         <label for="auth" class="auth__label"
@@ -17,35 +18,72 @@
 
       <span class="auth__info"></span>
     </section>
-    <section class="admin">
-      <h2>Текущие сообщения</h2>
-      <ul class="admin__list admin__list-messages"></ul>
+    <section class="admin container">
+      <h2 class="container__title">Текущие сообщения</h2>
+      <ul class="admin__list admin__list-messages container__list"></ul>
       <p class="admin__error admin__error-messages"></p>
 
-      <h2>Текущие заказы</h2>
-      <ul class="admin__list admin__list-orders"></ul>
+      <h2 class="container__title">Текущие заказы</h2>
+      <ul class="admin__list admin__list-orders container__list"></ul>
       <p class="admin__error admin__error-orders"></p>
     </section>
 
-    <section class="order">
-      <h2 class="order__title">Текущие данные заказа</h2>
-      <span class="order__type"></span>
-      <p class="order__item">Имя<span class="order__name"></span></p>
-      <p class="order__item">Телефон<span class="order__phone"></span></p>
-      <p class="order__item">
-        Название услуги<span class="order__service"></span>
-      </p>
-      <p class="order__item">
-        Комментарий или сообщение<span class="order__text"></span>
-      </p>
-      <p class="order__item">
-        Статус заказа<span class="order__status"></span>
-      </p>
-      <p class="order__item">Дата создания<span class="order__date"></span></p>
-      <p class="order__item">
-        Загруженные изображения<div class="order__images"></div>
-      </p>
-      <button type="button"  class="order__btn-back">Вернуться на страницу заказов</button>
+    <section class="order container">
+      <div class="order__container order-main">
+        <h2 class="order__title container__title"></h2>
+        <p class="order__item">Имя<span class="order__name"></span></p>
+        <p class="order__item">Телефон<span class="order__phone"></span></p>
+        <p class="order__item order__item-order">
+          Название услуги<span class="order__service"></span>
+        </p>
+        <div class="order-edit__btn-container">
+          <p class="order__item">
+            Комментарий или сообщение<span class="order__text"></span>
+          </p>
+          <button type="button" class="order__btn-mail">Ответить</button>
+        </div>
+        <div class="order-edit__btn-container order__item-order">
+          <p class="order__item">
+            Статус заказа<span class="order__status"></span>
+          </p>
+          <button type="button" class="order__btn-status">Изменить</button>
+        </div>
+        <p class="order__item">
+          Дата создания<span class="order__date"></span>
+        </p>
+        <p class="order__item order__item-order">Загруженные изображения</p>
+        <div class="order__images"></div>
+
+        <button type="button" class="order__btn-back order__back">
+          Вернуться на страницу заказов
+        </button>
+      </div>
+
+      <div class="order__container order-list">
+        <h3 class="order__title container__title"></h3>
+        <ul class="order__list container__list"></ul>
+      </div>
+
+      <div class="order__container order-info">
+        <h3 class="order__title container__title"></h3>
+        <button type="button" class="order__btn-close"></button>
+        <button type="button" class="order__btn-edit"></button>
+        <p class="order__item">Имя<span class="order__name"></span></p>
+        <p class="order__item order__item-order">
+          Название услуги<span class="order__service"></span>
+        </p>
+        <p class="order__item">
+          Комментарий или сообщение<span class="order__text"></span>
+        </p>
+        <p class="order__item order__item-order">
+          Статус заказа<span class="order__status"></span>
+        </p>
+        <p class="order__item">
+          Дата создания<span class="order__date"></span>
+        </p>
+        <p class="order__item order__item-order">Отправленные изображения</p>
+        <div class="order__images"></div>
+      </div>
     </section>
 
     <div class="overlay">
@@ -61,8 +99,8 @@
     <template id="device-order">
       <div class="device-order">
         <span class="device-order__service"></span>
-        <span class="device-order__date"></span>
-        <span class="device-order__status"></span>
+        <span class="device-order__date order__date"></span>
+        <span class="device-order__status order__status"></span>
 
         <button id="#" type="button" class="device-order__btn"></button>
       </div>

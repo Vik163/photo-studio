@@ -1,11 +1,13 @@
-import { Message, StatusOrder } from "./fetch-data";
+import { StatusOrder } from "./fetch-data";
+
+export type TypeData = "mail" | "order";
 
 export interface OneOrder {
   orderId: string;
-  name: string;
+  userName: string;
   phone: string;
   service?: string;
-  mail?: string;
+  mail: string;
   images?: string[];
   completedImages?: string; // src сформированный fileReader  (хранится только в БД)
   status?: StatusOrder;
@@ -13,12 +15,14 @@ export interface OneOrder {
   leftDays?: number;
 }
 
-export interface AdminOrders {
+export interface AdminData {
   deviceId: string;
-  ordersUser: OneOrder[];
+  data: OneOrder[];
 }
 
-export interface AdminMessages {
-  deviceId: string;
-  messages: OneOrder[];
+export interface OrdersData {
+  mail?: OneOrder;
+  mails?: OneOrder[];
+  order?: OneOrder;
+  orders?: OneOrder[];
 }

@@ -1,43 +1,92 @@
-.order {
-  width: 1024px;
-  margin: 50px auto;
-  border: 1px solid red;
-  display: none;
-  font: var(--font-catrin-18-norm);
+@use "../../../styles/variables/mixin.scss" as btn;
+@use "../admin-styles.scss";
 
-  &.active {
-    display: block;
+$color-gray: var(--color-font-light-grey);
+
+.order {
+  .device-order {
+    justify-content: space-between;
   }
 }
-.order__title {
+
+.order__container {
+  &.order-info {
+    display: none;
+    position: relative;
+
+    &.active {
+      display: block;
+    }
+  }
 }
-.order__type {
-}
+
 .order__item {
+  margin-bottom: 25px;
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+
+  &.order__item-order {
+    &.inactive {
+      display: none;
+    }
+  }
+
+  span {
+    width: 70%;
+  }
 }
-.order__name {
+
+.order-edit__btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  p {
+    width: 90%;
+
+    span {
+      width: 67%;
+    }
+  }
+
+  button {
+    width: 10%;
+    height: 30px;
+    @include btn.admin-btn;
+  }
+
+  &.order__item-order {
+    &.inactive {
+      display: none;
+    }
+  }
 }
-.order__phone {
+
+.order__btn-res {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  @include btn.admin-btn;
 }
-.order__service {
-}
-.order__text {
-}
-.order__status {
-}
-.order__date {
-}
+
 .order__images {
 }
 
-.order__btn-back {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  height: 40px;
-  padding: 8px 20px;
-  border: 1px solid var(--color-luminous-vivid-amber);
-  border-radius: 8px;
-  color: var(--color-font-light);
-  background-color: transparent;
+.order__btn-edit {
+  position: absolute;
+  top: 23px;
+  right: 75px;
+  @include btn.admin-btn;
+}
+
+.order__btn-close {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  width: 25px;
+  height: 25px;
+  background: url(@/assets/icons/close.svg) no-repeat;
+  background-size: 25px;
+  cursor: pointer;
 }

@@ -3,18 +3,26 @@
 @use "../../styles/variables/sizes.scss";
 @use "../../styles/variables/fonts-styles.scss";
 @use "../../styles/variables/z-index.scss";
+@use "../../styles/variables/mixin.scss" as btn;
 @use "../../assets/fonts/fonts.scss";
 
 @use "../../blocks/admin/auth/auth.scss";
+@use "../../blocks/admin/admin-styles.scss";
 @use "../../blocks/admin/admin-block/admin-block.scss";
 @use "../../blocks/admin/admin-order/admin-order.scss";
 
 @use "../../utils/ui/overlay/overlay.scss";
 
 .main-admin {
-  height: 100vh;
   background-color: var(--color-dark-gray-blue);
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.main-admin__btn {
+  position: fixed;
+  bottom: 5px;
+  left: 5px;
+  @include btn.admin-btn;
 }

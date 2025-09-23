@@ -1,0 +1,39 @@
+@use "../../styles/variables/mixin.scss" as btn;
+
+$color-gray: var(--color-font-light-grey);
+
+.container {
+  width: 1124px;
+  margin: 0 auto;
+  display: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  color: $color-gray;
+  letter-spacing: 1px;
+  padding: 50px 0;
+
+  &.active {
+    display: block;
+  }
+}
+
+.container__title {
+  margin-bottom: 25px;
+  font-size: 26px;
+  color: var(--color-luminous-vivid-orange);
+}
+
+.order__container {
+  position: relative;
+  border: 1px solid var(--color-white);
+  border-radius: 10px;
+  padding: 20px 20px 0 20px;
+  margin-bottom: 50px;
+}
+
+.order__back {
+  position: fixed;
+  top: 5px;
+  left: 5px;
+  @include btn.admin-btn;
+}

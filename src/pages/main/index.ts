@@ -9,10 +9,12 @@ import { setFooter } from "@/blocks/footer/footer";
 import { setListenersModal } from "@/blocks/modals/modal/scripts/modal";
 import { closeByEsc } from "@/utils/lib/closeByEsc";
 import { setDirectionAnimation } from "@/utils/lib/setDirectionAnimation";
-import { ORDER_PATH } from "@/utils/constants/storage";
 import { setListenersModalInfo } from "@/blocks/modals/modal-info/scripts/modal-confirm";
 import { setBasket } from "@/blocks/basket/scripts/basket";
 import { setMessages } from "@/blocks/messages/scripts/setMessages";
+import { ADMIN } from "@/utils/constants/storage";
+
+if (localStorage.getItem(ADMIN)) location.href = "/admin.html";
 
 if (location.pathname !== "/") {
   const locationPath = location.pathname;
