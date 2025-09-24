@@ -68,6 +68,8 @@ function closeOrder() {
   $remove("active", containerInfo);
 }
 
+function getImages() {}
+
 /**
  * Устанавливает страницу заказа:
  * Данные заказа и список писем пользователя, найденных по телефону, или наоборот
@@ -79,6 +81,7 @@ export const handleOrderPage = (typePage: TypeData, orderId: string) => {
   userData = getData(typePage, orderId);
   $remove("active", adminPage);
   $add("active", orderPage);
+
   setContentFromData(typePage, userData, containerMain, orderId);
   setContentListOrders(typePage, userData, containerList);
 

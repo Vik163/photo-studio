@@ -1,0 +1,134 @@
+.order__images {
+  width: 100%;
+  min-height: 160px;
+  position: relative;
+
+  &.inactive {
+    display: none;
+  }
+}
+
+.order__images-title {
+  margin-bottom: 25px;
+}
+
+.upload__images {
+  display: flex;
+  padding-right: 55px;
+  width: fit-content;
+  max-width: 75%;
+  flex-wrap: wrap;
+  gap: 6px;
+  position: relative;
+}
+
+.upload__btn-gallery {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+}
+
+.upload-img {
+  position: relative;
+
+  img {
+    width: 70px;
+    height: 85px;
+    border-radius: 8px;
+    border: 1px solid var(--color-luminous-vivid-orange);
+    background-color: var(--color-font-light-grey);
+    cursor: pointer;
+  }
+
+  button {
+    position: absolute;
+    background-color: white;
+    top: 6px;
+    right: 6px;
+    width: 15px;
+    height: 15px;
+    background-image: url(../../assets/icons/close.svg);
+    background-size: 100%;
+    border: 1px solid var(--color-luminous-vivid-orange);
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
+
+.order__upload-container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.order__upload-title {
+  font: var(--font-catrin-18-norm);
+}
+
+.order__upload {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-luminous-vivid-orange);
+  border-radius: 8px;
+  padding: 10px;
+}
+.upload__label {
+  position: relative;
+  border: 1px dashed var(--color-luminous-vivid-orange);
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:hover {
+    .upload__btn {
+      border-radius: 8px;
+      background-color: var(--color-font-light-grey);
+      color: var(--color-font-dark);
+    }
+  }
+
+  input[type="file"] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    display: block;
+    width: 0;
+    height: 0;
+
+    &:focus {
+      .upload__btn {
+        box-shadow: 0 0 0 0.2rem rgba(255, 60, 0, 0.25);
+      }
+    }
+
+    &:disabled {
+      .upload__btn {
+        background-color: #eee;
+      }
+    }
+  }
+}
+
+.upload__btn {
+  display: inline-block;
+  font: var(--font-catrin-18-norm);
+  color: var(--color-font-light-grey);
+  text-align: center;
+  background-color: transparent;
+  padding: 10px;
+  transition: background-color 0.2s;
+}
+
+.upload__text {
+  cursor: default;
+  line-height: 30px;
+  display: inline-block;
+}

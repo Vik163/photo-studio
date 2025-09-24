@@ -7,10 +7,15 @@
 @use "../../assets/fonts/fonts.scss";
 
 @use "../../blocks/admin/auth/auth.scss";
-@use "../../blocks/admin/admin-styles.scss";
-@use "../../blocks/admin/admin-block/admin-block.scss";
-@use "../../blocks/admin/admin-order/admin-order.scss";
 
+@use "../../blocks/admin/admin-styles.scss";
+
+@use "../../blocks/admin/admin-block/admin-block.scss";
+
+@use "../../blocks/admin/admin-order/admin-order.scss";
+@use "../../blocks/admin/admin-order/admin-order-images.scss";
+
+@use "../../blocks/gallery/gallery.scss";
 @use "../../utils/ui/overlay/overlay.scss";
 
 .main-admin {

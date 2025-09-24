@@ -51,8 +51,34 @@
         <p class="order__item">
           Дата создания<span class="order__date"></span>
         </p>
-        <p class="order__item order__item-order">Загруженные изображения</p>
-        <div class="order__images"></div>
+        <div class="order__images order__item-order">
+          <p class="order__images-title">Загруженные изображения</p>
+          <div class="upload__images">
+            <img
+              class="upload__btn-gallery"
+              src="../../assets/icons/magnifier.svg"
+              alt="Увеличить"
+            />
+          </div>
+          <div class="order__upload-container">
+            <span class="order__upload-title">Загрузить фотографию</span>
+            <div class="order__upload">
+              <label class="upload__label">
+                <input
+                  type="file"
+                  id="fileUpload"
+                  multiple
+                  name="file"
+                  accept="image/*"
+                />
+                <span class="upload__btn" id="dragDropArea"
+                  >Выбрать файл <br />
+                  или <br />перетащить его сюда</span
+                >
+              </label>
+            </div>
+          </div>
+        </div>
 
         <button type="button" class="order__btn-back order__back">
           Вернуться на страницу заказов
@@ -64,7 +90,7 @@
         <ul class="order__list container__list"></ul>
       </div>
 
-      <div class="order__container order-info">
+      <div class="order__container gg order-info">
         <h3 class="order__title container__title"></h3>
         <button type="button" class="order__btn-close"></button>
         <button type="button" class="order__btn-edit"></button>
@@ -81,15 +107,52 @@
         <p class="order__item">
           Дата создания<span class="order__date"></span>
         </p>
-        <p class="order__item order__item-order">Отправленные изображения</p>
-        <div class="order__images"></div>
+        <div class="order__images gg order__item-order">
+          <p class="order__images-title">Загруженные изображения</p>
+          <div class="upload__images gg">
+            <img
+              class="upload__btn-gallery"
+              src="../../assets/icons/magnifier.svg"
+              alt="Увеличить"
+            />
+          </div>
+          <div class="order__upload-container">
+            <span class="order__upload-title">Загрузить фотографию</span>
+            <div class="order__upload">
+              <label class="upload__label">
+                <input
+                  type="file"
+                  id="fileUpload"
+                  multiple
+                  name="file"
+                  accept="image/*"
+                />
+                <span class="upload__btn" id="dragDropArea"
+                  >Выбрать файл <br />
+                  или <br />перетащить его сюда</span
+                >
+              </label>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
+
+    <section class="gallery">
+      <div id="customize-thumbnails-gallery" class="gallery__list"></div>
     </section>
 
     <div class="overlay">
       <span class="loader"></span>
     </div>
 
+    <!--* ====== Tempalates =============== -->
+    <template id="upload-img">
+      <div class="upload-img">
+        <img class="upload-img__img" src="#" alt="" />
+        <button id="#" type="button" class="upload-img__btn"></button>
+      </div>
+    </template>
     <template id="device-orders">
       <li class="device-orders">
         <span class="device-orders__id"></span>

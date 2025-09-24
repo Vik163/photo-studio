@@ -2,8 +2,7 @@ import { deleteImageDataFromCloud } from "@/blocks/modals/modal/scripts/handleIm
 import { $add, $class, $id, $remove } from "@/utils/lib/getElement";
 
 const loadBlock = $class("upload")!;
-const fileInput = $id("fileUpload")! as HTMLInputElement;
-const images = $class("upload__images", loadBlock)!;
+
 const dragDropArea = $id("dragDropArea")!;
 
 let files: File[] = [];
@@ -41,7 +40,11 @@ function deleteImageByOne(e: Event) {
  * keyFile - ключ файла в облаке (используется только для облака)
  * навешивает ключ на id кнопки
  */
-export function setImageElements(src: string, keyFile: string) {
+export function setImageElements(
+  src: string,
+  keyFile: string,
+  container: HTMLElement
+) {
   const template = ($id("upload-img") as HTMLTemplateElement).content;
 
   const imgTemplate = template
@@ -56,14 +59,14 @@ export function setImageElements(src: string, keyFile: string) {
     const btn = $class("upload-img__btn", imgTemplate);
     btn.id = keyFile;
 
-    images?.append(imgTemplate);
+    container.append(imgTemplate);
   }
 }
 
 /**
  * чтение и установка файлов в кеше и блоке
  */
-function handleImages() {
+function handleImages(container: HTMLElement) {
   if (!files || files.length === 0) return;
 
   for (const file of files) {
@@ -75,7 +78,8 @@ function handleImages() {
     const reader = new FileReader();
     reader.onload = (e) => {
       const res = e.target?.result;
-      if (res && typeof res === "string") setImageElements(res, file.name);
+      if (res && typeof res === "string")
+        setImageElements(res, file.name, container);
     };
     reader.onerror = (err) => {
       console.error("Ошибка чтения файлов:", err);
@@ -117,10 +121,14 @@ export const handleImageUpload = (state: "open" | "close") => {
 /**
  *  Загрузка изображений выбором и перетаскиванием
  */
-export const setListenersImageUpload = () => {
+export const setListenersImageUpload = (container: HTMLElement) => {
+  const imagesContainer = $class("upload__images", container)!;
+
+  const fileInput = $id("fileUpload", container)! as HTMLInputElement;
+
   fileInput.addEventListener("change", async () => {
     collectFilesFilter(fileInput.files!);
-    handleImages();
+    handleImages(imagesContainer);
   });
 
   dragDropArea.addEventListener("dragover", (e) => {
@@ -133,8 +141,8 @@ export const setListenersImageUpload = () => {
     dragDropArea.classList.remove("dragover");
 
     collectFilesFilter(e.dataTransfer?.files!);
-    handleImages();
+    handleImages(imagesContainer);
   });
 
-  images.addEventListener("click", deleteImageByOne);
+  imagesContainer.addEventListener("click", deleteImageByOne);
 };

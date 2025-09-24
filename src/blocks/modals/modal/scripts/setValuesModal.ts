@@ -5,9 +5,10 @@ import { setElementsFromCloud } from "./handleImagesFromCloud";
 const form = $class("modal__form") as HTMLFormElement;
 const serviceInput = $id("service", form) as HTMLInputElement;
 const messageInput = $id("message", form) as HTMLTextAreaElement;
+const container = $class("upload__images")!;
 
 export const setValuesOrderModalForm = (order: Basket) => {
-  setElementsFromCloud(order.images);
+  setElementsFromCloud(order.images, container);
 
   serviceInput.value = order.service;
   messageInput.value = order.mail!;

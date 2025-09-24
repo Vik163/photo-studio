@@ -5,8 +5,8 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 export const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
   const { isDev } = options;
   const styleLoader = {
-    test: /\.scss$/i,
-    exclude: /node_modules/,
+    test: /\.(sass|css|scss)$/,
+    // exclude: /node_modules/, библиотека gallery
     use: [
       // MiniCssExtractPlugin.loader создаёт css файл в build, а style-loader нет,
       isDev ? "style-loader" : MiniCssExtractPlugin.loader,

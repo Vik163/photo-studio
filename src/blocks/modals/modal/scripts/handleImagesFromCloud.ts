@@ -1,7 +1,10 @@
 import { delBaketObj, uploadBaketJbj } from "@/utils/lib/handleYaBaket";
 import { transformFilesInString } from "@/utils/lib/readerFiles";
 import { getBaketObj } from "@/utils/lib/handleYaBaket";
-import { setImageElements } from "../../../upload-img/scripts/handleImageUpload";
+import {
+  deleteImageUpload,
+  setImageElements,
+} from "../../../upload-img/scripts/handleImageUpload";
 
 let arrImgCloud: string[] = [];
 let newArrImgCloud: string[] = [];
@@ -10,14 +13,24 @@ let newArrImgCloud: string[] = [];
  * Получает изображения из облака и устанавливает их в форме
  * @param images - массив ключей изображений
  */
-export async function setElementsFromCloud(images: string[]) {
+export async function setElementsFromCloud(
+  images: string[],
+  container: HTMLElement
+): Promise<string[]> {
+  let arrSrc = [];
   arrImgCloud = images;
+  deleteImageUpload();
 
   for await (const keyFile of images) {
     const src = await getBaketObj(keyFile);
 
-    if (src) setImageElements(src, keyFile);
+    if (src) {
+      arrSrc.push(src);
+      setImageElements(src, keyFile, container);
+    }
   }
+
+  return arrSrc;
 }
 
 /**

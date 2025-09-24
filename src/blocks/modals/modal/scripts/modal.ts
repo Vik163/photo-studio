@@ -18,6 +18,7 @@ const iconMail = $id("header-mail");
 const iconOrder = $id("header-order");
 const closeIcon = $class("modal__btn-close", container);
 const form = $class("modal__form", container) as HTMLFormElement;
+const imagesContainer = $class("upload")!;
 
 let typeModal: TypeModal = "mail";
 
@@ -57,7 +58,7 @@ export function setModalFormByType(type: TypeModal) {
 }
 
 export const setListenersModal = () => {
-  setListenersImageUpload();
+  setListenersImageUpload(imagesContainer);
   setListenerCheckbox();
   setListenersInputPhone("phone");
 
