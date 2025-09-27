@@ -43,15 +43,18 @@ $color-gray: var(--color-font-light-grey);
   justify-content: space-between;
 
   p {
-    width: 90%;
-
+    width: 75%;
     span {
-      width: 67%;
+      width: 60%;
     }
   }
 
+  .order__btns {
+    display: flex;
+    gap: 5px;
+  }
+
   button {
-    width: 10%;
     height: 30px;
     @include btn.admin-btn;
   }
@@ -67,13 +70,6 @@ $color-gray: var(--color-font-light-grey);
   position: absolute;
   top: 20px;
   right: 20px;
-  @include btn.admin-btn;
-}
-
-.order__btn-edit {
-  position: absolute;
-  top: 23px;
-  right: 75px;
   @include btn.admin-btn;
 }
 

@@ -1,4 +1,4 @@
-import { $add, $class, $remove } from "@/utils/lib/getElement";
+import { $add, $class, $remove, $toggle } from "@/utils/lib/getElement";
 import type { OrdersData, TypeData } from "@/utils/types/admin-data";
 import {
   setStylesDate,
@@ -33,10 +33,9 @@ export const setContentFromData = (
   const service = $class("order__service", container);
   const status = $class("order__status", container);
   const images = $class("order__images", container);
-  const btnEdit = $class("order__btn-edit", info);
   const deviceId = localStorage.getItem(ADMIN_DEVICE_ID);
 
-  if (orderId) btnEdit.id = `${typePage}/${deviceId}/${orderId}`;
+  // if (orderId) btnEdit.id = `${typePage}/${deviceId}/${orderId}`;
 
   if (typePage === "mail") {
     container.querySelectorAll(".order__item-order").forEach((item) => {
@@ -44,7 +43,6 @@ export const setContentFromData = (
     });
     title.textContent = "Ответить клиенту";
     titleInfo.textContent = "Сообщение";
-    btnEdit.textContent = "Написать клиенту";
 
     const userMail = orderId
       ? mails?.find((order) => order.orderId === orderId)!
@@ -63,7 +61,6 @@ export const setContentFromData = (
 
     title.textContent = "Редактировать заказ";
     titleInfo.textContent = "Заказ";
-    btnEdit.textContent = "Выполнить";
 
     const userOrder = orderId
       ? orders?.find((order) => order.orderId === orderId)!

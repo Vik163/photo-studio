@@ -42,20 +42,6 @@
     background-color: var(--color-font-light-grey);
     cursor: pointer;
   }
-
-  button {
-    position: absolute;
-    background-color: white;
-    top: 6px;
-    right: 6px;
-    width: 15px;
-    height: 15px;
-    background-image: url(../../assets/icons/close.svg);
-    background-size: 100%;
-    border: 1px solid var(--color-luminous-vivid-orange);
-    border-radius: 5px;
-    cursor: pointer;
-  }
 }
 
 .order__upload-container {

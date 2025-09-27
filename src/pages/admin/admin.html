@@ -46,7 +46,32 @@
           <p class="order__item">
             Статус заказа<span class="order__status"></span>
           </p>
-          <button type="button" class="order__btn-status">Изменить</button>
+          <div class="order__btns">
+            <div id="select-status" class="select">
+              <p class="select__default">Статус</p>
+              <ul class="select__list">
+                <li>
+                  <span class="select__option">Принят</span>
+                </li>
+                <li>
+                  <span class="select__option">В работе</span>
+                </li>
+                <li>
+                  <span class="select__option">Выполнен</span>
+                </li>
+                <li>
+                  <span class="select__option">Завершён</span>
+                </li>
+                <li>
+                  <span class="select__option">Отложен</span>
+                </li>
+                <li>
+                  <span class="select__option">Отменён</span>
+                </li>
+              </ul>
+            </div>
+            <button type="button" class="order__btn-status">Изменить</button>
+          </div>
         </div>
         <p class="order__item">
           Дата создания<span class="order__date"></span>
@@ -90,26 +115,57 @@
         <ul class="order__list container__list"></ul>
       </div>
 
-      <div class="order__container gg order-info">
+      <div class="order__container order-info">
         <h3 class="order__title container__title"></h3>
         <button type="button" class="order__btn-close"></button>
-        <button type="button" class="order__btn-edit"></button>
         <p class="order__item">Имя<span class="order__name"></span></p>
         <p class="order__item order__item-order">
           Название услуги<span class="order__service"></span>
         </p>
-        <p class="order__item">
-          Комментарий или сообщение<span class="order__text"></span>
-        </p>
-        <p class="order__item order__item-order">
-          Статус заказа<span class="order__status"></span>
-        </p>
+        <div class="order-edit__btn-container">
+          <p class="order__item">
+            Комментарий или сообщение<span class="order__text"></span>
+          </p>
+          <button type="button" class="order__btn-mail">Ответить</button>
+        </div>
+        <div class="order-edit__btn-container order__item-order">
+          <p class="order__item">
+            Статус заказа<span class="order__status"></span>
+          </p>
+          <div class="order__btns">
+            <div id="select-status" class="select">
+              <p class="select__default">Статус</p>
+              <ul class="select__list">
+                <li>
+                  <span class="select__option">Принят</span>
+                </li>
+                <li>
+                  <span class="select__option">В работе</span>
+                </li>
+                <li>
+                  <span class="select__option">Выполнен</span>
+                </li>
+                <li>
+                  <span class="select__option">Завершён</span>
+                </li>
+                <li>
+                  <span class="select__option">Отложен</span>
+                </li>
+                <li>
+                  <span class="select__option">Отменён</span>
+                </li>
+              </ul>
+            </div>
+            <button type="button" class="order__btn-status">Изменить</button>
+          </div>
+        </div>
         <p class="order__item">
           Дата создания<span class="order__date"></span>
         </p>
-        <div class="order__images gg order__item-order">
+        <div class="order__images order__item-order">
           <p class="order__images-title">Загруженные изображения</p>
-          <div class="upload__images gg">
+
+          <div class="upload__images">
             <img
               class="upload__btn-gallery"
               src="../../assets/icons/magnifier.svg"
@@ -150,7 +206,6 @@
     <template id="upload-img">
       <div class="upload-img">
         <img class="upload-img__img" src="#" alt="" />
-        <button id="#" type="button" class="upload-img__btn"></button>
       </div>
     </template>
     <template id="device-orders">

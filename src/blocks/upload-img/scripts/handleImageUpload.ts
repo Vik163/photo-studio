@@ -57,7 +57,7 @@ export function setImageElements(
     const image = $class("upload-img__img", imgTemplate) as HTMLImageElement;
     image.src = src;
     const btn = $class("upload-img__btn", imgTemplate);
-    btn.id = keyFile;
+    if (btn) btn.id = keyFile;
 
     container.append(imgTemplate);
   }
