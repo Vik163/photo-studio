@@ -1,4 +1,4 @@
-import { delBaketObj, uploadBaketJbj } from "@/utils/lib/handleYaBaket";
+import { delBaketObj, uploadBaketObj } from "@/utils/lib/handleYaBaket";
 import { transformFilesInString } from "@/utils/lib/readerFiles";
 import { getBaketObj } from "@/utils/lib/handleYaBaket";
 import {
@@ -19,7 +19,7 @@ export async function setElementsFromCloud(
 ): Promise<string[]> {
   let arrSrc = [];
   arrImgCloud = images;
-  deleteImageUpload();
+  deleteImageUpload(container);
 
   for await (const keyFile of images) {
     const src = await getBaketObj(keyFile);
@@ -46,16 +46,22 @@ export async function deleteImageDataFromCloud(keyFile: string) {
  * Преобразует в строку url
  * @param file
  * @param orderId
- * @param newArrImg
+ * @param admin необязательный параметр для загрузки файлов из админа
  * @returns
  */
-export async function uploadImagesInCloud(file: File, orderId: string) {
-  const fileName = `${orderId}/${file.name}`;
+export async function uploadImagesInCloud(
+  file: File,
+  orderId: string,
+  admin?: "admin"
+) {
+  const fileName = admin
+    ? `${orderId}/admin/${file.name}`
+    : `${orderId}/${file.name}`;
 
   const result = await transformFilesInString(file);
 
   if (result) {
-    uploadBaketJbj(fileName, result);
+    await uploadBaketObj(fileName, result);
   }
 
   return fileName;

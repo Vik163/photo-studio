@@ -1,0 +1,41 @@
+@use "../../upload-img/upload-img.scss";
+@use "../../modals/modal/modal.scss";
+
+$padding-block: 20px;
+$padding-goriz-inp: 12px;
+$padding-vert-inp: 5px;
+
+.admin-modal {
+  top: 100px;
+  background-color: var(--bg-modal-color);
+  border: 2px solid var(--color-luminous-vivid-orange);
+  transition: 0.3s;
+  border-radius: 15px;
+  z-index: var(--index-15);
+}
+
+.admin-modal__upload {
+  display: flex;
+}
+
+.admin-modal__form {
+  .modal__btn-submit {
+    width: 100%;
+    margin-top: 20px;
+
+    &:hover {
+      background-color: #f7f0e8;
+    }
+  }
+}
+
+.upload__images {
+  margin-top: 10px;
+}
+
+.modal__error {
+  color: var(--color-vivid-red);
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+}

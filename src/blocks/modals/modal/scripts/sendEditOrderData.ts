@@ -22,8 +22,10 @@ let formData: FormData;
 function getKeysFilesFromId(orderId: string, images: string[]) {
   const arrImg = document.querySelectorAll(".upload-img");
   arrImg.forEach((img) => {
+    console.log("img.id:", img.id);
     const key = img.id;
-    const keyFile = key.includes("/") ? key : `${orderId}/${key}`;
+    const keyFile =
+      key.includes("/") && !key.includes("/admin/") ? key : `${orderId}/${key}`;
     images.push(keyFile);
   });
 

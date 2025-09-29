@@ -1,4 +1,4 @@
-import { $add, $class, $remove, $toggle } from "@/utils/lib/getElement";
+import { $add, $class, $remove } from "@/utils/lib/getElement";
 import type { OrdersData, TypeData } from "@/utils/types/admin-data";
 import {
   setStylesDate,
@@ -8,6 +8,9 @@ import { ADMIN_DEVICE_ID } from "@/utils/constants/storage";
 import { Color } from "@/utils/constants/styles";
 import { setSymbolPhone } from "@/utils/lib/phoneValidator/phoneValidator";
 import { handleImages } from "./handleImages";
+import { setListOptions } from "@/utils/ui/select/select";
+import { ADMIN_STATUS } from "@/utils/constants/selectsData";
+import type { StatusOrder } from "@/utils/types/fetch-data";
 
 /**
  * Устанавливает контент блока редактирования в зависимости от типа
@@ -32,10 +35,26 @@ export const setContentFromData = (
   const date = $class("order__date", container);
   const service = $class("order__service", container);
   const status = $class("order__status", container);
-  const images = $class("order__images", container);
+  const imagesAdmin = $class("order__images-admin", container);
+  const images = $class("order__images-upload", container);
+  const btnEditStatus = $class("order__btn-status", container);
+  const btnEditStatusInfo = $class("order__btn-status", info);
+  const btnAdminMail = $class("order__btn-mail", container);
+  const btnAdminMailInfo = $class("order__btn-mail", info);
+  const btnAdminImg = $class("order__upload-edit", container);
+  const btnAdminImgInfo = $class("order__upload-edit", info);
   const deviceId = localStorage.getItem(ADMIN_DEVICE_ID);
 
-  // if (orderId) btnEdit.id = `${typePage}/${deviceId}/${orderId}`;
+  if (orderId) {
+    const idData = `${typePage}/${deviceId}/${orderId}`;
+    btnEditStatus.id = idData;
+    btnEditStatusInfo.id = idData;
+    btnAdminMail.id = idData;
+    btnAdminMailInfo.id = idData;
+    btnAdminImg.id = idData;
+    btnAdminImgInfo.id = idData;
+    imagesAdmin.id = idData;
+  }
 
   if (typePage === "mail") {
     container.querySelectorAll(".order__item-order").forEach((item) => {
@@ -74,7 +93,13 @@ export const setContentFromData = (
     status.textContent = userOrder.status!;
     service.textContent = userOrder.service!;
 
-    handleImages(userOrder, images);
+    setListOptions(container, ADMIN_STATUS);
+    container.querySelectorAll(".option__value").forEach((item) => {
+      setStylesStatus(item.textContent as StatusOrder, item as HTMLElement);
+    });
+
+    handleImages("client", userOrder.images!, images);
+    handleImages("admin", userOrder.completedImages!, imagesAdmin);
     setStylesDate(typePage, userOrder.leftDays!, date);
     setStylesStatus(userOrder.status!, status);
   }

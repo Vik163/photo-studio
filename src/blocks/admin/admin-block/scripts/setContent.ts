@@ -1,12 +1,15 @@
 import { $class, $id } from "@/utils/lib/getElement";
 import type { AdminData, TypeData } from "@/utils/types/admin-data";
 import { setContentOrders } from "./setContentOrders";
+import { removeListElements } from "./removeListElements";
 
 export const setContent = async (type: TypeData, data: AdminData[]) => {
   const listEl =
     type === "mail"
       ? $class("admin__list-messages")
       : $class("admin__list-orders");
+
+  removeListElements(".device-orders", listEl);
 
   const templateId = ($id("device-orders") as HTMLTemplateElement).content;
 

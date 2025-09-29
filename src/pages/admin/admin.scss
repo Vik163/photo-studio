@@ -15,6 +15,7 @@
 @use "../../blocks/admin/admin-order/admin-order.scss";
 @use "../../blocks/admin/admin-order/admin-order-images.scss";
 
+@use "../../blocks/admin/admin-modal/admin-modal.scss";
 @use "../../blocks/gallery/gallery.scss";
 @use "../../utils/ui/overlay/overlay.scss";
 @use "../../utils/ui/select/select.scss";
@@ -28,6 +29,8 @@
 
 .main-admin__btn {
   position: fixed;
+  background-color: var(--color-dark-gray-blue);
+  z-index: var(--index-35);
   bottom: 5px;
   left: 5px;
   @include btn.admin-btn;

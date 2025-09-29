@@ -1,3 +1,3 @@
-export const removeListElements = (list: HTMLElement) => {
-  list.querySelectorAll(".device-order").forEach((el) => el.remove());
+export const removeListElements = (nameClass: string, list: HTMLElement) => {
+  list.querySelectorAll(nameClass).forEach((el) => el.remove());
 };

@@ -10,6 +10,7 @@ import { setMessagesData } from "@/blocks/messages/scripts/setMessages";
 import { closeOverlayAndLoader } from "@/utils/ui/overlay/overlay";
 
 const form = $class("modal__form") as HTMLFormElement;
+const imagesContainer = $class("upload__images", form)!;
 
 function resetForm(formData: FormData) {
   form.reset();
@@ -18,7 +19,7 @@ function resetForm(formData: FormData) {
     formData.delete(key);
   });
 
-  deleteImageUpload();
+  deleteImageUpload(imagesContainer);
   disableCheckbox();
 }
 

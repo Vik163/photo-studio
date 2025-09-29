@@ -11,8 +11,8 @@ let cachFiles: File[] = [];
 /**
  * удаление всех файлов в блоке
  */
-export function deleteImageUpload() {
-  document.querySelectorAll(".upload-img").forEach((img) => {
+export function deleteImageUpload(container: HTMLElement) {
+  container.querySelectorAll(".upload-img").forEach((img) => {
     img.remove();
   });
 

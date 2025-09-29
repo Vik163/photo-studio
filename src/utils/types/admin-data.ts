@@ -9,7 +9,8 @@ export interface OneOrder {
   service?: string;
   mail: string;
   images?: string[];
-  completedImages?: string; // src сформированный fileReader  (хранится только в БД)
+  mailAdmin?: string;
+  completedImages?: string[]; // src сформированный fileReader  (хранится только в БД)
   status?: StatusOrder;
   created: string;
   leftDays?: number;
@@ -25,4 +26,12 @@ export interface OrdersData {
   mails?: OneOrder[];
   order?: OneOrder;
   orders?: OneOrder[];
+}
+
+export interface AdminUpdateData {
+  deviceId: string;
+  orderId: string;
+  mail?: FormDataEntryValue;
+  status?: StatusOrder;
+  completedImages?: string[];
 }

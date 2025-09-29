@@ -51,9 +51,12 @@ export const setGallery = (links: string[]) => {
   }
 };
 
+// перед закрытием удаляю блок и изображения
 if (galleryBlock) {
   lg.addEventListener("lgBeforeClose", () => {
     $remove("active", galleryBlock);
+    if (galleryList.childNodes)
+      galleryList.childNodes.forEach((item) => item.remove());
   });
 
   lg.addEventListener("lgAfterClose", () => {

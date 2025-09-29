@@ -1,6 +1,7 @@
 import { $class, $id } from "@/utils/lib/getElement";
 import type { OneOrder, TypeData } from "@/utils/types/admin-data";
 import { setStylesDate, setStylesStatus } from "./setStylesDateAndStatus";
+import { removeListElements } from "./removeListElements";
 
 export const setContentOrders = (
   type: TypeData,
@@ -8,6 +9,8 @@ export const setContentOrders = (
   container: HTMLElement,
   deviceId?: string
 ) => {
+  removeListElements(".device-order", container);
+
   const templateOrders = ($id("device-order") as HTMLTemplateElement).content;
   orders.forEach((data) => {
     // дочерний темплейт

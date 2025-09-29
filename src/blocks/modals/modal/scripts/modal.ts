@@ -18,7 +18,8 @@ const iconMail = $id("header-mail");
 const iconOrder = $id("header-order");
 const closeIcon = $class("modal__btn-close", container);
 const form = $class("modal__form", container) as HTMLFormElement;
-const imagesContainer = $class("upload")!;
+const uploadBlock = $class("upload")!;
+const imagesContainer = $class("upload__images", uploadBlock)!;
 
 let typeModal: TypeModal = "mail";
 
@@ -38,7 +39,7 @@ export function closeModal() {
     $remove("mail", container);
     $remove("load", container);
 
-    deleteImageUpload();
+    deleteImageUpload(imagesContainer);
     clearCacheEditForm();
   }
 }
@@ -58,7 +59,7 @@ export function setModalFormByType(type: TypeModal) {
 }
 
 export const setListenersModal = () => {
-  setListenersImageUpload(imagesContainer);
+  setListenersImageUpload(uploadBlock);
   setListenerCheckbox();
   setListenersInputPhone("phone");
 

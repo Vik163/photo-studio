@@ -48,27 +48,8 @@
           </p>
           <div class="order__btns">
             <div id="select-status" class="select">
-              <p class="select__default">Статус</p>
-              <ul class="select__list">
-                <li>
-                  <span class="select__option">Принят</span>
-                </li>
-                <li>
-                  <span class="select__option">В работе</span>
-                </li>
-                <li>
-                  <span class="select__option">Выполнен</span>
-                </li>
-                <li>
-                  <span class="select__option">Завершён</span>
-                </li>
-                <li>
-                  <span class="select__option">Отложен</span>
-                </li>
-                <li>
-                  <span class="select__option">Отменён</span>
-                </li>
-              </ul>
+              <button type="button" class="select__btn"></button>
+              <ul class="select__list"></ul>
             </div>
             <button type="button" class="order__btn-status">Изменить</button>
           </div>
@@ -77,33 +58,28 @@
           Дата создания<span class="order__date"></span>
         </p>
         <div class="order__images order__item-order">
-          <p class="order__images-title">Загруженные изображения</p>
-          <div class="upload__images">
-            <img
-              class="upload__btn-gallery"
-              src="../../assets/icons/magnifier.svg"
-              alt="Увеличить"
-            />
+          <p class="order__images-title">Клиентские изображения</p>
+          <div class="order__images-container">
+            <ul class="order__images-upload">
+              <img
+                class="upload__btn-gallery btn-gallery"
+                src="../../assets/icons/magnifier.svg"
+                alt="Увеличить"
+              />
+            </ul>
+            <ul class="order__images-admin">
+              <img
+                class="upload__btn-admin-gallery btn-gallery"
+                src="../../assets/icons/magnifier.svg"
+                alt="Увеличить"
+              />
+            </ul>
           </div>
-          <div class="order__upload-container">
-            <span class="order__upload-title">Загрузить фотографию</span>
-            <div class="order__upload">
-              <label class="upload__label">
-                <input
-                  type="file"
-                  id="fileUpload"
-                  multiple
-                  name="file"
-                  accept="image/*"
-                />
-                <span class="upload__btn" id="dragDropArea"
-                  >Выбрать файл <br />
-                  или <br />перетащить его сюда</span
-                >
-              </label>
-            </div>
-          </div>
+          <button type="button" class="order__upload-edit">
+            Загрузить готовые фотографии
+          </button>
         </div>
+        <p class="order__error"></p>
 
         <button type="button" class="order__btn-back order__back">
           Вернуться на страницу заказов
@@ -134,27 +110,8 @@
           </p>
           <div class="order__btns">
             <div id="select-status" class="select">
-              <p class="select__default">Статус</p>
-              <ul class="select__list">
-                <li>
-                  <span class="select__option">Принят</span>
-                </li>
-                <li>
-                  <span class="select__option">В работе</span>
-                </li>
-                <li>
-                  <span class="select__option">Выполнен</span>
-                </li>
-                <li>
-                  <span class="select__option">Завершён</span>
-                </li>
-                <li>
-                  <span class="select__option">Отложен</span>
-                </li>
-                <li>
-                  <span class="select__option">Отменён</span>
-                </li>
-              </ul>
+              <button type="button" class="select__btn"></button>
+              <ul class="select__list"></ul>
             </div>
             <button type="button" class="order__btn-status">Изменить</button>
           </div>
@@ -163,18 +120,42 @@
           Дата создания<span class="order__date"></span>
         </p>
         <div class="order__images order__item-order">
-          <p class="order__images-title">Загруженные изображения</p>
-
-          <div class="upload__images">
-            <img
-              class="upload__btn-gallery"
-              src="../../assets/icons/magnifier.svg"
-              alt="Увеличить"
-            />
+          <p class="order__images-title">Клиентские изображения</p>
+          <div class="order__images-container">
+            <ul class="order__images-upload">
+              <img
+                class="upload__btn-gallery btn-gallery"
+                src="../../assets/icons/magnifier.svg"
+                alt="Увеличить"
+              />
+            </ul>
+            <ul class="order__images-admin">
+              <img
+                class="upload__btn-admin-gallery btn-gallery"
+                src="../../assets/icons/magnifier.svg"
+                alt="Увеличить"
+              />
+            </ul>
           </div>
-          <div class="order__upload-container">
-            <span class="order__upload-title">Загрузить фотографию</span>
-            <div class="order__upload">
+          <button type="button" class="order__upload-edit">
+            Загрузить фотографии
+          </button>
+        </div>
+        <p class="order__error"></p>
+      </div>
+    </section>
+
+    <section class="modal admin-modal">
+      <div class="modal__container admin-modal__container">
+        <h2 class="modal__title admin-modal__title">Редактировать</h2>
+        <button
+          type="button"
+          class="modal__btn-close admin-modal__btn-close"
+        ></button>
+        <form class="modal__form admin-modal__form">
+          <div class="upload admin-modal__upload">
+            <span class="upload__title">Загрузить готовые фотографии:</span>
+            <div class="upload__container">
               <label class="upload__label">
                 <input
                   type="file"
@@ -184,13 +165,27 @@
                   accept="image/*"
                 />
                 <span class="upload__btn" id="dragDropArea"
-                  >Выбрать файл <br />
-                  или <br />перетащить его сюда</span
+                  >Выберите файлы <br />
+                  или <br />перетащите их сюда</span
                 >
               </label>
+              <ul class="upload__images"></ul>
             </div>
           </div>
-        </div>
+          <label id="text-label" class="modal__label" for="message"
+            >Ответ клиенту:</label
+          >
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Пиши здесь"
+            class="modal__form-item modal__text"
+            rows="4"
+            cols="33"
+          ></textarea>
+          <button type="submit" class="modal__btn-submit">Отправить</button>
+        </form>
+        <p class="order__error modal__error"></p>
       </div>
     </section>
 
@@ -203,10 +198,17 @@
     </div>
 
     <!--* ====== Tempalates =============== -->
+    <template id="option">
+      <li class="option">
+        <img class="option__icon" src="#" alt="" />
+        <span class="option__value"></span>
+      </li>
+    </template>
     <template id="upload-img">
-      <div class="upload-img">
+      <li class="upload-img">
         <img class="upload-img__img" src="#" alt="" />
-      </div>
+        <button id="#" type="button" class="upload-img__btn"></button>
+      </li>
     </template>
     <template id="device-orders">
       <li class="device-orders">

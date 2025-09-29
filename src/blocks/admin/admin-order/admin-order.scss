@@ -83,3 +83,12 @@ $color-gray: var(--color-font-light-grey);
   background-size: 25px;
   cursor: pointer;
 }
+
+.order__error {
+  color: var(--color-error);
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}

@@ -14,7 +14,8 @@ export function setContentListOrders(
   data: OrdersData,
   container: HTMLElement
 ) {
-  removeListElements(container);
+  removeListElements(".device-order", container);
+
   const { mails, orders } = data;
 
   const list = $class("order__list", container);
@@ -26,13 +27,13 @@ export function setContentListOrders(
         "Письма этого клиента (найденные по номеру его телефона)";
 
       setContentOrders("mail", mails, list);
-    } else titleAdd.textContent = "Писем у этого клиента нет";
+    } else titleAdd.textContent = "Писем от этого клиента нет";
   } else {
     if (orders && orders.length > 0) {
       titleAdd.textContent =
         "Заказы этого клиента (найденные по номеру его телефона)";
 
       setContentOrders("order", orders, list);
-    } else titleAdd.textContent = "Заказов у этого клиента нет";
+    } else titleAdd.textContent = "Заказов от этого клиента нет";
   }
 }
