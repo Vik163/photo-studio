@@ -3,7 +3,7 @@ import type { Basket } from "@/utils/types/fetch-data";
 import { getBaketObj } from "@/utils/lib/handleYaBaket";
 import { setGallery } from "@/blocks/gallery/scripts/gallery";
 
-let arrSrc: string[] = [];
+let arrAllSrc: string[][] = [];
 /**
  * Создает корзину из template
  * Добавляет классы в зависимости от статуса заказа
@@ -28,11 +28,13 @@ export async function setBasketElements(
   basketBlock: HTMLElement,
   data: Basket[]
 ) {
+  let indexArrImg = 0;
   // удаление существующих элементов при открытии
   removeBasketElements();
 
   const template = ($id("basket-item") as HTMLTemplateElement).content;
-  data.forEach(async (order) => {
+
+  for await (const order of data) {
     const basketTemplate = template
       .querySelector(".basket-item")
       ?.cloneNode(true) as HTMLElement;
@@ -53,17 +55,16 @@ export async function setBasketElements(
       const completedImages = order.completedImages;
       if (completedImages && completedImages.length > 0) {
         $add("active", adminBlock);
+        arrAllSrc.push([]);
 
-        for await (const link of completedImages) {
-          const srcImg = await getBaketObj(link);
-          arrSrc.push(srcImg);
-        }
+        for await (const key of completedImages) {
+          const srcImg = await getBaketObj(key);
+          if (srcImg) {
+            arrAllSrc[indexArrImg].push(srcImg);
 
-        if (arrSrc.length > 0) {
-          arrSrc.forEach((img) => {
             const newImg = document.createElement("img");
             $add("basket-item__img", newImg);
-            newImg.src = img;
+            newImg.src = srcImg;
             newImg.alt = "Готовая фотография";
 
             if (order.status === "Выполнен") {
@@ -80,15 +81,18 @@ export async function setBasketElements(
               "basket-item__download-link",
               basketTemplate
             ) as HTMLAnchorElement;
-            link.href = img;
+            link.href = srcImg;
             if (order.status === "Завершён") {
               $add("active", link);
             }
-          });
-
-          const lens = $class("basket-item__img-lens", basketTemplate);
-          lens.addEventListener("click", () => setGallery(arrSrc));
+          }
         }
+
+        const lens = $class("basket-item__img-lens", basketTemplate);
+        lens.id = indexArrImg.toString();
+        lens.addEventListener("click", () => setGallery(arrAllSrc[+lens.id]));
+
+        indexArrImg++;
       }
 
       const name = $class("basket-item__name", basketTemplate);
@@ -139,6 +143,7 @@ export async function setBasketElements(
       }
 
       basketBlock?.append(basketTemplate);
+      console.log("arrAllSrc:", arrAllSrc);
     }
-  });
+  }
 }

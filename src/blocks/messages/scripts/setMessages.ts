@@ -23,8 +23,6 @@ export const setMessagesData = (data: Message[]) => {
   closeMessagesList();
 
   if (data.length > 0) {
-    console.log("data:", data);
-
     $add("active", messagesNum);
     messagesData = data;
     messagesNum.textContent = data.length.toString();
