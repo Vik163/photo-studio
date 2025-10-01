@@ -1,5 +1,5 @@
 import { ORDER_LIMIT } from "@/utils/constants/limitDays";
-import { Color } from "@/utils/constants/styles";
+import { ColorAdmin } from "@/utils/constants/styles";
 import type { TypeData } from "@/utils/types/admin-data";
 import type { StatusOrder } from "@/utils/types/fetch-data";
 
@@ -9,33 +9,33 @@ export function setStylesDate(
   el: HTMLElement
 ) {
   if (type === "mail" || leftDays <= ORDER_LIMIT / 3) {
-    el.style.color = Color.RED;
+    el.style.color = ColorAdmin.RED;
   }
   if (leftDays <= (ORDER_LIMIT / 3) * 2) {
-    el.style.color = Color.YELLOW;
+    el.style.color = ColorAdmin.YELLOW;
   }
   if (leftDays > (ORDER_LIMIT / 3) * 2) {
-    el.style.color = Color.GREEN;
+    el.style.color = ColorAdmin.GREEN;
   }
 }
 
 export function setStylesStatus(status: StatusOrder, el: HTMLElement) {
   if (status === "Принят") {
-    el.style.color = Color.YELLOW;
+    el.style.color = ColorAdmin.YELLOW;
   }
   if (status === "В работе") {
-    el.style.color = Color.BLUE;
+    el.style.color = ColorAdmin.BLUE;
   }
   if (status === "Выполнен") {
-    el.style.color = Color.CYAN;
+    el.style.color = ColorAdmin.CYAN;
   }
   if (status === "Завершён") {
-    el.style.color = Color.GREEN;
+    el.style.color = ColorAdmin.GREEN;
   }
   if (status === "Отложен") {
-    el.style.color = Color.ORANGE;
+    el.style.color = ColorAdmin.ORANGE;
   }
   if (status === "Отменён") {
-    el.style.color = Color.RED;
+    el.style.color = ColorAdmin.RED;
   }
 }

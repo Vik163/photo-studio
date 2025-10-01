@@ -2,6 +2,8 @@ import { $add, $class, $remove } from "@/utils/lib/getElement";
 import type { OrdersData, TypeData } from "@/utils/types/admin-data";
 import {
   ADMIN_DEVICE_ID,
+  ADMIN_ORDER_MAIL,
+  ADMIN_ORDER_STATUS,
   ADMIN_ORDERS_BLOCK,
   ORDERS_DATA,
 } from "@/utils/constants/storage";
@@ -37,6 +39,8 @@ export function backAdmin() {
   localStorage.removeItem(ADMIN_DEVICE_ID);
   localStorage.removeItem(ORDERS_DATA);
   localStorage.removeItem(ADMIN_ORDERS_BLOCK);
+  localStorage.removeItem(ADMIN_ORDER_STATUS);
+  localStorage.removeItem(ADMIN_ORDER_MAIL);
 
   setContentAdminBlock();
 }
@@ -67,7 +71,7 @@ export function closeInfoOrder() {
  * @param typePage
  * @param data
  */
-export const handleOrderPage = (typePage: TypeData, orderId: string) => {
+export const openOrderPage = (typePage: TypeData, orderId: string) => {
   userData = getData(typePage, orderId);
   $remove("active", adminPage);
   $add("active", orderPage);

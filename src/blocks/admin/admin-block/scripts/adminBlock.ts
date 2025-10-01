@@ -15,15 +15,17 @@ import type { AdminData, OrdersData, TypeData } from "@/utils/types/admin-data";
 import {
   backAdmin,
   closeInfoOrder,
-  handleOrderPage,
+  openOrderPage,
   openInfoOrder,
 } from "@/blocks/admin/admin-order/scripts/handleOrderPage";
 import { setContent } from "./setContent";
 import { getDataFromId } from "./getDataFromId";
 import { urlMails, urlOrders } from "@/utils/constants/urls";
 import { getDataCacheByName } from "@/utils/lib/dataCache";
-import { changeAdminData } from "../../admin-order/scripts/changeAdminData";
-import { handleOptionsSelect } from "@/utils/ui/select/select";
+import {
+  handleOptionsSelect,
+  openOptionsSelect,
+} from "@/utils/ui/select/select";
 import {
   closeModal,
   sendAdminData,
@@ -32,7 +34,7 @@ import {
 import { setListenersImageUpload } from "@/blocks/upload-img/scripts/handleImageUpload";
 import {
   deleteImages,
-  openGallery,
+  openAdminGallery,
 } from "../../admin-order/scripts/handleImages";
 
 const admin = $class("admin");
@@ -43,19 +45,15 @@ const containerMain = $class("order-main", orderPage);
 const containerInfo = $class("order-info", orderPage);
 const orderList = $class("order__list", orderPage);
 const btnBackAdmin = $class("order__btn-back", orderPage);
+const btnEdit = $class("order__btn-edit", containerMain);
+const btnEditInfo = $class("order__btn-edit", containerInfo);
 const btnClose = $class("order__btn-close", containerInfo);
 const modal = $class("admin-modal");
 const uploadImg = $class("admin-modal__upload", modal);
 const btnModalClose = $class("admin-modal__btn-close", modal);
+const btnSelectStatus = $class("select__btn", modal);
+const btnOptionStatus = $class("select__list", modal);
 const btnModalSubmit = $class("modal__btn-submit", modal);
-const btnEditStatus = $class("order__btn-status", containerMain);
-const btnEditStatusInfo = $class("order__btn-status", containerInfo);
-const btnSelectStatus = $class("select", containerMain);
-const btnSelectStatusInfo = $class("select", containerInfo);
-const btnAdminMail = $class("order__btn-mail", containerMain);
-const btnAdminMailInfo = $class("order__btn-mail", containerInfo);
-const btnAdminImg = $class("order__upload-edit", containerMain);
-const btnAdminImgInfo = $class("order__upload-edit", containerInfo);
 const imagesAdmin = $class("order__images-admin", containerMain);
 const imagesAdminInfo = $class("order__images-admin", containerInfo);
 const btnGalleryAdmin = $class("upload__btn-admin-gallery", containerMain);
@@ -117,7 +115,7 @@ async function clickAdmin(e: Event) {
     await setDataInStorage(deviceId);
 
     localStorage.setItem(ADMIN_DEVICE_ID, deviceId);
-    handleOrderPage(typePage, orderId);
+    openOrderPage(typePage, orderId);
   }
 }
 
@@ -165,33 +163,13 @@ function addListeners() {
   btnBackAdmin.addEventListener("click", backAdmin);
   btnClose.addEventListener("click", closeInfoOrder);
   orderList.addEventListener("click", openInfoOrder);
-  btnEditStatus.addEventListener("click", () => {
-    changeAdminData(btnEditStatus.id, containerMain);
-  });
-  btnEditStatusInfo.addEventListener("click", () => {
-    changeAdminData(btnEditStatusInfo.id, containerInfo);
-  });
-  btnSelectStatus.addEventListener("click", (e) =>
-    handleOptionsSelect(e, containerMain)
-  );
-  btnSelectStatusInfo.addEventListener("click", (e) =>
-    handleOptionsSelect(e, containerInfo)
-  );
-  btnAdminMail.addEventListener("click", () => {
+  btnEdit.addEventListener("click", () => {
     localStorage.setItem(ADMIN_ORDERS_BLOCK, "main");
-    setAdminModal(btnAdminMail.id);
+    setAdminModal(btnEdit.id);
   });
-  btnAdminMailInfo.addEventListener("click", () => {
+  btnEditInfo.addEventListener("click", () => {
     localStorage.setItem(ADMIN_ORDERS_BLOCK, "info");
-    setAdminModal(btnAdminMailInfo.id);
-  });
-  btnAdminImg.addEventListener("click", () => {
-    localStorage.setItem(ADMIN_ORDERS_BLOCK, "main");
-    setAdminModal(btnAdminImg.id);
-  });
-  btnAdminImgInfo.addEventListener("click", () => {
-    localStorage.setItem(ADMIN_ORDERS_BLOCK, "info");
-    setAdminModal(btnAdminImgInfo.id);
+    setAdminModal(btnEditInfo.id);
   });
   imagesAdmin.addEventListener("click", (e) =>
     deleteImages(e, imagesAdmin.id, containerMain)
@@ -199,15 +177,27 @@ function addListeners() {
   imagesAdminInfo.addEventListener("click", (e) =>
     deleteImages(e, imagesAdminInfo.id, containerInfo)
   );
-  btnGalleryAdmin.addEventListener("click", () => openGallery("admin"));
-  btnGalleryAdminInfo.addEventListener("click", () => openGallery("admin"));
-  btnGalleryUser.addEventListener("click", () => openGallery("client"));
-  btnGalleryUserInfo.addEventListener("click", () => openGallery("client"));
+  btnGalleryAdmin.addEventListener("click", () => openAdminGallery("admin"));
+  btnGalleryAdminInfo.addEventListener("click", () =>
+    openAdminGallery("admin")
+  );
+  btnGalleryUser.addEventListener("click", () => openAdminGallery("client"));
+  btnGalleryUserInfo.addEventListener("click", () =>
+    openAdminGallery("client")
+  );
 }
 
 function addListenersModal() {
   setListenersImageUpload(uploadImg);
 
+  btnSelectStatus.addEventListener("click", () => {
+    const container = $class("select", modal);
+    openOptionsSelect(container);
+  });
+  btnOptionStatus.addEventListener("click", (e) => {
+    const container = $class("select", modal);
+    handleOptionsSelect(e, container);
+  });
   btnModalClose.addEventListener("click", closeModal);
   btnModalSubmit.addEventListener("click", (e) =>
     sendAdminData(e, btnModalSubmit.id)

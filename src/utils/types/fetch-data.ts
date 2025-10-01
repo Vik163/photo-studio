@@ -11,8 +11,9 @@ export interface Basket {
   orderId: string;
   service: string;
   mail?: string;
+  mailAdmin?: string;
   images: string[];
-  completedImages?: string; // src сформированный fileReader (хранится только в БД)
+  completedImages?: string[]; // src сформированный fileReader (хранится только в БД)
   created: string;
   status: StatusOrder;
 }

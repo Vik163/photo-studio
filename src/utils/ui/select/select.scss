@@ -2,62 +2,62 @@
 @use "../../../styles/variables/times.scss" as time;
 
 .select {
-  width: 150px;
   position: relative;
   user-select: none;
   z-index: var(--index-5);
-  color: var(--color-font-light);
   font: var(--font-catrin-18-norm);
+  border: 1px solid var(--color-luminous-vivid-amber);
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  span {
+    padding: 0 25px;
+  }
 }
 
 .select__btn {
-  width: 100% !important;
-  padding-right: 50px !important;
+  width: 50px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  &:after {
-    content: "";
-    position: absolute;
-    top: 7px;
-    height: 14px;
-    right: 36px;
-    border-left: 1px solid var(--color-luminous-vivid-amber);
-    transition: all time.$time-quarter;
-  }
+  height: 14px;
+  border-left: 1px solid var(--color-luminous-vivid-orange);
+  cursor: pointer;
 
   &:before {
     content: "";
     position: absolute;
-    top: 8px;
-    right: 15px;
+    top: 0;
+    right: 20px;
     width: 8px;
     height: 8px;
     border: 2px solid;
-    border-color: transparent transparent var(--color-font-light-grey)
-      var(--color-font-light-grey);
+    border-color: transparent transparent var(--color-luminous-vivid-orange)
+      var(--color-luminous-vivid-orange);
     transform: rotate(-45deg);
     transition: all time.$time-quarter;
   }
 
   &.active:before {
-    top: 13px;
+    top: 5px;
     transform: rotate(-585deg);
   }
 }
 
 .select__list {
   position: absolute;
-  top: 35px;
-  left: 0;
-  width: 100%;
+  bottom: 35px;
+  right: -1px;
+  width: 40%;
   background: var(--color-dark-gray-blue);
-  border: 1px solid var(--color-luminous-vivid-amber);
+  border: 1px solid var(--color-luminous-vivid-orange);
   border-radius: 8px;
   display: none;
   overflow: hidden;
+  padding: 5px 0;
 
   li {
     width: 100%;

@@ -1,6 +1,9 @@
 import { $class, $id } from "@/utils/lib/getElement";
 import type { OneOrder, TypeData } from "@/utils/types/admin-data";
-import { setStylesDate, setStylesStatus } from "./setStylesDateAndStatus";
+import {
+  setStylesDate,
+  setStylesStatus,
+} from "../../../../utils/lib/setStylesDateAndStatus";
 import { removeListElements } from "./removeListElements";
 
 export const setContentOrders = (

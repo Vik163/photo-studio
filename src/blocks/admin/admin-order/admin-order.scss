@@ -2,6 +2,7 @@
 @use "../admin-styles.scss";
 
 $color-gray: var(--color-font-light-grey);
+$border-bottom-order: 1px dashed var(--color-vivid-grey-blue);
 
 .order {
   .device-order {
@@ -21,7 +22,8 @@ $color-gray: var(--color-font-light-grey);
 }
 
 .order__item {
-  margin-bottom: 25px;
+  border-bottom: $border-bottom-order;
+  padding: 15px 0;
   width: 100%;
   justify-content: space-between;
   display: flex;
@@ -37,36 +39,7 @@ $color-gray: var(--color-font-light-grey);
   }
 }
 
-.order-edit__btn-container {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-
-  p {
-    width: 75%;
-    span {
-      width: 60%;
-    }
-  }
-
-  .order__btns {
-    display: flex;
-    gap: 5px;
-  }
-
-  button {
-    height: 30px;
-    @include btn.admin-btn;
-  }
-
-  &.order__item-order {
-    &.inactive {
-      display: none;
-    }
-  }
-}
-
-.order__btn-res {
+.order__btn-edit {
   position: absolute;
   top: 20px;
   right: 20px;

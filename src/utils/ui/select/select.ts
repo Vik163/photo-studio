@@ -1,16 +1,22 @@
-import { $class, $contains, $id, $toggle } from "@/utils/lib/getElement";
+import { ADMIN_ORDER_STATUS } from "@/utils/constants/storage";
+import {
+  $class,
+  $contains,
+  $id,
+  $remove,
+  $toggle,
+} from "@/utils/lib/getElement";
 import { StatusOrder } from "@/utils/types/fetch-data";
 import { SelectData } from "@/utils/types/select-data";
 
 let value: StatusOrder;
 
-export const setListOptions = (
-  container: HTMLElement,
-  selectData: SelectData
-) => {
-  const list = $class("select__list", container);
-  const defaultValue = $class("select__btn", container);
-  defaultValue.textContent = selectData.default.value;
+export const setSelect = (container: HTMLElement, selectData: SelectData) => {
+  const select = $class("select", container);
+  const list = $class("select__list", select);
+  const defaultValue = $class("select__text", select);
+  defaultValue.textContent =
+    localStorage.getItem(ADMIN_ORDER_STATUS) || selectData.default.value;
 
   list.querySelectorAll(".option").forEach((item) => item.remove());
 
@@ -46,12 +52,22 @@ export const handleOptionsSelect = (e: Event, container: HTMLElement) => {
   const list = $class("select__list", container);
 
   const target = e.target as HTMLElement;
+  const defaultValue = $class("select__text", container);
   const btn = $class("select__btn", container) as HTMLButtonElement;
 
   if ($contains("option__value", target)) {
     value = target.textContent as StatusOrder;
-    btn.textContent = value;
+    defaultValue.textContent = value;
   }
+
+  $remove("active", list);
+  $remove("active", btn);
+};
+
+export const openOptionsSelect = (container: HTMLElement) => {
+  const list = $class("select__list", container);
+
+  const btn = $class("select__btn", container) as HTMLButtonElement;
 
   $toggle("active", list);
   $toggle("active", btn);

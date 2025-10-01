@@ -31,7 +31,7 @@ export interface OrdersData {
 export interface AdminUpdateData {
   deviceId: string;
   orderId: string;
-  mail?: FormDataEntryValue;
+  mailAdmin?: FormDataEntryValue;
   status?: StatusOrder;
   completedImages?: string[];
 }

@@ -3,17 +3,19 @@ import type { OrdersData, TypeData } from "@/utils/types/admin-data";
 import {
   setStylesDate,
   setStylesStatus,
-} from "../../admin-block/scripts/setStylesDateAndStatus";
-import { ADMIN_DEVICE_ID } from "@/utils/constants/storage";
-import { Color } from "@/utils/constants/styles";
+} from "../../../../utils/lib/setStylesDateAndStatus";
+import {
+  ADMIN_DEVICE_ID,
+  ADMIN_ORDER_MAIL,
+  ADMIN_ORDER_STATUS,
+} from "@/utils/constants/storage";
+import { ColorAdmin } from "@/utils/constants/styles";
 import { setSymbolPhone } from "@/utils/lib/phoneValidator/phoneValidator";
 import { handleImages } from "./handleImages";
-import { setListOptions } from "@/utils/ui/select/select";
-import { ADMIN_STATUS } from "@/utils/constants/selectsData";
-import type { StatusOrder } from "@/utils/types/fetch-data";
 
 /**
  * Устанавливает контент блока редактирования в зависимости от типа
+ * Устанавливает в localStorage: статус и ответ админа клиенту
  * @param typePage "mail" | "order"
  * @param data {mail?: OneOrder; mails?: OneOrder[]; order?: OneOrder; orders?: OneOrder[];}
  * @param container HTMLElement куда устанавливается
@@ -31,28 +33,21 @@ export const setContentFromData = (
   const titleInfo = $class("order__title", info);
   const name = $class("order__name", container);
   const phone = $class("order__phone", container);
-  const text = $class("order__text", container);
+  const message = $class("order__text", container);
+  const messageAdmin = $class("order__text-admin", container);
   const date = $class("order__date", container);
   const service = $class("order__service", container);
   const status = $class("order__status", container);
   const imagesAdmin = $class("order__images-admin", container);
   const images = $class("order__images-upload", container);
-  const btnEditStatus = $class("order__btn-status", container);
-  const btnEditStatusInfo = $class("order__btn-status", info);
-  const btnAdminMail = $class("order__btn-mail", container);
-  const btnAdminMailInfo = $class("order__btn-mail", info);
-  const btnAdminImg = $class("order__upload-edit", container);
-  const btnAdminImgInfo = $class("order__upload-edit", info);
+  const btnEdit = $class("order__btn-edit", container);
+  const btnEditInfo = $class("order__btn-edit", info);
   const deviceId = localStorage.getItem(ADMIN_DEVICE_ID);
 
   if (orderId) {
     const idData = `${typePage}/${deviceId}/${orderId}`;
-    btnEditStatus.id = idData;
-    btnEditStatusInfo.id = idData;
-    btnAdminMail.id = idData;
-    btnAdminMailInfo.id = idData;
-    btnAdminImg.id = idData;
-    btnAdminImgInfo.id = idData;
+    btnEdit.id = idData;
+    btnEditInfo.id = idData;
     imagesAdmin.id = idData;
   }
 
@@ -69,10 +64,16 @@ export const setContentFromData = (
 
     name.textContent = userMail.userName;
     if (phone) phone.textContent = setSymbolPhone(userMail.phone);
-    text.textContent = userMail.mail!;
+    message.textContent = userMail.mail!;
+
+    if (userMail.mailAdmin) {
+      $add("active", messageAdmin);
+      messageAdmin.textContent = userMail.mailAdmin;
+    } else $remove("active", messageAdmin);
+
     date.textContent = userMail.created;
 
-    date.style.color = Color.RED;
+    date.style.color = ColorAdmin.RED;
   } else {
     container.querySelectorAll(".order__item-order").forEach((item) => {
       $remove("inactive", item as HTMLElement);
@@ -87,16 +88,19 @@ export const setContentFromData = (
 
     name.textContent = userOrder.userName;
     if (phone) phone.textContent = setSymbolPhone(userOrder.phone);
-    text.textContent = userOrder.mail!;
+    message.textContent = userOrder.mail!;
     date.textContent = userOrder.created;
 
-    status.textContent = userOrder.status!;
-    service.textContent = userOrder.service!;
+    if (userOrder.mailAdmin) {
+      $add("active", messageAdmin);
+      localStorage.setItem(ADMIN_ORDER_MAIL, userOrder.mailAdmin);
+      messageAdmin.textContent = userOrder.mailAdmin;
+    } else $remove("active", messageAdmin);
 
-    setListOptions(container, ADMIN_STATUS);
-    container.querySelectorAll(".option__value").forEach((item) => {
-      setStylesStatus(item.textContent as StatusOrder, item as HTMLElement);
-    });
+    status.textContent = userOrder.status!;
+    localStorage.setItem(ADMIN_ORDER_STATUS, userOrder.status!);
+
+    service.textContent = userOrder.service!;
 
     handleImages("client", userOrder.images!, images);
     handleImages("admin", userOrder.completedImages!, imagesAdmin);

@@ -378,28 +378,32 @@
     </template>
     <template id="basket-item">
       <div class="basket-item">
-        <div class="basket-item__container">
-          <div class="basket-item__img-container">
-            <img class="basket-item__img" src="#" alt="фотография" />
-            <img class="basket-item__img-modal" src="#" alt="фотография" />
+        <div class="basket-item__client">
+          <span class="basket-item__name"></span>
+          <span class="basket-item__date"></span>
+          <div class="basket-item__icons">
+            <span class="basket-item__status"></span>
+            <button id="#" type="button" class="basket-item__edit"></button>
+            <button id="#" type="button" class="basket-item__basket"></button>
           </div>
-          <a
-            href="#"
-            class="basket-item__download-link"
-            download="Изображение.jpg"
-          >
-            <img
-              class="basket-item__download"
-              src="../../assets/icons/download.svg"
-              alt="скачать"
-          /></a>
         </div>
-        <span class="basket-item__name"></span>
-        <span class="basket-item__date"></span>
-        <div class="basket-item__icons">
-          <span class="basket-item__status"></span>
-          <button id="#" type="button" class="basket-item__edit"></button>
-          <button id="#" type="button" class="basket-item__basket"></button>
+        <div class="basket-item__admin">
+          <div class="basket-item__img-container">
+            <span class="basket-item__img-title">Готовые фотографии</span>
+            <div class="basket-item__img-list"></div>
+            <button type="button" class="basket-item__img-lens"></button>
+            <a
+              href="#"
+              class="basket-item__download-link"
+              download="Изображение.jpg"
+            >
+              <!-- <img
+                class="basket-item__download"
+                src="../../assets/icons/download.svg"
+                alt="скачать"
+            /> -->
+            </a>
+          </div>
         </div>
       </div>
     </template>

@@ -1,4 +1,4 @@
-import { $add, $class, $contains, $remove } from "@/utils/lib/getElement";
+import { $add, $class, $contains, $id, $remove } from "@/utils/lib/getElement";
 import { getDataFromId } from "../../admin-block/scripts/getDataFromId";
 import {
   deleteImageUpload,
@@ -9,9 +9,18 @@ import { AdminUpdateData } from "@/utils/types/admin-data";
 import { fetchUpdateAdminDataOrder } from "@/utils/services/admin/fetchUpdateAdminDataOrder";
 import { handleResponseEditAdmin } from "../../admin-order/scripts/handleResponseEditAdmin";
 import { handleErrors } from "@/utils/lib/handleErrors";
+import { setSelect } from "@/utils/ui/select/select";
+import { ADMIN_STATUS } from "@/utils/constants/selectsData";
+import type { StatusOrder } from "@/utils/types/fetch-data";
+import { setStylesStatus } from "../../../../utils/lib/setStylesDateAndStatus";
+import {
+  ADMIN_ORDER_MAIL,
+  ADMIN_ORDER_STATUS,
+} from "@/utils/constants/storage";
 
 const modal = $class("admin-modal");
 const form = $class("admin-modal__form", modal) as HTMLFormElement;
+const text = $id("message", form) as HTMLTextAreaElement;
 const imagesContainer = $class("upload__images", modal) as HTMLFormElement;
 
 export const closeModal = () => {
@@ -36,6 +45,13 @@ export const setAdminModal = (id: string) => {
 
   const btnModalSubmit = $class("modal__btn-submit", modal);
   btnModalSubmit.id = id;
+
+  text.value = localStorage.getItem(ADMIN_ORDER_MAIL)!;
+
+  setSelect(modal, ADMIN_STATUS);
+  modal.querySelectorAll(".option__value").forEach((item) => {
+    setStylesStatus(item.textContent as StatusOrder, item as HTMLElement);
+  });
 };
 
 /**
@@ -48,12 +64,16 @@ export const sendAdminData = async (e: Event, id: string) => {
   const formData = new FormData(form);
   const mailAdmin = formData.get("message")!;
   const images = await uploadAdminImages(orderId);
+  const status =
+    ($class("select__text", modal).textContent as StatusOrder) ||
+    localStorage.getItem(ADMIN_ORDER_STATUS);
 
   const data: AdminUpdateData = {
     deviceId,
     orderId,
-    mail: mailAdmin,
+    mailAdmin,
     completedImages: images,
+    status,
   };
 
   const res = await fetchUpdateAdminDataOrder(data);
@@ -61,7 +81,7 @@ export const sendAdminData = async (e: Event, id: string) => {
     handleErrors(res, modal);
   } else {
     closeModal();
-    handleResponseEditAdmin(res.completedImages!);
+    handleResponseEditAdmin(res);
   }
 };
 

@@ -38,7 +38,7 @@ export const handleImages = async (
  * Открывает галерею в зависимости от типа загруженных фото
  * @param type: "client" | "admin"
  */
-export async function openGallery(type: "client" | "admin") {
+export function openAdminGallery(type: "client" | "admin") {
   if (type === "admin") {
     if (arrSrcAdmin.length > 0) setGallery(arrSrcAdmin);
   } else {

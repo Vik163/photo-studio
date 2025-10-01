@@ -31,29 +31,21 @@
     <section class="order container">
       <div class="order__container order-main">
         <h2 class="order__title container__title"></h2>
+        <button type="button" class="order__btn-edit">Редактировать</button>
         <p class="order__item">Имя<span class="order__name"></span></p>
         <p class="order__item">Телефон<span class="order__phone"></span></p>
         <p class="order__item order__item-order">
           Название услуги<span class="order__service"></span>
         </p>
-        <div class="order-edit__btn-container">
-          <p class="order__item">
-            Комментарий или сообщение<span class="order__text"></span>
-          </p>
-          <button type="button" class="order__btn-mail">Ответить</button>
-        </div>
-        <div class="order-edit__btn-container order__item-order">
-          <p class="order__item">
-            Статус заказа<span class="order__status"></span>
-          </p>
-          <div class="order__btns">
-            <div id="select-status" class="select">
-              <button type="button" class="select__btn"></button>
-              <ul class="select__list"></ul>
-            </div>
-            <button type="button" class="order__btn-status">Изменить</button>
-          </div>
-        </div>
+        <p class="order__item">
+          Комментарий или сообщение<span class="order__text"></span>
+        </p>
+        <p class="order__item order__admin-mail">
+          Твой ответ<span class="order__text order__text-admin"></span>
+        </p>
+        <p class="order__item">
+          Статус заказа<span class="order__status"></span>
+        </p>
         <p class="order__item">
           Дата создания<span class="order__date"></span>
         </p>
@@ -75,9 +67,9 @@
               />
             </ul>
           </div>
-          <button type="button" class="order__upload-edit">
-            Загрузить готовые фотографии
-          </button>
+          <span class="order__upload-title">
+            Готовые к отправке фотографии
+          </span>
         </div>
         <p class="order__error"></p>
 
@@ -94,28 +86,21 @@
       <div class="order__container order-info">
         <h3 class="order__title container__title"></h3>
         <button type="button" class="order__btn-close"></button>
+        <button type="button" class="order__btn-edit">Редактировать</button>
         <p class="order__item">Имя<span class="order__name"></span></p>
         <p class="order__item order__item-order">
           Название услуги<span class="order__service"></span>
         </p>
-        <div class="order-edit__btn-container">
-          <p class="order__item">
-            Комментарий или сообщение<span class="order__text"></span>
-          </p>
-          <button type="button" class="order__btn-mail">Ответить</button>
-        </div>
-        <div class="order-edit__btn-container order__item-order">
-          <p class="order__item">
-            Статус заказа<span class="order__status"></span>
-          </p>
-          <div class="order__btns">
-            <div id="select-status" class="select">
-              <button type="button" class="select__btn"></button>
-              <ul class="select__list"></ul>
-            </div>
-            <button type="button" class="order__btn-status">Изменить</button>
-          </div>
-        </div>
+        <p class="order__item">
+          Комментарий или сообщение<span class="order__text"></span>
+        </p>
+        <p class="order__item order__admin-mail">
+          Твой ответ<span class="order__text order__text-admin"></span>
+        </p>
+
+        <p class="order__item">
+          Статус заказа<span class="order__status"></span>
+        </p>
         <p class="order__item">
           Дата создания<span class="order__date"></span>
         </p>
@@ -137,9 +122,9 @@
               />
             </ul>
           </div>
-          <button type="button" class="order__upload-edit">
-            Загрузить фотографии
-          </button>
+          <span class="order__upload-title">
+            Готовые к отправке фотографии
+          </span>
         </div>
         <p class="order__error"></p>
       </div>
@@ -147,7 +132,6 @@
 
     <section class="modal admin-modal">
       <div class="modal__container admin-modal__container">
-        <h2 class="modal__title admin-modal__title">Редактировать</h2>
         <button
           type="button"
           class="modal__btn-close admin-modal__btn-close"
@@ -183,6 +167,14 @@
             rows="4"
             cols="33"
           ></textarea>
+          <div class="admin-modal__status">
+            <span class="admin-modal__status-title">Выбрать статус заказа</span>
+            <div id="select-status" class="select admin-modal__select">
+              <span class="select__text"></span>
+              <button type="button" class="select__btn"></button>
+              <ul class="select__list"></ul>
+            </div>
+          </div>
           <button type="submit" class="modal__btn-submit">Отправить</button>
         </form>
         <p class="order__error modal__error"></p>

@@ -3,3 +3,5 @@ export const ADMIN = "ADMIN";
 export const ADMIN_DEVICE_ID = "ADMIN_DEVICE_ID";
 export const ORDERS_DATA = "ORDERS_DATA";
 export const ADMIN_ORDERS_BLOCK = "ADMIN_ORDERS_BLOCK";
+export const ADMIN_ORDER_STATUS = "ADMIN_ORDER_STATUS";
+export const ADMIN_ORDER_MAIL = "ADMIN_ORDER_MAIL";

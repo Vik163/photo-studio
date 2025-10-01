@@ -1,11 +1,13 @@
 @use "../../../styles/variables/mixin.scss" as btn;
 $border-radius: 8px;
 $border-amber: 1px solid var(--color-luminous-vivid-amber);
+$padding-vertical: 15px;
 
 .order__images {
   width: 100%;
   min-height: 160px;
   position: relative;
+  padding-top: $padding-vertical;
 
   &.inactive {
     display: none;
@@ -72,9 +74,8 @@ $border-amber: 1px solid var(--color-luminous-vivid-amber);
   }
 }
 
-.order__upload-edit {
-  @include btn.admin-btn;
+.order__upload-title {
   position: absolute;
   right: 0;
-  top: 0;
+  top: $padding-vertical;
 }

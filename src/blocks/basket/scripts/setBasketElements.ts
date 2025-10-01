@@ -1,7 +1,9 @@
 import { $add, $class, $id, $remove } from "@/utils/lib/getElement";
 import type { Basket } from "@/utils/types/fetch-data";
-import noImg from "@/assets/images/no-img.png";
+import { getBaketObj } from "@/utils/lib/handleYaBaket";
+import { setGallery } from "@/blocks/gallery/scripts/gallery";
 
+let arrSrc: string[] = [];
 /**
  * Создает корзину из template
  * Добавляет классы в зависимости от статуса заказа
@@ -37,24 +39,57 @@ export async function setBasketElements(
 
     if (basketTemplate) {
       // маленькое фото или no-img
-      const image = $class(
-        "basket-item__img",
+      const imageContainer = $class(
+        "basket-item__img-list",
+        basketTemplate
+      ) as HTMLElement;
+      const adminBlock = $class(
+        "basket-item__admin",
         basketTemplate
       ) as HTMLImageElement;
-      // модалка с готовым фото (статус: выполнен и завершён)
-      const imageModal = $class(
-        "basket-item__img-modal",
-        basketTemplate
-      ) as HTMLImageElement;
-      imageModal.src = order.completedImages!;
-      image.src = order.completedImages ? order.completedImages : noImg;
 
-      // ссылка для скачивания готового фото (статус - завершён)
-      const link = $class(
-        "basket-item__download-link",
-        basketTemplate
-      ) as HTMLAnchorElement;
-      link.href = order.completedImages!;
+      if (order.mailAdmin) $add("active", adminBlock);
+
+      const completedImages = order.completedImages;
+      if (completedImages && completedImages.length > 0) {
+        $add("active", adminBlock);
+
+        for await (const link of completedImages) {
+          const srcImg = await getBaketObj(link);
+          arrSrc.push(srcImg);
+        }
+
+        if (arrSrc.length > 0) {
+          arrSrc.forEach((img) => {
+            const newImg = document.createElement("img");
+            $add("basket-item__img", newImg);
+            newImg.src = img;
+            newImg.alt = "Готовая фотография";
+
+            if (order.status === "Выполнен") {
+              $add("active", newImg);
+            }
+            if (order.status === "Завершён") {
+              $add("active", newImg);
+            }
+
+            imageContainer.appendChild(newImg);
+
+            // ссылка для скачивания готового фото (статус - завершён)
+            const link = $class(
+              "basket-item__download-link",
+              basketTemplate
+            ) as HTMLAnchorElement;
+            link.href = img;
+            if (order.status === "Завершён") {
+              $add("active", link);
+            }
+          });
+
+          const lens = $class("basket-item__img-lens", basketTemplate);
+          lens.addEventListener("click", () => setGallery(arrSrc));
+        }
+      }
 
       const name = $class("basket-item__name", basketTemplate);
       name.textContent = order.service;
@@ -64,6 +99,8 @@ export async function setBasketElements(
 
       const status = $class("basket-item__status", basketTemplate);
       status.textContent = order.status;
+
+      // setStylesStatus(order.status, status)
 
       const btnEdit = $class("basket-item__edit", basketTemplate);
       btnEdit.id = order.orderId;
@@ -81,13 +118,10 @@ export async function setBasketElements(
       }
       if (order.status === "Выполнен") {
         $add("greenCyan", status);
-        $add("active", image);
       }
       if (order.status === "Завершён") {
         $add("active", btnBasket);
         $add("green", status);
-        $add("active", link);
-        $add("active", image);
       }
       if (order.status === "Отложен") {
         $add("active", btnBasket);
