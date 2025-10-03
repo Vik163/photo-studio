@@ -20,7 +20,6 @@ export interface BuildOptions {
   mode: BuildMode;
   isDev: boolean;
   api: string;
-  apiAdmin: string;
 }
 
 export interface BuildEnv {

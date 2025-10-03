@@ -1,2 +1,2 @@
-export const urlMails = "https://photostudio.ru/api/admin/messages";
-export const urlOrders = "https://photostudio.ru/api/admin/orders";
+export const urlMails = `${__API__}/admin/messages`;
+export const urlOrders = `${__API__}/admin/orders`;

@@ -6,6 +6,6 @@ export const $api = axios.create({
 });
 
 export const $adminApi = axios.create({
-  baseURL: __API_ADMIN__,
+  baseURL: `${__API__}/admin`,
   withCredentials: true,
 });
