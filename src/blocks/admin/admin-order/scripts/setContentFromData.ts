@@ -98,7 +98,8 @@ export const setContentFromData = (
     } else $remove("active", messageAdmin);
 
     status.textContent = userOrder.status!;
-    localStorage.setItem(ADMIN_ORDER_STATUS, userOrder.status!);
+    if (userOrder.status)
+      localStorage.setItem(ADMIN_ORDER_STATUS, userOrder.status);
 
     service.textContent = userOrder.service!;
 

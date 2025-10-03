@@ -2,8 +2,93 @@ import { $add, $class, $id, $remove } from "@/utils/lib/getElement";
 import type { Basket } from "@/utils/types/fetch-data";
 import { getBaketObj } from "@/utils/lib/handleYaBaket";
 import { setGallery } from "@/blocks/gallery/scripts/gallery";
+import { addWaterMark } from "@/utils/lib/watermark";
 
+// массив с вложенными массивами ссылок на админовские фотографии
 let arrAllSrc: string[][] = [];
+// index количества заказов с админовскими фотографиями
+let indexArrImg = 0;
+
+async function setAdminBlock(order: Basket, basketTemplate: HTMLElement) {
+  const imageContainer = $class(
+    "basket-item__img-list",
+    basketTemplate
+  ) as HTMLElement;
+  const adminBlock = $class(
+    "basket-item__admin",
+    basketTemplate
+  ) as HTMLElement;
+  const adminMail = $class(
+    "basket-item__mail-container",
+    basketTemplate
+  ) as HTMLElement;
+  const adminMailText = $class(
+    "basket-item__mail-text",
+    basketTemplate
+  ) as HTMLElement;
+
+  if (order.mailAdmin) {
+    $add("active", adminBlock);
+    $add("active", adminMail);
+    adminMailText.textContent = order.mailAdmin;
+  }
+
+  const completedImages = order.completedImages;
+  if (completedImages && completedImages.length > 0) {
+    // заполняю массив пустыми массивами при наличии админовских фотографий
+    arrAllSrc.push([]);
+
+    for await (const key of completedImages) {
+      const srcImg = await getBaketObj(key);
+
+      //* Водяной знак ================
+      let srcByStatus: string;
+      if (order.status === "Завершён" || order.status === "Оплачен") {
+        srcByStatus = srcImg;
+      } else {
+        // Возвращает ссылку с водяным знаком
+        srcByStatus = await addWaterMark(srcImg);
+      }
+      if (srcByStatus) {
+        // заполняю массив  массивами с ссылками изображений на каждый заказ при наличии админовских фотографий
+        arrAllSrc[indexArrImg].push(srcByStatus);
+
+        const newImg = document.createElement("img");
+        $add("basket-item__img", newImg);
+        newImg.src = srcByStatus;
+        newImg.alt = "Готовая фотография";
+
+        if (order.status === "Выполнен") {
+          $add("active", newImg);
+        }
+        if (order.status === "Завершён") {
+          $add("active", newImg);
+        }
+
+        imageContainer.appendChild(newImg);
+
+        // ссылка для скачивания готового фото (статус - завершён)
+        const link = $class(
+          "basket-item__download-link",
+          basketTemplate
+        ) as HTMLAnchorElement;
+
+        link.href = srcImg;
+        if (order.status === "Завершён") {
+          $add("active", link);
+        }
+      }
+    }
+  }
+
+  // кнопка увеличить
+  const lens = $class("basket-item__img-lens", basketTemplate);
+  lens.id = indexArrImg.toString();
+  lens.addEventListener("click", () => setGallery(arrAllSrc[+lens.id]));
+
+  indexArrImg++;
+}
+
 /**
  * Создает корзину из template
  * Добавляет классы в зависимости от статуса заказа
@@ -28,7 +113,6 @@ export async function setBasketElements(
   basketBlock: HTMLElement,
   data: Basket[]
 ) {
-  let indexArrImg = 0;
   // удаление существующих элементов при открытии
   removeBasketElements();
 
@@ -40,60 +124,7 @@ export async function setBasketElements(
       ?.cloneNode(true) as HTMLElement;
 
     if (basketTemplate) {
-      // маленькое фото или no-img
-      const imageContainer = $class(
-        "basket-item__img-list",
-        basketTemplate
-      ) as HTMLElement;
-      const adminBlock = $class(
-        "basket-item__admin",
-        basketTemplate
-      ) as HTMLImageElement;
-
-      if (order.mailAdmin) $add("active", adminBlock);
-
-      const completedImages = order.completedImages;
-      if (completedImages && completedImages.length > 0) {
-        $add("active", adminBlock);
-        arrAllSrc.push([]);
-
-        for await (const key of completedImages) {
-          const srcImg = await getBaketObj(key);
-          if (srcImg) {
-            arrAllSrc[indexArrImg].push(srcImg);
-
-            const newImg = document.createElement("img");
-            $add("basket-item__img", newImg);
-            newImg.src = srcImg;
-            newImg.alt = "Готовая фотография";
-
-            if (order.status === "Выполнен") {
-              $add("active", newImg);
-            }
-            if (order.status === "Завершён") {
-              $add("active", newImg);
-            }
-
-            imageContainer.appendChild(newImg);
-
-            // ссылка для скачивания готового фото (статус - завершён)
-            const link = $class(
-              "basket-item__download-link",
-              basketTemplate
-            ) as HTMLAnchorElement;
-            link.href = srcImg;
-            if (order.status === "Завершён") {
-              $add("active", link);
-            }
-          }
-        }
-
-        const lens = $class("basket-item__img-lens", basketTemplate);
-        lens.id = indexArrImg.toString();
-        lens.addEventListener("click", () => setGallery(arrAllSrc[+lens.id]));
-
-        indexArrImg++;
-      }
+      await setAdminBlock(order, basketTemplate);
 
       const name = $class("basket-item__name", basketTemplate);
       name.textContent = order.service;
@@ -112,6 +143,9 @@ export async function setBasketElements(
       const btnBasket = $class("basket-item__basket", basketTemplate);
       btnBasket.id = order.orderId;
 
+      // ссылка для оплаты (статус - завершён)
+      const pay = $class("basket-item__pay", basketTemplate) as HTMLElement;
+
       if (order.status === "Принят") {
         $add("active", btnEdit);
         $add("active", btnBasket);
@@ -122,6 +156,10 @@ export async function setBasketElements(
       }
       if (order.status === "Выполнен") {
         $add("greenCyan", status);
+        $add("active", pay);
+        pay.addEventListener("click", function () {
+          console.log("setBasketElements - pay");
+        });
       }
       if (order.status === "Завершён") {
         $add("active", btnBasket);
@@ -143,7 +181,6 @@ export async function setBasketElements(
       }
 
       basketBlock?.append(basketTemplate);
-      console.log("arrAllSrc:", arrAllSrc);
     }
   }
 }

@@ -17,7 +17,7 @@ function setResData(order: OneOrder, container: HTMLElement) {
 
   mail.textContent = order.mailAdmin!;
   status.textContent = order.status!;
-  localStorage.setItem(ADMIN_ORDER_STATUS, order.status!);
+  if (order.status) localStorage.setItem(ADMIN_ORDER_STATUS, order.status);
   handleImages("admin", order.completedImages!, imagesAdmin);
 }
 

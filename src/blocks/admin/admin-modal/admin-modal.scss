@@ -23,7 +23,11 @@ $padding-vert-inp: 5px;
 }
 
 .admin-modal__upload {
-  display: flex;
+  display: none;
+
+  &.active {
+    display: flex;
+  }
 }
 
 .admin-modal__form {
@@ -50,7 +54,7 @@ $padding-vert-inp: 5px;
 }
 
 .admin-modal__status {
-  display: flex;
+  display: none;
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
@@ -58,6 +62,10 @@ $padding-vert-inp: 5px;
   span {
     color: var(--color-luminous-vivid-orange);
     font: var(--font-catrin-20-norm);
+  }
+
+  &.active {
+    display: flex;
   }
 }
 

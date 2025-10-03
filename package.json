@@ -53,6 +53,7 @@
     "@yandex/ymaps3-default-ui-theme": "^0.0.19",
     "axios": "^1.11.0",
     "lightgallery": "^2.9.0-beta.1",
-    "uuid": "^11.1.0"
+    "uuid": "^11.1.0",
+    "watermarkjs": "^2.1.1"
   }
 }

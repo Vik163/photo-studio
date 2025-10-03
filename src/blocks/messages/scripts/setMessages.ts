@@ -6,12 +6,12 @@ import { setMessagesElements } from "./setMessagesElements";
 import { fetchMessages } from "@/utils/services/mails/fetchMessages";
 
 const list = $class("messages-list");
-const messagesNum = $class("messages");
+const messages = $class("messages");
 let messagesData: Message[] = [];
 
 export function closeMessagesList() {
   $remove("active", list);
-  $remove("active-close", messagesNum);
+  $remove("active-close", messages);
 }
 
 /**
@@ -19,16 +19,24 @@ export function closeMessagesList() {
  * @param data - корзина
  */
 export const setMessagesData = (data: Message[]) => {
-  const messagesNum = $class("messages");
   closeMessagesList();
+  let adminMails = 0;
 
   if (data.length > 0) {
-    $add("active", messagesNum);
+    $add("active", messages);
+
     messagesData = data;
-    messagesNum.textContent = data.length.toString();
+
+    data.forEach((mail) => {
+      if (mail.mailAdmin) adminMails++;
+    });
+
+    if (adminMails > 0) {
+      $add("active_admin", messages);
+    } else messages.textContent = data.length.toString();
 
     if (data) setMessagesElements(list, data);
-  } else $remove("active", messagesNum);
+  } else $remove("active", messages);
 };
 
 /**
@@ -36,21 +44,21 @@ export const setMessagesData = (data: Message[]) => {
  * Общий слушатель на корзину (удалить, редактировать)
  */
 const setMessagesListeners = () => {
-  messagesNum.addEventListener("mouseover", function () {
+  messages.addEventListener("mouseover", function () {
     $add("active-hover", list);
   });
-  messagesNum.addEventListener("mouseleave", function () {
+  messages.addEventListener("mouseleave", function () {
     $remove("active-hover", list);
   });
 
-  messagesNum.addEventListener("click", function () {
+  messages.addEventListener("click", function () {
     if ($contains("active", list)) {
       $remove("active", list);
       $remove("active-hover", list);
-      $remove("active-close", messagesNum);
+      $remove("active-close", messages);
     } else {
       $add("active", list);
-      $add("active-close", messagesNum);
+      $add("active-close", messages);
     }
   });
 

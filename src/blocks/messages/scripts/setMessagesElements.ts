@@ -1,4 +1,4 @@
-import { $class, $id } from "@/utils/lib/getElement";
+import { $add, $class, $id } from "@/utils/lib/getElement";
 import type { Message } from "@/utils/types/fetch-data";
 
 export function removeMessagesElements() {
@@ -38,6 +38,20 @@ export async function setMessagesElements(
 
       const btnBasket = $class("messages-item__basket", messageTemplate);
       btnBasket.id = message.orderId;
+
+      const adminBlock = $class(
+        "messages-item__admin",
+        messageTemplate
+      ) as HTMLElement;
+      const adminText = $class(
+        "messages-item__mail-text",
+        messageTemplate
+      ) as HTMLElement;
+
+      if (message.mailAdmin) {
+        $add("active", adminBlock);
+        adminText.textContent = message.mailAdmin;
+      }
 
       messagesBlock?.append(messageTemplate);
     }

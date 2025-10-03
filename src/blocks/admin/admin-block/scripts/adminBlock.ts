@@ -163,14 +163,7 @@ function addListeners() {
   btnBackAdmin.addEventListener("click", backAdmin);
   btnClose.addEventListener("click", closeInfoOrder);
   orderList.addEventListener("click", openInfoOrder);
-  btnEdit.addEventListener("click", () => {
-    localStorage.setItem(ADMIN_ORDERS_BLOCK, "main");
-    setAdminModal(btnEdit.id);
-  });
-  btnEditInfo.addEventListener("click", () => {
-    localStorage.setItem(ADMIN_ORDERS_BLOCK, "info");
-    setAdminModal(btnEditInfo.id);
-  });
+
   imagesAdmin.addEventListener("click", (e) =>
     deleteImages(e, imagesAdmin.id, containerMain)
   );
@@ -189,6 +182,15 @@ function addListeners() {
 
 function addListenersModal() {
   setListenersImageUpload(uploadImg);
+
+  btnEdit.addEventListener("click", () => {
+    localStorage.setItem(ADMIN_ORDERS_BLOCK, "main");
+    setAdminModal(btnEdit.id);
+  });
+  btnEditInfo.addEventListener("click", () => {
+    localStorage.setItem(ADMIN_ORDERS_BLOCK, "info");
+    setAdminModal(btnEditInfo.id);
+  });
 
   btnSelectStatus.addEventListener("click", () => {
     const container = $class("select", modal);

@@ -6,7 +6,7 @@
 }
 
 .basket__orders {
-  left: -655px;
+  left: -755px;
   z-index: var(--index-25);
 }
 // ============================================
@@ -21,58 +21,88 @@
   padding-right: 15px;
 
   span {
-    text-align: center;
-
     &:nth-of-type(1) {
-      width: 70px;
+      width: 400px;
     }
     &:nth-of-type(2) {
-      width: 230px;
+      width: 100px;
     }
     &:nth-of-type(3) {
       width: 100px;
     }
     &:nth-of-type(4) {
-      width: 100px;
+      width: 90px;
     }
   }
 }
 
 .basket-item {
-  border-top: 1px solid var(--color-luminous-vivid-dark-red);
-  border-bottom: 1px solid var(--color-luminous-vivid-dark-red);
-
+  border-top: 2px solid var(--color-luminous-vivid-dark-red);
+  border-bottom: 2px solid var(--color-luminous-vivid-dark-red);
+  padding: 10px 0;
   background-color: transparent;
 }
 
 .basket-item__client {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 6px;
-  padding: 5px 10px;
+  padding: 5px 15px 5px 10px;
 }
 
 .basket-item__admin {
+  width: 100%;
   display: none;
-  align-items: center;
-  gap: 6px;
+  align-items: flex-start;
+  gap: 5%;
   padding: 5px 10px;
-  border-top: 1px dashed var(--color-luminous-vivid-dark-red);
+  border: 1px solid var(--color-luminous-vivid-dark-red);
+  border-radius: 6px;
 
   .basket-item__img-container {
-    position: relative;
-    padding-right: 50px;
+    min-width: 40%;
+
+    span {
+      color: var(--color-luminous-vivid-dark-red);
+    }
+  }
+  .basket-item__mail-container {
+    width: 55%;
+    display: none;
+
+    &.active {
+      display: block;
+    }
+
+    span {
+      color: var(--color-luminous-vivid-dark-red);
+    }
+  }
+
+  .basket-item__mail-text {
+    height: auto;
+    padding: 3px 6px;
+    border: 1px dashed var(--color-luminous-vivid-amber);
+    border-radius: 4px;
+    overflow-y: auto;
   }
 
   .basket-item__img-list {
     display: flex;
+    flex-wrap: wrap;
     gap: 5px;
+    position: relative;
+    padding-right: 80px;
+    width: fit-content;
   }
 
   .basket-item__img {
-    width: 45px;
+    width: 50px;
+    height: 55px;
     opacity: 0.6;
     cursor: default;
+    object-fit: cover;
 
     &.active {
       opacity: 1;
@@ -80,37 +110,47 @@
     }
   }
 
-  .basket-item__img-lens {
+  .basket-item__icon {
     position: absolute;
-    right: 24px;
     bottom: 0;
     height: 23px;
     width: 23px;
-    display: block;
-    background: url(../../assets/icons/magnifier.svg) no-repeat;
+    background-color: transparent;
     background-size: 23px;
     background-position: center;
-    cursor: pointer;
-  }
+    background-repeat: no-repeat;
 
-  .basket-item__download-link {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    height: 23px;
-    width: 23px;
-    display: block;
-    opacity: 0.4;
-    cursor: default;
-    pointer-events: none;
-    background: url(../../assets/icons/download.svg) no-repeat;
-    background-size: 23px;
-    background-position: center;
-
-    &.active {
-      opacity: 1;
+    &.basket-item__img-lens {
+      right: 52px;
+      display: block;
+      background-image: url(../../assets/icons/magnifier.svg);
       cursor: pointer;
-      pointer-events: all;
+    }
+
+    &.basket-item__download-link {
+      right: 26px;
+      display: block;
+      opacity: 0.4;
+      cursor: default;
+      pointer-events: none;
+      background-image: url(../../assets/icons/download.svg);
+
+      &.active {
+        opacity: 1;
+        cursor: pointer;
+        pointer-events: all;
+      }
+    }
+
+    &.basket-item__pay {
+      right: 0;
+      display: none;
+      cursor: pointer;
+      background-image: url(../../assets/icons/pay.png);
+
+      &.active {
+        display: block;
+      }
     }
   }
 
@@ -124,21 +164,23 @@
 }
 
 .basket-item__name {
-  width: 200px;
+  width: 400px;
+}
+
+.basket-item__date {
+  width: 100px;
 }
 
 .basket-item__icons {
   display: flex;
+  justify-content: center;
+  width: 90px;
   align-items: center;
   gap: 20px;
 }
 
 .basket-item__status {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100px;
-  background-color: transparent;
 
   &.violet {
     color: var(--color-violet);

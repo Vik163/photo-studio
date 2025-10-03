@@ -11,7 +11,6 @@ const lg = $id("customize-thumbnails-gallery");
 let plugin: LightGallery;
 
 export const setGallery = (links: string[]) => {
-  console.log("links:", links);
   if (galleryBlock) {
     const isExistNodes = galleryList.childNodes;
     if (isExistNodes.length === 0)

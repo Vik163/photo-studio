@@ -20,6 +20,8 @@ import {
 
 const modal = $class("admin-modal");
 const form = $class("admin-modal__form", modal) as HTMLFormElement;
+const status = $class("admin-modal__status", form) as HTMLElement;
+const upload = $class("admin-modal__upload", form) as HTMLElement;
 const text = $id("message", form) as HTMLTextAreaElement;
 const imagesContainer = $class("upload__images", modal) as HTMLFormElement;
 
@@ -36,22 +38,31 @@ export const closeModal = () => {
  * @param id данные заказа
  */
 export const setAdminModal = (id: string) => {
+  const typeModal = id.split("/")[0];
   if ($contains("modal_active", modal)) {
-    $remove("modal_active", modal);
     $remove("modal_active", modal);
   } else {
     $add("modal_active", modal);
+  }
+
+  if (typeModal === "order") {
+    $add("active", status);
+    $add("active", upload);
+
+    setSelect(modal, ADMIN_STATUS);
+    modal.querySelectorAll(".option__value").forEach((item) => {
+      setStylesStatus(item.textContent as StatusOrder, item as HTMLElement);
+    });
+  } else {
+    $remove("active", status);
+    $remove("active", upload);
+    localStorage.removeItem(ADMIN_ORDER_STATUS);
   }
 
   const btnModalSubmit = $class("modal__btn-submit", modal);
   btnModalSubmit.id = id;
 
   text.value = localStorage.getItem(ADMIN_ORDER_MAIL)!;
-
-  setSelect(modal, ADMIN_STATUS);
-  modal.querySelectorAll(".option__value").forEach((item) => {
-    setStylesStatus(item.textContent as StatusOrder, item as HTMLElement);
-  });
 };
 
 /**

@@ -5,6 +5,7 @@ export type StatusOrder =
   | "Принят" // редактирование, удаление, no-image, нет скачивания
   | "В работе" // no-image, нет скачивания
   | "Выполнен" // готовое фото через фильтр, нет скачивания
+  | "Оплачен" // готовое фото, скачивание
   | "Завершён"; // удаление, готовое фото, скачивание
 
 export interface Basket {
@@ -44,6 +45,7 @@ export interface MessagesData {
 export interface Message {
   orderId: string;
   mail: string;
+  mailAdmin?: string;
   created: string;
 }
 

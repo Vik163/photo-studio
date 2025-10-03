@@ -6,12 +6,12 @@ import { editBasket } from "./editOrder";
 import { fetchBasket } from "@/utils/services/orders/fetchBasket";
 
 const basketOrders = $class("basket__orders");
-const orderNum = $class("basket");
+const basket = $class("basket");
 let orderData: Basket[] = [];
 
 export function closeBasket() {
   $remove("active", basketOrders);
-  $remove("active-close", orderNum);
+  $remove("active-close", basket);
 }
 
 /**
@@ -19,17 +19,23 @@ export function closeBasket() {
  * @param data - корзина
  */
 export const setBasketData = (data: Basket[]) => {
-  console.log("data:", data);
-  const orderNum = $class("basket");
+  let adminMails = 0;
   closeBasket();
 
   if (data.length > 0) {
-    $add("active", orderNum);
+    $add("active", basket);
     orderData = data;
-    orderNum.textContent = data.length.toString();
+
+    data.forEach((mail) => {
+      if (mail.mailAdmin) adminMails++;
+    });
+
+    if (adminMails > 0) {
+      $add("active_admin", basket);
+    } else basket.textContent = data.length.toString();
 
     if (data) setBasketElements(basketOrders, data);
-  } else $remove("active", orderNum);
+  } else $remove("active", basket);
 };
 
 /**
@@ -37,21 +43,21 @@ export const setBasketData = (data: Basket[]) => {
  * Общий слушатель на корзину (удалить, редактировать)
  */
 const setBasketListeners = () => {
-  orderNum.addEventListener("mouseover", function () {
+  basket.addEventListener("mouseover", function () {
     $add("active-hover", basketOrders);
   });
-  orderNum.addEventListener("mouseleave", function () {
+  basket.addEventListener("mouseleave", function () {
     $remove("active-hover", basketOrders);
   });
 
-  orderNum.addEventListener("click", function () {
+  basket.addEventListener("click", function () {
     if ($contains("active", basketOrders)) {
       $remove("active", basketOrders);
       $remove("active-hover", basketOrders);
-      $remove("active-close", orderNum);
+      $remove("active-close", basket);
     } else {
       $add("active", basketOrders);
-      $add("active-close", orderNum);
+      $add("active-close", basket);
     }
   });
 

@@ -55,31 +55,6 @@ $padding-block: 100px;
   margin-bottom: 30px;
 }
 
-.contacts__social-container {
-  font: var(--font-catrin-22-bold);
-}
-
-.contacts__social {
-  margin-left: 30px;
-  padding-left: 50px;
-  background-repeat: no-repeat;
-  background-size: 25px 25px;
-  font: var(--font-catrin-22-bold);
-}
-
-.contacts__social_type_email {
-  background-image: url(../../assets/icons/mail_yellow.png);
-}
-.contacts__social_type_telegram {
-  background-image: url(../../assets/icons/telegram.png);
-  padding-left: 25px;
-  margin-left: 50px;
-}
-.contacts__social_type_whatsapp {
-  background-image: url(../../assets/icons/whatsapp.png);
-  margin-left: 50px;
-}
-
 .contacts__schedule-container {
   margin-left: 30px;
   padding-left: 50px;

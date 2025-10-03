@@ -12,31 +12,27 @@
       <div class="header__btns">
         <div class="basket__orders header__orders-info">
           <div class="basket__info-container">
-            <span class="basket__info-text">Готовая фотография</span>
-            <span class="basket__info-text"
-              >Наименование <br />
-              услуги</span
-            >
-            <span class="basket__info-text"
-              >Дата <br />
-              создания</span
-            >
-            <span class="basket__info-text">Статус выполнения</span>
-            <span class="basket__info-text"
-              >Изменить <br />
-              Удалить</span
-            >
+            <span class="basket__info-text">Наименование услуги</span>
+            <span class="basket__info-text"> Создан</span>
+            <span class="basket__info-text">Статус</span>
+            <span class="basket__info-text">Редактировать</span>
           </div>
         </div>
-        <span class="basket header__orders">0</span>
+        <div class="basket header__orders"></div>
         <img
           id="header-order"
           class="header__mail"
           src="../../assets/icons/photo.png"
           alt="Создать заказ"
         />
-        <ul class="messages-list header__orders-info"></ul>
-        <span class="messages header__orders">0</span>
+        <div class="messages-list header__orders-info">
+          <div class="messages__info-container">
+            <span class="messages__info-text">Ваше обращение</span>
+            <span class="messages__info-text"> Отправлено</span>
+            <span class="messages__info-text">Редактировать</span>
+          </div>
+        </div>
+        <div class="messages header__orders"></div>
         <img
           id="header-mail"
           class="header__mail"
@@ -336,23 +332,6 @@
               >
                 <span>г. Самара, 116 км, Пугачевский тракт 61</span>
               </div>
-              <div class="contacts__social-container">
-                <span class="contacts__social contacts__social_type_email"
-                  >sfoto116@yandex.ru</span
-                >
-                <a
-                  class="contacts__social contacts__social_type_telegram"
-                  href="https://t.me/Sfoto116"
-                  target="_blank"
-                >
-                </a>
-                <a
-                  class="contacts__social contacts__social_type_whatsapp"
-                  href="#"
-                  target="_blank"
-                >
-                </a>
-              </div>
             </div>
           </div>
           <div id="map" class="contacts__map"></div>
@@ -461,6 +440,10 @@
       <div class="footer__date"></div>
     </footer>
 
+    <div class="gallery">
+      <div id="customize-thumbnails-gallery" class="gallery__list"></div>
+    </div>
+
     <div class="overlay">
       <span class="loader"></span>
     </div>
@@ -475,39 +458,58 @@
     <template id="basket-item">
       <div class="basket-item">
         <div class="basket-item__client">
-          <div class="basket-item__img-container">
-            <img class="basket-item__img" src="#" alt="фотография" />
-            <img class="basket-item__img-modal" src="#" alt="фотография" />
-          </div>
-          <a
-            href="#"
-            class="basket-item__download-link"
-            download="Изображение.jpg"
-          >
-            <img
-              class="basket-item__download"
-              src="../../assets/icons/download.svg"
-              alt="скачать"
-          /></a>
-        </div>
-        <span class="basket-item__name"></span>
-        <span class="basket-item__date"></span>
-        <div class="basket-item__icons">
+          <span class="basket-item__name"></span>
+          <span class="basket-item__date"></span>
           <span class="basket-item__status"></span>
-          <button id="#" type="button" class="basket-item__edit"></button>
-          <button id="#" type="button" class="basket-item__basket"></button>
+          <div class="basket-item__icons">
+            <button id="#" type="button" class="basket-item__edit"></button>
+            <button id="#" type="button" class="basket-item__basket"></button>
+          </div>
+        </div>
+        <div class="basket-item__admin">
+          <div class="basket-item__img-container">
+            <span class="basket-item__img-title">Готовые фотографии</span>
+            <div class="basket-item__img-list">
+              <button
+                type="button"
+                class="basket-item__icon basket-item__img-lens"
+              ></button>
+              <a
+                href="#"
+                class="basket-item__icon basket-item__download-link"
+                download="Изображение.jpg"
+              >
+              </a>
+              <button
+                type="button"
+                class="basket-item__icon basket-item__pay"
+              ></button>
+            </div>
+          </div>
+          <div class="basket-item__mail-container">
+            <span class="basket-item__mail-title">Ответ по заказу</span>
+            <p class="basket-item__mail-text"></p>
+          </div>
         </div>
       </div>
     </template>
     <template id="messages-item">
-      <li class="messages-item">
-        <span class="messages-item__text"></span>
-        <span class="messages-item__date"></span>
-        <div class="messages-item__icons">
-          <button id="#" type="button" class="messages-item__edit"></button>
-          <button id="#" type="button" class="messages-item__basket"></button>
+      <div class="messages-item">
+        <div class="messages-item__client">
+          <span class="messages-item__text"></span>
+          <span class="messages-item__date"></span>
+          <div class="messages-item__icons">
+            <button id="#" type="button" class="messages-item__edit"></button>
+            <button id="#" type="button" class="messages-item__basket"></button>
+          </div>
         </div>
-      </li>
+        <div class="messages-item__admin">
+          <div class="messages-item__mail-container">
+            <span class="messages-item__mail-title">Ответ на обращение</span>
+            <p class="messages-item__mail-text"></p>
+          </div>
+        </div>
+      </div>
     </template>
   </body>
 </html>
