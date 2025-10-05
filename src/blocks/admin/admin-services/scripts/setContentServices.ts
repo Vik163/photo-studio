@@ -1,40 +1,63 @@
 import { servicesData } from "@/utils/constants/services-data";
 import { $class, $id } from "@/utils/lib/getElement";
-import { AdminServices } from "@/utils/types/admin-data-services";
+import type {
+  AdminOneService,
+  AdminServices,
+  TypeServices,
+} from "@/utils/types/admin-data-services";
 import { setAdminModal } from "../../admin-modal/scripts/setAdminModal";
 
 const container = $class("admin__list-services");
+
+export const setContentOneService = (data: AdminOneService[]) => {
+  if (data.length > 0) {
+    const servicesContainer = $class("services-block__container", container);
+    data.forEach((serviceData) => {
+      const templateService = ($id("services-item") as HTMLTemplateElement)
+        .content;
+      // дочерний темплейт
+      const serviceTemplate = templateService
+        .querySelector(".services-item")
+        ?.cloneNode(true) as HTMLElement;
+
+      const service = $class("services-item__name", serviceTemplate);
+      service.textContent = serviceData.service;
+
+      const price = $class("services-item__price", serviceTemplate);
+      price.textContent = serviceData.price?.toString()!;
+
+      servicesContainer?.append(serviceTemplate);
+    });
+  }
+};
 
 export const setContentServices = (res?: AdminServices) => {
   servicesData.forEach((block) => {
     const templateServiceBlock = ($id("services-block") as HTMLTemplateElement)
       .content;
     // дочерний темплейт
-    const deviceOrdersTemplate = templateServiceBlock
+    const serviceBlockTemplate = templateServiceBlock
       .querySelector(".services-block")
       ?.cloneNode(true) as HTMLAnchorElement;
 
-    const title = $class("services-block__title", deviceOrdersTemplate);
+    const title = $class("services-block__title", serviceBlockTemplate);
     title.textContent = block.title;
 
-    const list = $class("services-block__container", deviceOrdersTemplate);
-    if (block.title === "photo-na-dokumenty" && res?.["photo-na-dokumenty"]) {
-    }
-    if (block.title === "photo-restavraciya" && res?.["photo-restavraciya"]) {
-    }
-    if (block.title === "photo-dizain" && res?.["photo-dizain"]) {
-    }
-    if (block.title === "retual-photo" && res?.["retual-photo"]) {
-    }
+    const list = $class("services-block__container", serviceBlockTemplate);
+    list.id = block.pathName;
 
     const btn = $class(
       "services-block__add-btn",
-      deviceOrdersTemplate
+      serviceBlockTemplate
     ) as HTMLButtonElement;
     btn.id = block.pathName;
 
     btn.addEventListener("click", () => setAdminModal(btn.id));
 
-    container?.append(deviceOrdersTemplate);
+    container?.append(serviceBlockTemplate);
+
+    if (res?.[block.pathName]) {
+      setContentOneService(res?.[block.pathName]!);
+    }
   });
 };

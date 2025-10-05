@@ -12,8 +12,9 @@ import type { StatusOrder } from "@/utils/types/fetch-data";
 import { ADMIN_ORDER_STATUS } from "@/utils/constants/storage";
 import { closeModal } from "./setAdminModal";
 import { uploadAdminImages } from "./uploadAdminImages";
-import { fetchCreateAdminServices } from "@/utils/services/admin/fetchCreateAdmineServices";
+import { fetchEditAdminServices } from "@/utils/services/admin/fetchEditAdmineServices";
 import { fetchUpdateAdminServices } from "@/utils/services/admin/fetchUpdateAdminServices";
+import { handleResponseServicesAdmin } from "../../admin-services/scripts/handleResponseServicesAdmin";
 
 const modal = $class("admin-modal");
 const form = $class("admin-modal__form", modal) as HTMLFormElement;
@@ -44,31 +45,27 @@ async function sendAdminOrder(id: string) {
   }
 }
 
-async function sendAdminService(id: TypeServices) {
+async function sendAdminService(type: TypeServices) {
   const formData = new FormData(form);
   const service = formData.get("service")!;
   const price = formData.get("price")!;
   // const images = await uploadAdminImages(orderId);
 
   const data: AdminFetchServiceData = {
-    [id]: {
-      service,
-      price,
-    },
+    type,
+    service,
+    price,
   };
 
   console.log("data:", data);
-  if (data.service) {
-    const res = await fetchCreateAdminServices(data);
+  const res = await fetchEditAdminServices(data);
+
+  if (typeof res === "string") {
+    handleErrors(res, modal);
   } else {
-    const res = await fetchUpdateAdminServices(data);
+    closeModal();
+    handleResponseServicesAdmin(res);
   }
-  // if (typeof res === "string") {
-  //   handleErrors(res, modal);
-  // } else {
-  //   closeModal();
-  //   handleResponseEditAdmin(res);
-  // }
 }
 
 /**

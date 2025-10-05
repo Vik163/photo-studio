@@ -5,25 +5,22 @@ export type TypeServices =
   | "retual-photo";
 
 export type AdminServices = {
-  [key in TypeServices]?: ServicesBlock;
+  [key in TypeServices]?: AdminOneService[];
 };
-
-export interface ServicesBlock {
-  title: string;
-  services: AdminOneService[];
-}
 
 export interface AdminOneService {
   service: string;
-  image?: string;
   price?: number;
 }
-export type AdminFetchServices = {
-  [key in TypeServices]: AdminFetchServiceData;
-};
 
 export interface AdminFetchServiceData {
-  service?: FormDataEntryValue;
+  type: TypeServices;
+  service: FormDataEntryValue;
   price?: FormDataEntryValue;
-  image?: string[];
+}
+
+export interface AdminResServiceData {
+  type: TypeServices;
+  service: string;
+  price?: string;
 }

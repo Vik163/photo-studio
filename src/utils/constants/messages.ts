@@ -1,4 +1,8 @@
 export enum Messages {
+  GET_SERVICE_ERROR = "Данные по услугам не получены",
+  DELETE_SERVICE_ERROR = "Новую услугу не получилось удалить",
+  UPDATE_SERVICE_ERROR = "Новую услугу не получилось обновить",
+  CREATE_SERVICE_ERROR = "Новую услугу не получилось создать",
   GET_ADMIN_UPDATE_ERROR = "Ошибка! Данные не были обновлены",
   GET_ADMIN_ORDER_MAIL_ERROR = "Ошибка! Данные по заказам и сообщениям не получены",
   GET_ADMIN_ORDER_ERROR = "Ошибка! Не удалось получить данные по клиентским заказам",
