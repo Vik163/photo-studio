@@ -1,4 +1,5 @@
 @use "../../../styles/variables/times.scss";
+@use "../../../styles/variables/mixin.scss" as btn;
 @use "../admin-styles.scss";
 
 $color-gray: var(--color-border-light);
@@ -6,22 +7,6 @@ $color-light-gray: var(--color-font-light-grey);
 
 .admin {
   font: var(--font-catrin-18-norm);
-}
-
-.admin__list {
-  padding: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  border-radius: 10px;
-  background-color: $color-gray;
-  margin-bottom: 100px;
-}
-
-.admin__error {
-  color: var(--color-vivid-red);
-  font-size: 22px;
-  margin-bottom: 20px;
 }
 
 .device-orders {
@@ -67,5 +52,26 @@ $color-light-gray: var(--color-font-light-grey);
     &::after {
       content: "\27F9";
     }
+  }
+}
+
+.admin__services {
+  display: flex;
+  flex-wrap: wrap;
+
+  .admin__title {
+    width: 70%;
+  }
+
+  .admin__btn-services-edit {
+    @include btn.admin-btn;
+    font: var(--font-catrin-18-norm);
+    height: 40px;
+    width: 25%;
+  }
+
+  .admin__error-services {
+    margin-top: 10px;
+    width: 100%;
   }
 }

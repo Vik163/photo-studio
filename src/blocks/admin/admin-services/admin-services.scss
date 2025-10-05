@@ -1,0 +1,56 @@
+@use "../../../styles/variables/mixin.scss" as btn;
+
+.admin-services {
+  display: none;
+  width: 1200px;
+  padding-top: 60px;
+
+  &.active {
+    display: flex;
+  }
+}
+
+.admin__list-services {
+  width: 100%;
+}
+
+.services-block {
+  margin-top: 50px;
+  border: 1px solid var(--color-vivid-grey-blue);
+  border-radius: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 20px;
+  position: relative;
+}
+
+.services-block__title {
+  font-size: 30px;
+  color: var(--color-luminous-vivid-orange);
+  margin-bottom: 30px;
+}
+
+.services-block__add-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  @include btn.admin-btn;
+  height: 40px;
+  width: 200px;
+  font: var(--font-catrin-18-norm);
+}
+
+.price-label {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
+
+.text-label {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}

@@ -1,2 +1,3 @@
 export const urlMails = `${__API__}/admin/messages`;
 export const urlOrders = `${__API__}/admin/orders`;
+export const urlServices = `${__API__}/admin/services`;

@@ -3,7 +3,7 @@ import { deleteImageUpload } from "@/blocks/upload-img/scripts/handleImageUpload
 import { setGallery } from "@/blocks/gallery/scripts/gallery";
 import { getDataFromId } from "../../admin-block/scripts/getDataFromId";
 import { delBaketObj } from "@/utils/lib/handleYaBaket";
-import { AdminUpdateData } from "@/utils/types/admin-data";
+import { AdminUpdateData } from "@/utils/types/admin-data-orders";
 import { fetchUpdateAdminDataOrder } from "@/utils/services/admin/fetchUpdateAdminDataOrder";
 import { handleErrors } from "@/utils/lib/handleErrors";
 

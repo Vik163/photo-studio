@@ -4,7 +4,7 @@ import {
   ADMIN_ORDER_STATUS,
   ADMIN_ORDERS_BLOCK,
 } from "@/utils/constants/storage";
-import { OneOrder } from "@/utils/types/admin-data";
+import { OneOrder } from "@/utils/types/admin-data-orders";
 
 const orderPage = $class("order");
 const containerMain = $class("order-main", orderPage);

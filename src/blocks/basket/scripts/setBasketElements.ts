@@ -10,6 +10,7 @@ let arrAllSrc: string[][] = [];
 let indexArrImg = 0;
 
 async function setAdminBlock(order: Basket, basketTemplate: HTMLElement) {
+  console.log("order:", order);
   const imageContainer = $class(
     "basket-item__img-list",
     basketTemplate

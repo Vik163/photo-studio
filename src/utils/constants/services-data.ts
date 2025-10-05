@@ -22,4 +22,10 @@ export const servicesData: Services[] = [
     imgS: home3,
     pathName: "photo-restavraciya",
   },
+  {
+    title: "Ретуальная фотография",
+    imgB: home3,
+    imgS: home3,
+    pathName: "retual-photo",
+  },
 ];

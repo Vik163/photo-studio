@@ -1,5 +1,5 @@
 import { $class } from "@/utils/lib/getElement";
-import type { OrdersData, TypeData } from "@/utils/types/admin-data";
+import type { OrdersData, TypeData } from "@/utils/types/admin-data-orders";
 import { setContentOrders } from "../../admin-block/scripts/setContentOrders";
 import { removeListElements } from "../../admin-block/scripts/removeListElements";
 

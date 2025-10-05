@@ -1,4 +1,4 @@
-import type { SelectData } from "../types/select-data";
+import type { SelectData } from "../../types/select-data";
 
 export const ADMIN_STATUS: SelectData = {
   default: { value: "Статус" },

@@ -1,6 +1,9 @@
 import { $adminApi } from "@/utils/api/axiosApi";
 import { Messages } from "@/utils/constants/messages";
-import type { AdminUpdateData, OneOrder } from "@/utils/types/admin-data";
+import type {
+  AdminUpdateData,
+  OneOrder,
+} from "@/utils/types/admin-data-orders";
 
 export const fetchUpdateAdminDataOrder = async (
   data: AdminUpdateData

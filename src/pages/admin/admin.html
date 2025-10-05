@@ -19,16 +19,34 @@
       <span class="auth__info"></span>
     </section>
     <section class="admin container">
-      <h2 class="container__title">Текущие сообщения</h2>
-      <ul class="admin__list admin__list-messages container__list"></ul>
-      <p class="admin__error admin__error-messages"></p>
+      <div class="admin-orders">
+        <h2 class="admin__title">Текущие сообщения</h2>
+        <ul class="admin__list admin__list-messages"></ul>
+        <p class="admin__error admin__error-messages"></p>
 
-      <h2 class="container__title">Текущие заказы</h2>
-      <ul class="admin__list admin__list-orders container__list"></ul>
-      <p class="admin__error admin__error-orders"></p>
+        <h2 class="admin__title">Текущие заказы</h2>
+        <ul class="admin__list admin__list-orders"></ul>
+        <p class="admin__error admin__error-orders"></p>
+      </div>
+
+      <div class="admin__services">
+        <h2 class="admin__title">Услуги и цены</h2>
+        <button class="admin__btn-services-edit">Редактировать</button>
+        <p class="admin__error admin__error-services"></p>
+      </div>
+    </section>
+
+    <section class="admin-services">
+      <button type="button" class="admin-services__back order__back">
+        Вернуться на страницу заказов
+      </button>
+      <ul class="admin__list-services"></ul>
     </section>
 
     <section class="order container">
+      <button type="button" class="btn__back order__back">
+        Вернуться на страницу заказов
+      </button>
       <div class="order__container order-main">
         <h2 class="order__title container__title"></h2>
         <button type="button" class="order__btn-edit">Редактировать</button>
@@ -72,10 +90,6 @@
           </span>
         </div>
         <p class="order__error"></p>
-
-        <button type="button" class="order__btn-back order__back">
-          Вернуться на страницу заказов
-        </button>
       </div>
 
       <div class="order__container order-list">
@@ -138,7 +152,7 @@
         ></button>
         <form class="modal__form admin-modal__form">
           <div class="upload admin-modal__upload">
-            <span class="upload__title">Загрузить готовые фотографии:</span>
+            <span class="upload__title">Загрузить фотографии:</span>
             <div class="upload__container">
               <label class="upload__label">
                 <input
@@ -156,17 +170,35 @@
               <ul class="upload__images"></ul>
             </div>
           </div>
-          <label id="text-label" class="modal__label" for="message"
-            >Ответ клиенту:</label
-          >
-          <textarea
-            id="message"
-            name="message"
-            placeholder="Пиши здесь"
-            class="modal__form-item modal__text"
-            rows="4"
-            cols="33"
-          ></textarea>
+          <label class="modal__label service-label" name="service" for="service"
+            >Название услуги
+            <input
+              id="service"
+              class="modal__form-item"
+              name="service"
+              type="text"
+              minlength="2"
+          /></label>
+          <label class="modal__label price-label" name="price" for="price"
+            >Стоимость услуги
+            <input
+              id="price"
+              class="modal__form-item"
+              name="price"
+              type="number"
+              minlength="2"
+          /></label>
+          <label id="text-label" class="modal__label text-label" for="message"
+            >Ответ клиенту:
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Пиши здесь"
+              class="modal__form-item modal__text"
+              rows="4"
+              cols="33"
+            ></textarea>
+          </label>
           <div class="admin-modal__status">
             <span class="admin-modal__status-title">Выбрать статус заказа</span>
             <div id="select-status" class="select admin-modal__select">
@@ -200,6 +232,13 @@
       <li class="upload-img">
         <img class="upload-img__img" src="#" alt="" />
         <button id="#" type="button" class="upload-img__btn"></button>
+      </li>
+    </template>
+    <template id="services-block">
+      <li class="services-block">
+        <h3 class="services-block__title"></h3>
+        <button class="services-block__add-btn">Добавить</button>
+        <ul class="services-block__container"></ul>
       </li>
     </template>
     <template id="device-orders">

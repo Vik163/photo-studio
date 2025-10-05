@@ -1,5 +1,5 @@
 import { fetchAdminOrders } from "@/utils/services/admin/fetchAdminOrders";
-import { $class } from "@/utils/lib/getElement";
+import { $add, $class, $remove } from "@/utils/lib/getElement";
 import {
   closeOverlayAndLoader,
   openOverlayAndLoader,
@@ -11,7 +11,11 @@ import {
   ADMIN_ORDERS_BLOCK,
   ORDERS_DATA,
 } from "@/utils/constants/storage";
-import type { AdminData, OrdersData, TypeData } from "@/utils/types/admin-data";
+import type {
+  AdminData,
+  OrdersData,
+  TypeData,
+} from "@/utils/types/admin-data-orders";
 import {
   backAdmin,
   closeInfoOrder,
@@ -20,7 +24,7 @@ import {
 } from "@/blocks/admin/admin-order/scripts/handleOrderPage";
 import { setContent } from "./setContent";
 import { getDataFromId } from "./getDataFromId";
-import { urlMails, urlOrders } from "@/utils/constants/urls";
+import { urlMails, urlOrders, urlServices } from "@/utils/constants/admin/urls";
 import { getDataCacheByName } from "@/utils/lib/dataCache";
 import {
   handleOptionsSelect,
@@ -28,7 +32,6 @@ import {
 } from "@/utils/ui/select/select";
 import {
   closeModal,
-  sendAdminData,
   setAdminModal,
 } from "../../admin-modal/scripts/setAdminModal";
 import { setListenersImageUpload } from "@/blocks/upload-img/scripts/handleImageUpload";
@@ -36,15 +39,20 @@ import {
   deleteImages,
   openAdminGallery,
 } from "../../admin-order/scripts/handleImages";
+import { setAdminServices } from "../../admin-services/scripts/setAdminServices";
+import { sendAdminData } from "../../admin-modal/scripts/sendAdminData";
 
 const admin = $class("admin");
+const auth = $class("auth");
+const text = $class("auth__info", auth);
+const btnAdmin = $class("admin-orders", admin);
 const errorOrders = $class("admin__error-orders", admin);
 const errorMessages = $class("admin__error-messages", admin);
 const orderPage = $class("order");
 const containerMain = $class("order-main", orderPage);
 const containerInfo = $class("order-info", orderPage);
 const orderList = $class("order__list", orderPage);
-const btnBackAdmin = $class("order__btn-back", orderPage);
+const btnBackAdmin = $class("btn__back", orderPage);
 const btnEdit = $class("order__btn-edit", containerMain);
 const btnEditInfo = $class("order__btn-edit", containerInfo);
 const btnClose = $class("order__btn-close", containerInfo);
@@ -148,10 +156,15 @@ export const setContentAdminBlock = async () => {
     setContent("mail", mailsData);
   }
 
+  setAdminServices();
+
   closeOverlayAndLoader();
 };
 
 export const setAdminBlock = async () => {
+  $add("active", admin);
+  $remove("active", auth);
+  $remove("active", text);
   await setContentAdminBlock();
 
   addListeners();
@@ -159,7 +172,7 @@ export const setAdminBlock = async () => {
 };
 
 function addListeners() {
-  admin.addEventListener("click", clickAdmin);
+  btnAdmin.addEventListener("click", clickAdmin);
   btnBackAdmin.addEventListener("click", backAdmin);
   btnClose.addEventListener("click", closeInfoOrder);
   orderList.addEventListener("click", openInfoOrder);

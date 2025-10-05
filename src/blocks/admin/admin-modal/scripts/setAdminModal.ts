@@ -1,16 +1,8 @@
 import { $add, $class, $contains, $id, $remove } from "@/utils/lib/getElement";
-import { getDataFromId } from "../../admin-block/scripts/getDataFromId";
-import {
-  deleteImageUpload,
-  getImgFiles,
-} from "@/blocks/upload-img/scripts/handleImageUpload";
-import { uploadImagesInCloud } from "@/blocks/modals/modal/scripts/handleImagesFromCloud";
-import { AdminUpdateData } from "@/utils/types/admin-data";
-import { fetchUpdateAdminDataOrder } from "@/utils/services/admin/fetchUpdateAdminDataOrder";
-import { handleResponseEditAdmin } from "../../admin-order/scripts/handleResponseEditAdmin";
-import { handleErrors } from "@/utils/lib/handleErrors";
+import { deleteImageUpload } from "@/blocks/upload-img/scripts/handleImageUpload";
+
 import { setSelect } from "@/utils/ui/select/select";
-import { ADMIN_STATUS } from "@/utils/constants/selectsData";
+import { ADMIN_STATUS } from "@/utils/constants/admin/selectsData";
 import type { StatusOrder } from "@/utils/types/fetch-data";
 import { setStylesStatus } from "../../../../utils/lib/setStylesDateAndStatus";
 import {
@@ -21,6 +13,9 @@ import {
 const modal = $class("admin-modal");
 const form = $class("admin-modal__form", modal) as HTMLFormElement;
 const status = $class("admin-modal__status", form) as HTMLElement;
+const service = $class("service-label", form) as HTMLLabelElement;
+const price = $class("price-label", form) as HTMLLabelElement;
+const mail = $class("text-label", form) as HTMLLabelElement;
 const upload = $class("admin-modal__upload", form) as HTMLElement;
 const text = $id("message", form) as HTMLTextAreaElement;
 const imagesContainer = $class("upload__images", modal) as HTMLFormElement;
@@ -48,70 +43,30 @@ export const setAdminModal = (id: string) => {
   if (typeModal === "order") {
     $add("active", status);
     $add("active", upload);
-
+    $add("active", mail);
+    $remove("active", service);
+    $remove("active", price);
     setSelect(modal, ADMIN_STATUS);
     modal.querySelectorAll(".option__value").forEach((item) => {
       setStylesStatus(item.textContent as StatusOrder, item as HTMLElement);
     });
-  } else {
+  } else if (typeModal === "mail") {
     $remove("active", status);
     $remove("active", upload);
+    $remove("active", service);
+    $remove("active", price);
+    $add("active", mail);
     localStorage.removeItem(ADMIN_ORDER_STATUS);
+  } else {
+    $remove("active", status);
+    $add("active", upload);
+    $add("active", service);
+    $add("active", price);
+    $remove("active", mail);
   }
 
   const btnModalSubmit = $class("modal__btn-submit", modal);
   btnModalSubmit.id = id;
 
   text.value = localStorage.getItem(ADMIN_ORDER_MAIL)!;
-};
-
-/**
- * Отправляет данные админ формы на сервер (сообщение и фотографии)
- * @param id - данные заказа { deviceId, orderId }
- */
-export const sendAdminData = async (e: Event, id: string) => {
-  e.preventDefault();
-  const { deviceId, orderId } = getDataFromId(id);
-  const formData = new FormData(form);
-  const mailAdmin = formData.get("message")!;
-  const images = await uploadAdminImages(orderId);
-  const status =
-    ($class("select__text", modal).textContent as StatusOrder) ||
-    localStorage.getItem(ADMIN_ORDER_STATUS);
-
-  const data: AdminUpdateData = {
-    deviceId,
-    orderId,
-    mailAdmin,
-    completedImages: images,
-    status,
-  };
-
-  const res = await fetchUpdateAdminDataOrder(data);
-  if (typeof res === "string") {
-    handleErrors(res, modal);
-  } else {
-    closeModal();
-    handleResponseEditAdmin(res);
-  }
-};
-
-/**
- * Загружает готовые изображения в облако в папку admin (`${orderId}/admin/${file.name}`)
- * @param orderId
- * @returns массив ключей загруженных фотографий
- */
-const uploadAdminImages = async (orderId: string) => {
-  let images: string[] = [];
-  // получаю данные файлов из кеша
-  const files = getImgFiles();
-
-  // загрузка новых файлов в облако
-  for await (let file of files) {
-    await uploadImagesInCloud(file, orderId, "admin");
-
-    images.push(`${orderId}/admin/${file.name}`);
-  }
-
-  return images;
 };

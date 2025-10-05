@@ -1,5 +1,5 @@
 import { $class, $id } from "@/utils/lib/getElement";
-import type { OneOrder, TypeData } from "@/utils/types/admin-data";
+import type { OneOrder, TypeData } from "@/utils/types/admin-data-orders";
 import {
   setStylesDate,
   setStylesStatus,

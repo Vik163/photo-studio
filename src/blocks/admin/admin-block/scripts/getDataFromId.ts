@@ -1,4 +1,4 @@
-import type { TypeData } from "@/utils/types/admin-data";
+import type { TypeData } from "@/utils/types/admin-data-orders";
 
 /**
  * Получает данные из id элемента

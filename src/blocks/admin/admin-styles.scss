@@ -17,7 +17,23 @@ $color-gray: var(--color-font-light-grey);
   }
 }
 
-.container__title {
+.admin__list {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 10px;
+  background-color: $color-gray;
+  margin-bottom: 100px;
+}
+
+.admin__error {
+  color: var(--color-vivid-red);
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.admin__title {
   margin-bottom: 25px;
   font-size: 26px;
   color: var(--color-luminous-vivid-orange);

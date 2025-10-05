@@ -1,5 +1,5 @@
 import { $add, $class, $remove } from "@/utils/lib/getElement";
-import type { OrdersData, TypeData } from "@/utils/types/admin-data";
+import type { OrdersData, TypeData } from "@/utils/types/admin-data-orders";
 import {
   ADMIN_DEVICE_ID,
   ADMIN_ORDER_MAIL,

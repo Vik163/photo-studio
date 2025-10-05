@@ -1,6 +1,6 @@
-import { ORDER_LIMIT } from "@/utils/constants/limitDays";
+import { ORDER_LIMIT } from "@/utils/constants/admin/limitDays";
 import { ColorAdmin } from "@/utils/constants/styles";
-import type { TypeData } from "@/utils/types/admin-data";
+import type { TypeData } from "@/utils/types/admin-data-orders";
 import type { StatusOrder } from "@/utils/types/fetch-data";
 
 export function setStylesDate(

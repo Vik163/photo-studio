@@ -1,5 +1,5 @@
 import { Messages } from "@/utils/constants/messages";
-import { urlMails } from "@/utils/constants/urls";
+import { urlMails } from "@/utils/constants/admin/urls";
 
 /**
  ** Первоначальный запрос корзины вызывается в header.ts
