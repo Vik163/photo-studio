@@ -3,7 +3,7 @@ import { deleteNodes } from "@/utils/lib/deleteNodes";
 import { $class, $id } from "@/utils/lib/getElement";
 import type { AdminServices } from "@/utils/types/admin-data-services";
 import { editAdminServices } from "./editAdminServices";
-import { setAdminModal } from "../../admin-modal/scripts/setAdminModal";
+import { openAdminModal } from "../../admin-modal/scripts/setAdminModal";
 import { setContentListServices } from "./setContentServices";
 
 const container = $class("admin__list-services");
@@ -31,7 +31,7 @@ export const setContentServicesBlock = (res?: AdminServices[]) => {
     ) as HTMLButtonElement;
 
     list.addEventListener("click", (e) => editAdminServices(e, block.pathName));
-    btn.addEventListener("click", () => setAdminModal(block.pathName));
+    btn.addEventListener("click", () => openAdminModal(block.pathName));
 
     container?.append(serviceBlockTemplate);
 

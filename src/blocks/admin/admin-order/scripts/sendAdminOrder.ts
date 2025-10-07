@@ -27,19 +27,23 @@ export async function sendAdminOrder(id: string, form: HTMLFormElement) {
     ($class("select__text", modal).textContent as StatusOrder) ||
     localStorage.getItem(ADMIN_ORDER_STATUS);
 
-  const data: AdminUpdateData = {
-    deviceId,
-    orderId,
-    mailAdmin,
-    completedImages: images,
-    status,
-  };
-
-  const res = await fetchUpdateAdminDataOrder(data);
-  if (typeof res === "string") {
-    handleErrors(res, modal);
+  if (status === "Отложен" && !Boolean(mailAdmin)) {
+    handleErrors("Заказ удалится. Необходимо объяснить причину клиенту", modal);
   } else {
-    closeModal();
-    handleResponseEditAdmin(res);
+    const data: AdminUpdateData = {
+      deviceId,
+      orderId,
+      mailAdmin,
+      completedImages: images,
+      status,
+    };
+
+    const res = await fetchUpdateAdminDataOrder(data);
+    if (typeof res === "string") {
+      handleErrors(res, modal);
+    } else {
+      closeModal();
+      handleResponseEditAdmin(res);
+    }
   }
 }

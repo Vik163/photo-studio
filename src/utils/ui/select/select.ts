@@ -1,3 +1,4 @@
+import { checkStatusModal } from "@/blocks/admin/admin-modal/scripts/setAdminModal";
 import { ADMIN_ORDER_STATUS } from "@/utils/constants/storage";
 import {
   $class,
@@ -58,6 +59,8 @@ export const handleOptionsSelect = (e: Event, container: HTMLElement) => {
   if ($contains("option__value", target)) {
     value = target.textContent as StatusOrder;
     defaultValue.textContent = value;
+
+    checkStatusModal(value);
   }
 
   $remove("active", list);

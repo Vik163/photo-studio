@@ -38,6 +38,11 @@ $padding-vert-inp: 5px;
     &:hover {
       background-color: #f7f0e8;
     }
+
+    &.inactive {
+      opacity: 0.5;
+      pointer-events: none;
+    }
   }
 
   .upload__title {

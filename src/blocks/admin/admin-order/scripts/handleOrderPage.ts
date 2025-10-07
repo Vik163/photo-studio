@@ -10,10 +10,8 @@ import {
 import { setContentFromData } from "./setContentFromData";
 import { setContentListOrders } from "./setContentListOrders";
 import { getDataFromId } from "../../admin-block/scripts/getDataFromId";
-import {
-  getData,
-  setContentAdminBlock,
-} from "../../admin-block/scripts/adminBlock";
+import { setContentAdminBlock } from "../../admin-block/scripts/adminBlock";
+import { getData } from "../../admin-block/scripts/handleDataAdmin";
 
 const adminPage = $class("admin");
 const orderPage = $class("order");

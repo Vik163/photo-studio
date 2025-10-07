@@ -23,6 +23,8 @@ const imagesContainer = $class("upload__images", modal) as HTMLFormElement;
 export const closeModal = () => {
   $remove("modal_active", modal);
   $remove("modal__error", modal);
+  text.value = "";
+  localStorage.removeItem(ADMIN_ORDER_MAIL);
   form.reset();
 
   deleteImageUpload(imagesContainer);
@@ -33,7 +35,7 @@ export const closeModal = () => {
  * вешает на id кнопки submit данные заказа
  * @param id данные заказа
  */
-export const setAdminModal = (id: string) => {
+export const openAdminModal = (id: string) => {
   const typeModal = id.split("/")[0];
   if ($contains("modal_active", modal)) {
     $remove("modal_active", modal);
@@ -71,3 +73,9 @@ export const setAdminModal = (id: string) => {
 
   text.value = localStorage.getItem(ADMIN_ORDER_MAIL)!;
 };
+
+export function checkStatusModal(value: StatusOrder) {
+  if (value === "Отложен") {
+    text.value = "";
+  }
+}
