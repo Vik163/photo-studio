@@ -5,7 +5,6 @@ import {
   openOverlayAndLoader,
 } from "@/utils/ui/overlay/overlay";
 import { fetchAdminMessages } from "@/utils/services/admin/fetchAdminMessages";
-import { Messages } from "@/utils/constants/messages";
 import {
   ADMIN_DEVICE_ID,
   ADMIN_ORDERS_BLOCK,
@@ -24,7 +23,7 @@ import {
 } from "@/blocks/admin/admin-order/scripts/handleOrderPage";
 import { setContent } from "./setContent";
 import { getDataFromId } from "./getDataFromId";
-import { urlMails, urlOrders, urlServices } from "@/utils/constants/admin/urls";
+import { urlMails, urlOrders } from "@/utils/constants/admin/urls";
 import { getDataCacheByName } from "@/utils/lib/dataCache";
 import {
   handleOptionsSelect,
@@ -41,13 +40,14 @@ import {
 } from "../../admin-order/scripts/handleImages";
 import { setAdminServices } from "../../admin-services/scripts/setAdminServices";
 import { sendAdminData } from "../../admin-modal/scripts/sendAdminData";
+import { handleErrors } from "@/utils/lib/handleErrors";
 
 const admin = $class("admin");
 const auth = $class("auth");
-const text = $class("auth__info", auth);
-const btnAdmin = $class("admin-orders", admin);
-const errorOrders = $class("admin__error-orders", admin);
-const errorMessages = $class("admin__error-messages", admin);
+const text = $class("admin-error", auth);
+const ordersBlock = $class("admin-orders", admin);
+const errorOrdersEl = $class("admin__error-orders", admin);
+const errorMessagesEl = $class("admin__error-messages", admin);
 const orderPage = $class("order");
 const containerMain = $class("order-main", orderPage);
 const containerInfo = $class("order-info", orderPage);
@@ -134,26 +134,20 @@ async function clickAdmin(e: Event) {
  */
 export const setContentAdminBlock = async () => {
   openOverlayAndLoader("loader");
-  const resOrders = await fetchAdminOrders();
-  const resMails = await fetchAdminMessages();
+  const resOrdersData = await fetchAdminOrders();
+  const resMailsData = await fetchAdminMessages();
 
-  if (resOrders && resMails) {
-    errorMessages.textContent = Messages.GET_ADMIN_ORDER_MAIL_ERROR;
+  if (typeof resMailsData === "string") {
+    handleErrors(resMailsData, ordersBlock, "admin__error-messages");
+  } else {
+    const resMails: AdminData[] = await getDataCacheByName(urlMails);
+    setContent("mail", resMails);
   }
-  if (resOrders) {
-    errorOrders.textContent = resOrders;
+  if (typeof resOrdersData === "string") {
+    handleErrors(resOrdersData, ordersBlock, "admin__error-orders");
   } else {
     const resOrders: AdminData[] = await getDataCacheByName(urlOrders);
-
     setContent("order", resOrders);
-  }
-
-  if (resMails) {
-    errorMessages.textContent = resMails;
-  } else {
-    const mailsData: AdminData[] = await getDataCacheByName(urlMails);
-
-    setContent("mail", mailsData);
   }
 
   setAdminServices();
@@ -172,7 +166,7 @@ export const setAdminBlock = async () => {
 };
 
 function addListeners() {
-  btnAdmin.addEventListener("click", clickAdmin);
+  ordersBlock.addEventListener("click", clickAdmin);
   btnBackAdmin.addEventListener("click", backAdmin);
   btnClose.addEventListener("click", closeInfoOrder);
   orderList.addEventListener("click", openInfoOrder);

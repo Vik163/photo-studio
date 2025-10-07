@@ -20,8 +20,8 @@ const orderPage = $class("order");
 const containerMain = $class("order-main", orderPage);
 const containerList = $class("order-list", orderPage);
 const containerInfo = $class("order-info", orderPage);
-const errorMain = $class("order__error", containerMain);
-const errorInfo = $class("order__error", containerInfo);
+const errorMain = $class("admin-error", containerMain);
+const errorInfo = $class("admin-error", containerInfo);
 
 let userData: OrdersData;
 

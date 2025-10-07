@@ -3,7 +3,7 @@
 $color-gray: var(--color-font-light-grey);
 
 .container {
-  width: 1124px;
+  width: var(--admin-width);
   margin: 0 auto;
   display: none;
   font-family: Arial, Helvetica, sans-serif;
@@ -27,10 +27,20 @@ $color-gray: var(--color-font-light-grey);
   margin-bottom: 100px;
 }
 
+.admin-error {
+  color: var(--color-error);
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
+
 .admin__error {
-  color: var(--color-vivid-red);
+  color: var(--color-error);
   font-size: 22px;
   margin-bottom: 20px;
+  letter-spacing: 1px;
 }
 
 .admin__title {
@@ -52,4 +62,5 @@ $color-gray: var(--color-font-light-grey);
   top: 5px;
   left: 5px;
   @include btn.admin-btn;
+  z-index: var(--index-10);
 }

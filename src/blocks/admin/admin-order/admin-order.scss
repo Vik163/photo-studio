@@ -56,12 +56,3 @@ $border-bottom-order: 1px dashed var(--color-vivid-grey-blue);
   background-size: 25px;
   cursor: pointer;
 }
-
-.order__error {
-  color: var(--color-error);
-  display: none;
-
-  &.active {
-    display: block;
-  }
-}

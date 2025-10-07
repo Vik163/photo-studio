@@ -10,7 +10,7 @@ export const fetchEditAdminServices = async (
 ): Promise<AdminResServiceData | string> => {
   try {
     const res: AdminResServiceData | string = (
-      await $adminApi.post("services", data)
+      await $adminApi.put("services", data)
     ).data;
 
     return res;

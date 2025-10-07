@@ -1,3 +1,5 @@
+@use "../admin-styles.scss";
+
 .auth {
   display: none;
   height: 100vh;
@@ -51,12 +53,5 @@
 }
 
 .auth__info {
-  display: none;
-  font-size: 30px;
-  letter-spacing: 0.5px;
-  color: var(--color-vivid-light-red);
-
-  &.active {
-    display: inline;
-  }
+  font-size: 24px;
 }

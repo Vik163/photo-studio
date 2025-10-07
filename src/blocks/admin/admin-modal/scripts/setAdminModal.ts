@@ -23,6 +23,7 @@ const imagesContainer = $class("upload__images", modal) as HTMLFormElement;
 export const closeModal = () => {
   $remove("modal_active", modal);
   $remove("modal__error", modal);
+  form.reset();
 
   deleteImageUpload(imagesContainer);
 };
@@ -59,7 +60,7 @@ export const setAdminModal = (id: string) => {
     localStorage.removeItem(ADMIN_ORDER_STATUS);
   } else {
     $remove("active", status);
-    $add("active", upload);
+    $remove("active", upload);
     $add("active", service);
     $add("active", price);
     $remove("active", mail);

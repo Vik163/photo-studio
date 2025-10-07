@@ -1,5 +1,4 @@
 import { $add, $class, $remove } from "@/utils/lib/getElement";
-import { setContentOneService, setContentServices } from "./setContentServices";
 import { fetchAdminServices } from "@/utils/services/admin/fetchAdminServices";
 import {
   closeOverlayAndLoader,
@@ -8,12 +7,13 @@ import {
 import { getDataCacheByName } from "@/utils/lib/dataCache";
 import type { AdminServices } from "@/utils/types/admin-data-services";
 import { urlServices } from "@/utils/constants/admin/urls";
+import { handleErrors } from "@/utils/lib/handleErrors";
+import { setContentServicesBlock } from "./setContentServicesBlock";
 
 const admin = $class("admin");
 const adminService = $class("admin-services");
 const btnAdminServices = $class("admin__btn-services-edit", admin);
 const btnServiceBack = $class("admin-services__back");
-const errorServices = $class("admin__error-services", admin);
 
 async function openAdminServices() {
   $add("active", adminService);
@@ -24,15 +24,14 @@ async function openAdminServices() {
   const resServices = await fetchAdminServices();
 
   if (typeof resServices === "string") {
-    errorServices.textContent = resServices;
+    closeOverlayAndLoader();
+    handleErrors(resServices, adminService);
   } else {
-    const servicesData: AdminServices = await getDataCacheByName(urlServices);
+    const servicesData: AdminServices[] = await getDataCacheByName(urlServices);
+    closeOverlayAndLoader();
 
-    console.log("servicesData:", servicesData);
-    setContentServices(servicesData);
+    setContentServicesBlock(servicesData);
   }
-
-  closeOverlayAndLoader();
 }
 
 function closeAdminServices() {

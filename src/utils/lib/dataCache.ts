@@ -3,8 +3,10 @@ import { Messages } from "../constants/messages";
 export async function getDataCacheByName(url: string) {
   const cache = await caches.open("admin-cache");
   const res = await cache.match(url);
-  const data = await res?.json();
-  return data;
+  if (res?.body) {
+    const data = await res?.json();
+    return data;
+  }
 }
 
 export async function getDataCache(url: string) {

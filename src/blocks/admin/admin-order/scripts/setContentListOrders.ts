@@ -1,7 +1,7 @@
 import { $class } from "@/utils/lib/getElement";
 import type { OrdersData, TypeData } from "@/utils/types/admin-data-orders";
 import { setContentOrders } from "../../admin-block/scripts/setContentOrders";
-import { removeListElements } from "../../admin-block/scripts/removeListElements";
+import { deleteNodes } from "@/utils/lib/deleteNodes";
 
 /**
  * Устанавливает дополнительный список заказов полученных по номеру телефона заказа в блоке редактирования
@@ -14,7 +14,7 @@ export function setContentListOrders(
   data: OrdersData,
   container: HTMLElement
 ) {
-  removeListElements(".device-order", container);
+  deleteNodes(".device-order", container);
 
   const { mails, orders } = data;
 

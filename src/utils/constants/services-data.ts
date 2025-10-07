@@ -1,9 +1,9 @@
-import type { Services } from "@/utils/types/works-data";
+import type { ClientServices } from "@/utils/types/works-data";
 import home1 from "@/assets/images/dfg2.jpg";
 import home2 from "@/assets/images/dizain.png";
 import home3 from "@/assets/images/restoration2.jpg";
 
-export const servicesData: Services[] = [
+export const servicesData: ClientServices[] = [
   {
     title: "Фото на документы",
     imgB: home1,
@@ -23,9 +23,9 @@ export const servicesData: Services[] = [
     pathName: "photo-restavraciya",
   },
   {
-    title: "Ретуальная фотография",
+    title: "Ритуальная фотография",
     imgB: home3,
     imgS: home3,
-    pathName: "retual-photo",
+    pathName: "ritual-photo",
   },
 ];

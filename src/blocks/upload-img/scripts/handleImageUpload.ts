@@ -1,4 +1,5 @@
 import { deleteImageDataFromCloud } from "@/blocks/modals/modal/scripts/handleImagesFromCloud";
+import { deleteNodes } from "@/utils/lib/deleteNodes";
 import { $add, $class, $id, $remove } from "@/utils/lib/getElement";
 
 const loadBlock = $class("upload")!;
@@ -12,9 +13,7 @@ let cachFiles: File[] = [];
  * удаление всех файлов в блоке
  */
 export function deleteImageUpload(container: HTMLElement) {
-  container.querySelectorAll(".upload-img").forEach((img) => {
-    img.remove();
-  });
+  deleteNodes(".upload-img", container);
 
   cachFiles = [];
 }

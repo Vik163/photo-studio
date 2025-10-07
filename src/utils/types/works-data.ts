@@ -1,6 +1,6 @@
 import { TypeServices } from "./admin-data-services";
 
-export interface Services {
+export interface ClientServices {
   title: string;
   imgS: string;
   imgB: string;

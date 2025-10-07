@@ -55,6 +55,15 @@ $color-light-gray: var(--color-font-light-grey);
   }
 }
 
+.admin__error-orders {
+  margin-bottom: 100px;
+  font-size: 22px;
+}
+.admin__error-messages {
+  margin-bottom: 100px;
+  font-size: 22px;
+}
+
 .admin__services {
   display: flex;
   flex-wrap: wrap;
@@ -68,10 +77,5 @@ $color-light-gray: var(--color-font-light-grey);
     font: var(--font-catrin-18-norm);
     height: 40px;
     width: 25%;
-  }
-
-  .admin__error-services {
-    margin-top: 10px;
-    width: 100%;
   }
 }

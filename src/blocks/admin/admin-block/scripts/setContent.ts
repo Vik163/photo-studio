@@ -1,7 +1,7 @@
 import { $class, $id } from "@/utils/lib/getElement";
 import type { AdminData, TypeData } from "@/utils/types/admin-data-orders";
 import { setContentOrders } from "./setContentOrders";
-import { removeListElements } from "./removeListElements";
+import { deleteNodes } from "@/utils/lib/deleteNodes";
 
 export const setContent = async (type: TypeData, data: AdminData[]) => {
   const listEl =
@@ -9,7 +9,7 @@ export const setContent = async (type: TypeData, data: AdminData[]) => {
       ? $class("admin__list-messages")
       : $class("admin__list-orders");
 
-  removeListElements(".device-orders", listEl);
+  deleteNodes(".device-orders", listEl);
 
   const templateId = ($id("device-orders") as HTMLTemplateElement).content;
 

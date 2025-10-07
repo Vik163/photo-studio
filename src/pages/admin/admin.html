@@ -16,24 +16,24 @@
         <button type="submit" class="auth__submit">Войти</button>
       </form>
 
-      <span class="auth__info"></span>
+      <span class="admin-error auth__info"></span>
     </section>
     <section class="admin container">
       <div class="admin-orders">
         <h2 class="admin__title">Текущие сообщения</h2>
         <ul class="admin__list admin__list-messages"></ul>
-        <p class="admin__error admin__error-messages"></p>
+        <p class="admin-error admin__error-messages"></p>
 
         <h2 class="admin__title">Текущие заказы</h2>
         <ul class="admin__list admin__list-orders"></ul>
-        <p class="admin__error admin__error-orders"></p>
+        <p class="admin-error admin__error-orders"></p>
       </div>
 
       <div class="admin__services">
         <h2 class="admin__title">Услуги и цены</h2>
         <button class="admin__btn-services-edit">Редактировать</button>
-        <p class="admin__error admin__error-services"></p>
       </div>
+      <p class="admin-error admin__error"></p>
     </section>
 
     <section class="admin-services">
@@ -41,6 +41,7 @@
         Вернуться на страницу заказов
       </button>
       <ul class="admin__list-services"></ul>
+      <p class="admin-error admin__error-services"></p>
     </section>
 
     <section class="order container">
@@ -89,7 +90,7 @@
             Готовые к отправке фотографии
           </span>
         </div>
-        <p class="order__error"></p>
+        <p class="admin-error"></p>
       </div>
 
       <div class="order__container order-list">
@@ -140,7 +141,7 @@
             Готовые к отправке фотографии
           </span>
         </div>
-        <p class="order__error"></p>
+        <p class="admin-error"></p>
       </div>
     </section>
 
@@ -185,8 +186,9 @@
               id="price"
               class="modal__form-item"
               name="price"
-              type="number"
+              type="text"
               minlength="2"
+              maxlength="4"
           /></label>
           <label id="text-label" class="modal__label text-label" for="message"
             >Ответ клиенту:
@@ -209,7 +211,7 @@
           </div>
           <button type="submit" class="modal__btn-submit">Отправить</button>
         </form>
-        <p class="order__error modal__error"></p>
+        <p class="admin-error modal__error"></p>
       </div>
     </section>
 
@@ -243,12 +245,31 @@
     </template>
     <template id="services-item">
       <li class="services-item">
-        <span class="services-item__name"></span>
-        <span class="services-item__price"></span>
-        <div class="services-item__icons">
-          <button id="#" type="button" class="service-item__edit"></button>
-          <button id="#" type="button" class="service-item__basket"></button>
+        <div class="services-item__container">
+          <span class="services-item__name"></span>
+          <form class="services-item__form">
+            <input
+              id="price"
+              name="price"
+              type="text"
+              minlength="2"
+              maxlength="4"
+              class="services-item__price"
+              disabled
+            />
+            <button
+              id="#"
+              type="submit"
+              class="service-item__btn service-item__btn-edit"
+            ></button>
+          </form>
+          <button
+            id="#"
+            type="button"
+            class="service-item__btn service-item__btn-basket"
+          ></button>
         </div>
+        <span class="admin-error services-item__error"></span>
       </li>
     </template>
     <template id="device-orders">

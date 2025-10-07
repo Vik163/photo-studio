@@ -4,7 +4,7 @@ import {
   setStylesDate,
   setStylesStatus,
 } from "../../../../utils/lib/setStylesDateAndStatus";
-import { removeListElements } from "./removeListElements";
+import { deleteNodes } from "@/utils/lib/deleteNodes";
 
 export const setContentOrders = (
   type: TypeData,
@@ -12,7 +12,7 @@ export const setContentOrders = (
   container: HTMLElement,
   deviceId?: string
 ) => {
-  removeListElements(".device-order", container);
+  deleteNodes(".device-order", container);
 
   const templateOrders = ($id("device-order") as HTMLTemplateElement).content;
   orders.forEach((data) => {

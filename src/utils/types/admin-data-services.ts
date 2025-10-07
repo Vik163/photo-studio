@@ -2,25 +2,29 @@ export type TypeServices =
   | "photo-na-dokumenty"
   | "photo-restavraciya"
   | "photo-dizain"
-  | "retual-photo";
+  | "ritual-photo";
 
 export type AdminServices = {
-  [key in TypeServices]?: AdminOneService[];
+  type: TypeServices;
+  services: AdminOneService[];
 };
 
 export interface AdminOneService {
+  id: string;
   service: string;
-  price?: number;
+  price?: string;
 }
 
 export interface AdminFetchServiceData {
   type: TypeServices;
+  id?: string;
   service: FormDataEntryValue;
   price?: FormDataEntryValue;
 }
 
 export interface AdminResServiceData {
   type: TypeServices;
+  id: string;
   service: string;
   price?: string;
 }
