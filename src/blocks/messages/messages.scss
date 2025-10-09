@@ -2,7 +2,7 @@
 
 // основные настройки находятся в header ===
 .messages {
-  left: 113px;
+  left: 114px;
 }
 
 .messages-list {
@@ -36,13 +36,14 @@
 .messages-item {
   border-top: 2px solid var(--color-luminous-vivid-dark-red);
   border-bottom: 2px solid var(--color-luminous-vivid-dark-red);
+  padding: 10px 0;
 }
 .messages-item__client {
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  padding: 10px 15px 10px 10px;
+  padding: 0 15px 0 10px;
   background-color: transparent;
 }
 
@@ -82,20 +83,32 @@
 .messages-item__admin {
   width: 100%;
   display: none;
-  align-items: flex-start;
-  gap: 5%;
-  padding: 5px 10px;
-  border-top: 1px dashed var(--color-luminous-vivid-dark-red);
+  align-items: center;
+  padding: 10px;
+  border: 1px solid var(--color-luminous-vivid-dark-red);
+  border-radius: 6px;
+  position: relative;
+  margin-top: 15px;
 
   &.active {
     display: block;
   }
-}
 
-.messages-item__mail-text {
-  height: auto;
-  padding: 3px 6px;
-  border: 1px solid var(--color-luminous-vivid-amber);
-  border-radius: 4px;
-  overflow-y: auto;
+  .messages-item__admin-title {
+    position: absolute;
+    top: -9px;
+    left: 200px;
+    background-color: var(--bg-modal-color);
+    color: var(--color-luminous-vivid-dark-red);
+    line-height: 18px;
+    padding: 0 10px;
+  }
+
+  .messages-item__mail-text {
+    height: auto;
+    padding: 3px 6px;
+    border: 1px dashed var(--color-luminous-vivid-amber);
+    border-radius: 4px;
+    overflow-y: auto;
+  }
 }

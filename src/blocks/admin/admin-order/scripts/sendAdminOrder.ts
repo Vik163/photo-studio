@@ -8,6 +8,7 @@ import { fetchUpdateAdminDataOrder } from "@/utils/services/admin/fetchUpdateAdm
 import { handleErrors } from "@/utils/lib/handleErrors";
 import { closeModal } from "../../admin-modal/scripts/setAdminModal";
 import { handleResponseEditAdmin } from "./handleResponseEditAdmin";
+import { checkErrorSendStatus } from "../../admin-modal/scripts/checkSendStatus";
 
 const modal = $class("admin-modal");
 
@@ -27,9 +28,7 @@ export async function sendAdminOrder(id: string, form: HTMLFormElement) {
     ($class("select__text", modal).textContent as StatusOrder) ||
     localStorage.getItem(ADMIN_ORDER_STATUS);
 
-  if (status === "Отложен" && !Boolean(mailAdmin)) {
-    handleErrors("Заказ удалится. Необходимо объяснить причину клиенту", modal);
-  } else {
+  if (!checkErrorSendStatus(status, mailAdmin)) {
     const data: AdminUpdateData = {
       deviceId,
       orderId,

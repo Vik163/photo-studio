@@ -13,6 +13,7 @@ import {
 const modal = $class("admin-modal");
 const form = $class("admin-modal__form", modal) as HTMLFormElement;
 const status = $class("admin-modal__status", form) as HTMLElement;
+const error = $class("modal__error", modal) as HTMLElement;
 const service = $class("service-label", form) as HTMLLabelElement;
 const price = $class("price-label", form) as HTMLLabelElement;
 const mail = $class("text-label", form) as HTMLLabelElement;
@@ -22,7 +23,7 @@ const imagesContainer = $class("upload__images", modal) as HTMLFormElement;
 
 export const closeModal = () => {
   $remove("modal_active", modal);
-  $remove("modal__error", modal);
+  $remove("active", error);
   text.value = "";
   localStorage.removeItem(ADMIN_ORDER_MAIL);
   form.reset();
@@ -73,9 +74,3 @@ export const openAdminModal = (id: string) => {
 
   text.value = localStorage.getItem(ADMIN_ORDER_MAIL)!;
 };
-
-export function checkStatusModal(value: StatusOrder) {
-  if (value === "Отложен") {
-    text.value = "";
-  }
-}

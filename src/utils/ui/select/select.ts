@@ -1,4 +1,4 @@
-import { checkStatusModal } from "@/blocks/admin/admin-modal/scripts/setAdminModal";
+import { handleStatusModal } from "@/blocks/admin/admin-modal/scripts/checkSendStatus";
 import { ADMIN_ORDER_STATUS } from "@/utils/constants/storage";
 import {
   $class,
@@ -7,8 +7,8 @@ import {
   $remove,
   $toggle,
 } from "@/utils/lib/getElement";
-import { StatusOrder } from "@/utils/types/fetch-data";
-import { SelectData } from "@/utils/types/select-data";
+import type { StatusOrder } from "@/utils/types/fetch-data";
+import type { SelectData } from "@/utils/types/select-data";
 
 let value: StatusOrder;
 
@@ -60,7 +60,7 @@ export const handleOptionsSelect = (e: Event, container: HTMLElement) => {
     value = target.textContent as StatusOrder;
     defaultValue.textContent = value;
 
-    checkStatusModal(value);
+    handleStatusModal(value);
   }
 
   $remove("active", list);

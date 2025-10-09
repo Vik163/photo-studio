@@ -4,13 +4,14 @@ import {
   closeOverlayAndLoader,
   openOverlayAndLoader,
 } from "@/utils/ui/overlay/overlay";
+
+import { fetchUpdateOrder } from "@/utils/services/orders/fetchUpdateOrder";
 import {
   deleteImagesInCloud,
   getImageDataFromCloud,
   uploadImagesInCloud,
-} from "./handleImagesFromCloud";
-import { fetchUpdateOrder } from "@/utils/services/orders/fetchUpdateOrder";
-import { handleResponseOrder } from "./handleResponse";
+} from "@/blocks/modals/modal/scripts/handleImagesFromCloud";
+import { handleResponseOrder } from "@/blocks/modals/modal/scripts/handleResponse";
 
 const form = $class("modal__form") as HTMLFormElement;
 let formData: FormData;

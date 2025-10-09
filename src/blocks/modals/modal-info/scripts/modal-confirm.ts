@@ -8,10 +8,8 @@ import type { TypeActionsModal } from "@/utils/types/modal";
 import { deleteMessageData } from "@/blocks/messages/scripts/deleteMessage";
 import { closeMessagesList } from "@/blocks/messages/scripts/setMessages";
 import { setMailDataInModalForm } from "@/blocks/messages/scripts/editMessage";
-import {
-  handleResponseDeleteMessage,
-  handleResponseDeleteOrder,
-} from "../../modal/scripts/handleResponse";
+import { handleResponseDeleteOrder } from "@/blocks/basket/scripts/handleResponseDeleteOrder";
+import { handleResponseDeleteMessage } from "@/blocks/messages/scripts/handleResponseDeleteMessage";
 
 const modal = $class("modal-info");
 const container = $class("modal-info__container", modal);

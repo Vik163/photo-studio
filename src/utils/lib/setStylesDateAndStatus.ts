@@ -23,9 +23,6 @@ export function setStylesStatus(status: StatusOrder, el: HTMLElement) {
   if (status === "Принят") {
     el.style.color = ColorAdmin.YELLOW;
   }
-  if (status === "В работе") {
-    el.style.color = ColorAdmin.BLUE;
-  }
   if (status === "Выполнен") {
     el.style.color = ColorAdmin.CYAN;
   }

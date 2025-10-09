@@ -65,33 +65,3 @@ export function handleResponseMessages(
   resetForm(formData);
   clearCacheEditForm();
 }
-
-/**
- * Открывает modalInfo после запроса с нужным контентом и обновляет корзину
- * @param data string | Basket[]
- */
-export function handleResponseDeleteOrder(data: string | Basket[]) {
-  if (typeof data === "string") {
-    openModalInfo("fatal", data);
-    closeOverlayAndLoader();
-  } else {
-    openModalInfo("success", "Заказ успешно удалён!");
-    setBasketData(data);
-    closeOverlayAndLoader();
-  }
-}
-
-/**
- * Открывает modalInfo после запроса с нужным контентом и обновляет корзину
- * @param data string | Basket[]
- */
-export function handleResponseDeleteMessage(data: string | Message[]) {
-  if (typeof data === "string") {
-    openModalInfo("fatal", data);
-    closeOverlayAndLoader();
-  } else {
-    openModalInfo("success", "Сообщение успешно удалено!");
-    setMessagesData(data);
-    closeOverlayAndLoader();
-  }
-}

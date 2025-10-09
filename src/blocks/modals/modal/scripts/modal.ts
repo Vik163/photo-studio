@@ -9,9 +9,9 @@ import {
 import { closeOverlayAndLoader } from "@/utils/ui/overlay/overlay";
 import { sendModalData } from "./sendModalData";
 import type { TypeModal } from "@/utils/types/modal";
-import { sendEditOrderData } from "./sendEditOrderData";
 import { clearCacheEditForm } from "./handleImagesFromCloud";
-import { sendEditMailData } from "./sendEditMailData";
+import { sendEditMailData } from "../../../messages/scripts/sendEditMailData";
+import { sendEditOrderData } from "@/blocks/basket/scripts/sendEditOrderData";
 
 const container = $class("modal");
 const iconMail = $id("header-mail");

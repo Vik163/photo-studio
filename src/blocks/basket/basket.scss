@@ -2,7 +2,7 @@
 
 // основные настройки находятся в header ===
 .basket {
-  left: 31px;
+  left: 32px;
 }
 
 .basket__orders {
@@ -54,30 +54,26 @@
 .basket-item__admin {
   width: 100%;
   display: none;
-  align-items: flex-start;
+  align-items: center;
   gap: 5%;
-  padding: 5px 10px;
+  padding: 10px;
   border: 1px solid var(--color-luminous-vivid-dark-red);
   border-radius: 6px;
+  position: relative;
+  margin-top: 15px;
+
+  .basket-item__admin-title {
+    position: absolute;
+    top: -9px;
+    left: 200px;
+    background-color: var(--bg-modal-color);
+    color: var(--color-luminous-vivid-dark-red);
+    line-height: 18px;
+    padding: 0 10px;
+  }
 
   .basket-item__img-container {
     min-width: 40%;
-
-    span {
-      color: var(--color-luminous-vivid-dark-red);
-    }
-  }
-  .basket-item__mail-container {
-    width: 55%;
-    display: none;
-
-    &.active {
-      display: block;
-    }
-
-    span {
-      color: var(--color-luminous-vivid-dark-red);
-    }
   }
 
   .basket-item__mail-text {
@@ -86,6 +82,12 @@
     border: 1px dashed var(--color-luminous-vivid-amber);
     border-radius: 4px;
     overflow-y: auto;
+    width: 55%;
+    display: none;
+
+    &.active {
+      display: block;
+    }
   }
 
   .basket-item__img-list {

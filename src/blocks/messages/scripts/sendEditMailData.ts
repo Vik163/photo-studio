@@ -4,7 +4,7 @@ import {
   closeOverlayAndLoader,
   openOverlayAndLoader,
 } from "@/utils/ui/overlay/overlay";
-import { handleResponseMessages } from "./handleResponse";
+import { handleResponseMessages } from "../../modals/modal/scripts/handleResponse";
 
 const form = $class("modal__form") as HTMLFormElement;
 let formData: FormData;
