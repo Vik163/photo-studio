@@ -9,6 +9,8 @@ import { handleErrors } from "@/utils/lib/handleErrors";
 import { closeModal } from "../../admin-modal/scripts/setAdminModal";
 import { handleResponseEditAdmin } from "./handleResponseEditAdmin";
 import { checkErrorSendStatus } from "../../admin-modal/scripts/checkSendStatus";
+import { deleteAdminOrder } from "./deleteAdminOrder";
+import { Messages } from "@/utils/constants/messages";
 
 const modal = $class("admin-modal");
 
@@ -37,11 +39,11 @@ export async function sendAdminOrder(id: string, form: HTMLFormElement) {
       status,
     };
 
-    const res = await fetchUpdateAdminDataOrder(data);
-    if (typeof res === "string") {
-      handleErrors(res, modal);
+    if (status === "Отменён") {
+      await deleteAdminOrder(deviceId, orderId, mailAdmin);
     } else {
-      closeModal();
+      const res = await fetchUpdateAdminDataOrder(data);
+
       handleResponseEditAdmin(res);
     }
   }

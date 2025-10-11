@@ -40,24 +40,23 @@ export async function setBasketElements(
       await setBasketAdminElements(order, basketTemplate);
 
       const name = $class("basket-item__name", basketTemplate);
-      name.textContent = order.service;
+      name.textContent = order.service!;
 
       const date = $class("basket-item__date", basketTemplate);
       date.textContent = order.created;
 
       const status = $class("basket-item__status", basketTemplate);
-      status.textContent = order.status;
-
-      // setStylesStatus(order.status, status)
+      status.textContent = order.status!;
 
       const btnEdit = $class("basket-item__edit", basketTemplate);
-      btnEdit.id = order.orderId;
-
       const btnBasket = $class("basket-item__basket", basketTemplate);
-      btnBasket.id = order.orderId;
 
       // ссылка для оплаты (статус - завершён)
       const pay = $class("basket-item__pay", basketTemplate) as HTMLElement;
+
+      basketTemplate.id = order.orderId;
+      btnEdit.id = order.orderId;
+      btnBasket.id = order.orderId;
 
       if (order.status === "Принят") {
         $add("active", btnEdit);

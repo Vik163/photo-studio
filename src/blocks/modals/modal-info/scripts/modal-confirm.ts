@@ -31,7 +31,8 @@ async function confirmActionModal() {
     openOverlayAndLoader("loader");
 
     const data = await deleteOrderData();
-    if (data) handleResponseDeleteOrder(data);
+    console.log("data:", data);
+    if (data) handleResponseDeleteOrder("delete", data);
   } else if (typeModal === "orderEdit") {
     closeModalInfo();
     closeBasket();

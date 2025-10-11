@@ -1,20 +1,20 @@
 import { openModalInfoConfirm } from "@/blocks/modals/modal-info/scripts/modal-confirm";
 import { closeModal } from "@/blocks/modals/modal/scripts/modal";
 import { fetchDeleteMessage } from "@/utils/services/mails/fetchDeleteMessage";
-import type { Message } from "@/utils/types/fetch-data";
+import type { Basket } from "@/utils/types/fetch-data";
 
-let message: Message;
+let message: Basket;
 /**
  * Удаление заказа из корзины.
  * отправлется в модалку с подтверждением, аргументом передётся запрос на бек
  * Если заказ единственный , то удаляется всё (из бд, облака и cookie)
  * @param id
  */
-export const deleteMessage = (orderData: Message[], id: string) => {
+export const deleteMessage = (orderData: Basket[], id: string) => {
   message = orderData.find((order) => order.orderId === id)!;
   // закрываю модалку если открытая
   closeModal();
-  if (message) openModalInfoConfirm("mailDelete", message.mail);
+  if (message) openModalInfoConfirm("mailDelete", message.mail!);
 };
 
 /**

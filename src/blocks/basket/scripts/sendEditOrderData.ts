@@ -60,11 +60,11 @@ export async function sendEditOrderData() {
   }
 
   images = getKeysFilesFromId(orderId, images);
-  const data = { orderId, mail, images, service };
+  const data = { orderId: form.id, mail, images, service };
 
   const response = await fetchUpdateOrder(data);
   if (response) {
-    handleResponseOrder(response, "Заказ успешно изменён!", formData);
+    handleResponseOrder("update", response, "Заказ успешно изменён!", formData);
     closeOverlayAndLoader();
   }
 }

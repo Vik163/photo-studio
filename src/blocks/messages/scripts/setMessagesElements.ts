@@ -1,5 +1,5 @@
 import { $add, $class, $id } from "@/utils/lib/getElement";
-import type { Message } from "@/utils/types/fetch-data";
+import type { Basket } from "@/utils/types/fetch-data";
 
 export function removeMessagesElements() {
   const elements = document.querySelectorAll(".messages-item");
@@ -15,7 +15,7 @@ export function removeMessagesElements() {
  */
 export async function setMessagesElements(
   messagesBlock: HTMLElement,
-  data: Message[]
+  data: Basket[]
 ) {
   // удаление существующих элементов при открытии
   removeMessagesElements();
@@ -28,15 +28,17 @@ export async function setMessagesElements(
 
     if (messageTemplate) {
       const text = $class("messages-item__text", messageTemplate);
-      text.textContent = message.mail;
+      text.textContent = message.mail!;
 
       const date = $class("messages-item__date", messageTemplate);
       date.textContent = message.created;
 
       const btnEdit = $class("messages-item__edit", messageTemplate);
-      btnEdit.id = message.orderId;
 
       const btnBasket = $class("messages-item__basket", messageTemplate);
+
+      messageTemplate.id = message.orderId;
+      btnEdit.id = message.orderId;
       btnBasket.id = message.orderId;
 
       const adminBlock = $class(

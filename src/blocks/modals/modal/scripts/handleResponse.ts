@@ -1,5 +1,5 @@
 import { $class } from "@/utils/lib/getElement";
-import type { Basket, Message } from "@/utils/types/fetch-data";
+import type { Basket } from "@/utils/types/fetch-data";
 import { disableCheckbox } from "./handleCheckbox";
 import { openModalInfo } from "../../modal-info/scripts/modal-info";
 import { setBasketData } from "@/blocks/basket/scripts/basket";
@@ -8,6 +8,7 @@ import { clearCacheEditForm } from "./handleImagesFromCloud";
 import { deleteImageUpload } from "@/blocks/upload-img/scripts/handleImageUpload";
 import { setMessagesData } from "@/blocks/messages/scripts/setMessages";
 import { closeOverlayAndLoader } from "@/utils/ui/overlay/overlay";
+import { changeDataInStorage } from "@/utils/lib/changeDataInStorage";
 
 const form = $class("modal__form") as HTMLFormElement;
 const imagesContainer = $class("upload__images", form)!;
@@ -31,14 +32,16 @@ function resetForm(formData: FormData) {
  * @param res: Basket[] | string
  */
 export function handleResponseOrder(
-  res: Basket[] | string,
+  type: "update" | "delete" | "add",
+  res: Basket | string,
   textModalInfo: string,
   formData: FormData
 ) {
   if (typeof res === "string") {
     openModalInfo("fatal", res);
   } else {
-    setBasketData(res);
+    const orders = changeDataInStorage(type, res, "ORDERS");
+    setBasketData(orders);
 
     closeModalAfterResult();
     openModalInfo("success", textModalInfo);
@@ -49,14 +52,16 @@ export function handleResponseOrder(
 }
 
 export function handleResponseMessages(
-  res: Message[] | string,
+  type: "update" | "delete" | "add",
+  res: Basket | string,
   textModalInfo: string,
   formData: FormData
 ) {
   if (typeof res === "string") {
     openModalInfo("fatal", res);
   } else {
-    setMessagesData(res);
+    const messages = changeDataInStorage(type, res, "MAILS");
+    setMessagesData(messages);
 
     closeModalAfterResult();
     openModalInfo("success", textModalInfo);

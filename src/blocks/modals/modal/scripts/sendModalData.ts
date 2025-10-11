@@ -8,7 +8,7 @@ import {
 } from "@/utils/ui/overlay/overlay";
 import type { TypeModal } from "@/utils/types/modal";
 import { uploadImagesInCloud } from "./handleImagesFromCloud";
-import { handleResponseOrder, handleResponseMessages } from "./handleResponse";
+import { handleResponseMessages, handleResponseOrder } from "./handleResponse";
 import { fetchCreateMessage } from "@/utils/services/mails/fetchCreateMessage";
 
 const form = $class("modal__form") as HTMLFormElement;
@@ -44,7 +44,7 @@ export async function sendModalData(typeModal: TypeModal) {
 
       const response = await fetchCreateOrder(data);
       if (response) {
-        handleResponseOrder(response, "Заказ успешно создан!", formData);
+        handleResponseOrder("add", response, "Заказ успешно создан!", formData);
         closeOverlayAndLoader();
       }
     } else if (typeModal === "mail") {
@@ -52,7 +52,12 @@ export async function sendModalData(typeModal: TypeModal) {
       const response = await fetchCreateMessage(data);
 
       if (response) {
-        handleResponseMessages(response, "Сообщение отправлено!", formData);
+        handleResponseMessages(
+          "add",
+          response,
+          "Сообщение отправлено!",
+          formData
+        );
         closeOverlayAndLoader();
       }
     }

@@ -1,14 +1,16 @@
 import { $api } from "@/utils/api/axiosApi";
-import type { Message, MessagesData } from "../../types/fetch-data";
+import type { Basket, MessagesData } from "../../types/fetch-data";
 import { Messages } from "@/utils/constants/messages";
 
 export async function fetchCreateMessage(
   data: MessagesData
-): Promise<Message[] | string> {
+): Promise<Basket | string | null> {
   try {
-    const messages = (await $api.post("/messages", data)).data;
+    const res = (await $api.post("/messages", data)).data;
 
-    return messages;
+    if (res) {
+      return res;
+    } else return null;
   } catch (err) {
     return Messages.CREATE_MAIL_ERROR;
   }

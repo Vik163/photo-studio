@@ -1,14 +1,15 @@
 import { Messages } from "@/utils/constants/messages";
 import { $api } from "../../api/axiosApi";
-import type { Message } from "../../types/fetch-data";
+import type { Basket } from "../../types/fetch-data";
 
 export const fetchDeleteMessage = async (
   id: string
-): Promise<Message[] | string> => {
+): Promise<null | string | Basket> => {
   try {
-    const messages: Message[] = (await $api.delete(`/messages/${id}`)).data;
-
-    return messages;
+    const res: Basket | null = (await $api.delete(`/messages/${id}`)).data;
+    if (res) {
+      return res;
+    } else return null;
   } catch (err) {
     return Messages.DELETE_MAIL_ERROR;
   }

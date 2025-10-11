@@ -9,10 +9,12 @@ import { closeByEsc } from "@/utils/lib/closeByEsc";
 import { changeUrl } from "@/utils/lib/changeUrl";
 import { $id } from "@/utils/lib/getElement";
 import { HEADER_HEIGHT } from "@/utils/constants/styles";
-import { ORDER_PATH } from "@/utils/constants/storage";
+import { ADMIN, ORDER_PATH } from "@/utils/constants/storage";
 import { setListenersModalInfo } from "@/blocks/modals/modal-info/scripts/modal-confirm";
 import { setBasket } from "@/blocks/basket/scripts/basket";
 import { setMessages } from "@/blocks/messages/scripts/setMessages";
+
+if (localStorage.getItem(ADMIN)) location.href = "/admin.html";
 
 changeUrl("orders");
 

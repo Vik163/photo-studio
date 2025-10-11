@@ -5,3 +5,5 @@ export const ORDERS_DATA = "ORDERS_DATA";
 export const ADMIN_ORDERS_BLOCK = "ADMIN_ORDERS_BLOCK";
 export const ADMIN_ORDER_STATUS = "ADMIN_ORDER_STATUS";
 export const ADMIN_ORDER_MAIL = "ADMIN_ORDER_MAIL";
+export const MAILS = "MAILS";
+export const ORDERS = "ORDERS";

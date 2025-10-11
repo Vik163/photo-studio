@@ -4,11 +4,13 @@ import type { Basket, OrderEditData } from "@/utils/types/fetch-data";
 
 export async function fetchUpdateOrder(
   data: OrderEditData
-): Promise<Basket[] | string> {
+): Promise<Basket | string | null> {
   try {
     const basket = (await $api.put("/orders", data)).data;
 
-    return basket;
+    if (basket) {
+      return basket;
+    } else return null;
   } catch (err) {
     return Messages.UPDATE_ORDER_ERROR;
   }

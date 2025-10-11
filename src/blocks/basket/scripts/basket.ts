@@ -4,6 +4,7 @@ import { setBasketElements } from "./setBasketElements";
 import { deleteOrder } from "./deleteOrder";
 import { editBasket } from "./editOrder";
 import { fetchBasket } from "@/utils/services/orders/fetchBasket";
+import { ORDERS } from "@/utils/constants/storage";
 
 const basketOrders = $class("basket__orders");
 const basket = $class("basket");
@@ -75,8 +76,11 @@ const setBasketListeners = () => {
 export const setBasket = async () => {
   setBasketListeners();
 
-  const order = await fetchBasket();
-  if (typeof order === "string") {
-    console.log("Ошибка запроса корзины", order);
-  } else setBasketData(order);
+  const orders = await fetchBasket();
+  if (typeof orders === "string") {
+    console.log("Ошибка запроса корзины", orders);
+  } else {
+    localStorage.setItem(ORDERS, JSON.stringify(orders));
+    setBasketData(orders);
+  }
 };

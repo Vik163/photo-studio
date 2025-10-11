@@ -7,6 +7,7 @@ import type { TypeModal } from "@/utils/types/modal";
 
 const container = $class("modal");
 const textLabel = $id("text-label") as HTMLLabelElement;
+const text = $id("message") as HTMLTextAreaElement;
 const iconContainer = $class("modal__img", container) as HTMLImageElement;
 const form = $class("modal__form", container) as HTMLFormElement;
 const nameLabel = $class("name-label", form);

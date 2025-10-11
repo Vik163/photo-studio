@@ -5,6 +5,7 @@ import {
   deleteImageUpload,
   setImageElements,
 } from "../../../upload-img/scripts/handleImageUpload";
+import noImg from "@/assets/images/no-img.png";
 
 let arrImgCloud: string[] = [];
 let newArrImgCloud: string[] = [];
@@ -24,7 +25,9 @@ export async function setElementsFromCloud(
   for await (const keyFile of images) {
     const src = await getBaketObj(keyFile);
 
-    if (src) {
+    if (src === "no-img") {
+      setImageElements(noImg, "no-img", container);
+    } else {
       arrSrc.push(src);
       setImageElements(src, keyFile, container);
     }
@@ -89,7 +92,7 @@ export async function deleteImagesInCloud() {
  * @returns
  */
 export function getImageDataFromCloud() {
-  const orderId = arrImgCloud[0].split("/")[0];
+  const orderId = arrImgCloud[0] ? arrImgCloud[0].split("/")[0] : "";
   return { orderId };
 }
 

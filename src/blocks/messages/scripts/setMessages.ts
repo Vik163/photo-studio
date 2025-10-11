@@ -1,13 +1,14 @@
 import { $add, $class, $contains, $remove } from "@/utils/lib/getElement";
-import type { Message } from "@/utils/types/fetch-data";
+import type { Basket } from "@/utils/types/fetch-data";
 import { deleteMessage } from "./deleteMessage";
 import { editMessage } from "./editMessage";
 import { setMessagesElements } from "./setMessagesElements";
 import { fetchMessages } from "@/utils/services/mails/fetchMessages";
+import { MAILS } from "@/utils/constants/storage";
 
 const list = $class("messages-list");
 const messages = $class("messages");
-let messagesData: Message[] = [];
+let messagesData: Basket[] = [];
 
 export function closeMessagesList() {
   $remove("active", list);
@@ -18,7 +19,7 @@ export function closeMessagesList() {
  * Отображает корзину в header если не пустая
  * @param data - корзина
  */
-export const setMessagesData = (data: Message[]) => {
+export const setMessagesData = (data: Basket[]) => {
   closeMessagesList();
   let adminMails = 0;
 
@@ -33,7 +34,10 @@ export const setMessagesData = (data: Message[]) => {
 
     if (adminMails > 0) {
       $add("active_admin", messages);
-    } else messages.textContent = data.length.toString();
+    } else {
+      messages.textContent = data.length.toString();
+      $remove("active_admin", messages);
+    }
 
     if (data) setMessagesElements(list, data);
   } else $remove("active", messages);
@@ -79,5 +83,8 @@ export const setMessages = async () => {
   const messages = await fetchMessages();
   if (typeof messages === "string") {
     console.log("Ошибка запроса сообщений", messages);
-  } else setMessagesData(messages);
+  } else {
+    localStorage.setItem(MAILS, JSON.stringify(messages));
+    setMessagesData(messages);
+  }
 };

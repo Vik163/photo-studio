@@ -1,10 +1,10 @@
+import { handleResponseMessages } from "@/blocks/modals/modal/scripts/handleResponse";
 import { $class } from "@/utils/lib/getElement";
 import { fetchUpdateMail } from "@/utils/services/mails/fetchUpdateMail";
 import {
   closeOverlayAndLoader,
   openOverlayAndLoader,
 } from "@/utils/ui/overlay/overlay";
-import { handleResponseMessages } from "../../modals/modal/scripts/handleResponse";
 
 const form = $class("modal__form") as HTMLFormElement;
 let formData: FormData;
@@ -22,7 +22,12 @@ export async function sendEditMailData() {
 
   const response = await fetchUpdateMail(data);
   if (response) {
-    handleResponseMessages(response, "Сообщение успешно изменено!", formData);
+    handleResponseMessages(
+      "update",
+      response,
+      "Сообщение успешно изменено!",
+      formData
+    );
     closeOverlayAndLoader();
   }
 }

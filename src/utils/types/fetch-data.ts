@@ -8,14 +8,15 @@ export type StatusOrder =
   | "Завершён"; // удаление, готовое фото, скачивание
 
 export interface Basket {
+  deviceId: string;
   orderId: string;
-  service: string;
+  service?: string;
   mail?: string;
   mailAdmin?: string;
-  images: string[];
+  images?: string[];
   completedImages?: string[]; // src сформированный fileReader (хранится только в БД)
   created: string;
-  status: StatusOrder;
+  status?: StatusOrder;
 }
 
 export interface OrderData {
@@ -41,12 +42,13 @@ export interface MessagesData {
   mail: FormDataEntryValue;
 }
 
-export interface Message {
-  orderId: string;
-  mail: string;
-  mailAdmin?: string;
-  created: string;
-}
+// export interface Message {
+//   deviceId: string;
+//   orderId: string;
+//   mail: string;
+//   mailAdmin?: string;
+//   created: string;
+// }
 
 export interface MessageEditData {
   orderId: string;

@@ -4,18 +4,18 @@ import {
   setModalFormByType,
 } from "@/blocks/modals/modal/scripts/modal";
 import { setValuesMailModalForm } from "@/blocks/modals/modal/scripts/setValuesModal";
-import type { Message } from "@/utils/types/fetch-data";
+import type { Basket } from "@/utils/types/fetch-data";
 
-let message: Message;
+let message: Basket;
 
 /**
  *  Редактирование заказа в корзине. Находит заказ и открывает модалку подтверждения
- * @param messages: Message[]
+ * @param messages: Basket[]
  * @param id
  */
-export function editMessage(messages: Message[], id: string) {
+export function editMessage(messages: Basket[], id: string) {
   message = messages.find((order) => order.orderId === id)!;
-  openModalInfoConfirm("mailEdit", message.mail);
+  openModalInfoConfirm("mailEdit", message.mail!);
   // закрываю модалку если открытая
   closeModal();
 }

@@ -33,7 +33,6 @@ export async function uploadBaketObj(fileName: string, result: string) {
 
 export async function getBaketListObj() {
   // Получить список объектов
-  console.log("Getting bucket objects list.");
   const command = new ListObjectsCommand({
     Bucket: bucketName,
   });
@@ -55,12 +54,17 @@ export async function delBaketObj(key: string) {
 
 // Получить объект
 export async function getBaketObj(key: string) {
-  const { Body } = await s3Client.send(
-    new GetObjectCommand({
-      Bucket: bucketName,
-      Key: key,
-    })
-  );
+  try {
+    const { Body } = await s3Client.send(
+      new GetObjectCommand({
+        Bucket: bucketName,
+        Key: key,
+      })
+    );
 
-  return await Body?.transformToString()!;
+    return await Body?.transformToString()!;
+  } catch (e) {
+    console.log("По полученным ключам изображения в облаке не найдены");
+    return "no-img";
+  }
 }

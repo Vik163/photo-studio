@@ -15,7 +15,7 @@ let order: Basket;
  */
 export function editBasket(orderData: Basket[], id: string) {
   order = orderData.find((order) => order.orderId === id)!;
-  openModalInfoConfirm("orderEdit", order.service);
+  openModalInfoConfirm("orderEdit", order.service!);
 
   // закрываю модалку если открытая
   closeModal();

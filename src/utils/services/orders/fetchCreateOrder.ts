@@ -4,11 +4,13 @@ import type { Basket, OrderData } from "@/utils/types/fetch-data";
 
 export async function fetchCreateOrder(
   data: OrderData
-): Promise<Basket[] | string> {
+): Promise<Basket | string | null> {
   try {
     const basket = (await $api.post("/orders", data)).data;
 
-    return basket;
+    if (basket) {
+      return basket;
+    } else return null;
   } catch (err) {
     return Messages.CREATE_ORDER_ERROR;
   }

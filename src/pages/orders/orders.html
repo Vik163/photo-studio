@@ -393,16 +393,17 @@
               </div>
             </div>
             <label id="text-label" class="modal__label" for="message"
-              >Задайте ваш вопрос:
-              <textarea
-                id="message"
-                name="message"
-                placeholder="Напишите ваш вопрос и как с вами связаться."
-                class="modal__form-item modal__text"
-                rows="4"
-                cols="33"
-              ></textarea>
-            </label>
+              >Задайте ваш вопрос:</label
+            >
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Напишите ваш вопрос и как с вами связаться."
+              class="modal__form-item modal__text"
+              rows="4"
+              cols="33"
+            ></textarea>
+
             <div class="modal__checkbox">
               <div class="modal__checkbox-label"></div>
               <span
@@ -469,7 +470,6 @@
         <div class="basket-item__admin">
           <span class="basket-item__admin-title">Ответ по заказу</span>
           <div class="basket-item__img-container">
-            <span class="basket-item__img-title">Готовые фотографии</span>
             <div class="basket-item__img-list">
               <button
                 type="button"
@@ -487,10 +487,7 @@
               ></button>
             </div>
           </div>
-          <div class="basket-item__mail-container">
-            <span class="basket-item__mail-title">Ответ по заказу</span>
-            <p class="basket-item__mail-text"></p>
-          </div>
+          <p class="basket-item__mail-text"></p>
         </div>
       </div>
     </template>
@@ -505,10 +502,8 @@
           </div>
         </div>
         <div class="messages-item__admin">
-          <div class="messages-item__mail-container">
-            <span class="messages-item__mail-title">Ответ на обращение</span>
-            <p class="messages-item__mail-text"></p>
-          </div>
+          <span class="messages-item__admin-title">Ответ на обращение</span>
+          <p class="messages-item__mail-text"></p>
         </div>
       </div>
     </template>
