@@ -11,7 +11,6 @@ import { backAdmin } from "./handleOrderPage";
 const modal = $class("admin-modal");
 
 export const deleteAdminOrder = async (
-  deviceId: string,
   orderId: string,
   mailAdmin: FormDataEntryValue
 ) => {
@@ -24,7 +23,7 @@ export const deleteAdminOrder = async (
   }
 
   if (arr.length === order.images?.length) {
-    const res = await fetchDeleteAdminOrder(deviceId, order.orderId, mailAdmin);
+    const res = await fetchDeleteAdminOrder(order.orderId, mailAdmin);
 
     if (res !== "ok") {
       handleErrors(Messages.DELETE_ORDER_ERROR, modal);

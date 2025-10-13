@@ -75,6 +75,7 @@ const setBasketListeners = () => {
 
 export const setBasket = async () => {
   setBasketListeners();
+  console.log("orders:");
 
   const orders = await fetchBasket();
   if (typeof orders === "string") {

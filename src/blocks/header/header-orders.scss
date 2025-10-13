@@ -5,16 +5,15 @@
   top: -17px;
   font: var(--font-catrin-18-bold);
   color: var(--color-luminous-vivid-dark-red);
-  width: 23px;
-  height: 23px;
-  padding: 5px;
+  width: 25px;
+  height: 25px;
   display: none;
   background-image: none;
   border-radius: 6px;
   border: 1px solid var(--color-luminous-vivid-dark-red);
   background-color: var(--bg-modal-color);
-  line-height: 14px;
-  text-align: center;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   z-index: var(--index-35);
 
@@ -36,7 +35,7 @@
   }
 
   &.active {
-    display: inline;
+    display: flex;
   }
 
   &.active-close {

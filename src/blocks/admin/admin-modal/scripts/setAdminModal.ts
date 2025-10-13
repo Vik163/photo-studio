@@ -50,6 +50,7 @@ export const openAdminModal = (id: string) => {
     $add("active", mail);
     $remove("active", service);
     $remove("active", price);
+    $remove("inactive", text);
     setSelect(modal, ADMIN_STATUS);
     modal.querySelectorAll(".option__value").forEach((item) => {
       setStylesStatus(item.textContent as StatusOrder, item as HTMLElement);
@@ -59,10 +60,12 @@ export const openAdminModal = (id: string) => {
     $remove("active", upload);
     $remove("active", service);
     $remove("active", price);
+    $remove("inactive", text);
     $add("active", mail);
     localStorage.removeItem(ADMIN_ORDER_STATUS);
   } else {
     $remove("active", status);
+    $add("inactive", text);
     $remove("active", upload);
     $add("active", service);
     $add("active", price);

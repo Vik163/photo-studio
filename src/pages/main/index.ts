@@ -39,7 +39,7 @@ setMessages();
 
 setServices();
 
-setContacts();
+// setContacts();
 
 setListenersModal();
 setListenersModalInfo();

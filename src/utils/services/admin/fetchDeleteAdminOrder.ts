@@ -2,13 +2,11 @@ import { $adminApi } from "@/utils/api/axiosApi";
 import { Messages } from "@/utils/constants/messages";
 
 export const fetchDeleteAdminOrder = async (
-  deviceId: string,
   id: string,
   mailAdmin: FormDataEntryValue
 ): Promise<string> => {
   try {
     const data = {
-      deviceId,
       mailAdmin,
     };
 

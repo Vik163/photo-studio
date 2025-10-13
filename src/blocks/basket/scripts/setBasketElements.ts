@@ -1,4 +1,4 @@
-import { $add, $class, $id } from "@/utils/lib/getElement";
+import { $add, $class, $id, $remove } from "@/utils/lib/getElement";
 import type { Basket } from "@/utils/types/fetch-data";
 import { setBasketAdminElements } from "./setBasketAdminElements";
 
@@ -81,7 +81,6 @@ export async function setBasketElements(
       }
       if (order.status === "Отменён") {
         $add("active", btnBasket);
-        $add("active", btnEdit);
         $add("red", status);
       }
       if (order.status === "Создан") {

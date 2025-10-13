@@ -84,9 +84,14 @@ $padding-vert-inp: 5px;
     input {
       width: 100%;
     }
+  }
 
-    textarea {
-      width: 100%;
+  textarea {
+    width: 100%;
+    display: block;
+
+    &.inactive {
+      display: none;
     }
   }
 

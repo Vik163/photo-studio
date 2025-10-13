@@ -40,7 +40,7 @@ export async function sendAdminOrder(id: string, form: HTMLFormElement) {
     };
 
     if (status === "Отменён") {
-      await deleteAdminOrder(deviceId, orderId, mailAdmin);
+      await deleteAdminOrder(orderId, mailAdmin);
     } else {
       const res = await fetchUpdateAdminDataOrder(data);
 
