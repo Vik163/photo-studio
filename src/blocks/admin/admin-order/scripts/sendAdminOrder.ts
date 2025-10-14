@@ -26,9 +26,9 @@ export async function sendAdminOrder(id: string, form: HTMLFormElement) {
   const formData = new FormData(form);
   const mailAdmin = formData.get("message")!;
   const images = await uploadAdminImages(orderId);
+  const statusEl = $class("select__text", modal) as HTMLInputElement;
   const status =
-    ($class("select__text", modal).textContent as StatusOrder) ||
-    localStorage.getItem(ADMIN_ORDER_STATUS);
+    (statusEl.value as StatusOrder) || localStorage.getItem(ADMIN_ORDER_STATUS);
 
   if (!checkErrorSendStatus(status, mailAdmin)) {
     const data: AdminUpdateData = {

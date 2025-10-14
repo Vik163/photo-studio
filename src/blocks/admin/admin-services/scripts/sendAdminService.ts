@@ -28,7 +28,7 @@ export async function sendAdminService(
   const data: AdminFetchServiceData = {
     type,
     id: id,
-    service,
+    value: service,
     price,
   };
 

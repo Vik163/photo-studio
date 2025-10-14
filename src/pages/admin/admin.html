@@ -205,7 +205,14 @@
           <div class="admin-modal__status">
             <span class="admin-modal__status-title">Выбрать статус заказа</span>
             <div id="select-status" class="select admin-modal__select">
-              <span class="select__text"></span>
+              <input
+                id="select"
+                class="select__text"
+                name="select"
+                type="text"
+                minlength="2"
+                disabled
+              />
               <button type="button" class="select__btn"></button>
               <ul class="select__list"></ul>
             </div>

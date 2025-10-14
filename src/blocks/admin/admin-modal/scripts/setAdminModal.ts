@@ -1,7 +1,7 @@
 import { $add, $class, $contains, $id, $remove } from "@/utils/lib/getElement";
 import { deleteImageUpload } from "@/blocks/upload-img/scripts/handleImageUpload";
 
-import { setSelect } from "@/utils/ui/select/select";
+import { setContentSelect } from "@/utils/ui/select/select";
 import { ADMIN_STATUS } from "@/utils/constants/admin/selectsData";
 import type { StatusOrder } from "@/utils/types/fetch-data";
 import { setStylesStatus } from "../../../../utils/lib/setStylesDateAndStatus";
@@ -9,6 +9,7 @@ import {
   ADMIN_ORDER_MAIL,
   ADMIN_ORDER_STATUS,
 } from "@/utils/constants/storage";
+import { handleStatusModal } from "./checkSendStatus";
 
 const modal = $class("admin-modal");
 const form = $class("admin-modal__form", modal) as HTMLFormElement;
@@ -51,7 +52,14 @@ export const openAdminModal = (id: string) => {
     $remove("active", service);
     $remove("active", price);
     $remove("inactive", text);
-    setSelect(modal, ADMIN_STATUS);
+    const list = $class("select__list", modal);
+    setContentSelect(
+      modal,
+      list,
+      ADMIN_STATUS,
+      localStorage.getItem(ADMIN_ORDER_STATUS)!,
+      handleStatusModal
+    );
     modal.querySelectorAll(".option__value").forEach((item) => {
       setStylesStatus(item.textContent as StatusOrder, item as HTMLElement);
     });

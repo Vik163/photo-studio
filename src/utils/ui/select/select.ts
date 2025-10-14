@@ -1,5 +1,3 @@
-import { handleStatusModal } from "@/blocks/admin/admin-modal/scripts/checkSendStatus";
-import { ADMIN_ORDER_STATUS } from "@/utils/constants/storage";
 import {
   $class,
   $contains,
@@ -7,19 +5,32 @@ import {
   $remove,
   $toggle,
 } from "@/utils/lib/getElement";
-import type { StatusOrder } from "@/utils/types/fetch-data";
 import type { SelectData } from "@/utils/types/select-data";
 
-let value: StatusOrder;
+let value: string;
 
-export const setSelect = (container: HTMLElement, selectData: SelectData) => {
+/**
+ * Монтирует блок select c темплейтами
+ * Вешает слушатель на список с опциями
+ * слушатель прокидывает транзитом callback
+ * @param container
+ * @param selectData - options
+ * @param defaultValue - необязательный (defaultValue || selectData.default.value)
+ * @param callback - необязательный (defaultValue || selectData.default.value)
+ */
+export const setContentSelect = (
+  container: HTMLElement,
+  containerOptions: HTMLElement,
+  selectData: SelectData,
+  defaultValue?: string,
+  callback?: (value: string) => void
+) => {
   const select = $class("select", container);
-  const list = $class("select__list", select);
-  const defaultValue = $class("select__text", select);
-  defaultValue.textContent =
-    localStorage.getItem(ADMIN_ORDER_STATUS) || selectData.default.value;
 
-  list.querySelectorAll(".option").forEach((item) => item.remove());
+  const text = $class("select__text", select) as HTMLInputElement;
+  text.value = selectData.default?.value! || defaultValue!;
+
+  containerOptions.querySelectorAll(".option").forEach((item) => item.remove());
 
   const templateOption = ($id("option") as HTMLTemplateElement).content;
 
@@ -38,29 +49,38 @@ export const setSelect = (container: HTMLElement, selectData: SelectData) => {
         icon.alt = data.iconAlt!;
       }
 
-      list.append(optionTemplate);
+      containerOptions.append(optionTemplate);
     }
+  });
+
+  containerOptions.addEventListener("click", (e) => {
+    handleOptionsSelect(e, container, callback!);
   });
 };
 
 /**
- * Выполняет действия по клику
- * устанавливает выбранное значение и цвет в дефолтное
+ * Выполняет действия по клику option
+ * устанавливает выбранное значение и вызывает callback, в который передает значение
  * @param e
  * @param container
+ * @callback: (value: string) => void
  */
-export const handleOptionsSelect = (e: Event, container: HTMLElement) => {
+export const handleOptionsSelect = (
+  e: Event,
+  container: HTMLElement,
+  callback: (value: string) => void
+) => {
   const list = $class("select__list", container);
 
   const target = e.target as HTMLElement;
-  const defaultValue = $class("select__text", container);
+  const defaultValue = $class("select__text", container) as HTMLInputElement;
   const btn = $class("select__btn", container) as HTMLButtonElement;
 
   if ($contains("option__value", target)) {
-    value = target.textContent as StatusOrder;
-    defaultValue.textContent = value;
+    value = target.textContent!;
+    defaultValue.value = value;
 
-    handleStatusModal(value);
+    callback(value);
   }
 
   $remove("active", list);

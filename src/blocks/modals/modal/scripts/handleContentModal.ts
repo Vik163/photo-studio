@@ -4,6 +4,7 @@ import edit from "@/assets/icons/edit.png";
 import order from "@/assets/icons/photo.png";
 import mail from "@/assets/icons/mail.png";
 import type { TypeModal } from "@/utils/types/modal";
+import { handleSelect } from "./handleSelect";
 
 const container = $class("modal");
 const textLabel = $id("text-label") as HTMLLabelElement;
@@ -73,16 +74,16 @@ function setContentOrder() {
  * Управление контентом модалки в зависимости от типа (сообщение, редактирование или заказ)
  * @param type
  */
-export const handleContentModal = (type: TypeModal) => {
-  if ($contains("modal_active", container)) {
-    if (type === "order") {
-      setContentOrder();
-    } else if (type === "mail") {
-      setContentMail();
-    } else if (type === "orderEdit") {
-      setContentOrderEdit();
-    } else {
-      setContentMailEdit();
-    }
+export const handleContentModal = async (type: TypeModal) => {
+  if (type === "order") {
+    setContentOrder();
+    handleSelect();
+  } else if (type === "mail") {
+    setContentMail();
+  } else if (type === "orderEdit") {
+    setContentOrderEdit();
+    handleSelect();
+  } else {
+    setContentMailEdit();
   }
 };

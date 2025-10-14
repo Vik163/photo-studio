@@ -1,5 +1,5 @@
 import { $add, $class, $remove } from "@/utils/lib/getElement";
-import { fetchAdminServices } from "@/utils/services/admin/fetchAdminServices";
+import { fetchServices } from "@/utils/services/fetchServices";
 import {
   closeOverlayAndLoader,
   openOverlayAndLoader,
@@ -21,7 +21,7 @@ async function openAdminServices() {
 
   openOverlayAndLoader("loader");
 
-  const resServices = await fetchAdminServices();
+  const resServices = await fetchServices();
 
   if (typeof resServices === "string") {
     closeOverlayAndLoader();

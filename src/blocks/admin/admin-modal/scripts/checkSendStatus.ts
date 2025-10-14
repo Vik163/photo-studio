@@ -1,4 +1,3 @@
-import { ADMIN_ORDER_STATUS } from "@/utils/constants/storage";
 import { $class, $id } from "@/utils/lib/getElement";
 import { handleErrors } from "@/utils/lib/handleErrors";
 import type { StatusOrder } from "@/utils/types/fetch-data";
@@ -10,7 +9,7 @@ const error = $class("modal__error", modal) as HTMLElement;
 
 const text = $id("message", form) as HTMLTextAreaElement;
 
-export function handleStatusModal(value: StatusOrder) {
+export function handleStatusModal(value: string) {
   if (value === "Отложен") {
     text.value = "";
   }

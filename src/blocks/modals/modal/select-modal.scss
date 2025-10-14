@@ -1,0 +1,154 @@
+@use "../../../styles/variables/times.scss" as time;
+
+$padding-block: 20px;
+$padding-goriz-inp: 12px;
+$padding-vert-inp: 5px;
+
+.modal__select {
+  .select__text {
+    border-radius: 8px;
+    padding: $padding-vert-inp $padding-goriz-inp;
+    font: var(--font-catrin-16-norm);
+  }
+
+  .select__btn {
+    width: 50px;
+    height: 14px;
+
+    &:before {
+      top: 0;
+      right: 20px;
+      width: 8px;
+      height: 8px;
+    }
+
+    &.active:before {
+      top: 5px;
+    }
+  }
+}
+
+.select__list-client {
+  min-width: 85%;
+  top: 165px;
+  right: 70px;
+  background: var(--bg-modal-color);
+  border: 1px solid var(--color-luminous-vivid-orange);
+  border-radius: 8px;
+  padding: 5px;
+  z-index: var(--index-25);
+  flex-direction: column;
+  display: flex;
+  gap: 5px;
+  font: var(--font-orb-16-norm);
+  transform: translateY(-500px);
+  transition: time.$time-quarter;
+  visibility: hidden;
+  .options-container {
+    .options-container__list {
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+
+  &.active {
+    transform: translateY(0);
+    transition: time.$time-quarter;
+    visibility: visible;
+
+    .options-container {
+      .options-container__list {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.options-container {
+  border: 1px solid var(--color-luminous-vivid-orange);
+  border-radius: 6px;
+  padding: 6px 0;
+
+  &:nth-last-of-type(1) {
+    background-color: paleturquoise;
+  }
+  &:nth-last-of-type(2) {
+    background-color: aquamarine;
+  }
+  &:nth-last-of-type(3) {
+    background-color: lemonchiffon;
+  }
+  &:nth-last-of-type(4) {
+    background-color: rgb(254, 187, 142);
+  }
+}
+.options-container__title {
+  padding-left: 30px;
+  line-height: 23px;
+  height: 25px;
+  cursor: default;
+
+  text-align: start;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 8px;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #415c8c;
+    border-radius: 50%;
+    background: url(../../assets/icons/arrow-blue.png) no-repeat;
+    background-size: 15px;
+    background-position: 1% center;
+    cursor: pointer;
+    transform: rotate(0);
+    transition: time.$time-sixth;
+  }
+
+  &.active::before {
+    transform: rotate(90deg);
+  }
+}
+
+.options-container__list {
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  flex-direction: column;
+  gap: 2px;
+  transition: all time.$time-sixth;
+  height: 0;
+
+  .option {
+    text-align: left;
+    padding: 3px 30px;
+    border-radius: 2px;
+    background-color: rgba(255, 254, 254, 0.501);
+    transition: all time.$time-sixth;
+    font: var(--font-catrin-16-norm);
+
+    opacity: 0;
+    cursor: pointer;
+
+    &:hover {
+      transition: all time.$time-sixth;
+      background-color: rgba(255, 254, 254, 0.357);
+    }
+  }
+
+  &.active {
+    visibility: visible;
+    height: auto;
+    transition: all time.$time-sixth;
+    opacity: 1;
+    margin-top: 5px;
+
+    .option {
+      opacity: 1;
+    }
+  }
+}

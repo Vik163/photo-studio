@@ -18,22 +18,17 @@
 }
 
 .select__btn {
-  width: 50px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 14px;
+  background-color: transparent;
   border-left: 1px solid var(--color-luminous-vivid-orange);
   cursor: pointer;
 
   &:before {
     content: "";
     position: absolute;
-    top: 0;
-    right: 20px;
-    width: 8px;
-    height: 8px;
     border: 2px solid;
     border-color: transparent transparent var(--color-luminous-vivid-orange)
       var(--color-luminous-vivid-orange);
@@ -42,37 +37,24 @@
   }
 
   &.active:before {
-    top: 5px;
     transform: rotate(-585deg);
   }
 }
 
 .select__list {
   position: absolute;
-  bottom: 35px;
-  right: -1px;
-  width: 40%;
-  background: var(--color-dark-gray-blue);
-  border: 1px solid var(--color-luminous-vivid-orange);
-  border-radius: 8px;
   display: none;
   overflow: hidden;
-  padding: 5px 0;
+  flex-direction: column;
 
   li {
     width: 100%;
     display: inline-block;
     text-align: center;
-    padding: 6px 0;
-    cursor: pointer;
-  }
-
-  li:hover {
-    background: #2c3a46;
   }
 
   &.active {
-    display: block;
+    display: flex;
   }
 }
 

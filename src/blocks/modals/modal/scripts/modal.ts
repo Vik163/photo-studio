@@ -12,12 +12,17 @@ import type { TypeModal } from "@/utils/types/modal";
 import { clearCacheEditForm } from "./handleImagesFromCloud";
 import { sendEditMailData } from "../../../messages/scripts/sendEditMailData";
 import { sendEditOrderData } from "@/blocks/basket/scripts/sendEditOrderData";
+import { openOptionsSelect } from "@/utils/ui/select/select";
+import { fetchServices } from "@/utils/services/fetchServices";
+import { handleErrors } from "@/utils/lib/handleErrors";
 
 const container = $class("modal");
 const iconMail = $id("header-mail");
 const iconOrder = $id("header-order");
 const closeIcon = $class("modal__btn-close", container);
 const form = $class("modal__form", container) as HTMLFormElement;
+const btnSelect = $class("select__btn", container) as HTMLButtonElement;
+const btnOption = $class("select__list", container) as HTMLButtonElement;
 const uploadBlock = $class("upload")!;
 const imagesContainer = $class("upload__images", uploadBlock)!;
 
@@ -58,10 +63,23 @@ export function setModalFormByType(type: TypeModal) {
   }
 }
 
-export const setListenersModal = () => {
+export const setModal = async () => {
+  const resServices = await fetchServices();
+
+  if (typeof resServices === "string") {
+    handleErrors(resServices, container);
+  }
+  setListenersModal();
+};
+
+const setListenersModal = () => {
   setListenersImageUpload(uploadBlock);
   setListenerCheckbox();
   setListenersInputPhone("phone");
+
+  btnSelect.addEventListener("click", () => {
+    openOptionsSelect(container);
+  });
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();

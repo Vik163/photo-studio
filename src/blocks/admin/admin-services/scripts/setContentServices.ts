@@ -17,7 +17,7 @@ export const setContentOneService = (
     ?.cloneNode(true) as HTMLElement;
 
   const service = $class("services-item__name", serviceTemplate);
-  service.textContent = data.service;
+  service.textContent = data.value;
 
   const price = $id("price", serviceTemplate) as HTMLInputElement;
   price.placeholder = data.price!;

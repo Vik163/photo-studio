@@ -4,7 +4,7 @@ import { setHeader } from "@/blocks/header/scripts/header";
 import { setContacts } from "@/blocks/contacts/contacts";
 import { setCSSVariales } from "@/utils/lib/setCSSVariales";
 import { setFooter } from "@/blocks/footer/footer";
-import { setListenersModal } from "@/blocks/modals/modal/scripts/modal";
+import { setModal } from "@/blocks/modals/modal/scripts/modal";
 import { closeByEsc } from "@/utils/lib/closeByEsc";
 import { changeUrl } from "@/utils/lib/changeUrl";
 import { $id } from "@/utils/lib/getElement";
@@ -45,7 +45,7 @@ setMessages();
 
 setContacts();
 
-setListenersModal();
+setModal();
 setListenersModalInfo();
 
 setFooter();

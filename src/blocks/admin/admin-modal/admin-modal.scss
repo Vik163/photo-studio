@@ -78,9 +78,45 @@ $padding-vert-inp: 5px;
   height: 30px;
   width: 60%;
 
-  span {
+  input {
     color: var(--color-font-dark);
     font: var(--font-catrin-18-norm);
+    padding-left: 15px;
+  }
+
+  .select__btn {
+    width: 50px;
+    height: 14px;
+
+    &:before {
+      top: 0;
+      right: 20px;
+      width: 8px;
+      height: 8px;
+    }
+
+    &.active:before {
+      top: 5px;
+    }
+  }
+
+  .select__list {
+    bottom: 35px;
+    right: -1px;
+    width: 40%;
+    background: var(--color-dark-gray-blue);
+    border: 1px solid var(--color-luminous-vivid-orange);
+    border-radius: 8px;
+    padding: 5px 0;
+
+    li {
+      padding: 6px 0;
+      cursor: pointer;
+    }
+
+    li:hover {
+      background: #2c3a46;
+    }
   }
 }
 

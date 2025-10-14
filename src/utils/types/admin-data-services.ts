@@ -11,20 +11,20 @@ export type AdminServices = {
 
 export interface AdminOneService {
   id: string;
-  service: string;
+  value: string;
   price?: string;
 }
 
 export interface AdminFetchServiceData {
   type: TypeServices;
   id?: string;
-  service: FormDataEntryValue;
+  value: FormDataEntryValue;
   price?: FormDataEntryValue;
 }
 
 export interface AdminResServiceData {
   type: TypeServices;
   id: string;
-  service: string;
+  value: string;
   price?: string;
 }

@@ -15,11 +15,9 @@ import {
   closeModal,
   openAdminModal,
 } from "../../admin-modal/scripts/setAdminModal";
-import {
-  handleOptionsSelect,
-  openOptionsSelect,
-} from "@/utils/ui/select/select";
+import { openOptionsSelect } from "@/utils/ui/select/select";
 import { sendAdminData } from "../../admin-modal/scripts/sendAdminData";
+import { handleStatusModal } from "../../admin-modal/scripts/checkSendStatus";
 
 const admin = $class("admin");
 const ordersBlock = $class("admin-orders", admin);
@@ -34,8 +32,8 @@ const btnClose = $class("order__btn-close", containerInfo);
 const modal = $class("admin-modal");
 const uploadImg = $class("admin-modal__upload", modal);
 const btnModalClose = $class("admin-modal__btn-close", modal);
-const btnSelectStatus = $class("select__btn", modal);
-const btnOptionStatus = $class("select__list", modal);
+const btnSelectStatus = $class("select__btn", modal) as HTMLButtonElement;
+const btnOptionStatus = $class("select__list", modal) as HTMLButtonElement;
 const btnModalSubmit = $class("modal__btn-submit", modal);
 const imagesAdmin = $class("order__images-admin", containerMain);
 const imagesAdminInfo = $class("order__images-admin", containerInfo);
@@ -79,13 +77,9 @@ export function addListenersModal() {
   });
 
   btnSelectStatus.addEventListener("click", () => {
-    const container = $class("select", modal);
-    openOptionsSelect(container);
+    openOptionsSelect(modal);
   });
-  btnOptionStatus.addEventListener("click", (e) => {
-    const container = $class("select", modal);
-    handleOptionsSelect(e, container);
-  });
+
   btnModalClose.addEventListener("click", closeModal);
   btnModalSubmit.addEventListener("click", (e) =>
     sendAdminData(e, btnModalSubmit.id)

@@ -5,12 +5,8 @@ import {
   openOverlayAndLoader,
 } from "@/utils/ui/overlay/overlay";
 import { fetchAdminMessages } from "@/utils/services/admin/fetchAdminMessages";
-import { ADMIN_DEVICE_ID, ORDERS_DATA } from "@/utils/constants/storage";
-import type {
-  AdminData,
-  OrdersData,
-  TypeData,
-} from "@/utils/types/admin-data-orders";
+import { ADMIN_DEVICE_ID } from "@/utils/constants/storage";
+import type { AdminData } from "@/utils/types/admin-data-orders";
 import { openOrderPage } from "@/blocks/admin/admin-order/scripts/handleOrderPage";
 import { setContent } from "./setContent";
 import { getDataFromId } from "./getDataFromId";
