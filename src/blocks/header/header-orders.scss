@@ -2,7 +2,7 @@
 
 .header__orders {
   position: absolute;
-  top: -17px;
+  top: -18px;
   font: var(--font-catrin-18-bold);
   line-height: 18px;
   color: var(--color-luminous-vivid-dark-red);
@@ -94,10 +94,10 @@
     transform: rotate(0);
   }
   10% {
-    transform: rotate(15deg);
+    transform: rotate(10deg);
   }
   20% {
-    transform: rotate(-15deg);
+    transform: rotate(-10deg);
   }
   30% {
     transform: rotate(0);

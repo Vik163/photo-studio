@@ -10,6 +10,12 @@
     <header class="header">
       <a href="/" class="header__logo logo"></a>
       <div class="header__btns">
+        <img
+          id="header-auth"
+          class="header__icon header__auth"
+          src="../../assets/icons/lens.png"
+          alt="Найти заказ"
+        />
         <div class="basket__orders header__orders-info">
           <div class="basket__info-container">
             <span class="basket__info-text">Наименование услуги</span>
@@ -21,7 +27,7 @@
         <div class="basket header__orders"></div>
         <img
           id="header-order"
-          class="header__mail"
+          class="header__icon header__mail"
           src="../../assets/icons/photo.png"
           alt="Создать заказ"
         />
@@ -35,7 +41,7 @@
         <div class="messages header__orders"></div>
         <img
           id="header-mail"
-          class="header__mail"
+          class="header__icon header__mail"
           src="../../assets/icons/mail.png"
           alt="Написать сообщение"
         />
@@ -364,14 +370,19 @@
               class="modal__label service-label"
               name="service"
               for="service"
-              >Вид услуг (напишите в произвольной форме)
-              <input
-                id="service"
-                class="modal__form-item"
-                name="service"
-                type="text"
-                minlength="2"
-            /></label>
+              >Вид услуг. Выберите из списка или напишите в произвольной форме
+              <div id="select-status" class="select modal__select">
+                <input
+                  id="service"
+                  class="select__text"
+                  name="service"
+                  type="text"
+                  minlength="2"
+                />
+                <button type="button" class="select__btn"></button>
+              </div>
+            </label>
+
             <div class="upload">
               <span class="upload__title">Загрузить фотографии:</span>
               <div class="upload__container">
@@ -420,6 +431,7 @@
             </button>
           </form>
         </div>
+        <ul class="select__list select__list-client"></ul>
       </section>
       <section class="modal-info">
         <div class="modal-info__container">
@@ -450,6 +462,18 @@
     </div>
 
     <!--* ====== Tempalates =============== -->
+    <template id="options-container">
+      <li class="options-container">
+        <h4 class="options-container__title"></h4>
+        <ul class="options-container__list"></ul>
+      </li>
+    </template>
+    <template id="option">
+      <li class="option">
+        <img class="option__icon" src="#" alt="" />
+        <span class="option__value"></span>
+      </li>
+    </template>
     <template id="upload-img">
       <div class="upload-img">
         <img class="upload-img__img" src="#" alt="" />

@@ -88,6 +88,14 @@ $padding-vert-inp: 5px;
     }
   }
 
+  .text__label {
+    display: block;
+
+    &.inactive {
+      display: none;
+    }
+  }
+
   textarea {
     width: 100%;
     display: block;

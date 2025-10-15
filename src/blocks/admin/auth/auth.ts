@@ -1,5 +1,5 @@
 import { $add, $class, $remove } from "@/utils/lib/getElement";
-import { fetchAuth } from "@/utils/services/admin/fetchAuth";
+import { fetchAdminAuth } from "@/utils/services/admin/fetchAdminAuth";
 import {
   closeOverlayAndLoader,
   openOverlayAndLoader,
@@ -26,7 +26,7 @@ async function sendPassword(e: Event) {
   e.preventDefault();
   openOverlayAndLoader("loader");
 
-  const res = await fetchAuth(input.value);
+  const res = await fetchAdminAuth(input.value);
   console.log("res:", res);
 
   if (res === "Ошибка авторизации") {

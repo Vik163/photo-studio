@@ -11,14 +11,20 @@ $color-light-gray: var(--color-font-light-grey);
 
 .device-orders {
   display: flex;
-  align-items: center;
   border-radius: 6px;
   padding: 6px 10px;
   background-color: var(--color-dark-gray-blue);
+  border-bottom: 1px solid $color-light-gray;
+  border-top: 1px solid $color-light-gray;
 }
 
 .device-orders__id {
+  display: flex;
+  align-items: center;
   width: 350px;
+  padding-right: 10px;
+  border-right: 1px solid $color-light-gray;
+  min-height: 90%;
 }
 
 .device-order {
@@ -32,7 +38,7 @@ $color-light-gray: var(--color-font-light-grey);
   }
 
   .device-order__service {
-    width: 475px;
+    width: 560px;
   }
 
   .device-order__date {
@@ -45,7 +51,7 @@ $color-light-gray: var(--color-font-light-grey);
 
   .device-order__btn {
     cursor: pointer;
-    color: $color-light-gray;
+    color: var(--color-luminous-vivid-amber);
     background-color: transparent;
     width: 30px;
 

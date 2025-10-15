@@ -13,6 +13,7 @@ import { setListenersModalInfo } from "@/blocks/modals/modal-info/scripts/modal-
 import { setBasket } from "@/blocks/basket/scripts/basket";
 import { setMessages } from "@/blocks/messages/scripts/setMessages";
 import { ADMIN } from "@/utils/constants/storage";
+import { setAuth } from "@/blocks/auth/auth";
 
 if (localStorage.getItem(ADMIN)) location.href = "/admin.html";
 
@@ -39,7 +40,9 @@ setMessages();
 
 setServices();
 
-// setContacts();
+setContacts();
+
+setAuth();
 
 setModal();
 setListenersModalInfo();

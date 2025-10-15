@@ -13,6 +13,7 @@ import { ADMIN, ORDER_PATH } from "@/utils/constants/storage";
 import { setListenersModalInfo } from "@/blocks/modals/modal-info/scripts/modal-confirm";
 import { setBasket } from "@/blocks/basket/scripts/basket";
 import { setMessages } from "@/blocks/messages/scripts/setMessages";
+import { setAuth } from "@/blocks/auth/auth";
 
 if (localStorage.getItem(ADMIN)) location.href = "/admin.html";
 
@@ -44,6 +45,8 @@ setBasket();
 setMessages();
 
 setContacts();
+
+setAuth();
 
 setModal();
 setListenersModalInfo();

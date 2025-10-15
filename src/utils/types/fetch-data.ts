@@ -7,6 +7,10 @@ export type StatusOrder =
   | "Оплачен" // готовое фото, скачивание
   | "Завершён"; // удаление, готовое фото, скачивание
 
+export interface Auth {
+  phone: FormDataEntryValue;
+}
+
 export interface Basket {
   deviceId: string;
   orderId: string;

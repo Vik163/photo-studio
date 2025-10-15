@@ -7,7 +7,6 @@ import {
   setListenersImageUpload,
 } from "@/blocks/upload-img/scripts/handleImageUpload";
 import { closeOverlayAndLoader } from "@/utils/ui/overlay/overlay";
-import { sendModalData } from "./sendModalData";
 import type { TypeModal } from "@/utils/types/modal";
 import { clearCacheEditForm } from "./handleImagesFromCloud";
 import { sendEditMailData } from "../../../messages/scripts/sendEditMailData";
@@ -15,6 +14,9 @@ import { sendEditOrderData } from "@/blocks/basket/scripts/sendEditOrderData";
 import { openOptionsSelect } from "@/utils/ui/select/select";
 import { fetchServices } from "@/utils/services/fetchServices";
 import { handleErrors } from "@/utils/lib/handleErrors";
+import { sendAuthData } from "@/blocks/auth/sendAuthData";
+import { sendMailData } from "@/blocks/messages/scripts/sendMailData";
+import { sendOrderData } from "@/blocks/basket/scripts/sendOrderData";
 
 const container = $class("modal");
 const iconMail = $id("header-mail");
@@ -87,10 +89,14 @@ const setListenersModal = () => {
     if (typeModal === "orderEdit") {
       sendEditOrderData();
     } else if (typeModal === "order") {
-      sendModalData(typeModal);
+      sendOrderData();
     } else if (typeModal === "mailEdit") {
       sendEditMailData();
-    } else sendModalData(typeModal);
+    } else if (typeModal === "mail") {
+      sendMailData();
+    } else {
+      sendAuthData();
+    }
   });
   closeIcon.addEventListener("click", closeModal);
 

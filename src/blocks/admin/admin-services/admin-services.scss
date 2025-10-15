@@ -19,7 +19,7 @@
   border: 2px solid var(--color-vivid-grey-blue);
   border-radius: 10px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  padding: 20px;
+  padding: 15px 8px;
   position: relative;
 }
 
@@ -28,11 +28,12 @@
   line-height: 30px;
   font-weight: normal;
   color: var(--color-luminous-vivid-orange);
+  margin-left: 15px;
 }
 
 .services-block__add-btn {
   position: absolute;
-  top: 20px;
+  top: 15px;
   right: 30px;
   @include btn.admin-btn;
   height: 30px;
@@ -74,7 +75,8 @@
 
   margin-bottom: 3px;
   color: var(--color-font-light-grey);
-  border: 1px solid var(--color-vivid-grey-blue);
+  border-top: 1px solid var(--color-vivid-grey-blue);
+  border-bottom: 1px solid var(--color-vivid-grey-blue);
   border-radius: 6px;
   padding: 10px 15px;
 }

@@ -83,6 +83,7 @@ export const setMessages = async () => {
   const messages = await fetchMessages();
   if (typeof messages === "string") {
     console.log("Ошибка запроса сообщений", messages);
+    localStorage.removeItem(MAILS);
   } else {
     localStorage.setItem(MAILS, JSON.stringify(messages));
     setMessagesData(messages);

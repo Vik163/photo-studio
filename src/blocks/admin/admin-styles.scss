@@ -18,12 +18,13 @@ $color-gray: var(--color-font-light-grey);
 }
 
 .admin__list {
-  padding: 8px;
+  padding: 6px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   border-radius: 10px;
-  background-color: $color-gray;
+  background-color: transparent;
+  border: 2px solid $color-gray;
   margin-bottom: 100px;
 }
 
