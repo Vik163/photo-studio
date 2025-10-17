@@ -46,8 +46,6 @@ setMessages();
 
 setContacts();
 
-setAuth();
-
 setModal();
 setListenersModalInfo();
 
@@ -65,4 +63,7 @@ window.addEventListener("popstate", (e) => {
 });
 
 //* === анимация блоков при скролле  ================================
-window.onload = getServiceById;
+window.onload = function () {
+  getServiceById();
+  setAuth();
+};

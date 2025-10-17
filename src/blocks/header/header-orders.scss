@@ -4,17 +4,17 @@
   position: absolute;
   top: -18px;
   font: var(--font-catrin-18-bold);
-  line-height: 18px;
+  line-height: 16px;
   color: var(--color-luminous-vivid-dark-red);
   width: 25px;
   height: 25px;
   display: none;
   background-image: none;
-  border-radius: 6px;
+  border-radius: 7px;
   border: 1px solid var(--color-luminous-vivid-dark-red);
   background-color: var(--bg-modal-color);
-  align-items: center;
-  justify-content: center;
+  text-align: center;
+  line-height: 25px;
   cursor: pointer;
   z-index: var(--index-35);
 
@@ -36,7 +36,7 @@
   }
 
   &.active {
-    display: flex;
+    display: inline-block;
   }
 
   &.active-close {

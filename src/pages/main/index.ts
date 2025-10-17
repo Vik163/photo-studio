@@ -42,8 +42,6 @@ setServices();
 
 setContacts();
 
-setAuth();
-
 setModal();
 setListenersModalInfo();
 
@@ -52,4 +50,7 @@ setFooter();
 closeByEsc();
 
 //* === анимация блоков при скролле  ================================
-window.onload = setDirectionAnimation;
+window.onload = function () {
+  setDirectionAnimation();
+  setAuth();
+};

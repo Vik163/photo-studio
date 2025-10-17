@@ -11,7 +11,7 @@ import {
   getImageDataFromCloud,
   uploadImagesInCloud,
 } from "@/blocks/modals/modal/scripts/handleImagesFromCloud";
-import { handleResponseOrder } from "@/blocks/modals/modal/scripts/handleResponse";
+import { handleResponseOrder } from "./handleResponseOrder";
 
 const form = $class("modal__form") as HTMLFormElement;
 let formData: FormData;

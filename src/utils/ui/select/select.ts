@@ -28,7 +28,7 @@ export const setContentSelect = (
   const select = $class("select", container);
 
   const text = $class("select__text", select) as HTMLInputElement;
-  text.value = selectData.default?.value! || defaultValue!;
+  text.placeholder = selectData.default?.value! || defaultValue!;
 
   containerOptions.querySelectorAll(".option").forEach((item) => item.remove());
 

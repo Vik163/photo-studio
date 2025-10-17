@@ -1,4 +1,4 @@
-import { handleResponseMessages } from "@/blocks/modals/modal/scripts/handleResponse";
+import { handleResponseMessages } from "@/blocks/messages/scripts/handleResponseMessages";
 import { $class } from "@/utils/lib/getElement";
 import { fetchCreateMessage } from "@/utils/services/mails/fetchCreateMessage";
 import {

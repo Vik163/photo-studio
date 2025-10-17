@@ -1,5 +1,5 @@
 import { $add, $class, $contains, $id, $remove } from "@/utils/lib/getElement";
-import { setListenerCheckbox } from "./handleCheckbox";
+import { disableCheckbox, setListenerCheckbox } from "./handleCheckbox";
 import { setListenersInputPhone } from "@/utils/lib/phoneValidator/handleInputPhone";
 import { handleContentModal } from "./handleContentModal";
 import {
@@ -29,6 +29,17 @@ const uploadBlock = $class("upload")!;
 const imagesContainer = $class("upload__images", uploadBlock)!;
 
 let typeModal: TypeModal = "mail";
+
+export function resetForm(formData: FormData) {
+  form.reset();
+
+  formData.forEach((value, key, parent) => {
+    formData.delete(key);
+  });
+
+  deleteImageUpload(imagesContainer);
+  disableCheckbox();
+}
 
 function openModal() {
   $add("modal_active", container);
